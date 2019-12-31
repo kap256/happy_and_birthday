@@ -1,0 +1,56 @@
+フィーレス地下迷宮：正面ロビー
+29,63,5,30
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,5,6,9,3,16,0,
+       5,3,
+       16,2,8,
+       5,0;
+
+SetObj 10,5,10,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 11,5,11,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 12,6,10,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 13,6,11,0,0,32,0,173,1,GravLock,NoShadow;
+
+End ;
+
+:walk
+IfBox 0,5,16,6,16,0,Current+2 ;
+ChangeMap 93,ObjSX[0]+1,2,8,3;
+IfBox 0,8,16,9,16,0,Current+2 ;
+ChangeMap 93,ObjSX[0]+1,2,2,3;
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 114,ObjSX[0]-1,11,2,1;
+IfBox 0,11,10,11,11,0,Current+2 ;
+ChangeMap 94,2,ObjSX[0]-6,6,2;
+IfBox 0,5,10,6,11,1,:up ;
+End;
+
+:up
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+SetObjGrav 10,GravJump;
+SetObjGrav 11,GravJump;
+SetObjGrav 12,GravJump;
+SetObjGrav 13,GravJump;
+SetObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],16,0,pImage,0,GravJump,1;
+:loop
+SetObjZSpd 0,42;
+SetObjZSpd 10,40;
+SetObjZSpd 11,40;
+SetObjZSpd 12,40;
+SetObjZSpd 13,40;
+Wait 1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],60,<,:loop ;
+ChangeMap 92,ObjSX[0]-2,ObjSY[0]-6,8,ObjDir[0];
+End;

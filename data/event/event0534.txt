@@ -1,0 +1,128 @@
+夢の卵
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+If Flag[85],0,=,:event ;
+EndEventSkip ;
+PlayBGM 56;
+End ;
+
+:walk
+IfBox 0,3,3,3,3,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 535,7,19,2,1;
+
+IfBox 0,3,19,3,19,0,Current+2 ;
+ReturnVillage  0;
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+SetAniObj 0,3,19,2,15,16,0,72,1,GravJump,0;
+SetObj 1,3,12,2,3,24,0,0,1,GravJump,0;
+Stop 1;
+Store MFlag[0],255;
+:black
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]-4;
+If MFlag[0],0,>,:black ;
+MapColor 0,0,0,0;
+
+Wait 30;
+SetObjDir 0,14;
+Wait 16;
+SetObjDir 0,0;
+Wait 16;
+SetObj 0,3,19,2,1,16,0,1,1,GravJump,0;
+Wait 60;
+SetObjDir 0,2;
+Wait 16;
+SetObjDir 0,0;
+SetMes ・・・ここは、$nどこ？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 16;
+SetObjDir 0,1;
+Wait 0;
+DelMes 0;
+SetObjGoal 1,3,15,2;
+SetCamera 100,0-50,0;
+Wait 60;
+SetMes ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 30;
+SetMes やあ。$nこんなところにまで来るなんて、$n何百年ぶりかな。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes カリ・・ス！？$nどうしてこんな場所に！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 60;
+SetMes ん？　違うよ。$n僕はただの案内人さ。$n君の知っている人じゃない。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes でも・・・、$nその顔、その声・・・！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 50;
+SetMes ああ。$nこれは君の記憶を、願望を、$nただ写し取っただけだよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 写し・・・取る・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 60;
+SetMes うん。$nここはそういうことが$nできる場所なんだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes ようこそ。$n夢の卵へ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+MapTitle ;
+Wait 120;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes ・・・・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 30;
+SetMes ははは。$nまあいいや。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes 君は何か$nやりたいことがあって、$nここに来たんでしょう？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 君がしたいことをするには、$nもっと奥に行かないとダメだよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObjGoal 1,3,14,2;
+SetObjDir 1,3;
+Wait 30;
+SetMes それじゃ、行こうか。$n足元に気をつけてね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Store Flag[85],4;
+SetParty 1;
+Wait 20;
+OpenMenu 0;
+ChangeMap 534,3,19,2,1;
+
+End ;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+

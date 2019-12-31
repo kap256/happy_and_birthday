@@ -1,0 +1,14 @@
+フィーレス村：広場
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+:start
+MapColor 255,0,0,0;
+Wait 1;
+SetFadeOut 120;
+Wait 1;
+TrueEnd ;
+End ;

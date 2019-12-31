@@ -1,0 +1,40 @@
+îpö–
+36,56,57,65
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,7,10,3,Rand,16,16,
+       0,5,
+       36,0,6,
+       18,POWx15+LPx2+PUpWOutBig;
+SetEne 2,8,4,3,Rand,16,16,
+       0,5,
+       36,0,6,
+       18,POWx15+LPx2+PUpWOutBig;
+SetEne 3,18,10,4,Rand,16,16,
+       0,5,
+       36,0,6,
+       18,POWx15+LPx2+PUpWOutBig;
+SetEne 4,15,3,10,Rand,16,16,
+       0,5,
+       36,0,6,
+       18,POWx15+LPx2+PUpWOutBig;
+
+SetWoodObj 50,8,12,3,3,48,0,105,1,1,0;
+SetWoodObj 51,14,14,4,3,48,0,105,1,1,0;
+SetWoodObj 52,5,7,3,3,48,0,105,1,1,0;
+SetWoodObj 53,7,2,7,3,48,0,105,1,1,0;
+SetWoodObj 54,14,6,9,3,48,0,105,1,1,0;
+SetWoodObj 55,19,5,10,3,48,0,105,1,1,0;
+SetWoodObj 56,17,1,10,3,48,0,105,1,1,0;
+End;
+
+:walk
+IfBox 0,21,2,21,3,0,Current+2 ;
+ChangeMap 628,2,ObjSY[0]+10,3,2;
+IfBox 0,1,9,1,10,0,Current+2 ;
+ChangeMap 626,11,ObjSY[0]-1,2,0;
+End;

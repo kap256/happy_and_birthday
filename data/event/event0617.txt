@@ -1,0 +1,26 @@
+ómäŸÅFêQé∫
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+SetAniObj 10,4,2,2,4,32,0,167,1,GravJump,NoShadow+ShowTurn+1;
+SetAniObj 11,5,2,2,0,32,0,167,1,GravJump,NoShadow+ShowTurn+1;
+
+SetAniObj 12,4,10,2,4,32,0,167,1,GravJump,NoShadow+ShowTurn+1;
+SetAniObj 13,5,10,2,0,32,0,167,1,GravJump,NoShadow+ShowTurn+1;
+
+SetAniObj 14,7,2,2,4,32,0,167,1,GravJump,NoShadow+ShowTurn+1;
+SetAniObj 15,8,2,2,0,32,0,167,1,GravJump,NoShadow+ShowTurn+1;
+
+SetAniObj 16,7,10,2,4,32,0,167,1,GravJump,NoShadow+ShowTurn+1;
+SetAniObj 17,8,10,2,0,32,0,167,1,GravJump,NoShadow+ShowTurn+1;
+End ;
+
+:walk
+IfBox 0,12,6,12,6,0,Current+2 ;
+ChangeMap 611,2,5,2,2;
+End;

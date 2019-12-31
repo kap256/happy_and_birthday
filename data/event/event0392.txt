@@ -1,0 +1,17 @@
+フィーレス地下迷宮：騎士の間
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+End;
+:walk
+IfBox 0,1,8,1,8,0,Current+2 ;
+ChangeMap 391,7,3,25,0;
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 393,6,12,2,1;
+End;

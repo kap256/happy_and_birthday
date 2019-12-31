@@ -1,0 +1,77 @@
+フィーレス村：大通り
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+:start
+Stop 1;
+
+SetAniObj 0,16,10,2,0,32,0,107,1,GravJump,1; 
+SetObj 1,15,10,2,1,32,0,7,1,GravJump,1; 
+SetObj 3,11,10,2,1,32,0,21,1,GravJump,1;
+SetObj 4,20,10,2,1,32,0,31,1,GravJump,1; 
+SetObj 5,6,1,2,3,32,0,25,1,GravJump,1;
+SetObj 6,10,1,2,3,32,0,24,1,GravJump,1;
+SetHighObj 10,15,9,2,3,32,0,120,1,GravJump,2+BlockShadow;
+SetHighObj 11,16,9,2,0,32,0,120,1,GravJump,2+BlockShadow;
+SetHighObj 12,20,9,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 13,21,9,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 14,10,9,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 15,11,9,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 16,5,2,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 17,6,2,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 18,10,2,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 19,11,2,2,0,32,0,121,1,GravJump,2+BlockShadow;
+
+
+
+SetCamera 0-20,0,1;
+Wait 30;
+
+SetObjDir 0,1;
+SetMes 今年も$nバッチリ売るぞ～！, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 16;
+SetObjDir 0,4;
+Wait 50;
+SetAniObj 1,15,10,2,0,32,0,163,1,GravJump,1+ShowTurn; 
+SetMes 私も$nがんばっちゃうぞ～！, 
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 16;
+SetObjDir 1,4;
+Wait 0;
+SetObj 1,15,10,2,2,32,0,7,1,GravJump,1; 
+SetObj 0,16,10,2,0,32,0,2,1,GravJump,1; 
+SetMes コレの儲けで、$nトンカツ定食代を、$n三倍にして返してやるのだ！, 
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes うわぁ、$nまだ払ってなかったんだ。, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes そういえば、ボクも$n去年はお皿たくさん割っちゃって・・・。, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 60;
+SetMes わぁ・・・。, 
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetObjDir 0,1;
+SetObjDir 1,1;
+SetMes 今年も$nバッチリ売るぞ～・・・。, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 50;
+SetMes 私も$nがんばっちゃうぞ～・・・。, 
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+
+DelMes 0;
+DelMes 1;
+Wait 20;
+
+ChangeMap 704,1,6,2,2;
+End;
+

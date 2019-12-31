@@ -1,0 +1,82 @@
+秋の街道
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+PlayBGM 11;
+Store Flag[40],1;
+
+SetObj 0,4,8,2,3,32,0,55,0,GravJump,2;
+SetBigObj 1,5,7,2,3,32,0,309,0,GravJump,Wall0+NoShadow;
+
+SetWoodObj 10,1,2,4,0,32,0,193,1,GravJump,1;
+SetWoodObj 11,1,8,4,0,32,0,193,1,GravJump,1;
+SetWoodObj 12,1,14,4,0,32,0,193,1,GravJump,1;
+SetWoodObj 13,1,20,4,0,32,0,193,1,GravJump,1;
+
+SetWoodObj 15,2,5,2,3,32,0,105,1,GravJump,1;
+SetWoodObj 16,2,11,2,3,32,0,105,1,GravJump,1;
+SetWoodObj 17,2,17,2,3,32,0,105,1,GravJump,1;
+
+SetWoodObj 20,6,6,3,0,32,0,193,1,GravJump,1;
+SetWoodObj 21,6,12,3,0,32,0,193,1,GravJump,1;
+SetWoodObj 22,6,18,3,0,32,0,193,1,GravJump,1;
+
+SetCamera 64,0-32,1;
+
+NewLine 0,0,:walk ;
+Wait 10;
+SetMes この先の、$n放棄されたガラス鉱山に$n石があるらしいんだ。,
+       1,ObjX[1]-48,ObjY[1],ObjZ[1]+16,RightBottom,0;
+Wait 0;
+SetMes 確かなんでしょうね。$nその話。,
+       2,ObjX[1],ObjY[1],ObjZ[1]+16,LeftTop,0;
+Wait 60;
+SetMes 分かんないけど、$n探さない理由も無いだろ。,
+       1,ObjX[1]-48,ObjY[1],ObjZ[1]+16,RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 30;
+SetMes しっかし、$nこんなところに何の用かねぇ。$nこの所、$n見慣れない連中も増えてるし･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0]+16,RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetMes 見慣れない連中・・・？$n先客かしら。,
+       2,ObjX[1],ObjY[1],ObjZ[1]+16,LeftTop,0;
+Wait 40;
+SetMes すいませんけど、$nもう少し急いでもらえますか？,
+       1,ObjX[1]-48,ObjY[1],ObjZ[1]+16,RightBottom,0;
+Wait 0;
+OpenMenu 0;
+Wait 1;
+DelMes 1;
+DelMes 2;
+Wait 20;
+ChangeMap 249,9,2,2,0;
+End;
+
+:walk
+SetObjGoal 0,4,14,2;
+SetObjGoal 1,5,13,2;
+Wait 16;
+NewLine 0,0,:shake ;
+Store MFlag[8],Ret;
+Wait 175;
+SetObjPos 0,4,8,2;
+SetObjPos 1,5,7,2;
+Kill MFlag[8];
+Goto :walk ;
+End;
+
+:shake
+Wait 16;
+If Rand%3,0,>,:shake ;
+SetObjZSpd 1,14;
+Goto :shake ;
+End;

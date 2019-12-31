@@ -1,0 +1,202 @@
+ジョーイ工房
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:church
+ChangeMap 422,5,3,2,0;
+End;
+
+:start
+Stop 1;
+
+If CurrentMonth,14,=,:church ;
+If CurrentMonth,15,=,:church ;
+If Month,12,=,:church ;
+
+SetAniObj 20,3,4,2,5,32,0,147,1,GravJump,1;
+SetBigObj 21,2,5,2,3,64,0,148,1,GravJump,NoShadow;
+SetAniObj 22,2,2,2,1,64,0,149,1,GravJump,BlockShadow;
+SetAniObj 23,3,2,2,4,64,0,149,1,GravJump,BlockShadow;
+SetAniObj 24,4,2,2,0,64,0,149,1,GravJump,BlockShadow;
+NewLine 0,0, :smith ;
+Store MFlag[8],Ret;
+If Flag[12],1,=,:secret ;
+
+SetCamera 0-80,0-40,1;
+
+Wait 1;
+SetMes よう。$n何の用だい？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes 他にはなんか？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+Shop 3,1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+
+If Flag[12],2,<,:nosecret ;
+If CurrentMonth,10,=,:usesecret ;
+:nosecret
+
+If Month,2,=,:feb ;
+If Month,4,=,:april ;
+If Month,5,=,:may ;
+If Month,6,=,:june ;
+If Month,7,=,:may ;
+If Month,8,=,:aug ;
+If Month,9,=,:may ;
+If Month,10,=,:nov ;
+If Month,11,=,:may ;
+
+
+SetMes 商品の詳しい説明は、$nメニューボタンで見られるぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes まあ、大体左下の窓で$n済むことが多いけどな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:feb
+SetMes 新商品ができたぜ。$n我ながらいい感じだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 初心者の杖は$n装備するだけで魔法が使えるぜ。$n魔法に弱いやつ相手なら、$nみんなに持たせるといいぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 大斧は$n重いけど威力があるから、$nすばやいヤツに持たせると$n一気に大活躍だな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:april
+SetMes 新商品ができたぜ。$nたっぷり六種類だ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+:may
+SetMes いい加減$n商品が増えてきて$n選ぶのが大変かもな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes こういうときは、$n左右キーで$nページ単位でカーソルが動くぜ。$n他のところでも使えるから、$n覚えときなよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:june
+SetMes 新商品ができたぜ。$n今月も絶好調だ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes クレイモアは、$n斧のようにも使える便利な剣だ。$n荷物が減って助かるぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes クロスボウは、$n機械仕掛けだから$n誰が使っても同じ威力だぜ。$n魔法使いとかにいいかもな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 錬金術師の杖は、$n倒した敵を金に変えられるんだ。$n金欠なら便利だぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:aug
+SetMes 新商品ができたぜ。$n俺って天才かもな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes ツインエッジと、$n魔法の杖二種は、$n装備するだけで下級の技や魔法が使えるぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes そろそろ技や魔法を積極的に使わないと$nやってられないだろ。$n即戦力に大活躍だな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:nov
+SetMes 新商品ができたぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes まさに最強の武器だ。$nこれ以上のものは、なかなか無いぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:usesecret
+SetMes あの隠し通路、$n一体何なんだ？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes まあ、使いたいってなら$n別に構わねえけど。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 16;
+ChangeMap 105,7,2,11,3;
+End;
+
+:smith
+SetObjDir 20,4;
+Wait 15;
+SetObjDir 20,0;
+Wait 15;
+SetObjDir 20,4;
+Wait 2;
+SetObjDir 20,1;
+PlayWave 14;
+Wait 2;
+SetObjDir 20,5;
+Wait 30;
+Goto :smith ;
+
+:secret
+PlayBGM 2;
+Store  Flag[12],2;
+SetMapChip 96,5,6,1;
+Wait 40;
+SetMes ・・・あれ？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 20;
+SetObjDir 0,0;
+SetMes おおっ！$nびっくりした。,
+       1,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Kill MFlag[8];
+SetObjDir 20,5;
+Wait 0;
+SetMes 何だよ。$n人の家に穴なんか開けて。,
+       1,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 60;
+SetMes かくかくしかじかで。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetMes へぇ。$n大変だな。$nまあ、がんばってくれよ。,
+       1,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes まだその通路を$n使うなら、$n「雑談」してくれな。,
+       1,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+ReturnVillage 1;
+End;

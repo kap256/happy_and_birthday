@@ -1,0 +1,92 @@
+秋の山：一合目
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+EndEventSkip ;
+If Flag[125],8,<,:event ;
+
+PlayBGM 6;
+
+SetEne 1,8,11,2,0,32,10,
+       0,5,
+       2,0,3,
+       31,0;
+SetEne 2,7,3,12,0,32,10,
+       0,3,
+       2,0,3,
+       31,0;
+::中ボス
+SetEne 5,8,8,8,0,32,2,
+       0,2,
+       11,0,8,
+       31,0;
+
+SetBox 10,13,10,2,3,236;
+SetBox 11,3,14,9,2,238;
+
+Store MFlag[8],416;
+Store MFlag[9],17;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,8,17,9,17,0,Current+2;
+ChangeMap 680,ObjSX[0]-5,2,6,3;
+IfBox 0,11,1,12,1,0,Current+2;
+ChangeMap 685,ObjSX[0]+4,20,2,1;
+IfBox3D 0,5,7,2,5,7,2,0,Current+2;
+ChangeMap 682,18,9,2,0;
+IfBox3D 0,11,5,8,11,5,8,0,Current+2;
+ChangeMap 682,24,7,8,1;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+Stop 1;
+MapColor 255,0,0,0;
+Store Flag[125],8;
+PlayBGM 0;
+StartEventSkip;
+Wait 20;
+SetMes 子供・・・、$n出来たみたい。,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 60;
+SetMes ・・・えっ！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+SetMes 教会で調べてもらって、$n間違いないって・・・。,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 40;
+SetMes ・・・本当か！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+SetMes やったな、マリン！$n今夜はお祝いだ！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 60;
+SetMes うん・・・！,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+SetMes しかし、$n子供が出来たとなると、$n名前を考えないとな。,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 60;
+SetMes 気が早いわよ。$n男の子か女の子かもわからないのに。,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+SetMes む、$nそうかな・・・。,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 50;
+SetMes そうよ。$nフフフ・・・。,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 681,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0];
+
+

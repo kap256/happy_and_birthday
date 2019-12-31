@@ -1,0 +1,61 @@
+ê}èëäŸ
+82,83
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :terminal_talk ;
+Talk   20 -1 :door_talk ;
+Hit     0 20 :door_hit ;
+
+_END_HEAD_
+#lib_terminal.txt
+#lib_door.txt
+:start
+SetAniObj 20,7,7,2,14,32,0,334,1,GravLock,NoShadow;
+SetAniObj 10,4,7,2,10,32,0,334,1,GravJump,NoShadow;
+
+
+SetAniObj 51,9 ,8,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 52,10,8,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 53,11,8,2,5,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 54,9 ,6,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 55,10,6,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 56,11,6,2,5,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 57,9 ,4,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 58,10,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 59,11,4,2,5,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 60,10,10,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 61,11,10,2,5,32,0,114,1,GravJump,BlockShadow;
+
+SetEne 30,2,7,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 31,10,9,2,Rand,48,10,
+       0,3,
+       46,0,6,
+       19,POWx15+LPx3;
+SetEne 32,10,5,2,Rand,48,10,
+       0,3,
+       1,0,6,
+       19,POWx15+LPx3;
+
+Store MFlag[8],70;
+Goto :terminal_init ;
+End;
+
+:walk
+IfBox 0,14,4,14,4,0,Current+2 ;
+ChangeMap 438,2,4,2,2;
+
+IfBox 0,10,1,10,1,0,Current+2 ;
+ChangeMap 441,10,13,2,1;
+
+IfBox 0,8,14,8,14,0,Current+2 ;
+ChangeMap 439,8,2,5,3;
+
+IfBox 0,1,10,1,10,0,Current+2 ;
+ChangeMap 430,11,3,2,0;
+
+
+End;

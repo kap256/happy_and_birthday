@@ -1,0 +1,101 @@
+セントティル大聖堂
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+
+:start
+StartEventSkip ;
+Stop 1;
+SetAniObj 0,7,2,2,1,32,0,300,1,GravJump,ShowTurn;
+SetAniObj 10,8,2,2,0,32,0,198,1,GravJump,ShowTurn;
+
+SetObj 1,8,5,2,1,64,0,1,0,GravJump,0;
+SetObj 2,6,3,2,3,16,0,71,0,GravJump,0;
+SetObj 3,7,4,2,1,22,0,22,0,GravJump,0;
+SetObj 4,6,6,2,1,31,0,31,0,GravJump,0;
+SetObj 5,9,5,2,1,29,0,29,0,GravJump,0;
+SetObj 6,10,4,2,0,23,0,23,0,GravJump,0;
+SetCamera 0-100,50,0;
+NewLine 0,0,:stone ;
+Wait 40;
+SetMes へ～。$nこれが浮遊石か。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 30;
+SetMes スゲー！$nホントに浮かんでるぜ！,
+       5,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 40;
+SetMes ありがたや、$nありがたや。,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightBottom,0;
+Wait 60;
+SetMes （・・・これが聖石？）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 3;
+DelMes 4;
+DelMes 5;
+SetObjGoal 1,8,4,2;
+SetMes （なんだか変・・・？$n　前見たものと雰囲気が違う・・・？）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+SetFadeOut 60;
+Wait 30;
+Wait 0;
+SetObjGoal 1,8,3,2;
+SetMes （前のは、もっと$n　すごい力を感じたような・・・。）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetObjGoal 2,7,3,2;
+SetMes おっと、$nそこまでだ。姉ちゃん。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+SetMes えっ・・・？$n・・・あ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+SetObjDir 1,2;
+Wait 10;
+SetObjDir 1,1;
+Wait 10;
+SetObjDir 1,3;
+SetMes 展示物には$n近づいちゃいけないぜ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjDir 1,0;
+Wait 30;
+SetMes ・・・ごめんなさい、$n綺麗だったから、つい・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetMes ん～・・・。$nダメだな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes 悪いけど、$nちょっとこっち来てもらおうか。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes ・・・うぐ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+
+ChangeMap 467,6,5,3,0;
+End;
+
+::::::::::::::::::::::::::::::::::::
+
+:stone
+Wait 16;
+SetObjDir 0,4;
+Wait 16;
+SetObjDir 0,1;
+Wait 16;
+SetObjDir 0,5;
+Wait 16;
+SetObjDir 0,1;
+Goto :stone ;
+End;

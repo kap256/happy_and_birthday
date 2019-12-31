@@ -1,0 +1,24 @@
+îpö–
+36,56,57,65
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,4,7,3,Rand,16,16,
+       0,5,
+       36,0,6,
+       18,POWx15+LPx2+PUpWOutBig;
+
+SetEne 2,9,6,3,Rand,16,16,
+       0,5,
+       36,0,6,
+       18,POWx15+LPx2+PUpWOutBig;
+End;
+:walk
+IfBox 0,5,12,6,12,0,Current+2 ;
+ChangeMap 625,ObjSX[0]+1,2,8,3;
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 623,ObjSX[0]-1,10,3,1;
+End;

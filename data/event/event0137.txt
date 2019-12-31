@@ -1,0 +1,100 @@
+ódê∏ÇÃêX
+5,8,11,20,21,29,30
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,8,24,3,1,32,10,
+       0,15,
+       21,2,4,
+       6,0;
+SetEne 2,10,12,3,1,32,10,
+       0,15,
+       21,0,6,
+       6,0;
+SetEne 3,23,24,3,1,32,10,
+       0,15,
+       21,2,4,
+       6,0;
+SetEne 4,25,7,3,1,32,10,
+       0,15,
+       21,2,5,
+       6,0;
+
+SetEne 5,25,17,2,1,48,10,
+       0,5,
+       20,2,4,
+       6,0;
+SetEne 6,17,25,2,1,48,10,
+       0,5,
+       11,2,3,
+       6,0;
+SetEne 7,5,14,2,1,48,10,
+       0,5,
+       20,0,4,
+       6,0;
+SetEne 8,14,6,2,1,48,10,
+       0,5,
+       11,2,4,
+       6,0;
+SetEne 9,16,14,2,1,48,10,
+       0,5,
+       20,1,5,
+       6,0;
+
+SetObj 10,26,13,2,3,32,0,187,1,GravJump,1;
+SetObj 11,24,25,2,0,32,0,187,1,GravJump,1;
+SetObj 12,12,25,2,1,32,0,187,1,GravJump,1;
+SetObj 13,10,12,2,2,32,0,187,1,GravJump,1;
+SetObj 14,18,13,2,1,32,0,187,1,GravJump,1;
+SetObj 15,17,6 ,2,0,32,0,187,1,GravJump,1;
+SetObj 16,7 ,4 ,2,1,32,0,187,1,GravJump,1;
+SetBox 17,21,15,2,0,73;
+SetBox 18,5,5,2,2,74;
+:::::::::::::::::::êAó—
+Store MFlag[0],19;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::êAó—èIÇÌÇË
+
+End ;
+
+:walk
+
+IfBox 0,30,13,30,14,0,Current+2 ;
+ChangeMap 134,2,ObjSY[0]-7,2,2;
+IfBox 0,1,12,1,13,0,Current+2 ;
+ChangeMap 134,9,ObjSY[0]-7,2,0;
+IfBox 0,1,26,1,27,0,Current+2 ;
+ChangeMap 134,9,ObjSY[0]-21,2,0;
+IfBox 0,18,1,19,1,0,Current+2 ;
+ChangeMap 134,ObjSX[0]-13,9,2,1;
+IfBox 0,6,30,7,30,0,Current+2 ;
+ChangeMap 134,ObjSX[0]-2,2,2,3;
+IfBox 0,26,30,27,30,0,Current+2 ;
+ChangeMap 134,ObjSX[0]-22,2,2,3;
+
+IfBox 0,7,1,8,1,0,Current+2 ;
+ChangeMap 138,ObjSX[0]-2,9,2,1;
+End;
+
+

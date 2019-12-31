@@ -1,0 +1,21 @@
+フィーレス地下迷宮：最終休憩所
+27,28,29,30,46
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetSavePoint 10,2,4,2;
+SetBox 15,5,4,2,0,302;
+End;
+
+:walk
+IfBox 0,4,8,4,8,0,Current+2 ;
+ChangeMap 523,5,2,11,3;
+
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 531,6,14,2,1;
+
+End;

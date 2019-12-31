@@ -1,0 +1,27 @@
+フィーレス地下迷宮：第四層
+0,1,2
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,5,7,2,3,24,0,
+       0,5,
+       0,16,6,
+       5,0;
+SetEne 2,10,7,2,3,24,0,
+       0,5,
+       0,16,6,
+       5,0;
+End;
+
+:walk
+IfBox 0,8,15,8,15,0,Current+2 ;
+ChangeMap 385,6,2,2,3;
+IfBox 0,3,1,3,1,0,Current+2 ;
+ChangeMap 389,3,14,2,1;
+IfBox 0,13,1,13,1,0,Current+2 ;
+ChangeMap 389,13,14,2,1;
+End;

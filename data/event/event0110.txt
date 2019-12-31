@@ -1,0 +1,23 @@
+フィーレス地下迷宮：空中横断
+17
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetNormalTrap  MFlag[0]*4+5,3,MFlag[0]+5,10-k[MFlag[0]/2],176,128, 0,50,27,NoShadow;
+SetNormalTrap  MFlag[0]*4+6,4,MFlag[0]+5,10-k[MFlag[0]/2],176,128, 0,50,27,NoShadow;
+SetNormalTrap  MFlag[0]*4+7,6,MFlag[0]+5,10-k[MFlag[0]/2],176,128,64,50,27,NoShadow;
+SetNormalTrap  MFlag[0]*4+8,7,MFlag[0]+5,10-k[MFlag[0]/2],176,128,64,50,27,NoShadow;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],16,<,:start ;
+End;
+
+:walk
+IfBox 0,5,1,5,1,0,Current+2 ;
+ChangeMap 111,3,4,2,1;
+IfBox 0,1,22,1,23,0,Current+2 ;
+ChangeMap 109,7,ObjSY[0]-5,2,0;
+End;

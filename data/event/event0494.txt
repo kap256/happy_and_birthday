@@ -1,0 +1,81 @@
+フィーレス地下迷宮：エントランス
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetLiftObj MFlag[0]*4+10,MFlag[0]+5,5,7,0,32,0,173,NoShadow;
+SetLiftObj MFlag[0]*4+11,MFlag[0]+5,6,7,0,32,0,173,NoShadow;
+SetLiftObj MFlag[0]*4+12,MFlag[0]+5,7,7,0,32,0,173,NoShadow;
+SetLiftObj MFlag[0]*4+13,MFlag[0]+5,8,7,0,32,0,173,NoShadow;
+Store MFlag[0],MFlag[0]+1;
+
+If MFlag[0],4,<,:start ;
+
+If Flag[83],8,<,:event ;
+EndEventSkip ;
+PlayBGM 5;
+If Month,11,>,:break_block ;
+End ;
+:break_block
+SetMapChip 0,6,11,11;
+SetMapChip 0,6,11,10;
+SetMapChip 0,6,11,9;
+SetMapChip 0,7,11,11;
+SetMapChip 0,7,11,10;
+SetMapChip 0,7,11,9;
+SetMapChip 0,6,10,9;
+SetMapChip 96,6,12,8;
+SetMapChip 96,7,12,8;
+End ;
+
+:walk
+IfBox 0,6,1,7,1,0,Current+2 ;
+ChangeMap 495,ObjSX[0]-3,15,2,1;
+IfBox 0,6,12,7,12,0,Current+2 ;
+ReturnVillage 0;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::
+:event
+Stop 1;
+MapColor 255,0,0,0;
+SetAniObj 0,7,8,9,0,32,0,337,1,GravJump,ShowTurn;
+
+Store MFlag[0],255;
+:black_loop
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]-3;
+If MFlag[0],0,>,:black_loop ;
+MapColor 0,0,0,0;
+Wait 60;
+SetMes ・・・収まった？$n何だったのかしら・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 0;
+SetMes ・・・卵と聖石が$n共鳴しているとでも・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 0;
+DelMes 0;
+SetObj 0,7,8,9,1,32,0,11,1,GravJump,1;
+Wait 20;
+SetObjDir 0,3;
+Wait 30;
+SetMes ！$n・・・出口が。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetObjDir 0,1;
+SetMes ・・・どうせ$n前に進むしかないわ。$n早く救援を呼ばないと・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+Store Flag[83],8;
+ChangeMap 494,7,8,9,1;
+
+End ;
+

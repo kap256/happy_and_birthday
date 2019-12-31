@@ -1,0 +1,85 @@
+ピラミッド：地下ホール
+36,56,57
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :switch1 ;
+Talk    11 -1 :switch2 ;
+
+_END_HEAD_
+:start
+SetEne   1,18,3,10,3,32,0,
+         0,4,
+         36,2,4,
+         11,0;
+SetEne   2,8,3,10,3,32,0,
+         0,4,
+         36,2,4,
+         11,0;
+SetEne   3,11,10,2,3,32,0,
+         0,4,
+         36,2,4,
+         11,0;
+SetEne   4,15,10,2,3,32,0,
+         0,4,
+         36,2,4,
+         11,0;
+
+End;
+
+:walk
+IfBox 0,22,6,23,6,0,Current+2 ;
+ChangeMap 331,ObjSX[0]-11,2,2,3;
+IfBox 0,3,6,4,6,0,Current+2 ;
+ChangeMap 333,ObjSX[0]+1,2,2,3;
+IfBox3D 0,12,2,2,13,3,2,0,Current+2 ;
+ChangeMap 336,ObjSX[0]-9,15,2,1;
+End;
+
+:::::::::::::::::::::::::::::
+:switch1
+Stop 3;
+If Flag[53],1,<,:switch1on ;
+
+Goto :switch_end ;
+
+:switch1on
+Store Flag[53],1;
+PlayWave 9;
+SetObjDir 10,1;
+Wait 4;
+SetObjDir 10,4;
+Wait 30;
+PlayWave 17;
+Stop 0;
+
+End;
+:::::::::::::::::::::::::::
+:switch2
+Stop 3;
+If Flag[54],1,<,:switch2on ;
+
+Goto :switch_end ;
+
+:switch2on
+Store Flag[54],1;
+PlayWave 9;
+SetObjDir 11,1;
+Wait 4;
+SetObjDir 11,4;
+Wait 30;
+PlayWave 17;
+Stop 0;
+
+End;
+::::::::::::::::::::::::::::::
+
+
+:switch_end ;
+SetMes 今はもう$n動かない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;

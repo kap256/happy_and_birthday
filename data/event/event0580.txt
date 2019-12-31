@@ -1,0 +1,31 @@
+村落：民家
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk ;
+Talk    2 -1 :talk ;
+
+
+_END_HEAD_
+:start
+SetAniObj 1,4,2,2,5,32,0,169,1,GravJump,ShowTurn;
+SetAniObj 2,5,2,2,1,32,0,167,1,GravJump,ShowTurn;
+End ;
+
+:walk
+IfBox 0,7,6,7,6,0,Current+2 ;
+ChangeMap 573,6,7,2,2;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk
+Stop 3;
+SetMes そろそろ、$n外の並木に、果物が$n実る季節でしょうか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes 早く病気を治して、$n外を歩きたいです。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;

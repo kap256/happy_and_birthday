@@ -1,0 +1,145 @@
+セントティル大聖堂：地下墓所
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    2 -1 :talk ;
+
+_END_HEAD_
+
+:start
+If Flag[79],8,<,:event ;
+PlayBGM 36;
+EndEventSkip ;
+SetAniObj 2,3,6,7,10,16,0,316,1,GravJump,0;
+End ;
+
+:walk
+IfBox 0,3,10,4,10,0,Current+2 ;
+ReturnVillage 0;
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 470,ObjSX[0]+3,11,2,1;
+End;
+
+:talk
+Stop 1;
+SetMes もう、事切れている・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+PlayBGM 36;
+Stop 1;
+SetAniObj 0,3,6,7,10,16,0,316,0,GravJump,0;
+Store Flag[79],8;
+
+Wait 10;
+SetObj 1,4,10,7,1,12,0,1,0,GravJump,0;
+SetObjGoal 1,4,9,7;
+Wait 12;
+
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 30;
+SetObjGoal 1,4,6,7;
+Wait 10;
+DelMes 1;
+SetMes ・・・うっ。$nぐぐぐ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-16,RightBottom,0;
+Wait 38;
+SetAniObj 1,4,6,7,0,12,0,155,0,GravJump,0;
+SetMes 大丈夫！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ・・・侵入者だ・・・っ！$n浮遊石を・・・狙って・・・っ！,
+       0,ObjX[0],ObjY[0],ObjZ[0]-16,RightBottom,0;
+Wait 40;
+SetMes ！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ・・・だれか・・・。$n・・・・・・ぐふっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0]-16,RightBottom,0;
+Wait 40;
+SetObjDir 1,4;
+SetMes ちょっと！$nしっかりしてよ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetMes ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-16,RightBottom,0;
+Wait 60;
+SetMes ・・・そんな・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 40;
+SetMes （あいつらが来てるの・・・？）,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 70;
+SetMes （早く助けを$n　呼ばないと・・・！）,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes （呼んでどうなる？$n　被害が増えるだけじゃ？）,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes （誰もいないなら、$n　聖石を壊すチャンス？）,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes （出来るわけが無いじゃない！$n　あいつらがいるのに！？）,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes （今やらなきゃ、$n　あいつらが何をするか・・・！）,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes （早く$n　逃げないと・・・！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetMes （どうして$n　こんなことに・・・？）,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes （あのチャラ男に$n　誘われたから？）,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetMes （逃げたって、$n　どうせ・・・。）,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+DelMes 1;
+Wait 20;
+SetMes （・・・まだ中に$n　人がいる・・・！？）,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes （助けに行かないと・・・！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+SetMes （一人で？$n　何が出来るの？）,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes （放っておくわけには$n　いかない・・・！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+SetMes （兵士なんでしょ？$n　死ぬことぐらい覚悟の上・・・！）,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes （だれか$n　助けて・・・！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 60;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes とにかく・・・！$nなんとか、なんとかしなきゃ・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+
+ChangeMap 469,4,6,7,1;
+End;
+
+
+End;

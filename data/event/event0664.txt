@@ -1,0 +1,59 @@
+マルゴ火山：山頂への道
+7,26,35,49,58,98
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+If Flag[123],20,<,:event ;
+
+SetEne 1,3,13,10,Rand,32,5,
+       0,6,
+       49,0,8,
+       30,0;
+SetEne 2,3,6,14,Rand,32,100,
+       0,4,
+       48,0,8,
+       30,0;
+
+SetBox 11,7,2,18,3,355;
+
+End;
+
+:walk
+IfBox3D 0,1,18,8,1,18,8,0,Current+2 ;
+ChangeMap 659,14,5,8,0;
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 665,5,10,10,2;
+
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+Stop 1 ;
+Store Flag[123],20 ;
+SetObj 1,4,18,8,2,32,0,1,1,GravJump,1;
+SetObj 0,3,16,9,1,32,0,11,1,GravJump,1;
+SetCamera 0,60,1;
+Wait 20;
+SetMes 暑い・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30 ;
+SetMes だいぶ登って$n来ちゃったわね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0 ;
+SetMes もう山頂が見えるじゃない。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+SetObjGoal 1,4,17,8;
+Wait 50 ;
+SetMes 何処にいるのかしら・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0 ;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 664,4,17,8,1 ;
+End ;

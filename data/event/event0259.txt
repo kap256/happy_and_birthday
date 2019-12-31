@@ -1,0 +1,39 @@
+è…éqçzéR
+9,18,46,47
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+#hamari.txt
+:start
+SetEne 1,10,11,2,Rand,48,10,
+       0,5,
+       45,0,6,
+       2,0;
+SetEne 3,16,7,2,Rand,48,10,
+       0,5,
+       45,2,5,
+       2,0;
+SetEne 4,18,13,2,Rand,32,10,
+       0,5,
+       9,2,5,
+       2,0;
+
+SetBox 10,11,7,2,2,128;
+SetBox 11,16,2,2,3,129;
+
+
+SetPutObj 20,16,5,2,24,311,1+Heavy1;
+SetPutObj 21,17,5,2,24,311,1+Heavy1;
+SetPutObj 22,17,9,2,24,311,1+Heavy1;
+End;
+
+:walk
+IfBox 0,1,4,1,14,0,Current+2 ;
+ChangeMap 261,9,ObjSY[0],2,0;
+IfBox 0,10,20,11,20,0,Current+2 ;
+ChangeMap 260,ObjSX[0]+5,2,2,3;
+IfBox 0,17,20,18,20,0,Current+2 ;
+ChangeMap 258,ObjSX[0]-6,2,2,3;
+End;

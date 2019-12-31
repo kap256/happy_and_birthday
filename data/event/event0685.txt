@@ -1,0 +1,50 @@
+èHÇÃéRÅFéOçáñ⁄
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+
+SetEne 1,13,11,5,0,32,10,
+       1,5,
+       2,0,3,
+       31,0;
+SetEne 2,7,8,6,0,32,10,
+       1,5,
+       1,0,3,
+       31,0;
+SetEne 3,4,10,3,0,32,10,
+       1,5,
+       2,0,3,
+       31,0;
+SetEne 4,16,8,4,0,32,10,
+       1,5,
+       2,0,3,
+       31,0;
+SetEne 5,10,13,2,0,32,10,
+       1,5,
+       1,0,3,
+       31,0;
+
+SetBox 10,10,9,4,2,240;
+SetBox 11,12,3,3,3,242;
+
+Store MFlag[8],416;
+Store MFlag[9],10;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,15,21,16,21,0,Current+2;
+ChangeMap 681,ObjSX[0]-4,2,14,3;
+IfBox 0,10,1,11,1,0,Current+2;
+ChangeMap 686,ObjSX[0]-5,9,3,1;
+
+IfBox 0,1,14,1,15,0,Current+2;
+ChangeMap 684,15,ObjSY[0]-12,13,0;
+
+End;

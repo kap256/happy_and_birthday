@@ -1,0 +1,23 @@
+êXó—ÅFåáî‘
+20,12,15,8,92,26
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest.txt
+:start
+SetEneL 1,5,5,4,2,24,0,
+        0,0,34;
+SetBox 2,3,5,5,2,318;
+
+Store MFlag[8],22;
+Store MFlag[9],9;
+Goto :forest_init;
+End ;
+
+:walk
+IfBox 0,7,10,8,10,0,Current+2 ;
+ChangeMap 564,ObjSX[0]+4,2,2,3;
+
+End;

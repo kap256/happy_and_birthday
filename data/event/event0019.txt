@@ -1,0 +1,205 @@
+フィーレス村：裏路地
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    3  -1 :talk ;
+Talk    21 -1 :talk ;
+Hit     0 30 :hit ;
+Hit     0 31 :hit ;
+
+_END_HEAD_
+
+:start
+EndEventSkip ;
+SetAniObj 20,9,5,3,0,32,0,131,1,GravJump,2+BlockShadow;
+SetAniObj 21,10,5,3,1,32,0,131,1,GravJump,2+BlockShadow;
+SetAniObj 22,11,5,3,4,32,0,131,1,GravJump,2+BlockShadow;
+SetAAObj 6,3,5,5,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 7,3,8,5,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 8,7,5,4,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 9,7,8,4,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 10,9,4,3,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 11,11,4,3,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 12,11,8,3,0,32,0,122,4,15,1,GravJump,LightShadow;
+
+If Flag[0],16,=,:event ;
+If Flag[0],16,<,Current+2 ;
+SetObjDir 21,5;
+
+SetAniObj 3,10,4,3,0,32,0,123,1,GravJump,1;
+
+IfBox 0,13,6,15,7,1,:left;
+:right
+Store MFlag[0],1;
+SetObj 30,15,6,2,0,24,0,29,1,GravJump,1;
+SetObjGoal 30,1,6,5;
+Wait 48;
+SetObj 31,15,7,2,0,24,0,28,1,GravJump,1;
+SetObjGoal 31,1,7,5;
+Goto :run ;
+
+:left
+Store MFlag[0],0;
+SetObj 30,1,6,5,0,24,0,29,1,GravJump,1;
+SetObjGoal 30,15,6,2;
+Wait 48;
+SetObj 31,1,7,5,0,24,0,28,1,GravJump,1;
+SetObjGoal 31,15,7,2;
+
+:run
+SetMes わ～い！,
+       5,ObjX[30],ObjY[30],ObjZ[30],RightBottom,NoSound;
+Wait 48;
+SetMes 待ってよ～！,
+       6,ObjX[31],ObjY[31],ObjZ[31],LeftTop,NoSound;
+Wait 192;
+DelMes 5;
+Wait 48;
+DelMes 6;
+DelObj 30;
+Wait 48;
+DelObj 31;
+Wait 48;
+If MFlag[0],0,=,:right ;
+Goto :left ;
+End;
+
+:walk
+IfBox 0,1,6,1,7,0,Current+2;
+ChangeMap 151,14,ObjSY[0],2,0;
+IfBox 0,15,6,15,7,0,Current+2;
+ChangeMap 152,2,ObjSY[0]+6,2,2;
+End;
+
+:talk
+If Flag[0],16,<,:startevent ;
+Stop 1;
+SetMes 何か珍しいものが$n欲しくなったら、$nウチに来るといいネ。,
+      0,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:startevent
+Store Flag[0],16;
+ChangeMap 19,10,4,3,0:
+End;
+
+
+:hit
+KnockBack ParamB,17;
+SetObjGoalDir ParamB,ObjDir[ParamB],100;
+End;
+
+:event
+Stop 1;
+StartEventSkip;
+Store Flag[0],17;
+SetAniObj 0,10,4,3,0,32,0,123,1,GravJump,1;
+SetObj 1,11,6,3,1,32,0,1,1,GravJump,1;
+SetObj 2,9,6,3,1,32,0,0,1,GravJump,1;
+SetCamera 0-100,50,1;
+Wait 10;
+SetMes あら。$nここは何屋さん？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes 掘り出し物屋だヨ。,
+      0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 掘り出し物屋？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+DelMes 2;
+SetMes いろいろなところから$n珍しいものを持ってきて$n売るんだヨ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetMes いまは開店記念＆新年祭$n特別セール中だネ。,
+       3,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes そういえば、$n最近工事してたなぁ。,
+      2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+DelMes 3;
+SetMes なんか胡散臭いわね･･･。$nそもそも外見からして$n絶望的に。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 70;
+SetObjDir 2,2;
+SetMes でも、結構$nこういうところじゃ$n隠れた名品が$n安く売られてたりするぜ。,
+      2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetObjGoal 2,10,6,3;
+SetObjDir 2,1;
+SetMes 見るだけならタダだしな。$n少しぐらいいいだろ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 30;
+SetObjDir 1,0;
+SetMes 商魂たくましいわね～。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetAniObj 2,10,6,3,0,32,0,129,1,GravJump,1;
+Wait 60;
+SetMes ふむふむ・・・。$nなるほどなるほど。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 60;
+SetMes ・・・あれ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetObjDir 2,4;
+Wait 8;
+SetObjDir 21,5;
+SetObjDir 2,1;
+Wait 20;
+SetMes やっぱり。$nこれ、この前どこかで落とした$n木彫り細工だ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes 盗人か！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+SetAniObj 1,11,6,3,0,32,0,130,1,GravJump,1;
+Wait 4;
+SetObjDir 1,4;
+Wait 20;
+SetObjDir 0,5;
+SetMes 違う、違うヨ！$nただ拾っただけだネ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetObjDir 1,1;
+SetObjDir 2,5;
+SetMes ・・・拾い物も$n商品にしてるのかよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes 何がおかしいかナ。$n狩人は森で動物を拾って$n生活してるし、$n鉱夫は鉱山で金属を拾って$n生活してるヨ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 80;
+SetMes ・・・物は言いようね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjDir 0,0;
+SetMes 今日は特別セール中だから、$n元の持ち主だって言うなら、
+       $nタダであげるヨ。$n今後ともよろしくネ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 80;
+SetMes ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetMes ・・・なんだかなぁ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+Tutorial 7;
+Wait 20;
+ChangeMap 19,10,6,3,1:
+End;

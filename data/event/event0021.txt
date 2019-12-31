@@ -1,0 +1,210 @@
+フィーレス村：教会
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+:start
+
+Stop 1;
+MapTitle ;
+PlayBGM 15;
+
+Store MFlag[0],0;
+:roop1
+SetAniObj MFlag[0]*6+40,MFlag[0]*2+6,2,3,0,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+41,MFlag[0]*2+6,3,3,0,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+42,MFlag[0]*2+6,4,3,0,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+43,MFlag[0]*2+6,8,3,0,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+44,MFlag[0]*2+6,9,3,0,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+45,MFlag[0]*2+6,10,3,0,32,0,134,0,GravJump,16;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],5,<,:roop1;
+
+Store MFlag[0],2;
+:roop2
+SetObj MFlag[0]*6+10,MFlag[0]*2+6,2,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj MFlag[0]*6+11,MFlag[0]*2+6,3,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj MFlag[0]*6+12,MFlag[0]*2+6,4,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj MFlag[0]*6+13,MFlag[0]*2+6,8,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj MFlag[0]*6+14,MFlag[0]*2+6,9,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj MFlag[0]*6+15,MFlag[0]*2+6,10,3,0,32,0,Rand%12+21,1,GravJump,1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],5,<,:roop2;
+
+SetObj 10,6,4,3,0,32,0,1,1,GravJump,1;
+SetObj 11,6,3,3,0,32,0,0,1,GravJump,1;
+SetObj 12,6,2,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj 13,6,8,3,0,32,0,2,1,GravJump,1;
+SetObj 14,6,9,3,0,32,0,3,1,GravJump,1;
+SetObj 15,6,10,3,0,32,0,29,1,GravJump,1;
+SetObj 16,8,2,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj 17,8,3,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj 18,8,4,3,0,32,0,10,1,GravJump,1;
+SetObj 19,8,8,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj 20,8,9,3,0,32,0,Rand%12+21,1,GravJump,1;
+SetObj 21,8,10,3,0,32,0,Rand%12+21,1,GravJump,1;
+
+SetHAObj 0,3,6,4,0,32,0,135,1,GravJump,16;
+SetObj 1,1,3,4,2,32,0,34,1,GravJump,1;
+
+NewLine 0,0,:EggAni ;
+SetCamera 480,240,1;
+SetCamera 160,80,0;
+
+Wait 400;
+
+SetObjGoal 1,2,3,4;
+Wait 64;
+SetObjGoal 1,3,3,4;
+SetMes ///, 
+       0,ObjX[18],ObjY[18],ObjZ[18],RightTop,0;
+Wait 64;
+SetObjGoal 1,4,3,4;
+Wait 32;
+SetMes ♪, 
+       1,ObjX[13],ObjY[13],ObjZ[13],LeftBottom,0;
+Wait 64;
+DelMes 0;
+SetObjGoal 1,4,4,4;
+Wait 16;
+SetMes zzz…。,
+       2,ObjX[10],ObjY[10],ObjZ[10],RightBottom,0;
+Wait 16;
+DelMes 1;
+Wait 32;
+SetObjGoal 1,4,5,4;
+Wait 64;
+DelMes 2;
+SetObjGoal 1,4,6,4;
+Wait 64;
+SetObjDir 1,2; 
+Wait 30;
+SetMes 一年が過ぎ去り、$nまた新しい一年が$nやって参りました。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes この一年を、$n再び安息に過ごせるように、$nみなさま、ともに祈りましょう。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetObjDir 1,0; 
+SetCamera 80,40,0;
+Wait 160;
+SetMes ・・・。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 120;
+Store MFlag[2],1;
+SetObjDir 0,MFlag[2]*4+MFlag[1];
+PlayWave 3;
+PlayBGM 0;
+Wait 30;
+SetMes ・・・え。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+
+Wait 0;
+DelMes 0;
+NewLine 0,0,:zawazawa ;
+
+Wait 30;
+SetMes 御神体に$nヒビが・・・。,
+       7,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+SetCamera 160,80,0;
+Wait 40;
+Wait 0;
+SetMes え、えっと、と、・・・。,
+       7,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetObjDir 1,2; 
+SetMes そ、それじゃ、みなさん、$nよいお年を・・・。,
+       7,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 7;
+SetObj 1,4,6,4,2,24,0,34,1,GravJump,1;
+SetObjGoal 1,4,3,4;
+SetCamera 240,80,0;
+Wait 72;
+SetObjGoal 1,1,3,4;
+SetMes な、なんだ、$nなんだ？,
+       7,ObjX[11],ObjY[11],ObjZ[11],LeftBottom,0;
+Wait 60;
+SetMes ん～・・・。,
+       6,ObjX[10],ObjY[10],ObjZ[10],RightTop,0;
+Wait 0;
+SetObjDir 10,1;
+SetMes 騒々しいわね・・・。$n何があったの・・・？,
+       6,ObjX[10],ObjY[10],ObjZ[10],RightTop,0;
+Wait 60;
+SetObjDir 11,3;
+SetMes よく分からないけど、$n突然、$n御神体にヒビが・・・。,
+       7,ObjX[11],ObjY[11],ObjZ[11],LeftBottom,0;
+Wait 0;
+DelMes 6;
+SetObjDir 10,0;
+Wait 60;
+SetMes ああ・・・。$n最近乾燥してるものね・・・。,
+       6,ObjX[10],ObjY[10],ObjZ[10],RightTop,0;
+Wait 50;
+SetMes ・・・そういう問題か？,
+       7,ObjX[11],ObjY[11],ObjZ[11],LeftBottom,0;
+Wait 0;
+SetMes 迷信よ。迷信・・・。$nいちいち気にするだけ$nムダよ・・・。,
+       6,ObjX[10],ObjY[10],ObjZ[10],RightTop,0;
+Wait 60;
+SetMes そんなもんかなぁ～。,
+       7,ObjX[11],ObjY[11],ObjZ[11],LeftBottom,0;
+Wait 0;
+SetObjDir 11,0;
+DelMes 6;
+SetMes ・・・。,
+       7,ObjX[11],ObjY[11],ObjZ[11],LeftBottom,0;
+
+SetCamera 240,0-10240,0;
+
+:cameraroop
+SetCameraSpeed MFlag[4]+10;
+Store MFlag[4],MFlag[4]+1;
+Wait 2;
+If MFlag[4],90,<,:cameraroop ;
+
+Store Flag[0],0;
+Store Flag[124],0;
+If Month,1,>,:next_month ;
+Store ShopOK[0],1;
+Store ShopOK[3],1;
+Store ShopOK[4],1;
+:next_month
+NextMonth ;
+ReturnVillage 1;
+
+End;
+
+:EggAni
+Store MFlag[1],MFlag[1]+1%4;
+SetObjDir 0,MFlag[2]*4+MFlag[1];
+Wait 30;
+Goto :EggAni ;
+
+End;
+
+:zawazawa
+
+SetMes ざわ,
+       MFlag[3],fix[Rand%150+100],fix[Rand%240],0,Center,NoSound;
+Store MFlag[3],MFlag[3]+1%6;
+
+Store MFlag[0],12;
+:roopzawa
+If Rand%8,0,>,:endroopzawa ;
+SetObjDir MFlag[0],Rand%4;
+:endroopzawa
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],29,<,:roopzawa ;
+
+DelMes MFlag[3];
+Wait 16;
+
+Goto :zawazawa ;
+End;

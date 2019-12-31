@@ -1,0 +1,138 @@
+フィーレス村：宝石屋前
+22,23,52,53,54
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+If Flag[45],0,=,:event ;
+EndEventSkip ;
+SetBox 5,4,5,2,3,162;
+SetBox 6,6,5,2,3,163;
+
+::終了イベント関連::::::::::::::::::::::::::::::::
+Store MFlag[24],:ret_novevent;
+
+::::カメラ
+Store MFlag[25],60;
+Store MFlag[26],20;
+
+::::キャラ座標
+SetObj 90,5,8,2,2,32,0,0,1,GravJump,1;
+SetObj 91,7,7,2,0,32,0,8,1,GravJump,1;
+
+Goto :check_novevent;
+#nov_event.txt
+:ret_novevent
+::ここまで::::::::::::::::::::::::::::::::::::::::
+
+SetEne 1,9,9,2,Rand,24,40,
+       0,5,
+       22,2,4,
+       13,0;
+
+End;
+:walk
+IfBox 0,10,1,11,1,0,Current+2 ;
+ChangeMap 305,ObjSX[0]-4,15,2,1;
+IfBox 0,4,12,5,12,0,Current+2 ;
+ChangeMap 307,ObjSX[0]+2,2,2,3;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip;
+Store ShopOK[0],1;
+Store Flag[45],1;
+Stop 1;
+SetObj 1,ObjSX[0],ObjSY[0],ObjSZ[0],0,10,0,0,1,GravJump,0;
+SetAniObj 0,5,5,2,4,16,0,321,1,GravJump,0;
+SetObj 2,5,8,2,1,32,0,211,0,GravJump,0;
+SetObj 3,8,5,2,0,32,0,211,0,GravJump,0;
+SetObj 4,3,6,2,2,32,0,211,0,GravJump,0;
+Wait 20;
+SetObjDir 0,0;
+SetMes アイスニードル！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+PlayWave 5;
+Wait 30;
+SetAniObj 10,5,5,2,1,4,0,321,0,GravJump,NoShadow;
+SetObjGoal 10,5,12,2;
+Wait 10;
+SetAniObj 11,5,5,2,1,4,0,321,0,GravJump,NoShadow;
+SetObjGoal 11,5,12,2;
+Wait 2;
+DelObj 10;
+PlayWave 3;
+SetAniObj 2,5,8,2,5,8,0,321,0,GravJump,0;
+SetObjGoal 2,5,9,2;
+Wait 8;
+SetAniObj 12,5,5,2,1,4,0,321,0,GravJump,NoShadow;
+SetObjGoal 12,5,12,2;
+Wait 6;
+DelObj 11;
+PlayWave 3;
+SetObjGoal 2,5,10,2;
+Wait 14;
+DelObj 12;
+PlayWave 3;
+SetObjGoal 2,5,11,2;
+SetObjDir 0,4;
+Wait 0;
+DelMes 0;
+SetObjGoal 3,7,5,2;
+SetObjGoal 4,4,6,2;
+SetObjDir 4,1;
+Wait 30;
+SetMes ・・・くっ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+
+IfBox 1,10,1,11,3,1,:right ;
+:left
+SetObjPos 1,5,11,2;
+SetObjGoal 1,5,8,2;
+Wait 30;
+SetObjDir 3,3;
+SetObjDir 4,3;
+SetAniObj 1,5,8,2,0,10,0,145,1,GravJump,0;
+Store MFlag[1],LeftBottom;
+Goto :after;
+:right
+SetObjPos 1,10,2,2;
+SetObjGoal 1,10,6,2;
+SetCameraSpeed 20;
+SetCamera 120,60,0;
+Wait 40;
+SetObjParam 0,ShowTurn;
+SetObjDir 3,2;
+SetObjDir 4,2;
+SetAniObj 1,10,6,2,0,10,0,145,1,GravJump,ShowTurn;
+Store MFlag[1],RightBottom;
+Goto :after;
+:after
+SetMes 大丈夫ですか！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],MFlag[1],0;
+Wait 0;
+DelMes 1;
+Wait 20;
+EndEventSkip ;
+Battle Rand%2*3+8;
+StartEventSkip ;
+DelObj 3;
+DelObj 4;
+Wait 10;
+SetMes 助かりましたわ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 30;
+SetMes 早く教会に$n避難してください！,
+       1,ObjX[1],ObjY[1],ObjZ[1],MFlag[1],0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 306,ObjSX[1],ObjSY[1],ObjSZ[1],3;
+
+
+End;

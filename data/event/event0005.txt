@@ -1,0 +1,100 @@
+ラクリー街道：宝箱
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+PlayBGM 11;
+SetAniObj 10,4,1,2,0,48,0,100,1,1,0;
+
+
+If Flag[0],4,<,:event;
+SetObjDir 10,1;
+SetMapChip 1,4,8,1;
+End;
+:walk
+IfBox 0,1,3,1,4,0,Current+2 ;
+ChangeMap 3,15,ObjSY[0]+3,2,0;
+IfBox 0,7,3,7,4,0,Current+2 ;
+ChangeMap 6,2,ObjSY[0],5,2;
+IfBox 0,3,7,4,7,0,Current+2 ;
+ChangeMap 7,ObjSX[0]+1,2,2,3;
+End;
+
+:event
+PlayBGM 1;
+StartEventSkip;
+Stop 1;
+Store Flag[0],4;
+SetObj 0,1,4,2,2,32,0,1,1,GravJump,1;
+SetObj 1,2,3,2,2,24,0,2,1,GravJump,1;
+SetObjGoal 0,3,4,2;
+SetObjGoal 1,4,3,2;
+SetObjDir 0,1;
+SetObjDir 1,1;
+SetCamera 180,0-50,1;
+Wait 60;
+SetMes あ、$n宝箱だ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes 開けてみたら？$n宝箱を開けるのも$n人生経験の一つよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+SetObjDir 1,3;
+Wait 0;
+SetMes じゃあ、宝箱を開ければ、$n誕生石も使えるように$nなるかなぁ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+SetMes かもしれないわね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetObjGoal 1,4,2,2;
+SetMes よぉし。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetObjDir 10,1;
+PlayWave 9;
+SetAniObj 11,4,1,2,0,2,0,180,0,GravLock,NoShadow;
+Wait 30;
+PlayWave 20;
+SetObjGoal 11,4,15,2;
+SetObjSpeed 1,4;
+SetObjGoal 1,3,2,2;
+SetMes わっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+NewLine 0,0,:delarrow ;
+Wait 0;
+SetObjDir 1,3;
+SetMes そうそう、$n時々ワナがあったりも$nするわ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes 先に言ってよっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes でもよく避けたわね。$n若い娘は反応がよくて$nうらやましいわぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes あんまりだぁ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 20;
+If Flag[1],0,>,:noitem ;
+Store Flag[1],1;
+GetItem 288;
+Wait 1;
+:noitem
+ChangeMap 5,4,4,2,2;
+
+End;
+:delarrow
+Wait 20;
+DelObj 11;
+End;

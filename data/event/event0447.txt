@@ -1,0 +1,46 @@
+“ì‚ÌXF“Œ’†•”
+2,5,8,10
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Walk    1 -1 :puto ;
+
+_END_HEAD_
+#forest.txt
+:start
+SetPutObj 1,7,9,2,24,310,1;
+If Flag[74],0,>,:qend ;
+SetPutObj 1,7,8,5,24,310,1;
+
+:qend
+
+Store MFlag[8],22;
+Store MFlag[9],8;
+
+SetBox 2,19,12,2,1,252;
+SetEne 3,2,9,10,Rand,24,20,
+       0,15,
+       10,0,3,
+       6,0;
+SetEne 4,25,11,4,Rand,24,20,
+       0,15,
+       10,0,3,
+       6,0;
+Goto :forest_init ;
+
+:puto
+IfBox 1,7,9,7,9,0,:end ;
+If Flag[74],0,>,:end ;
+Store Flag[74],1;
+PlayWave 6;
+:end
+End;
+
+:walk
+IfBox 0,5,1,22,1,0,Current+2 ;
+ChangeMap 446,ObjSX[0],20,2,1;
+IfBox 0,12,21,13,21,0,Current+2 ;
+ChangeMap 448,ObjSX[0],2,2,3;
+IfBox 0,1,14,1,15,0,Current+2 ;
+ChangeMap 450,17,ObjSY[0]-10,6,0;
+End;

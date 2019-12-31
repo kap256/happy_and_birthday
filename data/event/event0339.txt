@@ -1,0 +1,22 @@
+フィーレス地下迷宮：隠し部屋
+0,1,2
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,5,5,2,Rand,32,10,
+       0,5,
+       0,0,4,
+       5,0;
+
+SetBox 5,7,10,2,0,187;
+End;
+:walk
+IfBox 0,3,1,3,1,0,Current+2 ;
+ChangeMap 340,3,24,2,1;
+IfBox 0,10,6,10,6,0,Current+2 ;
+ChangeMap 338,2,11,8,2;
+End;

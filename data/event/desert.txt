@@ -1,0 +1,100 @@
+#included
+:desert_init
+Store MFlag[16],0;
+Store MFlag[17],30;
+
+:desert_saboten_loop
+Store MFlag[16],Rand%6+MFlag[16]+2;
+If MFlag[16],169,>,:desert_saboten_end ;
+SetAniObj MFlag[17],MFlag[16]%13*2+4,MFlag[16]/13*2+4,2,0,32,0,152,1,GravJump,1;
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],90,>,:desert_saboten_end ;
+Goto :desert_saboten_loop;
+:desert_saboten_end
+
+
+Store MFlag[16],0;
+Store MFlag[17],10;
+
+:desert_enemy_loop
+Store MFlag[16],Rand%6+MFlag[16]+3;
+If MFlag[16],55,>,:desert_enemy_end ;
+SetEne MFlag[17],MFlag[16]%11*2+5,MFlag[16]/11*4+7,2,Rand,40,10,
+       0,5,
+       Rand%3+33,Rand%3,Rand%4+3,
+       8,0;
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],25,>,:desert_enemy_end ;
+Goto :desert_enemy_loop;
+:desert_enemy_end
+
+SetBox 5,Rand%11*2+5,Rand%11*2+4,2,Rand,Rand%5+78 ;
+SetObj 6,Rand%11*2+5,Rand%11*2+5,2,Rand,32,8,49,1,GravJump,1;
+End;
+
+:::::::::::::::::::::::::::::::::::d_com:::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:desert_walk
+IfBox 0,1,15,1,16,0,Current+5 ;
+Store Flag[21],Flag[21]-1;
+Store MFlag[17],31;
+Store MFlag[18],ObjSY[0];
+Goto :desert_newmap ;
+
+IfBox 0,32,15,32,16,0,Current+5 ;
+Store Flag[21],Flag[21]+1;
+Store MFlag[17],2;
+Store MFlag[18],ObjSY[0];
+Goto :desert_newmap ;
+
+IfBox 0,16,1,17,1,0,Current+5 ;
+Store Flag[22],Flag[22]+1;
+Store MFlag[17],ObjSX[0];
+Store MFlag[18],31;
+Goto :desert_newmap ;
+
+IfBox 0,16,32,17,32,0,Current+5 ;
+Store Flag[22],Flag[22]-1;
+Store MFlag[17],ObjSX[0];
+Store MFlag[18],2;
+Goto :desert_newmap ;
+
+End;
+:desert_newmap
+If Flag[21],0,>,:desert_no_wall ;
+If Flag[21],0,=,Current+2 ;
+ChangeMap 158,14,ObjSY[0]-7,3,0;
+If Flag[22],0,=,Current+2 ;
+ChangeMap 163,MFlag[17],MFlag[18],2,ObjDir[0];
+ChangeMap 162,MFlag[17],MFlag[18],2,ObjDir[0];
+End;
+
+:desert_no_wall
+If Flag[21],1,!=,:desert_normal ;
+If Flag[22],3,!=,:desert_normal ;
+If ObjDir[0],1,!=,:desert_normal ;
+ChangeMap 165,ObjSX[0]-8,14,2,1;
+End;
+:desert_normal
+ChangeMap 164,MFlag[17],MFlag[18],2,ObjDir[0];
+End;
+
+
+:desert_talk
+Stop 3;
+SetObjDir 6,ObjDir[0]+2;
+SetMes 道にお迷いですか？$nよろしければ街まで$n案内しましょう。,
+       0,ObjX[6],ObjY[6],ObjZ[6],LeftBottom,0;
+Wait 60;
+Select2 お願いします。$n大丈夫です。,
+        1,ObjX[0],ObjY[0],ObjZ[0],RightTop,Current+1,:desert_talk_end;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 158,14,8,3,0;
+:desert_talk_end
+DelMes 0;
+Stop 0;
+End;
+
+

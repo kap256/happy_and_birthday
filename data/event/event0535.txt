@@ -1,0 +1,252 @@
+–²‚Ì—‘Fƒz[ƒ‹
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 56;
+HealAll ;
+NewLine 0,0,:float_stone ;
+SetBox 50,6,12,2,3,304;
+SetBox 51,8,12,2,3,305;
+SetBox 52,6,10,2,3,306;
+SetBox 53,8,10,2,3,307;
+
+SetAniObj 10,10, 6,2, 0,32,0,336,1,GravLock,NoShadow;
+SetAniObj 11,12, 7,2, 1,32,0,336,1,GravLock,NoShadow;
+SetAniObj 12,13,10,2, 2,32,0,336,1,GravLock,NoShadow;
+SetAniObj 13,13,12,2, 3,32,0,336,1,GravLock,NoShadow;
+SetAniObj 14,12,15,2, 4,32,0,336,1,GravLock,NoShadow;
+SetAniObj 15,10,16,2, 5,32,0,336,1,GravLock,NoShadow;
+SetAniObj 16, 4,16,2, 6,32,0,336,1,GravLock,NoShadow;
+SetAniObj 17, 2,15,2, 7,32,0,336,1,GravLock,NoShadow;
+SetAniObj 18, 1,12,2, 8,32,0,336,1,GravLock,NoShadow;
+SetAniObj 19, 1,10,2, 9,32,0,336,1,GravLock,NoShadow;
+SetAniObj 20, 2, 7,2,10,32,0,336,1,GravLock,NoShadow;
+SetAniObj 21, 4, 6,2,11,32,0,336,1,GravLock,NoShadow;
+
+::ŠeŒŽ‚ÌƒNƒŠƒA”»’è
+:stone_check
+If Flag[MFlag[1]+88],1,>,:stone_ok ;
+SetObjImg 10+MFlag[1],356;
+Store MFlag[0],1;
+:stone_ok
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],12,<,:stone_check ;
+
+Store MFlag[1],0;
+:stone_check2
+If Flag[MFlag[1]+88],1,=,:event1 ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],12,<,:stone_check2 ;
+
+If MFlag[0],0,>,:goal_end ;
+SetMapChip 248,7,2,4;
+:goal_end
+
+::“ñŒŽ‚ÌÔ‚ÌƒŠƒZƒbƒg
+Store Flag[87],0;
+If Flag[101],1,=,:event2 ;
+End ;
+
+:walk
+IfBox 0,7,19,7,19,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 534,3,3,2,3;
+
+::‚PŒŽ
+IfBox 0,9,7,9,7,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 537,5,9,2,2;
+::‚QŒŽ
+IfBox 0,11,8,11,8,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 539,5,10,2,1;
+::‚RŒŽ
+IfBox 0,12,10,12,10,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 560,5,5,2,2;
+::‚SŒŽ
+IfBox 0,12,12,12,12,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 555,5,8,2,1;
+::‚TŒŽ
+IfBox 0,11,14,11,14,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 570,4,4,2,3;
+::‚UŒŽ
+IfBox 0,9,15,9,15,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 585,7,5,3,3;
+::‚VŒŽ
+IfBox 0,5,15,5,15,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 673,5,5,3,3;
+::‚WŒŽ
+IfBox 0,3,14,3,14,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 597,6,6,4,3;
+::‚XŒŽ
+IfBox 0,2,12,2,12,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 606,6,6,2,2;
+::‚P‚OŒŽ
+IfBox 0,2,10,2,10,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 623,9,5,3,3;
+::‚P‚PŒŽ
+IfBox 0,3,8,3,8,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 640,5,6,2,1;
+::‚P‚QŒŽ
+IfBox 0,5,7,5,7,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 632,5,5,11,2;
+
+
+::æ‚Éi‚Þ
+IfBox 0,7,2,7,2,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 641,5,24,2,1;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:event1
+StartEventSkip ;
+Stop 1;
+Store Flag[MFlag[1]+88],2;
+SetObj 0,7,11,2,3,32,0,1,0,GravLock,0;
+::SetObj 0,ObjSX[10+MFlag[1]],ObjSY[10+MFlag[1]],ObjSZ[10+MFlag[1]],0,32,0,1,0,GravLock,0;
+SetObjView 0,0;
+Wait 10;
+NewLine 0,0,:flash ;
+Wait 1;
+SetObjView 0,1;
+Wait 60;
+If ObjSX[10+MFlag[1]],7,>,:e1_left ;
+:e1_right
+SetObjDir 0,0;
+Goto :e1_dir_end ;
+:e1_left
+SetObjDir 0,2;
+:e1_dir_end
+
+Store MFlag[2],ObjCamX[10+MFlag[1]]-ObjCamX[0]*4/3;
+Store MFlag[3],ObjCamY[10+MFlag[1]]-ObjCamY[0]*4/3;
+SetCamera MFlag[2] ,MFlag[3],0;
+SetCameraSpeed Root[k[MFlag[2]*MFlag[2]] + k[MFlag[3]*MFlag[3]]]/5;
+
+Wait 90;
+NewLine 0,0,:flash ;
+Wait 1;
+SetObjView 0,1;
+SetObjImg 10+MFlag[1],336;
+SetAAObj 30,ObjSX[10+MFlag[1]],ObjSY[10+MFlag[1]],ObjSZ[10+MFlag[1]],0,32,0,359,4,8,0,GravLock,2;
+Wait 60;
+
+:e1_loop1
+SetObjZSpd 30,MFlag[4] ; 
+Wait 1;
+Store MFlag[4],MFlag[4]+1;
+If MFlag[4],70,<,:e1_loop1 ;
+
+SetObjZSpd 30,0;
+SetCamera 0,0,0;
+Wait 30;
+SetObjDir 0,3;
+
+SetObjPos 30,7,11,ObjSZ[30]+1 ;
+:e1_loop2
+SetObjZSpd 30,0-MFlag[4] ; 
+Wait 1;
+Store MFlag[4],MFlag[4]-1;
+If MFlag[4],0,>,:e1_loop2 ;
+
+NewLine 0,0,:flash ;
+PlayWave 21;
+Wait 1;
+SetObjView 0,1;
+DelObj 30;
+
+Wait 60;
+GetItem 336;
+Wait 1;
+::Store Flag[101],1;
+ChangeMap 535,7,11,2,3;
+End ;
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+Stop 1;
+Store Flag[101],0;
+SetObjView 0,0;
+Wait 10;
+NewLine 0,0,:flash ;
+Wait 1;
+SetObjView 0,1;
+Wait 30;
+Stop 0;
+MapTitle ;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:float_stone
+Store MFlag[10],MFlag[10]%128+1 ;
+Store MFlag[9],0;
+:float_stone_loop
+
+If MFlag[10],64,>,:float_stone_a ;
+SetObjZSpd 10+MFlag[9],MFlag[10]-32/8;
+Goto :float_stone_end;
+:float_stone_a
+SetObjZSpd 10+MFlag[9],0-MFlag[10]+96/8;
+:float_stone_end
+Store MFlag[9],MFlag[9]+1;
+If MFlag[9],12,<,:float_stone_loop ;
+Wait 1;
+Goto :float_stone ;
+
+
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+

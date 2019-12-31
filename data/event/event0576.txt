@@ -1,0 +1,59 @@
+村落：南西部
+13,14,22,23,52,53,54
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    -1 -1 :talk ;
+
+_END_HEAD_
+#fruit.txt
+:start
+SetObj 1,7,22,2,Rand,32,5,27,1,GravJump,1;
+SetEne 5,8,7,2,Rand,24,10,
+       0,5,
+       52,0,8,
+       23,POWx15;
+SetEne 6,7,13,2,Rand,24,10,
+       0,5,
+       14,0,8,
+       23,POWx15;
+
+Store MFlag[8],326;
+Store MFlag[9],5;
+SetWoodObj 10,4,24,5,0,32,0,105,1,GravJump,1;
+SetWoodObj 11,6,19,4,0,32,0,105,1,GravJump,1;
+SetWoodObj 12,3,17,8,0,32,0,105,1,GravJump,1;
+SetWoodObj 13,2,9,5,0,32,0,105,1,GravJump,1;
+SetWoodObj 14,5,5,2,0,32,0,105,1,GravJump,1;
+SetWoodObj 15,4,2,7,0,32,0,105,1,GravJump,1;
+End ;
+
+:walk
+IfBox 0,11,22,11,24,0,Current+2 ;
+ChangeMap 572,2,ObjSY[0]-15,2,2;
+
+IfBox 0,7,1,9,1,0,Current+2 ;
+ChangeMap 575,ObjSX[0],20,2,1;
+
+IfBox 0,1,20,1,21,0,Current+2 ;
+ChangeMap 577,13,ObjSY[0]+7,2,0;
+End;
+
+:talk
+If ParamA,1,=,:talk1 ;
+If ParamA,9,>,:fruit ;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk1
+Stop 3;
+SetObjDir 1,ObjDir[0]+2;
+SetMes そこの丘の上の果物屋さんが、$n創業3000年セールで$n大安売りだよ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+
+

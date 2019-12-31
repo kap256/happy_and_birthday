@@ -1,0 +1,45 @@
+フィーレス地下迷宮：第一層
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    5 -1 :elevator_switch ;
+
+_END_HEAD_
+#elevator.txt
+:start
+PlayBGM 5;
+SetSavePoint 1,4,2,7;
+Store MFlag[8],0;
+If Flag[3],0,=,Current+2 ;
+SetMapChip 248,12,5,6;
+Goto :elevator_init ;
+End ;
+
+:walk
+IfBox 0,7,10,7,10,0,Current+2 ;
+ChangeMap 340,3,2,2,3;
+IfBox 0,7,1,7,1,0,Current+2 ;
+ChangeMap 345,19,20,2,1;
+If Flag[3],0,=,:end ;
+IfBox 0,12,5,12,5,0,:end ;
+
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 361,14,4,2,0;
+
+:end
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;

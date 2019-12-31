@@ -1,0 +1,107 @@
+夢の卵：村落
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk ;
+
+_END_HEAD_
+:start
+PlayBGM 2;
+If Flag[102],31,>,:end ;
+SetHighObj 10,1,7,2,3,32,0,317,0,GravJump,1;
+SetObj 1,2,7,2,0,32,0,12,1,GravJump,1;
+NewLine 0,0,:? ;
+Store MFlag[0],Ret;
+:end
+End ;
+
+:walk
+IfBox 0,4,4,4,4,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 535,11,14,2,0;
+IfBox 0,8,8,8,8,0,Current+2 ;
+ChangeMap 571,5,13,2,2;
+IfBox 0,1,7,1,7,0,Current+2 ;
+ChangeMap 584,9,4,2,0;
+End;
+
+
+:talk
+Stop 1;
+Kill MFlag[0];
+SetObjDir 1,ObjDir[0]+2;
+If ItemNo[331],0,>,:talk1 ;
+SetMes 裏庭のカギが見つからないの。$nどこかに落としたかしら・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+NewLine 0,0,:? ;
+Store MFlag[0],Ret;
+SetObjDir 1,0;
+End;
+
+:talk1
+SpendItem 331;
+SetMes あ、そうよ。$nこのカギ、このカギ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObjDir 1,0;
+Wait 30;
+PlayWave 9;
+DelObj 10;
+Wait 20;
+SetObjGoal 1,1,7,2;
+Wait 32;
+DelObj 1;
+Store Flag[102],32;
+Stop 0;
+
+End;
+
+
+:?
+Wait 30;
+Goto Rand%7*2+Current+1;
+SetMes あれぇ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Goto :?end ;
+SetMes おかしいなぁ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Goto :?end ;
+SetMes こっちのポケットかしら。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Goto :?end ;
+SetMes どこかに落としたかなぁ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Goto :?end ;
+SetMes う～ん。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Goto :?end ;
+SetMes 困ったなぁ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Goto :?end ;
+SetMes 財布の中にも無いし・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Goto :?end ;
+:?end
+Wait 120;
+DelMes 1;
+Goto :? ;
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+

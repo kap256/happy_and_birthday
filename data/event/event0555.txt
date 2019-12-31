@@ -1,0 +1,35 @@
+–²‚Ì—‘F‘Œ´
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 11;
+End ;
+
+:walk
+IfBox 0,5,8,5,8,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 535,12,12,2,0;
+IfBox 0,4,4,4,4,0,Current+2 ;
+ChangeMap 556,4,7,2,1;
+IfBox 0,9,5,9,6,0,Current+2 ;
+ChangeMap 557,2,ObjSY[0]+27,7,2;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+

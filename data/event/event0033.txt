@@ -1,0 +1,37 @@
+上級者の館：Ｌｖ４５
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Hit     0 5  :battle ;
+Talk    5 -1 :battle ;
+
+_END_HEAD_
+:start
+SetBox 2,4,3,4,3,364;
+If Flag[124],2,>,Current+2;
+SetObj 5,4,4,4,3,32,0,203,1,GravJump,1;
+End;
+
+:walk
+IfBox 0,3,7,6,7,0,Current+2 ;
+ChangeMap 32,5,8,5,2;
+IfBox 0,2,2,4,2,0,Current+2 ;
+ChangeMap 34,2,2,4,0;
+End;
+
+:battle
+Stop 1;
+SetMes ドカン、ドカン、ドカン。,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 16;
+Battle 71;
+If Escape,0,>,:end ;
+DelObj 5;
+Store Flag[124],3;
+:end
+Stop 0;
+End;

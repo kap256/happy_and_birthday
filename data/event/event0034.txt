@@ -1,0 +1,35 @@
+ã‹‰ŽÒ‚ÌŠÙF‚k‚–‚U‚O
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Hit     0 5  :battle ;
+Talk    5 -1 :battle ;
+
+_END_HEAD_
+:start
+SetBox 2,4,7,5,1,365;
+If Flag[124],3,>,Current+2;
+SetObj 5,4,5,4,1,32,0,212,1,GravJump,1;
+End;
+
+:walk
+IfBox 0,3,2,5,2,0,Current+2 ;
+ChangeMap 33,5,2,5,2;
+End;
+
+:battle
+Stop 1;
+SetMes ‚í‚³‚í‚³EEEB,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 16;
+Battle 72;
+If Escape,0,>,:end ;
+DelObj 5;
+Store Flag[124],4;
+:end
+Stop 0;
+End;

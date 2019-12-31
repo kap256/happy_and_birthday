@@ -1,0 +1,31 @@
+地下水道：赤い回廊
+26
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Hit     0 -1 :fire_tikuwa_hit ;
+Fall    0 -1 :underfloor ;
+
+_END_HEAD_
+#fire_tikuwa.txt
+
+:start
+SetBox 5,6,3,15,3,152;
+
+:::::::::::::::::::::::::::::::::MFlag[8]に、高さを定義します。
+Store MFlag[8],14;
+:::::::::::::::::::::::::::::::::MFlag[9]に、落下速度を定義します。16=歩ける  10=要ダッシュ
+Store MFlag[9],10;
+:::::::::::::::::::::::::::::::::MFlag[10]に、画像ファイルを定義します。
+Store MFlag[10],345;
+Goto :fire_tikuwa_start ;
+
+:walk
+IfBox 0,10,15,10,15,0,Current+2 ;
+ChangeMap 292,9,2,14,3;
+End;
+
+:underfloor
+ChangeMap 293,ObjSX[0]+15,ObjSY[0]+1,24,ObjDir[0];
+End;

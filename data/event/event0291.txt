@@ -1,0 +1,57 @@
+ínâ∫êÖìπÅFì›ãTÇÃìπ
+39,46,63,59,81
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :sleep ;
+
+_END_HEAD_
+:start
+SetAniObj  1,3,4,3,0,32,0,161,1,GravJump,ShowTurn+1;
+SetSavePoint 10,3,6,3;
+
+SetEne 2,15,5,4,Rand,64,50,
+       0,25,
+       59,2,4,
+       20,0;
+End;
+
+:walk
+IfBox 0,25,5,25,5,0,Current+2 ;
+ChangeMap 289,11,6,12,2;
+End;
+
+
+:sleep
+Stop 3;
+SetMes Ç±Ç±Ç»ÇÁÅA$nè≠ÇµÇÕãxåeèoóàÇªÇ§ÇæÇ™•••ÅB,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 30;
+Select2 ãxÇÒÇ≈Ç¢Ç≠$nÇ‹ÇæÇ‹Çæ,
+        1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:break,:end;
+:break
+DelMes 0;
+NewLine 16,255,:blackout ;
+Wait 60;
+HealAll ;
+PlayWave 21;
+Wait 60;
+NewLine 0-16,0,:blackout ;
+Wait 32;
+:end
+DelMes 0;
+Stop 0;
+End;
+
+
+:blackout
+Store MFlag[2],0;
+
+:blackup
+MapColor 255+k[MFlag[2]*ParamA]-ParamB,0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],16,<,:blackup;
+MapColor ParamB,0,0,0;
+End;
+End;

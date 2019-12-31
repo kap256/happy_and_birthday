@@ -1,0 +1,130 @@
+図書館：中央ホール
+0
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk1 ;
+Talk    2 -1 :talk2 ;
+
+_END_HEAD_
+#lib_terminal.txt
+:start
+SetAAObj 1,6,7,3,0,32,0,333,4,10,1,GravJump,1;
+SetAniObj 2,6,4,2,10,32,0,334,1,GravJump,ShowTurn+NoShadow;
+If Flag[65],12,<,:event ;
+End;
+
+:walk
+IfBox 0,6,1,6,1,0,Current+2 ;
+ChangeMap 443,7,13,2,1;
+
+IfBox 0,6,12,6,12,0,Current+2 ;
+ChangeMap 640,5,2,2,3;
+
+IfBox 0,1,3,1,3,0,Current+2 ;
+ChangeMap 432,13,10,2,0;
+IfBox 0,1,9,1,9,0,Current+2 ;
+ChangeMap 434,13,4,2,0;
+
+IfBox 0,12,3,12,3,0,Current+2 ;
+ChangeMap 437,2,10,2,2;
+IfBox 0,12,9,12,9,0,Current+2 ;
+ChangeMap 439,2,4,2,2;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk1
+Stop 1;
+If ObjDir[0],1,>,:talk1_back ;
+SetMes 「図書館御利用案内」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 20;
+Select2 案内を読む。$n読まない。,
+        1,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:talk1_help,:talk_end;
+End;
+:talk1_help
+SetMes 「貴重な本が沢山あります。$n　汚したり燃やしたりしないように、$n　丁寧に扱ってください。$n　落書きとかしないこと。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「※カードキーについて」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「この図書館では、防犯のため$n　カードキーで各所をロックしています。$n　解除したい場合は、$n
+       　端末からカードキーを受け取って$n　自分で解除してください。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「※カードキー利用上の諸注意」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「※複数枚所持厳禁$n　　　カードキーを複数枚所持すると$n　　　干渉して使用不能になります。$n
+       　　　持っているキーを端末に入れてから、$n　　　別のキーに取り替えてください。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「※放置厳禁$n　　　カードキーを机の上等に放置すると$n　　　魔法で自動的に回収されます。$n
+       　　　必ずお近くの端末の中に$n　　　入れるようにしてください。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「※出られなくなっても泣かない$n　　　セーブはこまめにしましょう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「なお、後ろのマスター端末で、$n　カードキー配置を$n　リセットすることが出来ます。$n　困ったらご自由に御利用ください。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk1_back
+SetMes 裏側だ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+:talk_end
+DelMes 6;
+DelMes 0;
+Stop 0;
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk2
+Stop 1;
+NewLine 0,0,:terminal_pcard;
+SetMes コチラハ$nマスター端末デス。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 20;
+Select2 カード配置の初期化$n何もしない,
+        1,ObjX[0],ObjY[0],ObjZ[0],RightTop,:talk2_yesno,:talk_end;
+End;
+:talk2_yesno
+SetMes カード配置ノ初期化ヲ行イマス。$n貴方ノ所持カードモ回収サレマス。$nヨロシイデスカ？,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 60;
+Select2 初期化する$nやめる,
+        1,ObjX[0],ObjY[0],ObjZ[0],RightTop,:talk2_init,:talk_end;
+End;
+:talk2_init
+DelMes 6;
+DelMes 0;
+PlayWave 5;
+SetObjDir 2,11;
+Wait 60;
+SetObjDir 2,10;
+SetMes 初期化完了シマシタ。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+Goto :init_key ;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+Store Flag[65],12;
+Goto :init_key ;
+
+:init_key ;
+Store Flag[66],0;
+Store Flag[67],4;
+Store Flag[68],1;
+Store Flag[69],0;
+Store Flag[70],0;
+Store Flag[71],3;
+Store Flag[72],2;
+End;

@@ -1,0 +1,55 @@
+リーリン
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetAniObj 20,3,4,2,4,32,0,136,1,GravJump,0;
+SetAniObj 21,4,2,2,8,32,0,59,1,GravJump,0;
+SetAniObj 22,5,5,2,13,32,0,59,1,GravJump,0;
+
+SetCamera 0-80,0-40,1;
+
+Wait 1;
+SetMes こんにちは。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes 他にも用はあるかしら。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+Shop 2,1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+
+SetMes まさかこんな事に$nなるなんて・・・。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 誕生石の強い力が$nこんなことを$n呼び起こしたのでしょうか・・・。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+End;

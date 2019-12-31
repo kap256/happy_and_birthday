@@ -1,0 +1,86 @@
+cフィーレス地下迷宮：第三層・終点
+56,57
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    15 -1 :switch ;
+Hit     0 1 :boss ;
+
+_END_HEAD_
+:boss
+Store Flag[56],16;
+End;
+
+:start
+If Flag[56],12,>,:no_boss ;
+SetEneL 1,4,7,6,3,32,0,
+       0,0,23;
+:no_boss
+
+SetSavePoint 2,3,11,6;
+
+SetAniObj 15,4,5,6,0,32,0,174,1,GravJump,ShowTurn;
+If Flag[57],3,<,Current+2;
+SetAniObj 15,4,5,6,4,32,0,174,1,GravJump,ShowTurn;
+End;
+
+:walk
+IfBox 0,8,10,8,11,0,Current+2 ;
+ChangeMap 381,2,ObjSY[0]+5,10,2;
+IfBox 0,4,16,4,16,0,:end ;
+Store Flag[6],1;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 343,12,5,7,0;
+:end
+End;
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:switch
+Stop 3;
+If Flag[57],3,<,:switchon ;
+
+SetMes 今はもう$n動かない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;
+:switchon
+Store Flag[57],3;
+PlayWave 9;
+SetObjDir 15,1;
+Wait 4;
+SetObjDir 15,4;
+Wait 30;
+PlayWave 22;
+SetCamera 2,0,1;
+Wait 1;
+SetCamera 0,0,1;
+Wait 20;
+SetMes エレベーター　ノ$nセキュリティ　ヲ$nカイジョ　シマシタ。,
+       0,ObjX[15],ObjY[15],ObjZ[15]-16,RightBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;

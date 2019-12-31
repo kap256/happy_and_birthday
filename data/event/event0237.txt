@@ -1,0 +1,44 @@
+Ç©ÇÁÇ≠ÇËâÆï~ÅFçsÇ´à·Ç¢
+32,62
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :conveyer_switch ;
+Talk    2 -1 :conveyer_switch ;
+Talk    3 -1 :conveyer_switch ;
+
+_END_HEAD_
+#conveyer.txt
+:start
+SetAniObj 1,13,11,2,0,32,0,174,1,GravJump,NoShadow+ShowTurn;
+SetAniObj 2,13,8,2,0,32,0,174,1,GravJump,NoShadow+ShowTurn;
+SetAniObj 3,13,5,2,0,32,0,174,1,GravJump,NoShadow+ShowTurn;
+SetEne 5,14,2,2,3,24,5,
+       10,20,
+       62,2,3,
+       4,0;
+SetEne 6,12,15,2,1,24,5,
+       10,20,
+       62,2,3,
+       4,0;
+SetEne 7,12,5,2,3,24,5,
+       10,20,
+       62,2,3,
+       4,0;
+SetEne 8,14,11,2,1,24,5,
+       10,20,
+       62,2,3,
+       4,0;
+SetBox 10,7,14,6,2,116;
+End;
+:walk
+IfBox 0,17,12,18,12,0,Current+2 ;
+ChangeMap 230,ObjSX[0]-15,9,2,1;
+IfBox 0,3,5,4,5,0,Current+2 ;
+ChangeMap 236,ObjSX[0]+14,2,2,3;
+IfBox 0,9,17,9,17,0,Current+2 ;
+ChangeMap 239,26,3,2,3;
+IfBox 0,13,1,13,1,0,Current+2 ;
+ChangeMap 241,3,9,2,1;
+End;

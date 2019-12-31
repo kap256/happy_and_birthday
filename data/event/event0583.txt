@@ -1,0 +1,39 @@
+ë∫óéÅFâ ï®âÆ
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk1 ;
+Talk    11 -1 :talk1 ;
+Talk    12 -1 :talk1 ;
+
+
+_END_HEAD_
+:start
+SetObj 1,3,6,2,2,32,0,36,1,GravJump,1;
+
+SetAniObj 10,4,5,2,4,32,0,114,1,GravJump,BlockShadow+ShowTurn;
+SetAniObj 11,4,6,2,0,32,0,115,1,GravJump,BlockShadow+ShowTurn;
+SetAniObj 12,4,7,2,5,32,0,114,1,GravJump,BlockShadow+ShowTurn;
+
+SetAniObj 13,4,4,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 14,5,4,2,5,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 15,4,8,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 16,5,8,2,5,32,0,114,1,GravJump,BlockShadow;
+End ;
+
+:walk
+IfBox 0,8,6,8,6,0,Current+2 ;
+ChangeMap 577,6,17,5,2;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk1
+Stop 3;
+SetMes Ç¢ÇÁÇ¡ÇµÇ·Ç¢ÅI$nç°ì˙ÇÕëÂà¿îÑÇËÇæÇ∫ÅI,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+Shop 15,0;
+Wait 1;
+DelMes 1;
+Stop 0;
+End;

@@ -1,0 +1,46 @@
+‚©‚ç‚­‚è‰®•~F‹Ê“Ë‚«
+0,7,32
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Walk    1 -1 :puto ;
+Walk    2 -1 :puto ;
+Walk    3 -1 :puto ;
+
+_END_HEAD_
+:start
+SetEne 10,12,7,2,Rand,32,0,
+       0,3,
+       0,2,4,
+       4,0;
+
+SetPutObj 1,5,5,2,24,146,1;
+SetPutObj 2,5,4,2,24,146,1;
+SetPutObj 3,5,3,2,24,146,1;
+If Flag[38],0,>,:end ;
+SetPutObj 1,8,7,2,24,146,1;
+SetPutObj 2,7,7,2,24,146,1;
+SetPutObj 3,6,7,2,24,146,1;
+End;
+
+:walk
+IfBox 0,10,1,11,1,0,Current+2 ;
+ChangeMap 232,ObjSX[0]-3,11,4,1;
+IfBox 0,1,5,1,6,0,Current+2 ;
+ChangeMap 235,11,ObjSY[0]-2,2,0;
+IfBox 0,10,10,10,10,0,Current+2 ;
+ChangeMap 240,12,2,5,3;
+IfBox 0,15,5,15,5,0,Current+2 ;
+ChangeMap 242,2,3,2,2;
+End;
+
+:puto
+IfBox 1,5,3,5,5,0,:end ;
+IfBox 2,5,3,5,5,0,:end ;
+IfBox 3,5,3,5,5,0,:end ;
+If Flag[38],0,>,:end ;
+Store Flag[38],1;
+PlayWave 6;
+:end
+End;

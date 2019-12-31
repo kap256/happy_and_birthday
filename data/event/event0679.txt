@@ -1,0 +1,61 @@
+フィーレス村：裏路地
+0
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+MapTitle ;
+PlayBGM 2;
+SetAniObj 20,9,5,3,0,32,0,131,1,GravJump,2+BlockShadow;
+SetAniObj 21,10,5,3,5,32,0,131,1,GravJump,2+BlockShadow;
+SetAniObj 22,11,5,3,4,32,0,131,1,GravJump,2+BlockShadow;
+
+SetObj 0,10,6,3,1,32,0,8,1,GravJump,1;
+SetAniObj 3,10,4,3,0,32,0,123,1,GravJump,1;
+
+SetCamera 64-320,0-192,1;
+SetCamera 64,0-32,0;
+
+Wait 180;
+SetMes ええっと、$nまるだんさん三十点、$n豚の貯金箱十点に、$n麦わら帽子の人形五点ですね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 90;
+SetMes うム。$n間違い無いネ。,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 他に御入用の品は$nなにかありますか？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 50;
+SetMes アイヤ。$nそんなもんだネ。,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 30;
+SetMes リティスちゃんはえらい子ネ。$nウチのどら息子に$n爪の垢でも飲ませたいヨ。,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes そんな・・・。$nお世話になっているんですから、$n当然ですよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 1;
+Wait 40;
+SetMes そうだネ！$nこの前仕入れた宝の地図、$nラニ子じゃなくてリティスちゃんに$nあげるネ！,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes え・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+SetMes 大丈夫ネ！$nいつもと違って、$n出所ハッキリの奴だヨ！$nきっと見つかるネ！,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes ・・・えっと。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 220,0,1,2,3;
+End;

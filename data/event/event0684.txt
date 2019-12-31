@@ -1,0 +1,40 @@
+秋の山：二合目
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+PlayBGM 6;
+
+SetEne 1,5,10,9,0,32,10,
+       0,5,
+       2,0,3,
+       31,0;
+SetEne 2,10,3,12,0,32,10,
+       0,3,
+       2,0,3,
+       31,0;
+::中ボス
+SetEne 5,7,19,7,0,32,2,
+       0,5,
+       11,0,8,
+       31,0;
+
+SetBox 10,4,22,7,2,244;
+
+Store MFlag[8],416;
+Store MFlag[9],18;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,16,2,16,3,0,Current+2;
+ChangeMap 685,2,ObjSY[0]+12,2,2;
+
+IfBox3D 0,10,10,8,10,10,8,0,Current+2;
+ChangeMap 682,2,5,9,1;
+End;

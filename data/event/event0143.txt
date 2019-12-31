@@ -1,0 +1,108 @@
+妖精の森
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+:::::::::::::::::::植林
+Store MFlag[0],10;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::植林終わり
+
+StartEventSkip ;
+
+SetObj 0,4,8,2,1,32,0,0,1,GravJump,0;
+SetObj 1,5,8,2,1,40,0,8,1,GravJump,0;
+SetAniObj 2,5,2,2,0,32,0,184,0,GravJump,ShowTurn;
+SetObjGoal 0,4,4,2;
+SetObjGoal 1,5,5,2;
+Wait 80;
+SetMes よう。$nまた会ったな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 20;
+SetMes えっ！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+SetMes 何故こんなところに・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 50;
+SetMes 決まってるだろう。$nその娘を逃がさないためさ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+PlayBGM 36;
+SetMes ・・・！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 10;
+SetAniObj 0,4,4,2,0,32,0,145,1,GravJump,0;
+SetObjGoal 1,4,5,2;
+SetObjDir 1,1;
+Wait 20;
+SetMes 増援が来るまで、$n足止めの幻術だけで$nのんびりしていたかったが、$nそうもいかないようだ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes 一体何が目的だ・・・？$nこんな小さな子を。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 40;
+SetMes 君には関係無いだろう？$nだから何も聞かずに$nここから立ち去ってくれ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+SetMes ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 90;
+SetMes やれやれ。$n残念だけど、$n死んでもらうしかないかな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+SetObjDir 2,1;
+Wait 8;
+SetObjDir 2,5;
+Wait 8;
+SetObjDir 2,1;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetObjDir 2,0;
+Wait 16;
+
+EndEventSkip ;
+PlayBGM 16;
+Battle 13;
+StartEventSkip ;
+
+SetObjDir 2,4;
+Wait 10;
+SetMes ちっ、$nぬかったか・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 30;
+SetMes さあ、$n今のうちに！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+SetObj 0,4,4,2,3,10,0,0,0,GravJump,0;
+SetObj 1,4,5,2,1,10,0,8,1,GravJump,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetObjGoal 0,4,1,2;
+SetObjGoal 1,4,1,2;
+Wait 30;
+ChangeMap 144,6,2,2,3;
+End ;

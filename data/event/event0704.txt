@@ -1,0 +1,77 @@
+フィーレス村：教会
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+:start
+
+Stop 1;
+
+Store MFlag[0],0;
+:roop1
+SetAniObj MFlag[0]*6+40,MFlag[0]*2+6,2,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+41,MFlag[0]*2+6,3,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+42,MFlag[0]*2+6,4,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+43,MFlag[0]*2+6,8,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+44,MFlag[0]*2+6,9,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+45,MFlag[0]*2+6,10,3,4,32,0,134,0,GravJump,16;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],5,<,:roop1;
+
+SetCamera 0,60,1;
+SetAniObj 0,8,5,3,4,32,0,321,0,GravJump,0;
+SetObj 2,15,6,3,2,24,0,5,0,GravJump,0;
+SetObj 3,16,6,3,2,32,0,21,0,GravJump,0;
+SetHAObj 4,15,6,3,0,32,0,374,0,GravJump,NoShadow;
+
+SetObjGoal 2,10,6,3;
+Wait 100;
+SetAniObj 0,8,5,3,4,32,0,321,0,GravJump,ShowTurn;
+SetMes あら、$nこんにちは。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 30;
+SetMes ごきげんよう。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes いかがなさいました？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes わたくし、$nこの度、この村に$n引っ越すことに致しましたの。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes まぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 30;
+SetMes それに当たって、$nこちらの教会の$n御神体なんですけど。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetMes わたくしの住む所が、$n御神体の修理もできないような$nビンボー村だなんて、$n末代までのハジですわ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes と、いうわけで、$n新しい御神体を$n寄贈しに参りましたの。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes それはそれは。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetObjDir 2,2;
+SetCamera 120,120,0;
+SetObjGoal 3,13,6,3;
+SetObjGoal 4,12,6,3;
+Wait 90;
+SetMes せっかくですから、$n純金製に致しましたの。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 60;
+SetMes ・・・それは$nどうなんでしょう？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+ChangeMap 702,5,11,3,1;
+End;

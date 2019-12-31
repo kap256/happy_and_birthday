@@ -1,0 +1,29 @@
+フィーレス地下迷宮：細道
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Fall    0 -1 :underfloor ;
+
+_END_HEAD_
+:start
+:walk
+IfBox 0,5,26,5,26,0,Current+2 ;
+ChangeMap 521,8,2,2,3;
+IfBox 0,5,1,5,1,0,Current+2 ;
+ChangeMap 525,4,7,2,1;
+
+IfBox 0,1,13,1,13,0,Current+2 ;
+ChangeMap 526,12,4,2,0;
+IfBox 0,1,6,1,6,0,Current+2 ;
+ChangeMap 527,12,4,2,0;
+
+IfBox 0,10,18,10,18,0,Current+2 ;
+ChangeMap 528,2,4,4,2;
+IfBox 0,10,9,10,9,0,Current+2 ;
+ChangeMap 529,2,4,2,2;
+End;
+
+:underfloor
+ChangeMap 524,ObjSX[0],ObjSY[0],24,ObjDir[0];
+End;

@@ -1,0 +1,145 @@
+東封
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:church
+ChangeMap 420,4,5,2,1;
+End;
+
+:start
+Stop 1;
+
+If Flag[79],4,=,:octh ;
+If CurrentMonth,14,=,:church ;
+If CurrentMonth,15,=,:church ;
+If Month,12,=,:church ;
+
+SetAniObj 11,2,5,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 12,3,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,4,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 14,5,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 15,6,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 16,7,5,2,5,32,0,114,1,GravJump,BlockShadow;
+
+
+SetAniObj 20,5,4,2,0,32,0,123,1,GravJump,0;
+SetCamera 80,0-40,1;
+
+Wait 1;
+SetMes よく来たネ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes まだ用があるかナ？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+FleaMarket 1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+Store MFlag[0],Rand%4;
+If Month,5,<,Current+2 ;
+Store MFlag[0],Rand%7;
+If Month,7,<,Current+2 ;
+Store MFlag[0],Rand%5;
+
+If MFlag[0],0,=,:talk1 ;
+If MFlag[0],1,=,:talk2 ;
+If MFlag[0],2,=,:talk3 ;
+If MFlag[0],3,=,:talk4 ;
+
+:talk_rany
+SetMes ラニ子が来てくれたおかげで$n怪しげな宝地図を$n気軽に探索してもらえるヨ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes ９割ぐらいは$n何にもないけどナ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:talk1
+SetMes ひょっとして何か$n大事なものを$nなくしたかネ？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes もしかしたら$nまたウチで入荷するかも$n知れないネ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+
+:talk2
+SetMes 実はこの村のお店の人と$n提携してて、$nお店で引き取った商品は全部、$nウチが買い取ってるんだヨ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 大事なものを売っちゃっても、$nウチに入荷するかも知れないから、$n諦めるのは早いネ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:talk3
+SetMes そういえばこのまえ、$n何も無いところから$n突然アイテムが現れたネ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes もちろんいただいたネ。$n何があったか知らないけどナ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:talk4
+SetMes ウチにかかれば、$n手に入らないアイテムはないヨ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes あのアイテムをとり損ねた！？$nとか思っても、$n諦めずにウチにくるといいネ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:octh
+SetAniObj 11,2,5,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 12,3,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,4,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 14,5,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 15,6,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 16,7,5,2,5,32,0,114,1,GravJump,BlockShadow;
+SetCamera 80,0-40,1;
+
+
+SetAniObj 20,5,4,2,0,32,0,123,1,GravJump,0;
+SetObj 0,4,6,2,1,32,0,1,1,GravJump,0;
+Wait 1;
+
+SetMes ラニ子なら、$n新しい宝の地図をあげたら$nすっ飛んで行ったネ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 465,5,5,5,0;
+End;
+
+
+
+

@@ -1,0 +1,71 @@
+どこかの城下町：裏道
+50,51
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Store Flag[41],8;
+Stop 1;
+SetAniObj 0,7,9,8,5,32,0,342,1,GravJump,ShowTurn;
+SetObj 1,8,9,8,0,32,0,12,1,GravJump,0;
+SetObj 2,2,4,8,3,24,0,211,1,GravJump,0;
+SetObj 3,3,4,8,0,24,0,211,1,GravJump,0;
+SetCamera 0,0-480,1;
+SetCamera 0,0,0;
+Wait 100;
+SetObjDir 2,2;
+Wait 60;
+SetObjGoal 2,1,4,8;
+Wait 24;
+DelObj 2;
+Wait 36;
+SetObjGoal 3,3,3,8;
+Wait 60;
+SetObjDir 3,2;
+Wait 100;
+SetMes くそっ、$nこっちもダメか・・・っ！$n・・・街中を包囲しているのか！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes ・・・一体何なの！？$nあの人たちは・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 60;
+SetMes さっき話した$n犯罪組織の連中さ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes 「幽夜」という名で、$n最近、密かに暗躍していたみたいだが、$nここまで大規模に仕掛けてくるとは・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 80;
+SetMes ・・・私たち、$nどうなっちゃうの？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetMes 城まで行けば$n常駐の兵士もいるから$n何とかなるだろうが、$nこれだけ多いと辿り着けるか・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetMes そんな・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 90;
+SetCamera 0,160,0;
+SetObjDir 1,3;
+SetMes ・・・ひょっとして、$nそこの地下水道からなら$nお城まで見つからずに$n行けるんじゃ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 60;
+SetObj 0,7,9,8,3,32,0,9,1,GravJump,0;
+SetMes 地下水道・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes ・・・一か八か、だな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 271,8,2,15,0;
+End;

@@ -1,0 +1,46 @@
+å∂éãÇÃñ¿ã{ÅFè∏ç~ã@
+29,63,5,30
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 4;
+SetObj 10,4,5,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 11,4,6,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 12,5,5,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 13,5,6,0,0,32,0,173,1,GravLock,NoShadow;
+
+End ;
+
+:walk
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 500,ObjSX[0]+1,9,2,1;
+IfBox 0,4,5,5,6,1,:up ;
+End;
+
+:up
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+SetObjGrav 10,GravJump;
+SetObjGrav 11,GravJump;
+SetObjGrav 12,GravJump;
+SetObjGrav 13,GravJump;
+SetObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],16,0,pImage,0,GravJump,1;
+:loop
+SetObjZSpd 0,32;
+SetObjZSpd 10,30;
+SetObjZSpd 11,30;
+SetObjZSpd 12,30;
+SetObjZSpd 13,30;
+Wait 1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],30,<,:loop ;
+ChangeMap 498,4,4,20,3;
+End;

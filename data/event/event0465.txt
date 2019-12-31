@@ -1,0 +1,76 @@
+セントティル大聖堂
+0
+
+
+LoadMap 0 0 :start ;
+TimeSec 0 0 :newwalker ;
+
+_END_HEAD_
+
+:newwalker
+Store MFlag[0],Rand%2;
+:roopnew
+Store MFlag[4],Rand%2; 
+SetObj MFlag[1]+30,MFlag[4]*13+1,MFlag[0]+12,4,MFlag[4]*2+2,Rand%32+32,0,Rand%12+21,0,GravJump,MFlag[1];
+Store MFlag[1],MFlag[1]+1%50;
+Store MFlag[0],MFlag[0]-1; 
+If MFlag[0],0,>,:roopnew ;
+
+End;
+
+:everytime
+Store MFlag[0],30;
+
+:roopwalk
+SetObjGoalDir MFlag[0],ObjDir[MFlag[0]],10; 
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],80,<,:roopwalk; 
+
+Wait 2;
+Goto :everytime;
+End ;
+
+
+
+:start
+Stop 1;
+PlayBGM 15;
+SetObjPos 0,6,11,4;
+SetObjView 0,0;
+SetCameraSpeed 20;
+SetCamera 0,0-1000,1;
+SetCamera 0,100,0;
+
+NewLine 0,0,:everytime;
+Wait 100;
+MonthTitle ;
+
+Store Flag[79],7;
+
+Wait 600;
+SetObj 1,6,15,4,1,24,0,1,0,GravJump,0;
+SetObjGoal 1,6,14,4;
+Wait 32;
+SetMes ・・・みんな用事があるなんて。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes ・・・セントティル大聖堂か。$nフィルミナの所の総本山だったかしら。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes 「教皇さまの７０年目の誕生日祝いで、$n　宝物庫に収蔵されていた宝を$n　一般公開するらしいが、
+       $n　その中に聖石とおぼしき石がある。」$n・・・と。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes ・・・この人ごみにまぎれて、$nあいつらも来てるのかしら・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+EndEventSkip ;
+OpenMenu 0;
+ChangeMap 466,1,1,1,0;
+End;

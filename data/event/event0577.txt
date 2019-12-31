@@ -1,0 +1,74 @@
+村落：丘の上
+13,14,22,23,52,53,54
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    -1 -1 :talk ;
+
+_END_HEAD_
+#fruit.txt
+:start
+SetObj 1,6,16,5,2,32,0,21,1,GravJump,1;
+SetObj 2,10,12,5,Rand,32,5,46,1,GravJump,1;
+SetBox 3,1,16,5,3,319;
+SetEne 5,9,22,5,Rand,24,10,
+       0,5,
+       52,0,8,
+       23,POWx15;
+SetEne 6,7,3,6,Rand,24,10,
+       0,5,
+       14,0,8,
+       23,POWx15;
+
+Store MFlag[8],326;
+Store MFlag[9],5;
+SetWoodObj 10,7,12,5,0,32,0,105,1,GravJump,1;
+SetWoodObj 11,12,11,3,0,32,0,105,1,GravJump,1;
+SetWoodObj 12,13,16,3,0,32,0,105,1,GravJump,1;
+SetWoodObj 13,12,23,4,0,32,0,105,1,GravJump,1;
+SetWoodObj 14,6,30,5,0,32,0,105,1,GravJump,1;
+SetWoodObj 15,6,2,7,0,32,0,105,1,GravJump,1;
+SetWoodObj 16,4,6,8,0,32,0,105,1,GravJump,1;
+SetWoodObj 17,3,1,9,0,32,0,105,1,GravJump,1;
+SetWoodObj 18,12,2,5,0,32,0,105,1,GravJump,1;
+End ;
+
+:walk
+IfBox 0,14,3,14,4,0,Current+2 ;
+ChangeMap 575,2,ObjSY[0]+14,6,2;
+IfBox 0,14,27,14,28,0,Current+2 ;
+ChangeMap 576,2,ObjSY[0]-7,6,2;
+
+IfBox 0,5,17,5,17,0,Current+2 ;
+ChangeMap 583,7,6,2,0;
+End;
+
+:talk
+If ParamA,1,=,:talk1 ;
+If ParamA,2,=,:talk2 ;
+If ParamA,9,>,:fruit ;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk1
+Stop 3;
+SetObjDir 1,ObjDir[0]+2;
+SetMes やあ、お客さん！$n今日は開業3000年記念で$n大安売りだよ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+:talk2
+Stop 3;
+SetObjDir 2,ObjDir[0]+2;
+SetMes カギ？$nさあ、分からないなぁ・・・。,
+       1,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+
+

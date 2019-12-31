@@ -1,0 +1,168 @@
+フィーレス村
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+If Flag[0],0,>,:skip ;
+StartEventSkip ;
+
+SetAniObj 1,5,5,8,0,32,0,101,1,1,0;
+SetWoodObj 6,3,12,4,3,48,0,105,1,1,0;
+SetWoodObj 7,2,6,3,3,48,0,105,1,1,0;
+SetWoodObj 8,8,10,3,3,48,0,105,1,1,0;
+SetWoodObj 9,9,5,4,3,48,0,105,1,1,0;
+
+PlayBGM 2;
+Store Flag[0],1;
+SetObj 2,1,8,4,2,32,0,0,1,1,0;
+SetObj 3,2,9,4,2,24,0,2,1,1,0;
+SetObj 4,1,9,4,2,48,0,3,1,1,0;
+
+Stop 1;
+
+SetCamera 0,0-380,1;
+SetCamera 0,80,0;
+MonthTitle ;
+Wait 250;
+SetObjGoal 3,6,9,3;
+Wait 50;
+SetObjGoal 2,4,8,3;
+SetObjGoal 4,5,9,3;
+Wait 46;
+SetObjGoal 3,6,7,3;
+Wait 50;
+SetObjGoal 2,4,7,3;
+SetAniObj 3,6,7,3,1,24,0,107,1,1,0;
+SetMes こらー！レーナ！$nいい加減起きろー！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+NewLine 0,0,:tolganwalk ;
+Wait 0;
+DelMes 0;
+Wait 120;
+SetObjDir 3,0;
+SetMes ・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 40;
+SetMes ・・・・・・。,
+       1,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes ・・・・・・・・・。,
+       2,ObjX[4],ObjY[4],ObjZ[4],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 30;
+SetObjDir 3,1;
+SetMes 起きろったら起きろー！$n火でもつけちゃうぞー！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 16;
+SetObjDir 3,4;
+Wait 0;
+DelMes 0;
+Wait 120;
+PlayWave 9;
+SetObjDir 3,0;
+SetObjDir 1,4;
+SetCamera 0,60,0;
+Wait 20;
+SetObjDir 1,1;
+Wait 60;
+SetMes うるさいわねぇ・・・。$nカリス、何しに来たの？,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 0;
+SetMes 何しに来た、は$n無いだろ・・・。$nもうすぐ新年祭なんだぞ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes そーだよ！$nボク達が準備で$n頑張ってるってゆーのに！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 2;
+SetMes ホリィは元気ね・・・。$nおばあちゃんには$n真似できないわ。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 60;
+SetMes まだまだじゃろうが。$nこれじゃから$n最近の若者は・・・。,
+       3,ObjX[4],ObjY[4],ObjZ[4],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 3;
+SetMes 昨日はなかなか$n寝付けなかったの・・・。
+       $nもう少し寝かせてよ・・・。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 0;
+SetAniObj 2,4,7,3,1,24,0,106,1,1,0;
+SetMes させるかっ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 6;
+SetObjDir 2,4;
+SetObj 5,13,16,22,0,8,0,108,0,GravNone,0;
+SetObjGoal 5,13,14,22; 
+SetObjZSpd 5,40;
+Wait 6;
+SetObjDir 2,5;
+SetObjDir 1,5;
+SetMes ！,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 10;
+DelObj 5;
+PlayWave 17;
+SetObjDir 1,0;
+SetObjImg 1,102;
+Wait 30;
+DelMes 1;
+SetObjDir 1,4;
+Wait 30;
+SetMes 痛ぁ・・・。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 40;
+SetObjDir 3,4;
+SetMes やーい！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetObjDir 3,0;
+SetObjDir 1,1;
+SetMes ・・・って、$nこれ売り物じゃない。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 0;
+SetObjDir 2,4;
+SetMes そうそう。$n今年の新年祭の出店で出す、$n幸運を呼ぶという$n「まるだん」さんだよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetObjDir 1,5;
+SetMes ・・・説明口調でどうも。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 0;
+SetObjDir 2,0;
+SetMes 隣町の職人に$n発注しておいたんだけど$nまだ届いてなくてさ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes ふーん。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 0;
+SetMes 何か事故にあったのかもしれない。$n見に行くよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetMes めんどくさいわねぇ。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1]-32,LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+
+:skip
+ChangeMap 0,6,14,2,1;
+End;
+
+:tolganwalk
+Wait 16;
+SetObjDir 3,4;
+Wait 80;
+SetObjGoal 4,5,8,3;
+End;
+
+

@@ -1,0 +1,79 @@
+フィーレス地下迷宮：地の底
+27,28,29,30,46
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,3,4,2,Rand,24,40,
+       1,5,
+       46,0,8,
+       5,0;
+SetEne 2,7,4,2,Rand,24,40,
+       1,5,
+       46,0,8,
+       5,0;
+SetEne 3,3,9,2,Rand,24,40,
+       1,5,
+       46,0,8,
+       5,0;
+SetEne 4,7,9,2,Rand,24,40,
+       1,5,
+       46,0,8,
+       5,0;
+SetEne 5,3,14,2,Rand,24,40,
+       1,5,
+       46,0,8,
+       5,0;
+SetEne 6,7,14,2,Rand,24,40,
+       1,5,
+       46,0,8,
+       5,0;
+SetEne 7,3,19,2,Rand,24,40,
+       1,5,
+       46,0,8,
+       5,0;
+SetEne 8,7,19,2,Rand,24,40,
+       1,5,
+       46,0,8,
+       5,0;
+
+SetObj 10,6,27,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 11,6,28,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 12,7,27,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 13,7,28,0,0,32,0,173,1,GravLock,NoShadow;
+
+End ;
+
+:walk
+IfBox 0,5,1,5,1,0,Current+2 ;
+ChangeMap 530,4,12,3,1;
+IfBox 0,6,27,7,28,1,:down ;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::
+:down
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+SetObjGrav 10,GravJump;
+SetObjGrav 11,GravJump;
+SetObjGrav 12,GravJump;
+SetObjGrav 13,GravJump;
+SetObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],16,0,pImage,0,GravJump,1;
+:loop
+SetObjZSpd 0,32;
+SetObjZSpd 10,30;
+SetObjZSpd 11,30;
+SetObjZSpd 12,30;
+SetObjZSpd 13,30;
+Wait 1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],30,<,:loop ;
+ChangeMap 521,11,3,2,0;
+End;

@@ -1,0 +1,91 @@
+フィーレス地下迷宮：昇降機
+29,63,5,30
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 5;
+SetObj 10,3,3,18,0,32,0,173,1,GravLock,NoShadow;
+SetObj 11,3,4,18,0,32,0,173,1,GravLock,NoShadow;
+SetObj 12,4,3,18,0,32,0,173,1,GravLock,NoShadow;
+SetObj 13,4,4,18,0,32,0,173,1,GravLock,NoShadow;
+
+Store MFlag[8],173;
+If Flag[84],0,!=,Current+2 ;
+Store MFlag[8],175;
+SetObj 20,7,3,18,0,32,0,MFlag[8],1,GravLock,NoShadow;
+SetObj 21,7,4,18,0,32,0,MFlag[8],1,GravLock,NoShadow;
+SetObj 22,8,3,18,0,32,0,MFlag[8],1,GravLock,NoShadow;
+SetObj 23,8,4,18,0,32,0,MFlag[8],1,GravLock,NoShadow;
+
+End ;
+
+:walk
+IfBox 0,5,7,6,7,0,Current+2 ;
+ChangeMap 497,ObjSX[0]-2,2,2,3;
+IfBox 0,3,3,4,4,1,:down ;
+IfBox 0,7,3,8,4,1,:down2 ;
+End;
+
+:down
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+SetObjGrav 10,GravJump;
+SetObjGrav 11,GravJump;
+SetObjGrav 12,GravJump;
+SetObjGrav 13,GravJump;
+SetObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],16,0,pImage,0,GravJump,1;
+:loop
+SetObjZSpd 0,0-28;
+SetObjZSpd 10,0-30;
+SetObjZSpd 11,0-30;
+SetObjZSpd 12,0-30;
+SetObjZSpd 13,0-30;
+Wait 1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],30,<,:loop ;
+ChangeMap 499,ObjSX[0]+1,5,2,1;
+End;
+
+
+:down2
+If Flag[84],0,=,:nodown ;
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+SetObjGrav 20,GravJump;
+SetObjGrav 21,GravJump;
+SetObjGrav 22,GravJump;
+SetObjGrav 23,GravJump;
+SetObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],16,0,pImage,0,GravJump,1;
+:loop2
+SetObjZSpd 0,0-28;
+SetObjZSpd 20,0-30;
+SetObjZSpd 21,0-30;
+SetObjZSpd 22,0-30;
+SetObjZSpd 23,0-30;
+Wait 1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],30,<,:loop2 ;
+ChangeMap 521,5,3,2,2;
+End;
+
+:nodown
+Stop 1;
+SetMes 動作していないようね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;

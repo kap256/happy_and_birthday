@@ -1,0 +1,44 @@
+ハンダバの町：宿屋前
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetObjPos 0,5,4,2;
+SetObjView 0,0;
+SetBigObj 2,5,4,2,3,32,0,109,0,1,0;
+SetObj 1,6,4,2,1,32,0,50,0,GravJump,Wall0;
+Store MFlag[2],240;
+MapColor MFlag[2],0,0,0;
+Wait 20;
+SetMes どうどうどう。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObjGoal 1,6,6,2;
+SetObjGoal 2,5,6,2;
+SetObjDir 1,1;
+DelMes 1;
+Wait 80;
+SetMes よし、そうだ。$nいい子だな。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetObjGoal 1,10,6,2;
+SetObjGoal 2,10,6,2;
+DelMes 1;
+Wait 60;
+
+:blackup
+MapColor MFlag[2],0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],255,<,:blackup;
+
+MapColor 255,0,0,0;
+
+ChangeMap 154,4,5,2,3;
+End;

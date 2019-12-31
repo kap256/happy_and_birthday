@@ -1,0 +1,72 @@
+ハンダバの町：城の前
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    1  -1 :talk1 ;
+Talk    2  -1 :talk1 ;
+Talk    3  -1 :talk2 ;
+Talk    4  -1 :talk3 ;
+
+_END_HEAD_
+:start
+SetWoodObj 13,12,9,2,3,48,0,193,1,1,0;
+SetWoodObj 14,12,11,2,3,48,0,193,1,1,0;
+
+SetObj 1,10,1,2,3,32,0,49,1,GravJump,1;
+SetObj 2,11,1,2,3,32,0,49,1,GravJump,1;
+SetWoodObj 11,12,5,2,3,48,0,193,1,1,0;
+SetWoodObj 12,12,7,2,3,48,0,193,1,1,0;
+SetObj 3,3,4,2,1,48,0,45,1,GravJump,1;
+SetObj 4,8,7,2,Rand,48,3,45,1,GravJump,1;
+
+EndEventSkip ;
+If Flag[20],4,=,Current+2;
+BGColor 0;
+End;
+
+:walk
+IfBox 0,1,7,1,8,0,Current+2 ;
+ChangeMap 155,19,ObjSY[0]-2,2,0;
+IfBox 0,10,12,11,12,0,Current+2 ;
+ChangeMap 158,ObjSX[0]-3,2,3,3;
+End;
+
+
+
+:talk1
+Stop 2;
+SetMes この先は城だ。,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes 一般人は$n立ち入り禁止だ。,
+       1,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Stop 0;
+End;
+
+:talk2
+Stop 2;
+SetObjDir 3,ObjDir[0]+2;
+SetMes あっち行ってよ。$nかくれんぼしてるの。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk3
+Stop 2;
+SetObjDir 4,ObjDir[0]+2;
+SetMes 最近、盗賊が出るんだ。$nこの前なんて、城の中にまで$nもぐりこまれたらしいぜ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+SetMes おかげで兵隊さんが$nピリピリしてて$n大変さ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;

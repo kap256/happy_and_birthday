@@ -1,0 +1,38 @@
+X—ÑFI’[
+20,12,15,8,92,26
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest.txt
+:start
+Store MFlag[8],22;
+Store MFlag[9],3;
+Goto :forest_init;
+End ;
+
+:walk
+IfBox 0,4,5,4,5,0,Current+7 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+If Flag[90],1,>,Current+2;
+Store Flag[90],1;
+ChangeMap 535,12,10,2,0;
+IfBox 0,6,1,7,1,0,Current+2 ;
+ChangeMap 567,ObjSX[0]-3,21,2,1;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+

@@ -1,0 +1,36 @@
+}‘ŠÙFI’[
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+End ;
+
+:walk
+IfBox 0,4,5,4,5,0,Current+7 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+If Flag[98],1,>,Current+2;
+Store Flag[98],1;
+ChangeMap 535,3,8,2,2;
+IfBox 0,4,9,4,9,0,Current+2 ;
+ChangeMap 443,7,2,2,3;
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 428,4,9,2,1;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+

@@ -1,0 +1,54 @@
+#included
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
+::    棺おけメソッド ( :coffin_init )
+::
+::MFlag[8]---Z座標の最大高度、0でも可（2～MFlag[8]の範囲を植林）
+::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:coffin_init
+Store MFlag[10],30;
+Store MFlag[11],1;
+:coffin_x
+Store MFlag[12],1;
+:coffin_y
+Store MFlag[13],2;
+:coffin_z
+GetMapChip MFlag[14],MFlag[11],MFlag[12],MFlag[13];
+If MFlag[14],4,=,:coffin_set_1 ;
+If MFlag[14],5,=,:coffin_set_2 ;
+If MFlag[14],6,=,:coffin_set_3 ;
+If MFlag[14],7,=,:coffin_set_4 ;
+:coffin_noset
+Store MFlag[13],MFlag[13]+1;
+If MFlag[13],MFlag[8],<,:coffin_z ;
+Store MFlag[12],MFlag[12]+1;
+If MFlag[12],MapY,<,:coffin_y ;
+Store MFlag[11],MFlag[11]+1;
+If MFlag[11],MapX,<,:coffin_x ;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:coffin_set_1
+SetAniObj MFlag[10],MFlag[11],MFlag[12],MFlag[13],4,48,0,348,1,GravJump,ShowTurn+NoShadow+2;
+Store MFlag[10],MFlag[10]+1;
+Goto :coffin_noset ;
+::::::::
+:coffin_set_2
+SetAniObj MFlag[10],MFlag[11],MFlag[12],MFlag[13],0,48,0,348,1,GravJump,ShowTurn+NoShadow+2;
+Store MFlag[10],MFlag[10]+1;
+Goto :coffin_noset ;
+::::::::
+:coffin_set_3
+SetAniObj MFlag[10],MFlag[11],MFlag[12],MFlag[13],4,48,0,348,1,GravJump,NoShadow+2;
+Store MFlag[10],MFlag[10]+1;
+Goto :coffin_noset ;
+::::::::
+:coffin_set_4
+SetAniObj MFlag[10],MFlag[11],MFlag[12],MFlag[13],0,48,0,348,1,GravJump,NoShadow+2;
+Store MFlag[10],MFlag[10]+1;
+Goto :coffin_noset ;
+
+

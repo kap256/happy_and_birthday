@@ -1,0 +1,88 @@
+フィーレス村：段差のある通り
+22,23,52,53,54
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+
+_END_HEAD_
+:start
+SetEne 1,8,10,3,Rand,24,40,
+       0,8,
+       22,2,4,
+       13,0;
+SetEne 2,15,3,10,Rand,24,40,
+       0,4,
+       23,2,4,
+       13,0;
+SetEne 3,2,2,12,Rand,24,40,
+       0,15,
+       54,2,4,
+       13,0;
+
+::ここに宝箱番号を代入:::::::::::::::::::::::
+Store MFlag[8],169;
+:::::::::::::::::::::::::::::::::::::::::::::
+
+If Box[MFlag[8]],0,>,:box ;
+SetAniObj 10,2,6,6,5,32,0,322,1,GravJump,1+ShowTurn;
+Goto :afterbox;
+:box
+SetBox 11,2,6,6,2,MFlag[8];
+:afterbox
+
+SetWoodObj 50,8,12,3,3,48,0,105,1,1,0;
+SetWoodObj 51,14,14,4,3,48,0,105,1,1,0;
+SetWoodObj 52,5,7,3,3,48,0,105,1,1,0;
+SetWoodObj 53,7,2,7,3,48,0,105,1,1,0;
+SetWoodObj 54,14,6,9,3,48,0,105,1,1,0;
+SetWoodObj 55,19,5,10,3,48,0,105,1,1,0;
+SetWoodObj 56,17,1,10,3,48,0,105,1,1,0;
+End;
+
+:walk
+IfBox 0,21,2,21,3,0,Current+2 ;
+ChangeMap 312,2,ObjSY[0]+10,3,2;
+IfBox 0,4,15,5,15,0,Current+2 ;
+ChangeMap 310,ObjSX[0]+43,2,2,3;
+IfBox 0,1,9,1,10,0,Current+2 ;
+ChangeMap 315,11,ObjSY[0]-1,2,0;
+End;
+
+:talk 
+Stop 3;
+SetMes うーん・・・。,
+       1,ObjX[10],ObjY[10],ObjZ[10]-10,RightBottom,0;
+Wait 30;
+SetMes 大丈夫ですか！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 10;
+PlayWave 21;
+SetObjDir 10,ObjDir[10]+8;
+Wait 50;
+SetObj 12,ObjSX[10],ObjSY[10],ObjSZ[10],ObjDir[0]+2,20,0,32,0,GravJump,1;
+DelObj 10;
+SetMes すまんのう・・・。,
+       1,ObjX[12],ObjY[12],ObjZ[12],RightBottom,0;
+Wait 30;
+SetMes 早く教会へ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+PlayWave 6;
+SetBox 11,ObjSX[12],ObjSY[12],ObjSZ[12]+1,ObjDir[12],MFlag[8];
+Stop 0;
+:::::ここから、村人の避難。:::::::::::::::::::::::::::::::::::::::::::::::::::::::
+SetObjGoal 12,9,6,6;
+Wait 140;
+SetObjGoal 12,9,3,8;
+Wait 60;
+SetObjGoal 12,21,3,10;
+Wait 240;
+DelObj 12;
+
+End;

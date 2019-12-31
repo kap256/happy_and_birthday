@@ -1,0 +1,269 @@
+フィーレス村：裏路地
+22,23,52,53,54
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+If Flag[56],40,=,:event2 ;
+If Flag[49],0,=,:event ;
+EndEventSkip ;
+
+SetBox 5,9,4,3,3,165;
+SetBox 6,11,4,3,3,166;
+
+::終了イベント関連::::::::::::::::::::::::::::::::
+Store MFlag[24],:ret_novevent;
+
+::::カメラ
+Store MFlag[25],60;
+Store MFlag[26],20;
+
+::::キャラ座標
+SetObj 90,8,6,4,2,32,0,0,1,GravJump,1;
+SetObj 91,10,5,3,0,32,0,8,1,GravJump,1;
+
+Goto :check_novevent;
+#nov_event.txt
+:ret_novevent
+::ここまで::::::::::::::::::::::::::::::::::::::::
+
+SetEne 1,8,2,9,Rand,24,30,
+       0,10,
+       22,2,4,
+       13,0;
+SetEne 2,6,11,10,Rand,24,30,
+       0,10,
+       22,2,4,
+       13,0;
+
+
+End;
+:walk
+IfBox 0,15,6,15,7,0,Current+2 ;
+ChangeMap 307,2,ObjSY[0]+6,2,2;
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 308,15,ObjSY[0],2,0;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip;
+Store ShopOK[4],1;
+Store Flag[49],1;
+Stop 1;
+SetObj 1,ObjSX[0],ObjSY[0],ObjSZ[0],0,10,0,0,1,GravJump,0;
+SetAniObj 0,9,4,3,0,16,0,123,1,GravJump,0;
+SetObj 2,10,6,3,1,32,0,211,0,GravJump,0;
+SetObj 3,12,4,3,0,32,0,211,0,GravJump,0;
+SetObj 4,7,5,4,2,32,0,211,0,GravJump,0;
+SetAniObj 5,10,5,3,0,8,0,323,0,GravJump,0;
+Wait 20;
+SetObjGoal 5,10,6,3;
+Wait 4;
+PlayWave 17;
+SetObjDir 5,5;
+SetAniObj 2,10,6,3,5,8,0,321,0,GravJump,0;
+SetObjGoal 2,10,20,3;
+Wait 30;
+SetObjDir 5,0;
+Wait 20;
+SetMes こんなこともあろうかと、$nからくり兵を仕入れておいて$n助かったネ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetObjDir 5,4;
+Wait 4;
+SetObjDir 5,0;
+Wait 40;
+SetMes ン・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+SetObjDir 5,4;
+Wait 4;
+SetObjDir 5,0;
+Wait 40;
+SetObjDir 5,4;
+Wait 4;
+SetObjDir 5,0;
+Wait 80;
+DelMes  0;
+SetObjDir 5,4;
+Wait 60;
+
+SetObjDir 0,5;
+SetMes アイヤー！$n電池切れだネ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+SetObjGoal 3,11,4,3;
+SetObjGoal 4,8,5,4;
+Wait 0;
+DelMes 0;
+
+:::::::::::主人公の位置で分岐:::::::::::
+IfBox 1,13,5,15,8,1,:right ;
+
+:left
+SetObjPos 1,4,6,4;
+SetObjGoal 1,7,6,4;
+Wait 30;
+SetObjDir 3,0;
+SetObjDir 4,0;
+SetAniObj 0,9,4,3,1,10,0,323,1,GravJump,0;
+SetAniObj 1,7,6,4,0,10,0,301,1,GravJump,ShowTurn;
+Store MFlag[1],LeftTop;
+Goto :after;
+
+:right
+SetObjPos 1,14,6,2;
+SetObjGoal 1,12,6,3;
+SetCameraSpeed 20;
+SetCamera 0,60,0;
+Wait 20;
+SetObjParam 0,ShowTurn;
+SetObjDir 0,0;
+SetObjDir 3,2;
+SetObjDir 4,2;
+SetAniObj 1,12,6,3,0,10,0,145,1,GravJump,ShowTurn;
+Store MFlag[1],RightBottom;
+Goto :after;
+
+:::::::::::分岐おわり:::::::::::
+:after
+SetMes 大丈夫ですか！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],MFlag[1],0;
+Wait 0;
+DelMes 1;
+Wait 20;
+EndEventSkip ;
+Battle Rand%2*3+8;
+StartEventSkip ;
+DelObj 3;
+DelObj 4;
+Wait 10;
+SetMes 助かったネ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 30;
+SetMes 早く教会に$n避難してください！,
+       1,ObjX[1],ObjY[1],ObjZ[1],MFlag[1],0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 304,ObjSX[1],ObjSY[1],ObjSZ[1],3;
+
+
+::::::ラスボス前イベント:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+Stop 1;
+SetAniObj 0,10,6,3,14,32,0,325,1,GravJump,ShowTurn;
+SetAniObj 1,11,7,3,15,32,0,325,1,GravJump,ShowTurn;
+SetObj 2,6,6,4,2,32,0,211,0,GravJump,0;
+SetObj 3,6,7,4,2,32,0,211,0,GravJump,0;
+
+SetCamera 0-100,0-50,1;
+Wait 20;
+SetObjGoal 2,7,6,4;
+SetObjGoal 3,7,7,4;
+Wait 60;
+SetObjGoal 2,8,6,4;
+SetObjGoal 3,8,7,4;
+Wait 20;
+SetMes くっ・・・。$nこのままでは・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+PlayWave 8;
+Store MFlag[0],0;
+
+:whiteup
+MapColor MFlag[2]*16,255,255,255;
+Wait 1;
+Store MFlag[2],MFlag[2]+2;
+If MFlag[2],16,<,:whiteup;
+
+MapColor 255,255,255,255;
+Store MFlag[2],0;
+
+:whitedown
+MapColor 255-k[MFlag[2]*16],255,255,255;
+Wait 1;
+Store MFlag[2],MFlag[2]+2;
+If MFlag[2],16,<,:whitedown;
+
+MapColor 0,0,0,0;
+Wait 20;
+SetMes な、なんだ！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 10;
+SetMes ！？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+SetMes ！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+NewLine 0,0,:conf ;
+Store MFlag[0],Ret;
+Wait 0;
+DelMes 0;
+DelMes 2;
+DelMes 3;
+Kill MFlag[0];
+Wait 1;
+SetObjDir 2,2;
+SetObjDir 3,2;
+SetObj 2,8,6,4,2,4,0,211,0,GravAir,0;
+SetObj 3,8,7,4,2,4,0,211,0,GravAir,0;
+PlayWave 40;
+
+Store MFlag[0],0;
+
+:leaf_loop
+SetAAObj MFlag[0]+10,15,Rand%6+4,Rand%14+2,Rand,4,0,331,4,1,0,GravAir,NoShadow;
+SetObjGoalDir MFlag[0]+10,0,100;
+
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],24,<,:leaf_loop;
+
+Wait 10;
+SetObjGoal 0,9,6,3;
+SetObjGoal 1,10,7,3;
+SetMes うおっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 15;
+SetObjGoal 2,1,6,30;
+SetObjGoal 3,1,7,30;
+SetMes のわっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+SetMes うわっ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+SetMes ぬおっ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 60;
+DelMes 1;
+DelMes 0;
+Wait 30;
+SetObj 0,9,6,3,2,32,0,56,1,GravJump,0;
+SetObj 1,10,7,3,2,32,0,57,1,GravJump,0;
+SetMes 今の風は・・・！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+NewLine 0,0,:conf_soldier ;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 303,8,5,3,0;
+
+End;
+
+:conf
+SetObjDir 2,Rand;
+SetObjDir 3,Rand;
+Wait 20;
+Goto :conf ;
+End ;
+
+:conf_soldier
+SetObjDir 0,Rand;
+SetObjDir 1,Rand;
+Wait 20;
+Goto :conf_soldier ;
+End ;

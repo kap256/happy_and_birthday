@@ -1,0 +1,63 @@
+ómäŸÅFêHì∞
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Hit     0 1  :hit ;
+
+_END_HEAD_
+:start
+IfBox 0,7,2,7,2,1,:kakusi ;
+SetHAObj 1,7,2,2,2,24,0,317,1,GravJump,1;
+Goto :end_tansu ;
+:kakusi
+SetHAObj 1,8,2,2,2,24,0,317,1,GravJump,1;
+
+:end_tansu
+SetAniObj 10,3,3,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 11,4,3,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 12,5,3,2,5,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 13,7,3,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 14,8,3,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 15,9,3,2,5,32,0,114,1,GravJump,BlockShadow+1;
+
+SetAniObj 20,3,5,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 21,4,5,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 22,5,5,2,5,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 23,7,5,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 24,8,5,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 25,9,5,2,5,32,0,114,1,GravJump,BlockShadow+1;
+
+SetAniObj 30,3,7,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 31,4,7,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 32,5,7,2,5,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 33,7,7,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 34,8,7,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 35,9,7,2,5,32,0,114,1,GravJump,BlockShadow+1;
+
+SetAniObj 40,3,9,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 41,4,9,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 42,5,9,2,5,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 43,7,9,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 44,8,9,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 45,9,9,2,5,32,0,114,1,GravJump,BlockShadow+1;
+End ;
+
+:walk
+IfBox 0,12,6,12,6,0,Current+2 ;
+ChangeMap 610,2,15,2,2;
+
+IfBox 0,7,1,7,1,0,Current+2 ;
+ChangeMap 620,6,5,2,1;
+End;
+
+:hit
+If MFlag[0],0,!=,:end ;
+IfBox 1,7,2,7,2,0,:end ;
+SetObjGoalDir 1,ObjDir[0],2;
+PlayWave 12;
+Store MFlag[0],1;
+Wait 4;
+Store MFlag[0],0;
+:end
+End;

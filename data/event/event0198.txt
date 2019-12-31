@@ -1,0 +1,31 @@
+…ãˆâÕF•‚‚«”Â
+10,38,39
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#water.txt
+:start
+EndEventSkip ;
+
+SetEne 1,5,9,8,Rand,32,32,
+       0,5,
+       10,2,3,
+       10,0;
+If Flag[28],0,>,:water_init ;
+SetEne 2,8,6,2,Rand,48,10,
+       0,5,
+       39,2,6,
+       10,0;
+Goto :water_init ;
+End;
+:walk
+IfBox3D 0,8,1,2,9,1,2,0,Current+2 ;
+ChangeMap 195,ObjSX[0]-3,14,2,1;
+IfBox 0,1,4,1,5,0,Current+2 ;
+ChangeMap 199,9,ObjSY[0]+1,5,0;
+IfBox 0,6,13,7,13,0,Current+2 ;
+ChangeMap 200,ObjSX[0]+15,2,5,3;
+End;

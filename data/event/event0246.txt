@@ -1,0 +1,199 @@
+幽夜の砦
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+PlayBGM 57;
+If CurrentMonth,14,=,:nov ;
+Goto :sep ;
+
+::オブジェクトを配置するメソッド。MFlag[11]の値に返る。::::::::::::::::::::::::::::::::
+:set_obj
+
+SetAniObj 0,5,3,2,0,24,0,63,0,GravJump,0;
+SetObj 1,6,6,2,1,24,0,60,0,GravJump,0;
+SetObj 2,5,6,2,1,24,0,62,0,GravJump,0;
+SetObj 3,4,6,2,1,24,0,61,0,GravJump,0;
+
+SetAniObj 5,4,4,2,4,24,0,335,0,GravJump,0;
+SetAniObj 6,5,4,2,1,24,0,335,0,GravJump,0;
+SetAniObj 7,6,4,2,0,24,0,335,0,GravJump,0;
+
+Store MFlag[12],0;
+
+:set_obj_loop
+SetObj MFlag[12]*7+10,2,MFlag[12]+7,2,1,24,0,211,0,GravJump,0;
+SetObj MFlag[12]*7+11,3,MFlag[12]+7,2,1,24,0,211,0,GravJump,0;
+SetObj MFlag[12]*7+12,4,MFlag[12]+7,2,1,24,0,211,0,GravJump,0;
+SetObj MFlag[12]*7+13,5,MFlag[12]+7,2,1,24,0,211,0,GravJump,0;
+SetObj MFlag[12]*7+14,6,MFlag[12]+7,2,1,24,0,211,0,GravJump,0;
+SetObj MFlag[12]*7+15,7,MFlag[12]+7,2,1,24,0,211,0,GravJump,0;
+SetObj MFlag[12]*7+16,8,MFlag[12]+7,2,1,24,0,211,0,GravJump,0;
+Store MFlag[12],MFlag[12]+1;
+If MFlag[12],6,<,:set_obj_loop ;
+
+Goto MFlag[11];
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:sep
+If Flag[40],1,<,:sep_event ;
+OpenMenu 0;
+ChangeMap 249,9,2,2,0;
+End ;
+
+
+:sep_event
+If HardMode,0,=,:sep_normal ;
+ChangeMap 220,9,2,2,0;
+End;
+
+:sep_normal
+StartEventSkip;
+MonthTitle ;
+
+Store MFlag[11],:after_set_sep ;
+Goto :set_obj ;
+:after_set_sep
+
+SetCamera 0-100,370,1;
+SetCamera 0-100,70,0;
+
+Wait 340;
+
+SetMes クッコッコッコッコ・・・。$n聖石も残すところ、あと四つか。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 残りの聖石の調査は$n進んでいるのか。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetObjGoal 3,4,5,2;
+Wait 20;
+SetMes ほとんど在り処は$n特定しています。$nあとは回収に向かうだけです。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 3;
+SetObjGoal 3,4,6,2;
+SetObjDir 3,1;
+SetMes 順調のようだな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 30;
+SetMes 古代人の娘の方は$nどうなっている。,
+       4,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 60;
+SetObjGoal 1,6,5,2;
+Wait 20;
+DelMes 0;
+SetMes 卵の村に$nかくまわれているようです。$n聖石がそろってから、$nまとめて回収すればいいでしょう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 4;
+SetObjGoal 1,6,6,2;
+SetObjDir 1,1;
+Wait 10;
+SetObjDir 2,2;
+SetMes ハッ。$n小娘一人によぉ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 60;
+SetObjDir 3,2;
+SetMes あ～ら。$nその小娘を逃がしたのは$n誰だったかしらぁ～？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetObjDir 2,0;
+Wait 30;
+SetMes アレは$nロインの馬鹿が$nしくじっただけだ。$nオレのせいじゃねーな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes 部下に責任転嫁？$n立派な上司だねぇ～。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 2;
+Wait 60;
+SetMes よさんか。$nくだらん言い争いは。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+SetObjDir 2,1;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetObjDir 0,1;
+SetMes ゴホッ！$nゴホォッ・・・！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 30;
+SetObjGoal 3,4,5,2;
+Wait 20;
+SetMes ご無事で・・・！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetObjDir 0,0;
+SetMes ・・・むうぅ、$n大丈夫だ。落ち着いた。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 3;
+SetMes 急がねば・・・。$nあと少しなのだ、$nあと少し・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 247,4,2,2,3;
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:nov
+If Flag[44],1,<,:nov_event ;
+OpenMenu 0;
+ChangeMap 303,3,5,3,2;
+End ;
+
+:nov_event
+StartEventSkip;
+
+Store MFlag[11],:after_set_nov ;
+Goto :set_obj ;
+:after_set_nov
+
+SetAniObj 7,6,4,2,5,24,0,335,0,GravJump,0;
+
+SetCamera 0-100,70,0;
+
+Wait 200;
+
+SetMes クックックッ・・・。$nコッコッコッコッ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ガーネット・・・。$nアメジスト・・・。$nアクアマリン・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes ダイアモンド・・・。$nエメラルド・・・。$nパール・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes ルビー・・・。$nペリドット・・・。$nサファイア・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes トルマリン・・・。$nトパーズ・・・。$nラピスラズリ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ついに、$nついに全ての聖石が、$nここにそろったのだ・・・っ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes あとは、卵の村の$n娘と卵を手に入れるのみ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes では、参ろう。$n全てを手にするための、$n最後の戦いへ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+
+ChangeMap 300,6,4,2,3;
+End;

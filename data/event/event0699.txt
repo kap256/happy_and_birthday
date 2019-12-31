@@ -1,0 +1,107 @@
+フィーレス村：大衆食堂
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+
+Stop 1;
+SetAniObj 10,10,5,2,1,32,0,115,1,GravJump,BlockShadow+ShowTurn;
+SetAniObj 11,9,5,2,0,32,0,115,1,GravJump,BlockShadow+ShowTurn;
+::SetAniObj 12,8,5,2,0,32,0,115,1,GravJump,BlockShadow+2;
+SetAniObj 13,7,5,2,0,32,0,115,1,GravJump,BlockShadow+ShowTurn;
+SetAniObj 14,6,5,2,1,32,0,114,1,GravJump,BlockShadow+ShowTurn;
+
+SetAniObj 15,3,5,2,0,32,0,115,1,GravJump,BlockShadow+2;
+SetAniObj 16,3,6,2,4,32,0,114,1,GravJump,BlockShadow+2;
+SetAniObj 17,4,5,2,1,32,0,114,1,GravJump,BlockShadow+2;
+SetAniObj 18,4,6,2,0,32,0,114,1,GravJump,BlockShadow+2;
+
+SetAniObj 19,10,2,2,1,32,0,153,1,GravJump,BlockShadow+2;
+SetAniObj 20,10,3,2,4,32,0,153,1,GravJump,BlockShadow+2;
+SetAniObj 21,10,4,2,0,32,0,153,1,GravJump,BlockShadow+2;
+
+SetAniObj 33,5,6,2,1,32,0,136,0,GravJump,0;
+SetAniObj 30,9,6,2,1,32,0,136,0,GravJump,ShowTurn+1;
+SetAniObj 31,7,6,2,1,32,0,136,0,GravJump,ShowTurn+1;
+SetAniObj 32,5,5,2,1,32,0,136,0,GravJump,0;
+SetAniObj 34,2,5,2,0,32,0,136,0,GravJump,0;
+SetAniObj 35,2,6,2,0,32,0,136,0,GravJump,0;
+
+SetAniObj 0,8,5,2,0,32,0,303,1,GravJump,BlockShadow+ShowTurn ;
+
+Wait 60;
+SetMes ・・・・・・ふぅ。,
+       0,ObjX[0],ObjY[0]-12,ObjZ[0]+4,RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+PlayWave 9;
+SetCameraSpeed 7;
+SetCamera 0-40,20,0;
+SetObj 1,8,8,2,1,24,0,8,0,GravJump,1;
+SetObjGoal 1,8,7,2;
+Wait 50;
+SetMes やっぱり$nここでしたか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+SetObjDir 0,4;
+Wait 20;
+SetMes ああ、リティス。,
+       0,ObjX[0],ObjY[0]-12,ObjZ[0]+4,RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetObjDir 0,0;
+SetMes あの騒動の時に$nいなくなって、$nずっとそれっきり・・・。,
+       0,ObjX[0],ObjY[0]-12,ObjZ[0]+4,RightBottom,0;
+Wait 0;
+SetMes あれから、$nもう一ヶ月も経つのに、$nどこにも見つからない。,
+       0,ObjX[0],ObjY[0]-12,ObjZ[0]+4,RightBottom,0;
+Wait 60;
+SetMes カリスさん・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetObjDir 0,4;
+SetMes リティスには、$nいい思い出が無いかもしれないけど・・・$n・・・僕には大切な人だったんだ。,
+       0,ObjX[0],ObjY[0]-12,ObjZ[0]+4,RightBottom,0;
+Wait 60;
+SetMes ・・・・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 0,0;
+Wait 30;
+SetMes 本当に、$nどこに行っちゃったんだろう・・・。,
+       0,ObjX[0],ObjY[0]-12,ObjZ[0]+4,RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 120;
+
+PlayWave 9;
+SetObj 2,8,8,2,1,10,0,2,0,GravJump,1;
+SetObjGoal 2,8,7,2;
+SetObjGoal 1,7,7,2;
+SetObjDir 1,2;
+SetMes ねえねえカリスくん！$n見つかったよ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetObjDir 0,4;
+Wait 50;
+SetMes え・・・？,
+       0,ObjX[0],ObjY[0]-12,ObjZ[0]+4,RightBottom,0;
+Wait 0;
+SetMes レーナだよ！$n森のほうで倒れてたんだって！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+ChangeMap 700,9,5,3,0;

@@ -1,0 +1,47 @@
+å∂éãÇÃñ¿ã{ÅFéOï˚å¸
+27,28,29,30,46
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Fall    0 -1 :underfloor ;
+TimeFlame 0 0 :time ;
+
+
+_END_HEAD_
+:start
+SetEne 1,3,5,12,Rand,32,4,
+       1,3,
+       46,0,8,
+       22,0;
+SetEne 2,6,3,8,Rand,32,4,
+       1,3,
+       46,0,8,
+       22,0;
+IfBox 0,7,6,7,6,0,Current+2 ;
+SetObj 10,7,6,8,0,32,0,173,1,GravLock,NoShadow;
+End;
+
+:underfloor
+ChangeMap 516,7,9,10,ObjDir[0];
+End ;
+
+:walk
+IfBox 0,5,10,5,10,0,Current+2 ;
+ChangeMap 508,3,2,2,3;
+
+IfBox 0,1,7,1,7,0,Current+2 ;
+ChangeMap 510,9,13,2,0;
+IfBox 0,10,3,10,3,0,Current+2 ;
+ChangeMap 513,2,18,2,2;
+End;
+
+
+:time
+IfBox 0,7,6,7,6,0,:down_lift ;
+End;
+
+:down_lift
+SetObjZSpd 10,0-40;
+IfBox3D 10,7,6,6,7,6,1,0,Current+2;
+DelObj 10;
+End;

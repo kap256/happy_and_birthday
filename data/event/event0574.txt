@@ -1,0 +1,85 @@
+村落：北部
+13,14,22,23,52,53,54
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    -1 -1 :talk ;
+
+_END_HEAD_
+#fruit.txt
+:start
+SetObj 1,15,6,3,Rand,32,3,48,1,GravJump,1;
+SetObj 2,4,6,3,Rand,32,3,25,1,GravJump,1;
+SetObj 3,24,10,3,Rand,32,3,43,1,GravAir,1;
+SetEne 5,11,12,3,Rand,24,10,
+       0,5,
+       22,0,8,
+       23,POWx15;
+SetEne 6,7,3,3,Rand,24,10,
+       0,5,
+       13,0,8,
+       23,POWx15;
+
+Store MFlag[8],325;
+Store MFlag[9],1;
+SetWoodObj 10,21,2,3,0,32,0,105,1,GravJump,1;
+End ;
+
+:walk
+IfBox 0,11,5,11,5,0,Current+2 ;
+ChangeMap 581,6,8,2,1;
+IfBox 0,11,16,11,16,0,Current+2 ;
+ChangeMap 578,7,2,2,3;
+
+IfBox 0,23,16,25,16,0,Current+2 ;
+ChangeMap 573,ObjSX[0]-16,2,2,3;
+
+IfBox 0,1,7,1,9,0,Current+2 ;
+ChangeMap 575,10,ObjSY[0]-4,2,0;
+End;
+
+:talk
+If ParamA,1,=,:talk1 ;
+If ParamA,2,=,:talk2 ;
+If ParamA,3,=,:talk3 ;
+If ParamA,9,>,:fruit ;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk1
+Stop 3;
+SetObjDir 1,ObjDir[0]+2;
+SetMes ここの宝石屋さん、$n最近できたのよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+:talk2
+Stop 3;
+SetObjDir 2,ObjDir[0]+2;
+SetMes この辺りは、$n毎朝散歩しておるが、$nカギなんぞは見とらんぞい。,
+       1,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetMes 他をあたりなされ。,
+       1,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+:talk3
+Stop 3;
+SetObjDir 3,ObjDir[0]+2;
+SetMes 朝起きたら、$n背中に羽が生えてたんだよ！$nヤッホウ！,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes ちょっと背も縮んだ気がするけど、$nまあ良いや！,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+

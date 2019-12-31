@@ -1,0 +1,62 @@
+トライアック商店
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+
+SetAniObj 10,5,7,2,1,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 11,5,6,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 12,5,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,5,5,2,4,32,0,375,1,GravJump,BlockShadow;
+SetAniObj 14,5,3,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 15,5,2,2,1,32,0,114,1,GravJump,BlockShadow;
+
+Stop 1;
+
+SetAniObj 0,4,5,2,0,32,0,375,1,GravJump,0;
+SetAniObj 1,6,4,2,1,32,0,375,1,GravJump,0;
+SetCamera 40,0,1;
+Wait 30;
+SetMes まだまだ子供だと$n思っていたら・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes このところ、$n急にしっかりしおって。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetMes カリス坊ちゃまの$n事ですか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes やはり、$n守るものがあると、$n人は成長するのでしょう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 50;
+SetMes リティスたちの事か・・・。$n・・・そうかもしれんな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes マリンが死んで、$n男手一人で育ててきたが・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes 私は、妻に胸を張れる$n父であっただろうか・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes それはもう。$n天国でお喜びに$nなられているでしょう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 90;
+SetMes ふっ、$n少し飲みすぎたな。$nトルガン。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 90;
+SetMes たまのお祭りです。$n旦那様。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 707,7,11,4,1;
+End;

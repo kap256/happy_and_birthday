@@ -1,0 +1,454 @@
+トライアック商店
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+
+SetAniObj 10,5,7,2,1,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 11,5,6,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 12,5,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,5,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 14,5,3,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 15,5,2,2,1,32,0,114,1,GravJump,BlockShadow;
+
+If CurrentMonth,8,=,:july ;
+If CurrentMonth,9,=,:july_hard ;
+If CurrentMonth,10,=,:aug ;
+If CurrentMonth,11,=,:sep ;
+If CurrentMonth,12,=,:oct ;
+If CurrentMonth,13,=,:octh ;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:july
+
+If Flag[35],1,<,:jevent ;
+OpenMenu 0;
+ChangeMap 223,5,9,6,1;
+End ;
+
+:jevent
+StartEventSkip ;
+Stop 1;
+PlayBGM 2;
+
+MonthTitle ;
+
+SetAniObj 0,3,4,2,0,32,0,199,1,GravJump,0;
+SetCamera 0-200,0-100,1;
+SetCamera 100,50,0;
+NewLine 0,0,:nidukuri ;
+Store MFlag[0],Ret;
+Wait 160;
+SetMes ふ～ん、$nふふ～ん。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 120;
+DelMes 0;
+Wait 120;
+SetObj 1,8,4,2,0,32,0,8,1,GravJump,0;
+SetObjGoal 1,6,4,2;
+PlayWave 9;
+Wait 20;
+SetMes ただいま。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+Kill MFlag[0];
+SetObjDir 0,5;
+SetMes やあ、$nおかえり。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+NewLine 0,0,:nidukuri ;
+Store MFlag[0],Ret;
+Wait 60;
+SetMes 何の準備ですか？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes ああ、$n明日から隣町の$n富豪さんの所に仕事なんだ。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 0;
+SetMes 館が古くなったから、$n取り壊すに当たって$n家具とか不用品の買取を頼まれてね。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 80;
+SetMes そうなんですか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+Kill MFlag[0];
+SetObjDir 0,5;
+DelMes 1;
+SetMes そうそう。$n父さんもトルガンも$n用事らしいから$n店番をお願いしたいんだけど。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 60;
+SetMes 店番ですか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes ちょっと自信ないですけど、$n多分大丈夫です。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes よかった。$n頼んだよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 0;
+ChangeMap 218,11,5,2,0;
+End;
+
+:nidukuri
+Wait 30;
+SetObjDir 0,4;
+Wait 30;
+SetObjDir 0,1;
+Wait 30;
+SetObjDir 0,4;
+Wait 30;
+SetObjDir 0,0;
+Goto :nidukuri ;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:july_hard
+Stop 1;
+PlayBGM 0;
+
+SetObj 0,4,5,2,2,32,0,8,1,GravJump,0;
+SetCamera 120,60,1;
+Wait 60;
+PlayWave 9;
+SetObj 1,8,4,2,0,24,0,1,1,GravJump,0;
+SetObjGoal 1,7,4,2;
+Wait 10;
+SetMes いらっしゃいませ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes あ、レーナさん。$nこんにちは。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes あれ、$nカリスは？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes カリスさんは、$n隣町に泊り込みでお仕事です。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes ああ、留守。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes 何か御用ですか？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes 別に。$nあんたには用無いの。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjGoal 1,8,4,2;
+Wait 24;
+DelObj 1;
+PlayWave 9;
+Wait 90;
+SetMes ・・・・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+
+Wait 20;
+Store Flag[123],0;
+NextMonth ;
+ReturnVillage 1;
+End;
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:aug
+If Flag[39],1,<,:aevent1 ;
+If Flag[39],2,<,:aevent2 ;
+OpenMenu 0;
+ChangeMap 88,3,19,13,1;
+End ;
+
+:aevent1
+StartEventSkip ;
+Stop 1;
+Store Flag[39],1;
+PlayBGM 2;
+
+DelObj 12;
+SetAniObj 0,5,5,2,0,32,0,303,1,GravJump,BlockShadow;
+SetAniObj 1,6,4,2,0,32,0,304,1,GravJump,Wall0;
+SetCamera 32,0,1;
+Wait 20;
+SetMes いてててて･･･。,
+       0,ObjX[0]-16,ObjY[0],ObjZ[0],RightBottom,0;
+Wait 40;
+SetMes 無事で良かったわね・・・,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetObj 2,8,4,2,0,16,0,2,1,GravJump,0;
+SetObjGoal 2,7,4,2;
+PlayWave 9;
+Wait 10;
+SetObjDir 0,4;
+SetObjDir 1,4;
+SetMes お～い。$nあっそっぼ～！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+NewLine 0,0,:open_door;
+SetObj 3,1,2,2,2,24,0,51,1,GravJump,0;
+SetObjGoal 3,3,2,2;
+Wait 40;
+SetObjDir 1,1;
+SetMes あ、ホリィちゃん。$nちょっと待ってて。$nいま準備するから。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 60;
+SetMes うん！$nじゃあ、先に広場で$n待ってるね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetObjGoal 2,8,4,2;
+SetObjGoal 3,1,2,2;
+Wait 16;
+DelObj 2;
+Wait 32;
+DelObj 3;
+Wait 48;
+SetMes あんな子、$nいつからいたの？,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes ん？$nもう３ヶ月ぐらいになるかな。,
+       0,ObjX[0]-16,ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetObjDir 1,5;
+SetMes あんたのとこ、$nいつから保育所になったのよ。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetObjDir 0,0;
+SetMes そういうんじゃ$n無いはずだけど･･･。,
+       0,ObjX[0]-16,ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 245,6,6,3,3;
+End;
+
+
+:aevent2
+Store Flag[39],2;
+Stop 1;
+PlayBGM 48;
+
+SetAniObj 0,4,5,2,0,32,0,137,1,GravJump,0;
+SetAniObj 1,6,4,2,0,32,0,304,1,GravJump,Wall0;
+SetObj 2,7,5,2,0,32,0,8,1,GravJump,0;
+SetCamera 48,16,1;
+
+MapColor 255,0,0,0;
+MonthTitle ;
+Wait 268;
+Store MFlag[4],255;
+:ae2black
+MapColor MFlag[4],0,0,0;
+Wait 1;
+Store MFlag[4],MFlag[4]-8;
+If MFlag[4],0,>,:ae2black;
+MapColor 0,0,0,0;
+
+
+Wait 20;
+SetMes えっと、$nなになに。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes 「かわいいリティスへ。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 「この手紙をあなたが読むころには$n　私はもういないでしょう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 「黒い衣の軍勢が$n　私たちの宝を狙っているのです。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 「宝は大陸の西部、$n　フィーレスという村の地下に$n　隠されています。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 「あの宝は$n　人が触れてよいものでは$n　ありません。$n　宝を守ってください。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 「追伸：$n　母親らしいこと、$n　何一つしてあげられなくて$n　ごめんなさい。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 「あなたの母より。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ずいぶんと走り書きだな。$nよっぽど時間が無かったのか。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes ･･････。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 2;
+SetMes それにしても、$nフィーレスっていったら、$nこの村じゃない･･･。,
+       1,ObjX[1]-16,ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetMes ああ、$n簡単な地図も入ってる。$n教会の中、かな･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 20;
+ChangeMap 329,6,10,10,1;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:sep
+
+StartEventSkip ;
+Stop 1;
+PlayBGM 48;
+
+SetAniObj 0,4,5,2,1,32,0,126,1,GravJump,ShowTurn;
+SetObj 1,6,4,2,0,32,0,56,1,GravJump,0;
+SetCamera 32,0-320,1;
+SetCamera 32,0,0;
+MonthTitle ;
+Wait 340;
+SetMes まあ、$nウワサに聞いただけだけどな。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 60;
+SetMes ふーむ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes じゃあな、$nまた来るよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes ああ、$nありがとう。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjGoal 1,8,4,2;
+Wait 64;
+PlayWave 9;
+DelObj 1;
+Wait 60;
+PlayWave 9;
+SetObj 1,8,5,2,0,24,0,1,1,GravJump,0;
+SetObjGoal 1,7,5,2;
+Wait 20;
+SetMes あ。レーナ。$n朗報だよ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 40;
+SetMes ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+
+ChangeMap 248,11,16,2,1;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:oct
+Stop 1;
+PlayBGM 48;
+SetAniObj 0,4,5,2,0,32,0,137,1,GravJump,0;
+SetObj 1,4,4,2,3,32,0,4,1,GravJump,0;
+SetObj 2,7,5,2,0,32,0,8,1,GravJump,0;
+SetCamera 48,16,1;
+
+Wait 60;
+SetMes まさかこんな形で$n聖石の手がかりが$n手に入るなんて。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes しかし、$nこの場所は・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetMes 何かあるんですか？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjDir 1,2;
+Wait 30;
+SetMes いや、$n別に大したことは無い。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes ・・・少し昔を$n思い出しただけだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 20;
+OpenMenu 0;
+Store Flag[125],4;
+ChangeMap 680,14,7,2,0;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:octh
+
+If Flag[79],1,<,:ohevent ;
+OpenMenu 0;
+ChangeMap 469,4,9,7,1;
+End ;
+
+:ohevent
+
+StartEventSkip ;
+Stop 1;
+PlayBGM 2;
+
+SetObj 0,4,5,2,2,32,0,51,1,GravJump,0;
+SetCamera 128,64,1;
+Wait 20;
+PlayWave 9;
+SetObj 1,8,5,2,0,24,0,1,1,GravJump,0;
+SetObjGoal 1,7,5,2;
+Wait 20;
+SetMes ねぇ、カリス。$nちょっと見て貰いたい物が・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 30;
+SetMes こんにちは！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes ・・・って、$nアレ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes みんな出払ってて、$n留守番してるんだよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes せっかく$n聖石の情報をつかんだのに・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetMes あとで伝えておくよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Store Flag[79],4;
+Wait 20;
+
+ChangeMap 55,7,11,4,1;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:open_door
+PlayWave 9;
+SetMapChip 0,1,2,4;
+SetMapChip 0,1,2,3;
+SetMapChip 0,1,2,2;
+End;

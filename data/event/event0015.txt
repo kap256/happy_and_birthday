@@ -1,0 +1,60 @@
+名も無き遺跡：入り口
+0
+
+Walk    0 -1 :walk ;
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+PlayBGM 4;
+SetAniObj 10,3,4,2,0,32,0,185,1,GravJump,ShowTurn;
+SetAniObj 11,3,7,2,0,32,0,186,1,GravJump,ShowTurn;
+If Flag[0],6,<,:event;
+End;
+:walk
+IfBox 0,10,5,10,6,0,Current+2 ;
+ChangeMap 14,5,ObjSY[0],2,2;
+IfBox 0,1,5,1,6,0,Current+2;
+ChangeMap 11,14,ObjSY[0]-2,2,0;
+End;
+
+:event
+Stop 1;
+Store Flag[0],6;
+StartEventSkip ;
+SetObj 0,7,6,2,3,32,0,0,1,GravJump,1;
+SetObj 1,6,4,2,0,32,0,1,1,GravJump,1;
+SetObj 2,3,5,2,1,32,0,2,1,GravJump,1;
+SetObj 3,4,7,2,0,32,0,3,1,GravJump,1;
+SetCamera 0-120,0-60,1;
+Wait 20;
+SetMes わー。$nかっこいー。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 2;
+SetObjDir 1,1;
+SetMes 古代の遺跡かしらね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetObjDir 0,0;
+SetMes そうみたいだな。$n大分ボロボロだけど。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+SetAniObj 1,6,4,2,4,32,0,159,1,GravJump,1;
+SetMes 昔は今より栄えてたって言うけど、$nこうなってみると$n見る影も無いわね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 20;
+SetObjDir 1,1;
+Wait 20;
+SetObjDir 1,4;
+SetObjDir 0,1;
+Wait 30;
+SetMes そうだな～。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 20;
+ChangeMap 15,6,5,2,0;
+End;

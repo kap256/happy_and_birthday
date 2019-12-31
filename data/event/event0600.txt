@@ -1,0 +1,38 @@
+à‚ê’
+9,18,32,62,80,81
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,6,7,2,Rand,24,10,
+       0,5,
+       80,0,5,
+       14,LPx2 + PUpWOutBig;
+SetEne 2,9,11,4,Rand,24,10,
+       0,5,
+       80,0,5,
+       14,LPx2 + PUpWOutBig;
+SetEne 3,10,16,4,Rand,24,10,
+       0,5,
+       80,0,5,
+       14,LPx2 + PUpWOutBig;
+SetEne 4,15,6,2,Rand,24,10,
+       0,5,
+       80,0,5,
+       14,LPx2 + PUpWOutBig;
+End ;
+
+:walk
+IfBox 0,4,2,4,2,0,Current+2 ;
+ChangeMap 604,3,7,2,1;
+
+IfBox 0,18,9,18,16,0,Current+2 ;
+ChangeMap 603,2,ObjSY[0],ObjSZ[0],2;
+
+IfBox 0,5,1,16,1,0,Current+2 ;
+ChangeMap 598,ObjSX[0],17,ObjSZ[0],1;
+
+End;
+

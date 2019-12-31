@@ -1,0 +1,151 @@
+フィーレス村：出口付近
+22,23,52,53,54
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+StartEventSkip ;
+Stop 1;
+
+SetObjPos 0,1,7,2;
+SetObjView 0,0;
+
+SetObj 1,1,7,2,2,24,0,0,0,GravJump,1;
+SetObj 2,1,6,2,2,24,0,8,0,GravJump,1;
+SetObj 3,12,6,2,0,24,0,61,0,GravJump,1;
+SetObj 4,14,7,2,0,24,0,211,0,GravJump,1;
+SetObj 5,14,5,2,0,24,0,211,0,GravJump,1;
+SetObjGoal 1,10,7,2;
+SetObjGoal 2,5,6,2;
+SetCameraSpeed 14;
+SetCamera 200,100,1;
+SetCamera 400,200,0;
+
+SetWoodObj 10,2,2,2,3,48,0,105,1,1,0;
+SetWoodObj 11,5,3,2,3,48,0,105,1,1,0;
+SetWoodObj 12,8,12,2,3,48,0,105,1,1,0;
+SetWoodObj 13,11,11,2,3,48,0,105,1,1,0;
+
+
+Store MFlag[0],24;
+:walk_speed_loop
+SetObjSpeed 2,MFlag[0];
+Store MFlag[0],MFlag[0]+1;
+Wait 1;
+If MFlag[0],128,<,:walk_speed_loop ;
+Wait 5;
+SetAniObj 2,5,6,2,1,24,0,306,0,GravJump,ShowTurn;
+Wait 10;
+SetObjDir 1,0;
+SetMes ？, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetFadeOut 60;
+SetCamera 320,160,0;
+SetObjGoal 1,7,7,2;
+SetMes どうかした？$nリティス。, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetMes ・・・。, 
+       1,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes やっぱり私、$nきっと死んでしまった方が$nよかったんです。, 
+       1,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+PlayBGM 51;
+Wait 60;
+SetMes ・・・え？, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes 私がいなければ、$nみんな、みんな、$nこんなことには・・・。, 
+       1,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetAniObj 1,7,7,2,1,24,0,104,0,GravJump,ShowTurn;
+SetMes そんなことない！$n卵がこの村にある以上、$nいずれはこうなっていたんだ！, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetObj 2,5,6,2,2,24,0,8,0,GravJump,1;
+SetMes でも、私がいなければ、$n卵も使えなくて、$nあの人たちが来ることも無くて・・・！, 
+       1,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes リティス、$n少し落ち着いて・・・、, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes 母さんも死んだんです！$nきっと卵を守るために・・・！, 
+       1,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes リティス・・・！, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+SetCamera 500,250,0;
+SetObjGoal 3,9,6,2;
+SetObjGoal 4,11,7,2;
+SetObjGoal 5,11,5,2;
+Wait 72;
+PlayBGM 36;
+SetMes おやおや。$nてっきり家の中で縮こまって$n震えてると思ってたのに。, 
+       2,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 30;
+SetAniObj 1,7,7,2,0,24,0,301,0,GravJump,ShowTurn;
+SetMes ！？, 
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 年齢は１２才、$n身長１４９cm、体重４１kg、$n黒髪のショートヘア。$n・・・そうだろう？ 古代人の娘。, 
+       2,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 100;
+SetMes お前らにリティスは$n渡さない！, 
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 30;
+SetMes ガキには興味ないんだよ。$nさっさと娘を置いて消えな、$nボーヤ！, 
+       2,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+EndEventSkip ;
+PlayBGM 16;
+Battle 14;
+StartEventSkip ;
+SetAniObj 3,9,6,2,10,24,0,61,0,GravJump,1;
+Wait 20;
+SetMes こ、んの、$nクソ・・・。 ,
+       2,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetObjDir 3,11;
+DelMes 2;
+Wait 30;
+SetMes ま、まさか、$nジュラ様がやられた！？ ,
+       3,ObjX[4],ObjY[4],ObjZ[4],RightBottom,0;
+Wait 20;
+SetMes い、いったん$n撤退だ！, 
+       4,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 4;
+SetObjGoal 4,16,7,2;
+SetObjGoal 5,16,5,2;
+Wait 30;
+SetMes どうやら結構$n偉いヤツらしいな・・・。$n・・・・・・つッ！, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 30;
+SetAniObj 1,7,7,2,0,24,0,314,0,GravJump,1;
+Wait 10;
+SetObjGoal 2,6,7,2;
+SetObjDir 2,2;
+SetMes カリスさん！, 
+       1,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes そろそろ限界か・・・。$nそいつを捕まえて一旦戻ろう・・・！, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 329,6,4,2,3;
+End;

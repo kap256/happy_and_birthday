@@ -1,0 +1,55 @@
+オーリウェン屋敷
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetAniObj 0,4,3,2,0,32,0,129,1,GravJump,1;
+SetObj 1,3,5,2,1,32,0,5,1,GravJump,1;
+
+SetCamera 0-50,30,1;
+Wait 30;
+SetMes そうですね。$nこのタンスと棚、$n併せて8000Ｍでどうでしょう。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes 構いませんわ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetObj 0,4,3,2,0,32,0,0,1,GravJump,1;
+SetMes ふぅ。$n大分遅くなったな･･･。$nあと何部屋ぐらいあるんです？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+NewLine 0,0,:huri ;
+Store MFlag[0],Ret;
+Wait 0;
+SetMes まだ半分も$n終わっていませんわ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+Kill MFlag[0];
+SetAniObj 0,4,3,2,5,32,0,126,1,GravJump,1;
+SetMes うわぁ･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes 続きは明日にいたしましょう。$n寝床も用意させてありますわ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 60;
+SetObj 0,4,3,2,3,32,0,0,1,GravJump,1;
+SetMes 助かります。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+
+ChangeMap 221,2,5,2,0;
+End;
+:huri
+Wait 20;
+SetObjDir 0,2;
+Wait 20;
+SetObjDir 0,0;
+Wait 20;
+SetObjDir 0,3;
+End;

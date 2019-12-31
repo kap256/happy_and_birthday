@@ -1,0 +1,190 @@
+フィーレス村：広場
+22,23,52,53,54
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+Talk    5 -1 :talk_5 ;
+Talk    6 -1 :talk_6 ;
+
+_END_HEAD_
+:start
+
+EndEventSkip ;
+
+SetPutObj 20,3,13,2,24,157,1;
+SetPutObj 21,3,14,2,24,157,1;
+SetPutObj 22,4,14,2,24,157,1;
+SetPutObj 23,3,14,4,24,157,1;
+SetPutObj 24,3,12,2,24,157,1;
+SetPutObj 25,10,2,2,24,157,1;
+SetPutObj 26,11,2,2,24,157,1;
+SetPutObj 27,11,3,2,24,157,1;
+SetPutObj 28,11,2,4,24,157,1;
+
+If Flag[44],9,>,:no_event ;
+If ShopOK[0],0,=,:no_event ;
+If ShopOK[1],0,=,:no_event ;
+If ShopOK[2],0,=,:no_event ;
+If ShopOK[3],0,=,:no_event ;
+If ShopOK[4],0,=,:no_event ;
+If ShopOK[5],0,=,:no_event ;
+Goto :event ;
+:no_event
+If Flag[44],10,<,:before_init ;
+SetEne 1,6,5,2,Rand,24,40,
+       0,5,
+       22,2,4,
+       13,0;
+SetEne 2,10,12,2,Rand,24,40,
+       0,5,
+       23,2,4,
+       13,0;
+SetEne 3,3,12,4,Rand,24,40,
+       0,5,
+       52,2,4,
+       13,0;
+Goto :init_end ;
+:before_init
+
+SetAniObj 5,10,7,2,15,32,0,316,1,GravJump,ShowTurn+1;
+SetAniObj 6,10,6,2,11,32,0,316,1,GravJump,ShowTurn+1;
+SetPutObj 7,11,6,2,24,158,1+Heavy1;
+SetPutObj 8,11,7,2,24,158,1+Heavy1;
+:init_end
+
+
+::ここに宝箱番号を代入:::::::::::::::::::::::
+Store MFlag[8],164;
+:::::::::::::::::::::::::::::::::::::::::::::
+
+If Box[MFlag[8]],0,>,:box ;
+SetAniObj 10,6,6,3,4,32,0,322,1,GravJump,1;
+Goto :afterbox;
+:box
+SetBox 11,6,6,3,0,MFlag[8];
+:afterbox
+End;
+
+:walk
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 303,14,ObjSY[0]-1,3,0;
+IfBox 0,6,16,7,16,0,Current+2 ;
+ChangeMap 306,ObjSX[0]+4,2,2,3;
+IfBox 0,6,1,7,1,0,Current+2 ;
+ChangeMap 314,ObjSX[0]+12,11,3,1;
+IfBox 0,12,6,12,7,0,Current+2 ;
+ChangeMap 327,2,ObjSY[0]+1,2,2;
+End;
+
+:talk_5
+Stop 3;
+SetMes 簡単ですけど、$nバリケードです。$n少しは時間が稼げるでしょう。,
+       1,ObjX[5],ObjY[5],ObjZ[5]-10,LeftTop,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+:talk_6
+Stop 3;
+SetMes 新年祭用の資材が$nたくさんあって$n助かったぜ・・・。,
+       1,ObjX[6],ObjY[6],ObjZ[6]-10,LeftTop,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+:talk 
+Stop 3;
+SetMes いたた・・・。,
+       1,ObjX[10],ObjY[10],ObjZ[10]-10,LeftTop,0;
+Wait 30;
+SetMes 大丈夫ですか！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 10;
+PlayWave 21;
+SetObjDir 10,ObjDir[10]+8;
+Wait 50;
+SetObj 12,ObjSX[10],ObjSY[10],ObjSZ[10],ObjDir[0]+2,16,0,23,0,GravJump,1;
+DelObj 10;
+SetMes た、助かりました！,
+       1,ObjX[12],ObjY[12],ObjZ[12],LeftTop,0;
+Wait 30;
+SetMes 早く教会へ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+PlayWave 6;
+SetBox 11,ObjSX[12],ObjSY[12],ObjSZ[12]+1,ObjDir[12],MFlag[8];
+Stop 0;
+:::::ここから、村人の避難。:::::::::::::::::::::::::::::::::::::::::::::::::::::::
+SetObjGoal 12,1,6,2;
+Wait 80;
+DelObj 12;
+End;
+
+
+:::::::イベント:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+Store Flag[44],10;
+Stop 1;
+StartEventSkip ;
+
+SetObj 3,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],10,0,0,1,GravJump,0;
+SetObjPos 0,11,7,2;
+SetObjView 0,0;
+
+SetAniObj 1,12,6,2,6,32,0,316,1,GravJump,ShowTurn+1;
+SetAniObj 2,12,7,2,6,32,0,316,1,GravJump,ShowTurn+1;
+SetAniObj 5,10,7,2,15,32,0,316,1,GravJump,ShowTurn+1;
+SetAniObj 6,10,6,2,11,32,0,316,0,GravJump,ShowTurn+1;
+SetPutObj 7,11,6,2,24,158,1+Heavy1;
+SetPutObj 8,11,7,2,24,158,1+Heavy1;
+Wait 20;
+SetMes くそっ！$n持ちこたえられねぇ・・・っ！,
+       1,ObjX[6],ObjY[6],ObjZ[6]-10,LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetObjDir 3,5;
+Wait 4;
+PlayWave 17;
+SetObjDir 1,6;
+SetAniObj 6,10,6,2,0,10,0,57,0,GravJump,ShowTurn+1;
+SetObjGoal 6,9,6,2;
+SetObjGoal 7,10,6,2;
+Wait 4;
+SetObjDir 1,7;
+Wait 30;
+SetObj 1,12,6,2,0,32,0,211,0,GravJump,1;
+SetObj 2,12,7,2,0,32,0,211,0,GravJump,1;
+NewLine 0,0,:black_walk ;
+SetMes ここまでか・・・。$nいったん引くぞ！,
+       1,ObjX[5],ObjY[5],ObjZ[5]-10,RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObj 5,10,7,2,2,16,0,56,0,GravJump,1;
+SetObj 6,9,6,2,2,16,0,57,0,GravJump,1;
+SetObjGoal 5,1,7,2;
+SetObjGoal 6,1,6,2;
+Wait 60;
+ChangeMap 305,ObjSX[3],ObjSY[3],ObjSZ[3],ObjDir[3];
+End;
+:black_walk
+SetObjGoal 1,11,6,2;
+SetObjGoal 2,12,6,2;
+Wait 60;
+SetObjGoal 1,11,5,2;
+SetObjGoal 2,11,6,2;
+Wait 60;
+SetObjGoal 1,10,5,2;
+SetObjGoal 2,11,5,2;
+Wait 60;
+SetObjGoal 1,9,5,2;
+SetObjGoal 2,10,5,2;
+SetObjDir 1,3;
+End;

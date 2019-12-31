@@ -1,0 +1,46 @@
+#included
+:fire_tikuwa_start
+
+Store MFlag[21],11;
+
+Store MFlag[16],0;
+:fire_tikuwa_loop_x
+Store MFlag[17],1;
+:fire_tikuwa_loop_y
+Store MFlag[18],MFlag[8];
+:fire_tikuwa_loop_z
+GetMapChip MFlag[20],MFlag[16],MFlag[17],MFlag[18];
+If 4,MFlag[20],!=,:fire_tikuwa_loop_after ;
+SetLiftObj MFlag[21],MFlag[16],MFlag[17],MFlag[18]-1,0,32,0,MFlag[10],NoShadow;
+Store MFlag[21],MFlag[21]+1;
+If MFlag[21],79,>,:fire_tikuwa_exit ;
+
+:fire_tikuwa_loop_after
+Store MFlag[18],MFlag[18]+1;
+If MFlag[18],MFlag[8]+4,<,:fire_tikuwa_loop_z ;
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],MapY,<,:fire_tikuwa_loop_y ;
+Store MFlag[16],MFlag[16]+1;
+If MFlag[16],MapX,<,:fire_tikuwa_loop_x ;
+
+:fire_tikuwa_exit
+Store MFlag[24],80 ;
+End;
+
+:fire_tikuwa_hit
+
+If ParamB,10,<,:fire_tikuwa_no_hit ;
+If ParamB,79,>,:fire_tikuwa_no_hit ;
+PlayWave 12;
+Store ParamA,MFlag[24];
+Store MFlag[24],k[MFlag[24]+1-80]%16+80;
+SetLiftObj ParamA,ObjSX[ParamB],ObjSY[ParamB],ObjSZ[ParamB],0,32,0,MFlag[10],NoShadow;
+DelObj ParamB;
+Wait MFlag[9];
+PlayWave 17;
+SetObj ParamA,ObjSX[ParamA],ObjSY[ParamA],ObjSZ[ParamA],0,32,0,MFlag[10],1,GravJump,NoShadow;
+Wait 60;
+DelObj ParamA;
+:fire_tikuwa_no_hit
+End;
+

@@ -1,0 +1,30 @@
+•ó‚Ì“´ŒAF“ü‚èŒû
+11,12,15,37
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 4;
+SetEne 1,5,4,2,2,48,10,
+       0,5,
+       11,4,4,
+       2,0;
+SetPutObj 10,5,3,2,24,310,1;
+SetPutObj 11,6,3,2,24,310,1;
+SetPutObj 12,6,4,2,24,310,1;
+SetPutObj 13,6,6,2,24,310,1;
+SetPutObj 14,7,6,2,24,310,1;
+SetPutObj 15,3,4,2,24,310,1;
+SetPutObj 16,2,5,2,24,310,1;
+End;
+
+:walk
+IfBox 0,10,4,10,5,0,Current+2 ;
+ChangeMap 59,3,ObjSY[0],3,2;
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 74,ObjSX[0]-1,8,7,1;
+
+End;

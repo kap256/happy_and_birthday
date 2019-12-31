@@ -1,0 +1,30 @@
+ƒ}ƒ‹ƒS‚Ì— RF“ì
+7,26,27,35,58
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+SetEne 1,10,7,2,Rand,24,5,
+       0,7,
+       49,20,6,
+       2,0;
+SetEne 2,12,7,2,Rand,24,100,
+       0,3,
+       48,20,4,
+       2,0;
+
+Goto :fire_start ;
+
+:walk
+IfBox 0,11,1,11,1,0,Current+2 ;
+ChangeMap 666,11,14,3,1;
+
+IfBox 0,1,10,1,10,0,Current+2 ;
+ChangeMap 669,14,10,3,0;
+IfBox 0,13,15,13,15,0,Current+2 ;
+ChangeMap 671,4,2,2,3;
+
+End;

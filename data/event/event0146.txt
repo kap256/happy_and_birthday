@@ -1,0 +1,84 @@
+アーゲリオ農場
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+
+Stop 1;
+
+SetAniObj 11,5,6,2,1,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 12,4,6,2,0,32,0,115,1,GravJump,2+BlockShadow;
+SetAniObj 13,4,7,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 14,5,7,2,0,32,0,114,1,GravJump,2+BlockShadow;
+SetHAObj  15,1,4,2,0,32,0,317,1,GravJump,2+BlockShadow;
+
+SetObjPos 0,4,4,2;
+SetObjView 0,0;
+Wait 20;
+PlayWave 9;
+SetObj 2,7,4,2,0,32,0,1,0,GravJump,1;
+SetObjGoal 2,6,4,2;
+Wait 32;
+SetObj 1,7,4,2,0,32,0,0,0,GravJump,1;
+SetObjGoal 1,6,4,2;
+SetObjGoal 2,6,3,2;
+SetObjDir 2,0;
+Wait 32;
+SetMes おじさーん。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 30;
+SetMes こら！クロット！$n待ちやがれ！,
+       3,ObjX[15],ObjY[15],ObjZ[15],RightBottom,0;
+Wait 30;
+SetMes やだね～！,
+       4,ObjX[15]+16,ObjY[15],ObjZ[15],LeftTop,0;
+Wait 60;
+DelMes 3;
+DelMes 4;
+PlayWave 9;
+SetObjView 15,0;
+SetObj 4,1,4,2,2,8,0,10,0,GravJump,1;
+SetObjGoal 4,6,4,2;
+SetCamera 40,20,0;
+SetCameraSpeed 14;
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+DelMes 1;
+PlayWave 17;
+SetAniObj 1,6,4,2,0,8,0,125,0,GravJump,1;
+SetAniObj 4,6,4,2,4,8,0,125,0,GravJump,ShowTurn;
+SetObjGoal 1,7,4,2;
+SetObjGoal 4,5,4,2;
+SetObjDir 2,3;
+Wait 8;
+SetObjDir 1,1;
+SetObjDir 4,5;
+Wait 20;
+SetMes つてて・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightTop,0;
+Wait 10;
+SetMes いってぇ～・・・。,
+       4,ObjX[4],ObjY[4],ObjZ[4]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 4;
+SetObj 3,1,4,2,2,16,0,36,0,GravJump,1;
+SetObjGoal 3,2,4,2;
+SetObjDir 2,0;
+Wait 16;
+SetMes おっしゃあ！$nおめーら$nナイスタイミング！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 30;
+SetMes 何事よ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 2;
+Wait 20;
+ChangeMap 147,6,4,2,0;
+

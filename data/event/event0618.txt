@@ -1,0 +1,23 @@
+ómäŸÅFíÜíÎ
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetWoodObj 10,3,3,3,1,48,0,105,1,1,0;
+SetWoodObj 11,9,3,3,1,48,0,105,1,1,0;
+SetWoodObj 12,3,9,3,1,48,0,105,1,1,0;
+SetWoodObj 13,9,9,3,1,48,0,105,1,1,0;
+
+SetWoodObj 14,6,5,3,1,48,0,105,1,1,0;
+SetWoodObj 15,7,6,3,1,48,0,105,1,1,0;
+SetWoodObj 16,6,7,3,1,48,0,105,1,1,0;
+SetWoodObj 17,5,6,3,1,48,0,105,1,1,0;
+End ;
+
+:walk
+IfBox 0,1,6,1,6,0,Current+2 ;
+ChangeMap 611,7,15,2,0;
+End;

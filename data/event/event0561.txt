@@ -1,0 +1,33 @@
+êXó—ÅFÇP
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest.txt
+:start
+SetObj 1,4,6,2,3,32,0,187,1,GravJump,1;
+SetObj 2,4,8,2,2,32,0,187,1,GravJump,1;
+SetObj 3,6,8,2,2,32,0,187,1,GravJump,1;
+SetObj 4,8,8,2,3,32,0,187,1,GravJump,1;
+SetObj 5,8,10,2,0,32,0,187,1,GravJump,1;
+SetObj 6,6,10,2,3,32,0,187,1,GravJump,1;
+SetObj 7,6,12,2,3,32,0,187,1,GravJump,1;
+SetBox 8,8,6,2,3,316;
+Store MFlag[8],22;
+Store MFlag[9],3;
+Goto :forest_init;
+End ;
+
+:walk
+IfBox 0,6,16,7,16,0,Current+2 ;
+ChangeMap 562,ObjSX[0]-1,2,2,3;
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 560,ObjSX[0]+4,9,2,1;
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 561,11,ObjSY[0],2,0;
+IfBox 0,12,6,12,7,0,Current+2 ;
+ChangeMap 561,2,ObjSY[0],2,2;
+
+End;

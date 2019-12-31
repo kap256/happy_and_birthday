@@ -1,0 +1,63 @@
+フィーレス村：広場
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+:start
+
+Stop 1;
+
+SetAniObj 0,6,11,2,5,32,0,375,1,GravJump,0;
+
+SetObj 10,5,7,3,3,32,0,4,0,GravJump,0;
+SetObj 11,6,7,3,3,32,0,2,0,GravJump,0;
+SetObj 12,7,7,3,3,32,0,11,0,GravJump,0;
+SetObj 13,5,6,3,3,32,0,10,0,GravJump,0;
+SetObj 14,6,6,3,3,32,0,5,0,GravJump,0;
+SetObj 15,5,5,3,3,32,0,6,0,GravJump,0;
+
+SetObj 1,5,10,2,3,32,0,0,0,GravJump,0;
+SetObj 2,7,11,2,0,32,0,8,0,GravJump,0;
+SetAniObj 3,6,12,2,1,32,0,323,1,GravJump,ShowTurn;
+Wait 30;
+SetMes これ、$n何なんですか？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 50;
+SetMes シャシンキだヨ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 0;
+DelMes 2;
+SetMes シャシンキ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes 古代文明の遺物で、$n何でも、見たまんまの絵が$nすぐできるらしいヨ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 0;
+DelMes 1;
+SetMes へぇ～。$nすごいですね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 50;
+SetMes ほら、$n並ぶネ、並ぶネ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 0;
+SetObjGoal 1,5,0,2;
+SetObjGoal 2,7,0,2;
+DelMes 2;
+DelMes 1;
+DelMes 3;
+:black_loop
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0], MFlag[0]+8;
+If MFlag[0],255,<,:black_loop ;
+MapColor 255,0,0,0;
+Wait 20;
+SetMes それじゃ、撮るアルヨ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 90;
+DelMes 3;
+Wait 60;
+ChangeMap 708,2,2,2,2;
+End;

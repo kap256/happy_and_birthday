@@ -1,0 +1,81 @@
+フィーレス地下迷宮
+22,23,52,53,54
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+SetAniObj 20,1,4,2,0,16,0,349,1,GravJump,1;
+
+SetAniObj 0,8,3,2,1,16,0,130,1,GravJump,Wall1;
+SetAniObj 1,8,2,2,0,32,0,352,0,GravJump,Wall1;
+SetAniObj 2,9,4,2,4,32,0,352,0,GravJump,ShowTurn;
+SetAniObj 3,3,2,2,4,32,0,352,0,GravJump,ShowTurn;
+SetAniObj 4,6,3,2,4,32,0,352,0,GravJump,0;
+SetAniObj 5,11,3,2,4,32,0,352,0,GravJump,ShowTurn;
+Stop 1;
+Wait 30;
+SetMes ・・・あ、ああ、$nた、・・・助けて・・・。,
+       1,ObjX[1],ObjY[1]-16,ObjZ[1],LeftBottom,0;
+Wait 50;
+SetMes ・・・そう。$nそんなに死にたくないの。,
+       0,ObjX[0],ObjY[0]-16,ObjZ[0],RightTop,0;
+Wait 0;
+SetMes でも、ダメ。,
+       0,ObjX[0],ObjY[0]-16,ObjZ[0],RightTop,0;
+SetObjDir 0,0;
+Wait 4;
+SetObjDir 0,4;
+PlayWave 16;
+Wait 4;
+SetAniObj 0,8,3,2,8,16,0,349,1,GravJump,Wall1;
+SetObjDir 1,1;
+SetMes ぐあっ！,
+       1,ObjX[1],ObjY[1]-16,ObjZ[1],LeftBottom,0;
+Wait 4;
+SetObjDir 1,5;
+Wait 0;
+DelMes 1;
+DelMes 0;
+SetAniObj 0,8,3,2,4,16,0,349,1,GravJump,Wall1+ShowTurn;
+Wait 30;
+SetMes ・・・あのとき、$n私も怖かったんだから。,
+       0,ObjX[0],ObjY[0]-16,ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+PlayWave 36;
+SetCamera 2,0,1;
+Wait 1;
+SetCamera 0-2,0,1;
+Wait 1;
+SetCamera 2,0,1;
+SetMes ！,
+       0,ObjX[10],ObjY[10]-16,ObjZ[10],RightTop,0;
+SetObjView 0,0;
+SetObj 10,8,3,2,2,24,0,1,1,GravJump,Wall1+1;
+Wait 1;
+SetCamera 0-2,0,1;
+Wait 1;
+SetCamera 2,0,1;
+Wait 1;
+SetCamera 0-2,0,1;
+Wait 1;
+SetCamera 0,0,1;
+Wait 0;
+SetMes 今の音は・・・？$n・・・あっちからかしら。,
+       0,ObjX[10],ObjY[10]-16,ObjZ[10],RightTop,0;
+Wait 0;
+DelMes 0;
+SetObjGoal 10,15,3,2;
+:black
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]+8;
+If MFlag[0],255,<,:black ;
+Store Flag[83],20;
+ChangeMap 536,4,5,2,1;
+
+End ;
+
+

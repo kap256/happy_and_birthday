@@ -1,0 +1,27 @@
+å∂éãÇÃñ¿ã{ÅFçsÇ´é~Ç‹ÇË
+27,28,29,30
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetEne 1,4,4,4,2,32,0,
+       0,0,
+       6,0,8,
+       22,PUpLeaderOnly + LPx3 + POWx15;
+SetEne 2,13,4,4,0,32,0,
+       0,0,
+       67,0,8,
+       22,0;
+
+SetBox 10,2,4,5,2,293;
+SetBox 11,15,4,5,0,294;
+End;
+
+:walk
+IfBox 0,8,7,9,7,0,Current+2 ;
+ChangeMap 511,ObjSX[0]-4,2,7,3;
+
+End;

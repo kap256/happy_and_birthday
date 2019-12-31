@@ -1,0 +1,181 @@
+アイアンウォール
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:church
+ChangeMap 423,4,5,2,1;
+End;
+
+:start
+Stop 1;
+
+If CurrentMonth,14,=,:church ;
+If CurrentMonth,15,=,:church ;
+If Month,12,=,:church ;
+
+
+SetAniObj 11,5,4,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 12,6,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,7,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 14,8,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 15,9,4,2,5,32,0,114,1,GravJump,BlockShadow;
+
+SetAniObj 16,5,5,2,4,32,0,114,1,GravJump,BlockShadow+ShowTurn;
+SetAniObj 17,5,6,2,0,32,0,115,1,GravJump,BlockShadow+ShowTurn;
+SetAniObj 18,5,7,2,0,32,0,115,1,GravJump,BlockShadow+ShowTurn;
+SetAniObj 19,5,8,2,5,32,0,114,1,GravJump,BlockShadow+ShowTurn;
+
+SetObj    20,6,6,2,0,32,0,21,1,GravJump,0;
+SetCamera 80,40,1;
+
+Wait 1;
+SetMes いらっしゃい。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes 他に用はあるかな？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+Shop 4,1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+
+If Month,11,=,:nov ;
+If Month,10,=,:oct ;
+If Month,9,=,:sep ;
+If Month,8,=,:aug ;
+If Month,7,=,:sep ;
+If Month,6,=,:june ;
+If Month,5,=,:march ;
+If Month,4,=,:march ;
+If Month,3,=,:april ;
+If Month,2,=,:feb ;
+
+SetMes 商品の詳しい説明は、$nメニューボタンで見られるよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes そもそも、$n商品ほとんど無いけどね。$nははは。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:feb
+SetMes 新しい商品を$n入荷したんだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 打撃に特化した$nチェインメイル、$n魔法に特化した$nローブの二種類だよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 武器と違って、$n気軽には着替えられないから$nよく考えて装備してね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:march
+SetMes 思うんだけどさ、$nこの村の人ってなんというか$n自己顕示欲が強いよね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes みんなして店の名前に$n自分の名前を入れてるじゃない。$nジョーイさんとか、リーリンさんとか。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 最近来た異国の人は$n珍しく$n自分の名前は入れてないけど、$nあんな目立つ格好してるしさ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 少しは僕みたいに$nつつましく生きてみようとは$n思わないものかなぁ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:april
+SetMes 新しい商品を$n入荷したんだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 魔法の力を宿した$n軽鎧が二つ。$n似てるけど微妙に違うんだよね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes ちょっと高いけど、$n命には代えられないよ。$nお金があるなら買っていってね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:june
+SetMes 新しい商品を$n入荷したんだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 軽くて動きやすい鎧だね。$n誰に着せても$nよく似合うよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes もちろん、とっても丈夫だよ。$n買っていってね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:aug
+SetMes 新しい商品を$n入荷したんだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 風に強い軽鎧と、$n土に強い軽鎧の$n二種類だよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 単純な防御力も$nバッチリだよ。$n買っていってね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+
+:sep
+SetMes 新しい商品を$n入荷したんだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 恒例の、$n打撃特化と魔法特化の$n二種類だよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 自分にあわせて身につければ$n効果バツグンだよ。$n買っていってね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:oct
+SetMes 今月は、$n新商品は無しだよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes やっぱり、$n新商品がないと$nあんまり見に来てくれないね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+End;
+
+:nov
+SetMes 新しい商品を$n入荷したんだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes 魔法の結界をつくる、$n不思議な道具だよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes なんか、$nもう服とはかけ離れちゃって$nちょっとさびしいけど。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+End;

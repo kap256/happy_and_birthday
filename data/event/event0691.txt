@@ -1,0 +1,24 @@
+H‚ÌRF“´ŒA
+58,59
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 4;
+
+SetEne 1,3,5,3,3,32,0,
+       0,0,
+       58,0,8,
+       2,0;
+
+SetBox 10,3,3,4,3,371;
+End;
+
+
+:walk
+IfBox 0,10,7,10,7,0,Current+2;
+ChangeMap 690,7,3,3,2;
+End;

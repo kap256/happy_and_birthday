@@ -1,0 +1,46 @@
+ódê∏ÇÃêX
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+:::::::::::::::::::êAó—
+Store MFlag[0],10;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::êAó—èIÇÌÇË
+
+If Flag[14],8,<,:fairy ;
+End;
+:fairy
+SetObj 1,6,8,3,1,10,0,42,1,GravLock,1;
+SetObjGoal 1,6,1,3;
+Wait 70;
+DelObj 1;
+End ;
+
+:walk
+IfBox 0,3,10,4,10,0,Current+2 ;
+ChangeMap 126,ObjSX[0]+12,2,3,3;
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 128,ObjSX[0]-1,14,2,1;
+End;

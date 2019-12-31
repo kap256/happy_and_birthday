@@ -1,0 +1,44 @@
+H‚ÌRF“´ŒA
+0,58,59
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 4;
+
+SetEne 1,2,16,10,Rand,32,10,
+       0,5,
+       58,0,4,
+       2,0;
+SetEne 2,4,8,7,Rand,32,10,
+       0,5,
+       59,0,4,
+       2,0;
+SetEne 3,13,10,2,Rand,32,10,
+       0,5,
+       58,0,4,
+       2,0;
+SetEne 4,17,4,7,Rand,32,10,
+       0,5,
+       59,0,4,
+       2,0;
+
+SetBox 10,7,2,10,3,373;
+
+End;
+
+
+:walk
+IfBox 0,9,23,9,23,0,Current+2;
+ChangeMap 690,4,19,26,2;
+IfBox 0,25,13,25,13,0,Current+2;
+ChangeMap 690,9,10,11,2;
+
+IfBox 0,7,13,7,13,0,Current+2;
+ChangeMap 693,3,10,4,2;
+IfBox 0,22,5,22,5,0,Current+2;
+ChangeMap 693,16,2,6,3;
+End;

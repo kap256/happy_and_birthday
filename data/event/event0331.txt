@@ -1,0 +1,30 @@
+ピラミッド：右の回廊
+36,56,57
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne   1,7,17,2,3,32,0,
+         0,4,
+         36,2,4,
+         11,0;
+SetEne   2,11,13,2,3,32,0,
+         0,4,
+         36,2,4,
+         11,0;
+SetEne   3,11,6,2,3,32,0,
+         0,4,
+         36,2,4,
+         11,0;
+End;
+
+:walk
+IfBox 0,15,16,15,17,0,Current+2 ;
+ChangeMap 332,2,ObjSY[0]-11,2,2;
+IfBox 0,2,20,3,20,0,Current+2 ;
+ChangeMap 330,ObjSX[0]+4,2,2,3;
+IfBox 0,11,1,12,1,0,Current+2 ;
+ChangeMap 335,ObjSX[0]+11,5,10,1;
+End;

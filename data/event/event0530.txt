@@ -1,0 +1,19 @@
+フィーレス地下迷宮：不動の鎧
+66
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetEneL 1,4,6,3,3,32,0,
+        0,0,48;
+SetBox 5,4,2,3,3,303;
+End;
+
+:walk
+IfBox 0,4,13,4,13,0,Current+2 ;
+ChangeMap 524,5,2,2,3;
+
+End;

@@ -1,0 +1,29 @@
+Œ¶‹‚Ì–À‹{Fò‚Ì–³‚¢ŠK’i
+27,28,29,30,46
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetEne 1,3,5,8,Rand,32,4,
+       1,3,
+       46,0,8,
+       22,0;
+SetEne 2,6,6,5,Rand,32,4,
+       1,3,
+       46,0,8,
+       22,0;
+End;
+
+:walk
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 517,ObjSX[0]+4,6,2,1;
+
+IfBox 0,3,11,3,11,0,Current+2 ;
+ChangeMap 510,3,2,2,3;
+IfBox 0,6,11,6,11,0,Current+2 ;
+ChangeMap 512,5,2,2,3;
+
+End;

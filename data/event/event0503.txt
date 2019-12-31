@@ -1,0 +1,33 @@
+Œ¶‹‚Ì–À‹{Fè¥˜H
+27,28,29,30
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,2,3,2,Rand,32,2,
+       1,4,
+       46,0,6,
+       22,0;
+SetEne 2,8,4,2,Rand,32,2,
+       1,4,
+       46,0,6,
+       22,0;
+SetEne 3,14,8,2,Rand,32,2,
+       1,4,
+       46,0,6,
+       22,0;
+SetEne 4,7,4,4,Rand,32,2,
+       1,4,
+       46,0,6,
+       22,0;
+
+End;
+
+:walk
+IfBox 0,16,5,16,5,0,Current+2 ;
+ChangeMap 504,2,7,2,2;
+IfBox 0,1,7,1,7,0,Current+2 ;
+ChangeMap 502,15,19,2,0;
+End;

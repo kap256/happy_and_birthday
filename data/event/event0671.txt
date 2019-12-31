@@ -1,0 +1,22 @@
+マルゴの裏山：ドラゴン
+48
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+SetEne 1,4,4,3,1,24,0,
+       0,0,
+       48,20,8,
+       2,LPx2;
+
+SetBox 5,4,6,4,1,357;
+Goto :fire_start ;
+
+:walk
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 668,13,14,2,1;
+
+End;

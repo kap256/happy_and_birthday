@@ -1,0 +1,50 @@
+フィーレス地下迷宮：第一層
+56,57
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,12,12,2,2,40,0,
+       0,0,
+       66,4,1,
+       5,0;
+
+SetEne 2,14,3,2,Rand,40,5,
+       0,5,
+       36,0,4,
+       5,0;
+SetEne 3,3,11,2,Rand,40,5,
+       0,5,
+       36,0,4,
+       5,0;
+SetEne 4,14,18,2,Rand,40,5,
+       0,5,
+       36,0,4,
+       5,0;
+SetEne 5,6,12,2,Rand,40,5,
+       0,5,
+       36,0,4,
+       5,0;
+SetEne 6,12,6,2,Rand,40,5,
+       0,5,
+       36,0,4,
+       5,0;
+
+SetBox 20,9,12,2,2,197;
+
+End;
+
+:walk
+IfBox 0,21,12,21,16,0,Current+2 ;
+ChangeMap 354,2,ObjSY[0]-10,2,2;
+
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 361,ObjSX[0]+5,9,2,1;
+
+IfBox 0,3,21,4,21,0,Current+2 ;
+ChangeMap 351,ObjSX[0],2,2,3;
+
+End;

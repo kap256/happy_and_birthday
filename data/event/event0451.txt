@@ -1,0 +1,113 @@
+南の森：休憩所
+2,5,8,10
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest.txt
+:start
+Store MFlag[8],22;
+Store MFlag[9],3;
+
+If Flag[73],8,<,:event ;
+PlayBGM 6;
+SetBox 5,5,2,2,3,258;
+SetBox 6,4,2,2,3,259;
+EndEventSkip ;
+Goto :forest_init ;
+
+:walk
+IfBox 0,9,5,9,6,0,Current+2 ;
+ChangeMap 449,2,ObjSY[0]+3,6,2;
+IfBox 0,1,3,1,4,0,Current+2 ;
+ChangeMap 452,14,ObjSY[0]+10,2,0;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip;
+Stop 1;
+PlayBGM 53;
+SetAniObj 0,5,4,2,0,24,0,337,1,GravJump,1;
+NewLine 0,0,:event2 ;
+NewLine 0,0,:leaf ;
+Store MFlag[0],Ret;
+SetCamera 50,0-200,1;
+SetCamera 50,70,0;
+Goto :forest_init ;
+
+:event2
+Wait 320;
+SetObj 2,9,5,2,0,24,0,2,1,GravJump,1;
+SetObjGoal 2,8,5,2;
+Wait 50;
+SetMes あ、$n教会のフィルミナさん、$nこんにちは。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 30;
+Kill MFlag[0];
+Wait 1;
+SetObjDir 0,1;
+Wait 20;
+SetObjDir 0,5;
+Wait 40;
+SetMes あら、ホリィ。$nこんにちは。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes こんなところで$n何してるの？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 40;
+SetMes ああ、$n薬になる草を$n摘みに来たの。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes アーゲリオさんにも$n頼んであるのだけれど、$n少し不足していて。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes へぇ～。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+SetMes ところで、$nレーナ見なかった？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 40;
+SetMes ・・・レーナ？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 90;
+SetMes ・・・あまり詮索するのは$n良くないわよ。$n誰にでも秘密は$nあるでしょう？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes え～。$n苦労して来たのに。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 0;
+SetMes ぶー、ぶー。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 60;
+SetMes ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 30;
+SetMes ・・・仕方ないのね。$nでも、危ないから私もついて行くわ。$nいいでしょう？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes やったー。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+Store Flag[73],8;
+SetParty 11;
+ChangeMap 451,5,4,2,0;
+End;
+
+:leaf
+Wait 40;
+SetObjDir 0,4;
+Wait 40;
+SetObjDir 0,0;
+Goto :leaf ;
+End;

@@ -1,0 +1,19 @@
+フィーレス地下迷宮：双竜の弓
+27,28,29,30,46
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetEneL 1,4,4,4,2,32,0,
+        0,0,43;
+SetBox 5,2,4,5,2,298;
+End;
+
+:walk
+IfBox 0,13,4,13,4,0,Current+2 ;
+ChangeMap 523,2,13,11,2;
+
+End;

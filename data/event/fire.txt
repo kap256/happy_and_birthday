@@ -1,0 +1,24 @@
+#included
+:fire_start
+Wait Rand%60 + 5;
+If Rand%8,0,=,:fire_hard ;
+PlayWave 22;
+Store MFlag[16],4;
+Goto :fire_cloop ;
+
+:fire_hard
+PlayWave 36;
+Store MFlag[16],12;
+Goto :fire_cloop ;
+
+:fire_cloop
+SetCamera MFlag[16],0,1;
+Wait 1;
+SetCamera 0-MFlag[16],0,1;
+Wait 1;
+Store MFlag[16],MFlag[16]-1;
+If MFlag[16],0,>,:fire_cloop ;
+SetCamera 0,0,1;
+Goto :fire_start ;
+
+

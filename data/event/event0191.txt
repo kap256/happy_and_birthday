@@ -1,0 +1,149 @@
+ピラミッド：小部屋
+0
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk ;
+
+_END_HEAD_
+:start
+If Flag[20],30,<,:event ;
+If Flag[20],30,=,:event2 ;
+EndEventSkip ;
+PlayBGM 13;
+SetAniObj 1,2,4,2,14,32,0,51,1,GravJump,ShowTurn;
+End;
+
+:walk
+IfBox 0,3,6,4,6,0,Current+2 ;
+ChangeMap 190,ObjSX[0]+2,13,2,3;
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 330,ObjSX[0]+1,11,2,1;
+End;
+
+:talk
+Stop 1;
+SetMes おとうさん、$nお金なくて大変だって、$nいつも言ってたけど・・・,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+SetMes 今度、$nおいしいものたくさん$n食べさせてくれるんだって。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+SetMes 楽しみだな。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End ;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+Store Flag[20],30;
+StartEventSkip ;
+PlayBGM 43;
+Stop 1;
+SetAniObj 0,5,3,2,15,32,0,51,1,GravJump,1;
+Wait 20;
+SetMes あぐぅ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-16,RightBottom,0;
+Wait 0;
+DelMes 0;
+SetCamera 0-120,40,0;
+Wait 30;
+SetObj 1,3,6,2,1,20,0,0,0,GravJump,0;
+SetObj 2,3,6,2,1,32,0,8,0,GravJump,1;
+SetObj 3,4,6,2,1,24,0,4,0,GravJump,1;
+SetObjGoal 1,3,4,2;
+SetObjGoal 2,3,5,2;
+SetObjGoal 3,4,5,2;
+SetObjDir 1,2;
+SetObjDir 2,2;
+SetObjDir 3,2;
+Wait 48;
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetObjGoal 1,4,3,2;
+SetObjGoal 2,3,4,2;
+SetObjGoal 3,5,4,2;
+SetObjDir 1,2;
+SetObjDir 2,2;
+SetObjDir 3,1;
+SetCamera 0-60,40,0;
+SetMes 大丈夫！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes ぐぅ～・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-16,LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetMes おなか・・・が・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-16,LeftBottom,0;
+Wait 60;
+SetObjDir 3,0;
+SetMes リティス、$n確か干し肉があっただろう。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 40;
+SetMes あ、はい！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+DelMes 3;
+Wait 20;
+ChangeMap 191,10,4,2,1;
+End;
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+Store Flag[20],34;
+Stop 1;
+SetAniObj 0,2,4,2,14,32,0,51,1,GravJump,ShowTurn;
+SetObj 1,3,3,2,3,20,0,0,0,GravJump,0;
+SetObj 2,2,5,2,1,32,0,8,0,GravJump,1;
+SetObj 3,4,4,2,0,24,0,4,0,GravJump,1;
+SetCamera 50,50,1;
+Wait 20;
+SetMes はうぅ・・・。$nおいし～・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 40;
+SetMes よかったよかった。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetMes しかし、何故$nこんなところに？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 40;
+SetMes おとうさんと一緒に、$nここに住んでるんだよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 0;
+SetMes おとうさん・・・？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 30;
+SetMes ひょっとして・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes ・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+DelMes 0;
+SetMes ・・・そのお父さんに$n用があって来たのだがね。$n何処に居るか分かるかい？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 60;
+SetMes あ、$n待ち合わせしてるっていう$nひとだね。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 0;
+SetMes 待ち・・・？$nああ、そうだよ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 40;
+SetMes おとうさんなら、$nもっと奥で待ってるよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 0;
+Wait 20;
+ChangeMap 191,4,4,2,1;
+End;

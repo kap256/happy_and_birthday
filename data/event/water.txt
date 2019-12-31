@@ -1,0 +1,13 @@
+#included
+:water_init
+If Flag[28],1,<,:water_init_end ;
+ChangeAllChip 4,60;
+ChangeAllChip 6,240;
+If Flag[28],2,<,:water_init_end ;
+ChangeAllChip 5,60;
+ChangeAllChip 7,240;
+:water_init_end
+End ;
+
+
+

@@ -1,0 +1,49 @@
+フィーレス地下迷宮：飛翔
+7,9,10,16
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+SetLiftObj 1,5,10,7,0,24,0,173,BlockShadow;
+SetLiftObj 2,6,9,7,0,16,0,173,BlockShadow;
+SetLiftObj 3,6,4,7,0,24,0,173,BlockShadow;
+
+SetNormalTrap 5,5,9,9,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 6,6,7,9,176,20,0,50,27,NoShadow+ShowTurn;
+
+:loopx
+Store MFlag[1],0;
+:loopy
+SetNormalTrap MFlag[0]*9+MFlag[1]+10,MFlag[0]+3,MFlag[1]+4,2,176,40,20,20,27,NoShadow+ShowTurn;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],9,<,:loopy ;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],7,<,:loopx ;
+
+
+:lift
+SetObjGoal 1,5,12,7;
+SetObjGoal 2,7,9,7;
+SetObjGoal 3,6,6,7;
+Wait 16;
+SetObjGoal 2,7,7,7;
+Wait 104;
+SetObjGoal 1,5,10,7;
+SetObjGoal 2,7,9,7;
+SetObjGoal 3,6,4,7;
+Wait 32;
+SetObjGoal 2,6,9,7;
+Wait 88;
+Goto :lift ;
+End;
+
+:walk
+IfBox 0,3,16,4,16,0,Current+2 ;
+ChangeMap 114,ObjSX[0]+1,2,2,3;
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 116,15,26,2,1;
+End;

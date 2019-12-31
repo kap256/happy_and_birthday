@@ -1,0 +1,15 @@
+—mŠÙFLŠÔ
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetBox 1,6,6,2,0,326;
+End ;
+
+:walk
+IfBox 0,1,6,1,6,0,Current+2 ;
+ChangeMap 610,7,15,2,0;
+End;

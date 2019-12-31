@@ -1,0 +1,296 @@
+マルゴ火山：山頂
+50
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+StartEventSkip ;
+Stop 1 ;
+Store Flag[123],20 ;
+MapTitle ;
+SetAAObj 0,4,4,11,2,48,0,368,4,1,1,GravFallNone,NoShadow;
+SetObj 1,4,15,7,1,24,0,11,1,GravJump,1;
+SetObj 2,5,16,7,1,48,0,1,1,GravJump,1;
+SetAniObj 3,4,6,10,15,48,0,367,1,GravJump,1;
+SetObjGoal 1,4,12,9;
+SetObjGoal 2,5,9,10;
+SetCamera 0-800,500,1;
+SetCameraSpeed 35;
+SetCamera 0-120,160,0;
+SetObjView 0,0;
+
+Wait 72;
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+DelMes 1;
+SetObjGoal 1,4,8,10;
+Wait 96;
+SetMes やっと見つけた！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+SetMes ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 1;
+SetObj 3,4,6,10,1,48,0,6,1,GravJump,1;
+SetCameraSpeed 10;
+SetCamera 0-80,140,0;
+Wait 8;
+SetObjDir 3,3;
+Wait 16;
+SetMes あわわ・・・、フィ、フィル？$nななな、なんでここに？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 40;
+SetObjGoal 1,4,7,10;
+SetMes こちらが聞きたいわ。$nこんな危険なところに$n何をしに来たの！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ・・・ええっと、$nその・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes ハッキリ言いなさい！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+Wait 60;
+PlayWave 22;
+Store MFlag[16],4;
+NewLine 0,0,:fire_cloop ;
+Wait 60;
+PlayWave 22;
+Store MFlag[16],8;
+NewLine 0,0,:fire_cloop ;
+SetMes ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,NoSound;
+Wait 60;
+PlayWave 22;
+Store MFlag[16],12;
+NewLine 0,0,:fire_cloop ;
+Wait 0;
+DelMes 2;
+PlayWave 36;
+Store MFlag[16],24;
+NewLine 0,0,:fire_cloop ;
+SetMes 噴火！？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,NoSound;
+SetObjView 0,1;
+SetObjGoal 0,4,6,10;
+PlayBGM 16;
+Wait 1;
+SetObjZSpd 0,45;
+SetObjDir 1,1;
+SetObjDir 3,1;
+Wait 24;
+SetMes 危ない！,
+       4,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,NoSound;
+Wait 8;
+SetMes わ、わぁぁああ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,NoSound;
+Wait 32;
+Store MFlag[16],0;
+
+SetFriend 6;
+SetParty 6;
+OpenMenu 1;
+Wait 1;
+DelMes 4;
+DelMes 2;
+DelMes 3;
+Wait 20;
+EndEventSkip ;
+Battle 67;
+StartEventSkip ;
+DelObj 3;
+SetAniObj 0,4,6,10,1,48,0,369,1,GravJump,1;
+SetAniObj 1,4,8,10,3,48,0,349,1,GravJump,1;
+SetAniObj 2,5,10,10,1,24,0,130,1,GravJump,1;
+SetCamera 0-100,50,1;
+PlayBGM 13;
+Wait 30;
+SetMes あうううう・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 10;
+SetObj 2,5,10,10,1,64,0,1,1,GravJump,1;
+SetMes やれやれね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetObj 1,4,8,10,1,24,0,11,1,GravJump,1;
+SetMes ひとまず$n収まったかしら。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0 ;
+DelMes 2;
+DelMes 0;
+SetObjGoal 1,4,7,10;
+SetMes さて、$n落ち着いたところで、$nゆっくり話してもらいましょうかしら。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 50;
+SetMes う・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 120;
+SetMes ・・・突き落とされたいの？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetObjDir 0,0;
+SetMes や、止めて、$n真顔でそんな、やめて。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 30;
+SetObjDir 0,1;
+SetMes ・・・ええっと。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetFadeOut 64;
+Wait 32;
+SetObjDir 0,4;
+Wait 16;
+SetObjDir 0,5;
+Wait 16;
+SetMes ・・・これ。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 90;
+SetMes ・・・え？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+PlayBGM 53;
+DelMes 1;
+SetMes ち、近くの子に聞いて、$nフィル、この山に咲いてる花、$n好きだって・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 120;
+SetMes ・・・本気で？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 120;
+SetMes ・・・あ、あれ、$nこの花じゃ無かった？,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 60;
+SetAniObj 1,4,7,10,5,48,0,348,1,GravJump,ShowTurn;
+SetObjDir 0,1;
+SetMes そういう問題じゃ$n無いでしょ！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+NewLine 0,0,:furifuri ;
+Store MFlag[0],Ret;
+SetMes 行き先も告げずに$n出て行って！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+Kill MFlag[0];
+
+NewLine 0,0,:furifuri ;
+Store MFlag[0],Ret;
+SetMes 一人で$nこんな危ない山に入って！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+Kill MFlag[0];
+
+NewLine 0,0,:furifuri ;
+Store MFlag[0],Ret;
+SetMes レーナとか、$n他の人にも迷惑かけて！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+Kill MFlag[0];
+DelMes 1;
+SetObj 1,4,7,10,1,24,0,11,1,GravJump,1;
+Wait 60;
+SetAniObj 1,4,7,10,15,24,0,59,1,GravJump,ShowTurn;
+Wait 30;
+SetMes ・・・心配したのよ？,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightTop,0;
+Wait 90;
+SetMes ・・・ごめんなさい。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 30;
+SetFadeOut 30;
+Wait 30;
+SetCameraSpeed 10;
+SetCamera 0-380,160,0;
+PlayBGM 1;
+SetMes ・・・よく見ると、$nあちこち火傷してるじゃない。$nちょっと診せなさい。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightTop,0;
+SetObjDir 0,1;
+Wait 120;
+SetMes ・・・え？$nあ、だ、大丈夫だよ、そんな。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 120;
+SetMes ダメよ。$n悪くなるでしょ。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightTop,0;
+SetObjDir 0,1;
+Wait 120;
+SetMes そんなにひどくないよ・・・$nって、わぁ！？,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 120;
+SetObjGoal 2,5,12,9,;
+SetObjDir 2,1;
+SetMes ・・・ああ、ひどい。$nこんなところまで・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightTop,0;
+Wait 120;
+SetMes や、やめて、$nは、恥ずかしいよ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 30;
+SetMes ・・・・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 90;
+SetMes 恥ずかしいって・・・。$nこうしないと見えないでしょう。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightTop,0;
+Wait 30;
+DelMes 2;
+Wait 30;
+SetAniObj 2,5,12,9,14,24,0,367,1,GravJump,1;
+SetMes ・・・・・・・・・・・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 30;
+SetMes で、で、でも、$nちょっと、これ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 120;
+SetMes ああっ！$nこっちのほうまで！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightTop,0;
+Wait 30;
+SetMes う、うわぁぁぁ！！！？　　　,
+       0,ObjX[0],ObjY[0],ObjZ[0]-8,RightBottom,0;
+Wait 30;
+SetMes ・・・私、$n先に帰ってるわよ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+
+ChangeMap 220,4,17,8,1 ;
+End ;
+
+:::::::::::::;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+:fire_cloop
+SetCamera MFlag[16]-80,140,1;
+Wait 1;
+SetCamera 0-MFlag[16]-80,140,1;
+Wait 1;
+Store MFlag[16],MFlag[16]-1;
+If MFlag[16],0,>,:fire_cloop ;
+SetCamera 0-80,140,1;
+End;
+
+:furifuri
+SetObjDir 1,1;
+Wait 8;
+SetObjDir 1,5;
+Wait 8;
+SetObjDir 1,1;
+Wait 8;
+SetObjDir 1,5;
+End;

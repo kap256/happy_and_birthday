@@ -1,0 +1,117 @@
+夢の卵：空想の扉
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    -1 -1 :talk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 22;
+If  Flag[110],0,!=,Current+2 ;
+SetAniObj 10,5,20,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[111],0,!=,Current+2 ;
+SetAniObj 11,5,19,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[112],0,!=,Current+2 ;
+SetAniObj 12,5,18,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[113],0,!=,Current+2 ;
+SetAniObj 13,5,17,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[114],0,!=,Current+2 ;
+SetAniObj 14,5,16,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[115],0,!=,Current+2 ;
+SetAniObj 15,5,21,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[116],0,!=,Current+2 ;
+SetAniObj 16,8,6,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[117],0,!=,Current+2 ;
+SetAniObj 17,8,5,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[118],0,!=,Current+2 ;
+SetAniObj 18,8,4,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[119],0,!=,Current+2 ;
+SetAniObj 19,2,6,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[120],0,!=,Current+2 ;
+SetAniObj 20,2,5,2,1,32,0,358,1,GravJump,1+NoShadow;
+If  Flag[121],0,!=,Current+2 ;
+SetAniObj 21,2,4,2,1,32,0,358,1,GravJump,1+NoShadow;
+End ;
+
+:walk
+::帰り道
+IfBox 0,5,24,5,24,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 535,7,2,5,3;
+
+::ラスボス
+IfBox 0,5,11,5,11,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 644,3,24,2,1;
+
+::リティス
+IfBox 0,8,2,8,2,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 642,4,10,2,1;
+
+::空想上の武器
+IfBox 0,2,2,2,2,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 643,3,9,2,1;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:talk
+Store MFlag[0],ParamA ;
+If MFlag[0],10,<,:end ;
+If MFlag[0],21,>,:end ;
+
+Stop 1;
+SetMes 壊れそうで、$n壊せない壁ね・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0 ;
+Wait 0;
+If ItemNo[336],0,>,:talk_wall ;
+:no_break_wall
+DelMes 0;
+Stop 0;
+:end
+End;
+
+:talk_wall
+Store Flag[100],ItemNo[336];
+SetMes 夢のかけらを使えば$n壊せそうな気がする・・・。$n　　　　　　　　（所持数： $f100 コ）,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0 ;
+Wait 50;
+Select2 使う！$n使わない・・・,
+        1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:break_wall,:no_break_wall ;
+:break_wall
+SpendItem 336;
+DelObj MFlag[0];
+Store Flag[100+MFlag[0]],1;
+PlayWave 31;
+DelMes 0;
+SetCamera 2,0,1;
+Wait 1;
+SetCamera 0-2,0,1;
+Wait 1;
+SetCamera 0,0,1;
+Wait 10;
+Stop 0;
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[31],255;
+:flash_loop
+MapColor MFlag[31],255,255,255;
+Wait 1;
+Store MFlag[31],MFlag[31]-16;
+If MFlag[31],0,>,:flash_loop ;
+End ;
+

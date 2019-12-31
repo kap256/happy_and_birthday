@@ -1,0 +1,60 @@
+妖精の森：あと一息
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk ;
+
+_END_HEAD_
+:start
+
+SetObj 1,5,3,3,3,16,0,42,1,GravLock,1;
+SetSavePoint 8,3,4,2;
+SetBox 9,3,5,2,2,67;
+:::::::::::::::::::植林
+Store MFlag[0],10;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::植林終わり
+End;
+
+:talk
+Stop 1;
+SetObjDir 1,ObjDir[0]+2;
+SetMes このまままっすぐ行けば$nすぐだよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftTop,0;
+Wait 0;
+SetMes 結構歩いて、疲れたでしょ？$n回復してあげるよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftTop,0;
+Wait 0;
+HealAll ;
+PlayWave 21;
+Stop 0;
+DelMes 1;
+End;
+
+:walk
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 143,ObjSX[0],7,2,1;
+IfBox 0,4,8,5,8,0,Current+2 ;
+ChangeMap 138,ObjSX[0]+1,2,2,3;
+End;
+
+

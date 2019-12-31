@@ -1,0 +1,139 @@
+水上遺跡：守護者
+19
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :eventstart ;
+
+_END_HEAD_
+:start
+If Flag[27],40,>,:end ;
+SetBAObj 10,4,6,3,0,32,0,197,1,GravJump,NoShadow;
+If Flag[27],40,=,:event ;
+:end
+EndEventSkip ;
+PlayBGM 12;
+SetSavePoint 11,7,4,3;
+End ;
+
+:walk
+IfBox 0,12,5,12,6,0,Current+2 ;
+ChangeMap 214,2,ObjSY[0]-2,3,2;
+IfBox 0,1,5,1,6,0,Current+2 ;
+ChangeMap 216,10,ObjSY[0],2,0;
+End;
+
+:eventstart
+Store Flag[27],40;
+ChangeMap 215,6,5,3,0;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+PlayBGM 45;
+Store Flag[27],45;
+Stop 1;
+SetObj 0,7,5,3,0,32,0,0,1,GravJump,1;
+SetObj 1,6,6,3,0,32,0,1,1,GravJump,1;
+SetObj 2,6,4,3,0,32,0,53,1,GravJump,1;
+SetCamera 0-120,0-40,1;
+Wait 30;
+SetObjGoal 1,5,6,3;
+SetMes また変なのが$n落ちてるわね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes 落ちてる、って言うのか？$nこれは。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetObjGoal 1,5,5,3;
+SetObjDir 1,0;
+SetMes ええっと、これは･･･、$nこうかしら。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes またレーザーとか$n出るんじゃないだろうな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+PlayWave 9;
+SetMes えい。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 60;
+PlayWave 30;
+SetObjDir 10,2;
+Wait 4;
+SetObjDir 10,0;
+Wait 30;
+PlayWave 30;
+SetObjDir 10,2;
+Wait 4;
+SetObjDir 10,0;
+Wait 60;
+PlayWave 12;
+SetObjDir 10,1;
+Wait 30;
+SetMes あ、動いた。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes 動くのかっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes セイメイハンノウヲ$nカクニン。$nデータベースト$nショウゴウチュウ･･･。,
+       3,ObjX[10],ObjY[10],ObjZ[10]+48,RightTop,0;
+Wait 60;
+SetMes しゃべるみたいね。$n何言ってるのか$n分からないけど。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes すごいなぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 3;
+Wait 60;
+SetMes ガイトウシャナシ。$nフシンシャトミナシ、$nハイジョシマス。,
+       3,ObjX[10],ObjY[10],ObjZ[10]+48,RightTop,0;
+Wait 40;
+SetMes ん？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 3;
+Wait 16;
+EndEventSkip ;
+Battle 2;
+StartEventSkip ;
+SetObjDir 10,0;
+SetAniObj 0,7,5,3,5,32,0,183,1,GravJump,ShowTurn;
+Wait 30;
+SetMes 死ぬかと思った･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetObjDir 1,2;
+SetMes 古代遺跡の探索に$n危険は付き物よ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetAniObj 0,7,5,3,4,32,0,106,1,GravJump,ShowTurn;
+SetMes 当然のように$n言うなぁ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 2,3;
+SetMes ははは。$n皆さんなら大丈夫だと$n信じてましたよ。,
+       2,ObjX[2],ObjY[2],ObjZ[1],RightBottom,0;
+Wait 30;
+SetAniObj 0,7,5,3,5,32,0,183,1,GravJump,1;
+Wait 60;
+SetMes （さては知ってて$n　あえて放置したな･･･。）,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+ChangeMap 215,6,5,3,0;
+End;

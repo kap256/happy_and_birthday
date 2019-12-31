@@ -1,0 +1,30 @@
+èHÇÃéRÅFÇ”Ç‡Ç∆
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+EndEventSkip ;
+PlayBGM 6;
+
+SetEne 1,6,7,2,0,32,10,
+       0,5,
+       2,0,3,
+       31,0;
+SetBox 10,13,3,6,3,237;
+
+Store MFlag[8],416;
+Store MFlag[9],9;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,3,1,4,1,0,Current+2;
+ChangeMap 681,ObjSX[0]+5,16,2,1;
+IfBox 0,15,7,15,8,0,Current+2;
+ReturnVillage 0;
+End;

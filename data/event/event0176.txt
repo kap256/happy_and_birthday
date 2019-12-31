@@ -1,0 +1,39 @@
+ÉsÉâÉ~ÉbÉhÅFÇSÅ|ÇR
+33,34,35
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+SetEne 2,10,3,2,Rand,48,10,
+       0,4,
+       36,0,4,
+       9,0;
+
+SetEne 3,3,10,2,Rand,48,10,
+       0,4,
+       36,0,4,
+       9,0;
+SetBox 5,6,6,2,3,86;
+
+SetNormalTrap  10,5,5,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  11,6,5,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  12,7,5,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  13,5,6,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  14,7,6,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  15,5,7,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  16,6,7,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  17,7,7,2,176,60,0,10,27,NoShadow;
+End;
+
+:walk
+IfBox 0,6,12,7,12,0,Current+2 ;
+ChangeMap 172,ObjSX[0],2,2,3;
+IfBox 0,12,6,12,7,0,Current+2 ;
+ChangeMap 175,2,ObjSY[0],2,2;
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 177,11,ObjSY[0],2,0;
+End;

@@ -1,0 +1,112 @@
+アーゲリオ農場
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+
+Stop 1; 
+
+SetAniObj 11,4,2,2,1,32,0,167,1,GravJump,2+ShowTurn;
+SetAniObj 12,3,2,2,1,32,0,169,1,GravJump,2+ShowTurn; 
+
+SetObj 0,4,3,2,1,32,0,36,0,GravJump,1;
+SetObj 1,3,5,2,1,32,0,0,0,GravJump,1;
+SetObj 2,4,5,2,1,40,0,1,0,GravJump,1;
+SetObj 3,2,4,2,2,32,0,10,0,GravJump,1; 
+
+If Flag[18],28,=,:endevent ;
+Wait 10;
+SetMes う～ん・・・。,
+       4,ObjX[12],ObjY[12],ObjZ[12],RightBottom,0;
+Wait 50;
+SetMes 家内が$n風邪をこじらしちまってよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 4;
+DelMes 0;
+Wait 30;
+SetObjDir 0,3;
+SetMes 風邪によく効く草があってな、$n飲めば一発なんだが$nあいにく切らしちまって･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 60;
+SetMes ふ～ん。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 2;
+SetObjDir 0,0;
+SetObjDir 1,0;
+SetObjDir 2,0;
+SetMes だからオイラが$n取ってくるって！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 30;
+SetMes だからといって$nカワイイ息子を一人$n危険な洞窟に行かせられるか。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+SetObjDir 1,1;
+SetObjDir 2,1;
+SetMes じゃあ、僕らも$n手伝いましょうか。$n３、４人もいれば$n大丈夫でしょう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetObjDir 0,3;
+SetMes 代わりに、$nキャベツ半額にしてね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 40;
+SetMes おお、そいつは助かる。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetMes んじゃ、西の洞窟のほうに$n茶色いタネがあるハズなんだ。$nそいつを取ってきてくれ。$n頼んだぜ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+SetParty 10;
+OpenMenu 0;
+ChangeMap 148,9,7,2,0;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:endevent
+Wait 10;
+SetMes う～ん・・・。,
+       4,ObjX[12],ObjY[12],ObjZ[12],RightBottom,0;
+Wait 30;
+SetMes ほら、$nこれを飲めば$nもう大丈夫だ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 4;
+Wait 60;
+PlayWave 21;
+SetObjDir 12,5;
+Wait 60;
+SetMes ・・・あら。$n気分がよくなって$nきたわぁ。,
+       4,ObjX[12],ObjY[12],ObjZ[12],RightBottom,0;
+Wait 0;
+DelMes 4;
+SetObjDir 0,3;
+SetMes おかげで助かったぜ。$n約束どおり、$nキャベツでも何でも$nもってっていいぜ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetMes そうさせて貰うわ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetMes お大事に。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+Store  Flag[18],0;
+SetFriend 10;
+If Month,2,>,:next_month ;
+Store ShopOK[5],1;
+:next_month
+NextMonth ;
+ReturnVillage 1;
+End;

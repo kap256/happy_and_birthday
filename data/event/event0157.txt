@@ -1,0 +1,72 @@
+ハンダバの町：港前
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :shop1 ;
+Talk    11 -1 :shop1 ;
+Talk    2  -1 :shop1 ;
+Talk    3  -1 :talk1 ;
+Talk    4  -1 :talk2 ;
+
+_END_HEAD_
+:start
+SetHighObj 10,2,6,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 11,3,6,2,0,32,0,121,1,GravJump,2+BlockShadow;
+
+SetPutObj 20,6,11,2,24,157,1;
+SetPutObj 21,7,11,2,24,157,1;
+
+SetObj 2,2,5,2,3,32,0,46,1,GravJump,1;
+SetObj 3,12,7,2,Rand,48,4,49,1,GravJump,1;
+SetObj 4,5,7,2,Rand,48,4,47,1,GravJump,1;
+
+If Flag[20],4,=,Current+2;
+BGColor 0;
+End;
+
+:walk
+IfBox 0,1,7,1,8,0,Current+2 ;
+ChangeMap 159,14,ObjSY[0]-2,5,0;
+IfBox 0,15,7,15,8,0,Current+2 ;
+ChangeMap 158,2,ObjSY[0]+1,3,2;
+IfBox 0,11,1,12,1,0,Current+2 ;
+ChangeMap 155,ObjSX[0]-1,9,2,1;
+End;
+
+
+:shop1
+Stop 1;
+SetObjDir 2,ObjDir[0]+2;
+SetMes いい武器だよ！,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+Shop 11,0;
+Wait 1;
+DelMes 0;
+Stop 0;
+End;
+
+:talk1
+Stop 2;
+SetObjDir 3,ObjDir[0]+2;
+SetMes 怪しい人物を$n見かけませんでしたか？,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 最近、$n盗賊が出ているのです。$n気をつけてください。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk2
+Stop 2;
+SetObjDir 4,ObjDir[0]+2;
+SetMes この先は港です。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;

@@ -1,0 +1,49 @@
+村落：宝石屋
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk1 ;
+Talk    11 -1 :talk1 ;
+Talk    12 -1 :talk1 ;
+Talk    2 -1 :talk2 ;
+
+
+_END_HEAD_
+:start
+SetAniObj 1,8,3,2,4,32,0,136,1,GravJump,ShowTurn;
+SetObj 2,3,6,2,Rand,32,5,49,1,GravJump,1;
+
+SetAniObj 10,7,4,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 11,8,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 12,9,4,2,5,32,0,114,1,GravJump,BlockShadow;
+End ;
+
+:walk
+IfBox 0,6,9,6,9,0,Current+2 ;
+ChangeMap 574,11,6,3,3;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk1
+Stop 3;
+SetMes こんにちは。$n何がご入用でしょう？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+Shop 16,0;
+Wait 1;
+DelMes 1;
+Stop 0;
+End;
+
+:talk2
+Stop 3;
+SetObjDir 2,ObjDir[0]+2;
+SetMes ここにカギが$n落ちていなかったかって？,
+       1,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetMes 今朝、隅まで掃除したが、$nそんなものは無かったぞ。,
+       1,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;

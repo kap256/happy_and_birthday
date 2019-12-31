@@ -1,0 +1,37 @@
+êXó—ÅFÇQ
+20,8,12,15,92,26
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest.txt
+:start
+SetEne 1,7,7,2,Rand,24,20,
+       0,5,
+       20,0,6,
+       6,LPx2+PUpWOutBig;
+SetEne 2,12,5,2,Rand,24,20,
+       0,5,
+       20,0,6,
+       6,LPx2+PUpWOutBig;
+SetEne 3,6,12,2,Rand,24,20,
+       0,5,
+       20,0,6,
+       6,LPx2+PUpWOutBig;
+Store MFlag[8],22;
+Store MFlag[9],3;
+Goto :forest_init;
+End ;
+
+:walk
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 561,ObjSX[0]+1,15,2,1;
+IfBox 0,1,7,1,8,0,Current+2 ;
+ChangeMap 561,11,ObjSY[0]-1,2,0;
+IfBox 0,1,12,1,13,0,Current+2 ;
+ChangeMap 561,11,ObjSY[0]-6,2,0;
+IfBox 0,17,11,17,12,0,Current+2 ;
+ChangeMap 563,2,ObjSY[0]-1,7,2;
+
+End;

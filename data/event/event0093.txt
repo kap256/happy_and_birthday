@@ -1,0 +1,23 @@
+フィーレス地下迷宮：入り口直下
+16,29
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,10,6,2,Rand,32,32,
+       0,3,
+       16,2,3,
+       5,0;
+End;
+
+:walk
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 103,15,ObjSY[0]-3,2,0;
+IfBox 0,6,1,7,1,0,Current+2 ;
+ChangeMap 113,ObjSX[0]-1,15,9,1;
+IfBox 0,9,1,10,1,0,Current+2 ;
+ChangeMap 113,ObjSX[0]-1,15,2,1;
+End;

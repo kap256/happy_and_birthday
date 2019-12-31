@@ -1,0 +1,75 @@
+水上遺跡：スイッチ（水位０）
+12
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+
+_END_HEAD_
+#water.txt
+#water_switch.txt
+:::::MFlag[8]には、希望する水位を代入してください。
+:::::10番目のオブジェクトには、スイッチを配置してください。
+:start
+EndEventSkip ;
+PlayBGM 12;
+Store MFlag[8],0;
+SetBox 5,5,7,4,1,97;
+SetAniObj 10,5,4,4,0,32,0,174,1,GravJump,1+NoShadow+ShowTurn;
+
+If Flag[27],19,=,:event ;
+
+Goto :water_switch_init ;
+End;
+:walk
+IfBox 0,10,5,10,6,0,Current+2 ;
+ChangeMap 196,2,ObjSY[0],4,2;
+End;
+
+:talk
+If Flag[27],20,<,:eventstart ;
+Goto :water_switch_talk ;
+End;
+:eventstart
+NewLine 0,0, :water_switch_talk ;
+Wait 120;
+Store Flag[27],19;
+Store Flag[28],0;
+ChangeMap 197,5,5,4,3;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:event
+StartEventSkip ;
+Store Flag[27],20;
+PlayBGM 45;
+Stop 1;
+SetObj 0,6,4,4,1,32,0,0,1,GravJump,1;
+SetObj 1,4,5,4,0,32,0,1,1,GravJump,1;
+SetObj 2,6,7,4,1,32,0,53,1,GravJump,1;
+SetCamera 0-160,40,1;
+Wait 20;
+SetMes おおっ！$n水が引いた！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes このぐらいで驚かれては$n困りますよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetObjDir 0,3;
+SetObjDir 1,2;
+DelMes 0;
+SetMes 古代の超テクノロジーを$n持ってすれば、$nこの程度は朝飯前です。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes へぇ～。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetObjDir 2,2;
+SetMes 他にも$n古代テクノロジーの遺物が$n残されているかもしれません。$n探索を続けましょう。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+ChangeMap 197,5,5,4,3;
+End;

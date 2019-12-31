@@ -1,0 +1,335 @@
+フィーレス村：教会
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+:start
+
+PlayBGM 32;
+Stop 1;
+Store Flag[44],4;
+
+Store MFlag[0],0;
+:roop1
+SetAniObj MFlag[0]*6+40,MFlag[0]*2+6,2,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+41,MFlag[0]*2+6,3,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+42,MFlag[0]*2+6,4,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+43,MFlag[0]*2+6,8,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+44,MFlag[0]*2+6,9,3,4,32,0,134,0,GravJump,16;
+SetAniObj MFlag[0]*6+45,MFlag[0]*2+6,10,3,4,32,0,134,0,GravJump,16;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],5,<,:roop1;
+
+SetHAObj 0,3,6,4,0,32,0,135,1,GravJump,16;
+NewLine 0,0,:EggAni ;
+
+If CurrentMonth ,9,=,:july ;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+SetObj 1,1,3,4,2,32,0,0,0,GravJump,0;
+SetObj 2,1,3,4,2,32,0,4,0,GravJump,0;
+SetObj 3,1,3,4,2,32,0,8,0,GravJump,0;
+
+SetObj 5,5,6,3,2,32,0,59,0,GravJump,0;
+SetAniObj 10,13,4,3,8,16,0,59,0,GravJump,0;
+SetAniObj 11,14,7,3,9,16,0,59,0,GravJump,0;
+SetAniObj 12,9,9,3,10,16,0,59,0,GravJump,ShowTurn;
+SetAniObj 13,12,5,3,15,16,0,59,0,GravJump,0;
+SetAniObj 14,11,5,3,11,16,0,59,0,GravJump,ShowTurn;
+SetAniObj 15,9,8,3,12,16,0,59,0,GravJump,0;
+SetAniObj 16,11,2,3,12,16,0,59,0,GravJump,ShowTurn;
+SetAniObj 17,9,4,3,13,16,0,59,0,GravJump,0;
+SetAniObj 18,8,5,3,14,16,0,59,0,GravJump,0;
+SetAniObj 19,13,8,3,13,16,0,59,0,GravJump,ShowTurn;
+SetAniObj 20,15,3,3,10,16,0,59,0,GravJump,0;
+SetAniObj 21,10,7,3,11,16,0,59,0,GravJump,0;
+SetAniObj 22,7,8,3,9,16,0,59,0,GravJump,ShowTurn;
+SetAniObj 23,6,5,3,8,16,0,59,0,GravJump,ShowTurn;
+
+SetObjGoal 5,12,6,3;
+SetObjDir 5,1;
+SetCamera 630,320,1;
+SetCamera 70,40,0;
+Wait 20;
+MapTitle ;
+Wait 40;
+SetMes くそぉ・・・。,
+       0,ObjX[10],ObjY[10],ObjZ[10]-10,RightTop,0;
+Wait 90;
+SetMes あーん、$nおかーさーん・・・。,
+       1,ObjX[14],ObjY[14],ObjZ[14]-10,LeftBottom,0;
+Wait 50;
+DelMes 0;
+SetMes もう少し我慢してね、$nすぐ終わるからね。,
+       2,ObjX[13],ObjY[13],ObjZ[13]-10,RightTop,0;
+Wait 110;
+DelMes 1;
+SetMes あう、う～・・・。$n・・・。,
+       3,ObjX[22],ObjY[22],ObjZ[22]-10,LeftTop,0;
+Wait 30;
+DelMes 2;
+Wait 40;
+SetMes じいさん、$n無事じゃろうか・・・。,
+       4,ObjX[18],ObjY[18],ObjZ[22]-10,RightBottom,0;
+Wait 110;
+DelMes 3;
+Wait 50;
+DelMes 4;
+SetObjGoal 2,4,3,4;
+Wait 32;
+SetMes とりあえず、$n教会に避難させたが、$nまだ取り残されている村人も多い。$nここもいつまで持つか・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 32;
+SetObjGoal 1,4,3,4;
+Wait 32;
+SetObjGoal 3,3,3,4;
+SetObjGoal 2,4,7,4;
+SetObjDir 2,2;
+Wait 64;
+SetMes ・・・っ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetObjGoal 1,4,5,4;
+Wait 0;
+SetAniObj 3,3,3,4,1,32,0,306,0,GravJump,ShowTurn;
+SetObjDir 2,1;
+DelMes 2;
+SetMes じゃあ、僕が出るよ。$n救助にしても$nいつ来るか分からないでしょう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 10;
+SetMes ・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes しかし・・・。           $nいや、だが・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 40;
+SetMes 非常事態なんだ、$nぐずぐずしてられない。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetObjDir 2,2;
+DelMes 2;
+Wait 60;
+SetObjDir 2,1;
+SetMes ・・・分かった。$nだが、無理はするなよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 40;
+SetMes 大丈夫だよ、父さん。$nそう簡単にはやられないさ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetObjDir 1,1;
+DelMes 2;
+SetMes リティスは・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes リティス？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 20;
+SetObj 3,3,3,4,2,32,0,8,0,GravJump,0;
+SetMes は、はいっ！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 10;
+SetObjDir 3,3;
+Wait 0;
+DelMes 3;
+SetMes リティスはここで待って・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes いや、僕と一緒に行こう。$n絶対にそばから離れないで。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetMes は、はいっ！！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 3;
+SetObjDir 1,3;
+SetMes 他に動ける人は・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+OpenMenu 0;
+
+If Month,11,>,:shop_skip ;
+Store ShopOK[0],0;
+Store ShopOK[1],0;
+Store ShopOK[2],0;
+Store ShopOK[3],0;
+Store ShopOK[4],0;
+Store ShopOK[5],0;
+:shop_skip
+Wait 1;
+DelMes 1;
+Wait 20;
+ChangeMap 303,3,5,3,2;
+End;
+
+:EggAni
+Store MFlag[1],MFlag[1]+1%4;
+SetObjDir 0,4+MFlag[1];
+Wait 30;
+Goto :EggAni ;
+
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:july
+
+If Flag[123],10,>,:july_dan ;
+If Flag[123],2,>,:july_2 ;
+StartEventSkip ;
+PlayBGM 2;
+SetCamera 700,355,1;
+Wait 10;
+PlayWave 9;
+SetObj 1,16,6,3,0,24,0,1,0,GravJump,0;
+SetObj 2,4,7,4,1,24,0,11,0,GravJump,0;
+SetAniObj 3,4,5,4,0,24,0,367,0,GravJump,0;
+SetObjGoal 1,15,6,3;
+Wait 8;
+SetMes おはよう。$nフィルミナ・・・,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ・・・ん？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 20;
+SetCameraSpeed 20;
+SetCamera 70,40,0;
+Wait 60;
+MonthTitle ;
+Wait 320;
+DelMes 1;
+SetMes こ、このお花、$nフィルにって、$nお父さんから・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes ・・・・・・ルウェイン、$n忙しいから、後にしてくれない？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetObj 1,9,6,3,0,24,0,1,0,GravJump,0;
+SetObjGoal 1,6,6,3;
+SetCameraSpeed 10;
+SetCamera 130,70,0;
+Wait 20;
+SetMes あら、先客？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 20;
+SetObjDir 2,2;
+SetAniObj 3,4,5,4,0,24,0,367,0,GravJump,ShowTurn;
+Wait 20;
+SetMes ん？　ああ。$nいいのよ。別に。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjDir 2,1;
+SetAniObj 3,4,5,4,0,24,0,367,0,GravJump,0;
+Wait 20;
+SetMes それじゃ。$nお客さんが来たから。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 2;
+SetMes え・・・。$nフィル・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetObjGoal 2,4,9,4;
+Wait 48;
+SetObjGoal 2,2,9,4;
+Wait 48;
+DelObj 2;
+Wait 16;
+DelMes 3;
+Wait 20;
+ChangeMap 245,5,5,5,2; 
+
+End;
+
+:july_2
+PlayBGM 32;
+SetCamera 630,320,1;
+SetCamera 70,40,0;
+SetObj 1,4,7,4,1,24,0,11,0,GravJump,0;
+SetObj 2,4,5,4,3,16,0,36,0,GravJump,0;
+SetObj 3,3,8,4,2,16,0,1,0,GravJump,0;
+
+SetObj 10,13,4,3,3,16,0,22,0,GravJump,0;
+SetObj 14,13,5,3,1,16,0,23,0,GravJump,0;
+SetObj 11,11,8,3,2,16,0,27,0,GravJump,0;
+SetObj 13,10,5,3,0,16,0,31,0,GravJump,0;
+SetAniObj 22,9,5,3,4,16,0,321,0,GravJump,ShowTurn;
+SetAniObj 18,7,8,3,10,16,0,51,0,GravJump,0;
+SetObj 19,7,9,3,1,16,0,30,0,GravJump,0;
+NewLine 0,0,:july_banzai ;
+
+Wait 40;
+SetMes 噴火だって・・・？,
+       0,ObjX[10],ObjY[10],ObjZ[10],RightBottom,0;
+Wait 50;
+SetMes うん。$n北のマルゴ火山。,
+       1,ObjX[14],ObjY[14],ObjZ[14],RightTop,0;
+Wait 90;
+DelMes 0;
+SetMes 大丈夫じゃろうか・・・。,
+       2,ObjX[13],ObjY[13],ObjZ[13],LeftTop,0;
+Wait 60;
+DelMes 1;
+SetMes かなり距離がありますので、$n大丈夫ですよ。,
+       3,ObjX[22],ObjY[22],ObjZ[22],RightBottom,0;
+Wait 80;
+DelMes 2;
+Wait 20;
+SetMes すご～い！$n噴火だ、噴火だ！,
+       4,ObjX[18],ObjY[18],ObjZ[22],LeftTop,0;
+Wait 120;
+DelMes 3;
+Wait 20;
+SetMes ルウェインが、$n山に？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+DelMes 4;
+Wait 30;
+SetMes ああ、そう言ってた。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetMes 緑の高そうな服に、$n赤い外套はおって。$nあんたんとこの客だろ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 60;
+SetMes そうですけど・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjDir 1,2;
+Wait 8;
+SetObjDir 1,3;
+Wait 8;
+SetMes もう・・・、$nこんな時にまで迷惑かけて・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetObjGoal 1,6,7,3;
+SetObjDir 1,0;
+Wait 30;
+SetMes ちょっと、どこ行くつもり？,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 40;
+SetMes 探しにいくのよ。$n放っておくわけにも$nいかないでしょ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+:july_dan
+OpenMenu 0;
+ChangeMap 649,5,11,3,1;
+End;
+
+:july_banzai
+Wait 30;
+SetObjDir 18,11;
+Wait 30;
+SetObjDir 18,10;
+Goto :july_banzai;
+End;

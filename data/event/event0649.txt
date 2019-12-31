@@ -1,0 +1,46 @@
+マルゴ火山：入り口
+10,19,63
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+PlayBGM 13;
+EndEventSkip ;
+SetNormalTrap  10,3,4,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  11,4,7,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+If Flag[123],10,<,:event ;
+NewLine 0,0, :fire_start ;
+End;
+
+:walk
+IfBox 0,5,12,5,12,0,Current+2 ;
+ReturnVillage 0;
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 650,ObjSX[0]+4,15,3,1;
+
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+Store Flag[123],12;
+Stop 1;
+SetObj 0,6,9,3,2,32,0,1,0,GravJump,0;
+SetObj 1,4,8,3,1,32,0,11,0,GravJump,0;
+NewLine 0,0,:fire_start ;
+Wait 60;
+SetMes ・・・あっついわね・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 50;
+SetMes 早く見つけて$n帰りましょう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+
+ChangeMap 649,5,9,3,1;
+End;

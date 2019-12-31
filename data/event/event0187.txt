@@ -1,0 +1,80 @@
+ÉsÉâÉ~ÉbÉhÅFÇRÅ|ÇP
+33,34,35
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetNormalTrap  10,5,5,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  11,6,5,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  12,7,5,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  13,8,5,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  14,5,6,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  15,8,6,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  16,5,7,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  17,8,7,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  18,5,8,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  19,6,8,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  20,7,8,2,176,90,60,10,27,NoShadow;
+SetNormalTrap  21,8,8,2,176,90,60,10,27,NoShadow;
+
+SetNormalTrap  22,4,4,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  23,5,4,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  24,6,4,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  25,7,4,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  26,8,4,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  27,9,4,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  28,4,5,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  29,9,5,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  30,4,6,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  31,9,6,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  32,4,7,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  33,9,7,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  34,4,8,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  35,9,8,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  36,4,9,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  37,5,9,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  38,6,9,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  39,7,9,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  40,8,9,2,176,90,30,10,27,NoShadow;
+SetNormalTrap  41,9,9,2,176,90,30,10,27,NoShadow;
+
+SetNormalTrap  42,3,3,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  43,4,3,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  44,5,3,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  45,6,3,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  46,7,3,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  47,8,3,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  48,9,3,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  49,10,3,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  50,3 ,4,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  51,10,4,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  52,3 ,5,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  53,10,5,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  54,3 ,6,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  55,10,6,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  56,3 ,7,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  57,10,7,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  58,3 ,8,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  59,10,8,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  60,3 ,9,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  61,10,9,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  62,3,10,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  63,4,10,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  64,5,10,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  65,6,10,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  66,7,10,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  67,8,10,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  68,9,10,2,176,90,0,10,27,NoShadow;
+SetNormalTrap  69,10,10,2,176,90,0,10,27,NoShadow;
+
+End;
+
+:walk
+IfBox 0,12,6,12,7,0,Current+2 ;
+ChangeMap 186,2,ObjSY[0],2,2;
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 188,11,ObjSY[0],2,0;
+End;

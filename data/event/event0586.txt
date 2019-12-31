@@ -1,0 +1,30 @@
+èﬂì˚ì¥ÅFínâ∫àÍäK
+76,38,39,40
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Fall    0 -1 :fall ;
+
+_END_HEAD_
+:start
+SetEne 1,5,6,4,Rand,24,10,
+       0,5,
+       77,2,5,
+       17,LPx2+POWx15;
+IfBox 0,8,9,9,11,0,Current+2 ;
+SetObjGoalDir 0,1,10;
+End ;
+
+:walk
+IfBox 0,5,1,5,1,0,Current+2 ;
+ChangeMap 585,7,12,3,1;
+IfBox 0,8,11,9,11,0,Current+2 ;
+ChangeMap 588,ObjSX[0]-5,2,3,3;
+End;
+
+:fall
+IfBox 0,5,10,6,10,0,Current+2 ;
+ChangeMap 587,ObjSX[0]-1,2,12,3;
+IfBox 0,2,11,3,11,0,Current+2 ;
+ChangeMap 589,ObjSX[0]+3,2,8,3;
+End;

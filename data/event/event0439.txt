@@ -1,0 +1,52 @@
+ê}èëäŸ
+82,83
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    20 -1 :door_talk ;
+Hit     0 20 :door_hit ;
+
+_END_HEAD_
+#lib_door.txt
+:start
+SetAniObj 20,9,9,2,12,32,0,334,1,GravLock,NoShadow+ShowTurn;
+
+
+SetAniObj 11,8,4,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 13,9,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 14,10,4,2,5,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 15,8,6,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 17,9,6,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 18,10,6,2,5,32,0,114,1,GravJump,BlockShadow;
+
+
+SetEne 30,8,5,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 31,3,7,2,Rand,48,10,
+       0,4,
+       46,0,6,
+       19,POWx15+LPx3;
+SetEne 32,6,11,2,Rand,48,10,
+       0,4,
+       46,0,6,
+       19,POWx15+LPx3;
+
+End;
+
+:walk
+IfBox 0,8,1,8,1,0,Current+2 ;
+ChangeMap 437,8,13,5,1;
+
+IfBox 0,3,14,3,14,0,Current+2 ;
+ChangeMap 442,3,2,2,3;
+
+IfBox 0,14,11,14,11,0,Current+2 ;
+ChangeMap 440,2,11,2,2;
+
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 430,11,9,2,0;
+
+
+End;

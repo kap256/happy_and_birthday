@@ -1,0 +1,100 @@
+#included
+
+::端末のオブジェクト番号は10番
+::MFlag[8] 端末に登録されているフラグへのポインタ
+::MFlag[9] 使用します。
+::マップ読み込み時に、:terminal_initを呼び出す。
+::端末を調べたときに、:terminal_talkを呼び出す。
+
+::初期化:::::::::::::::::::::::::::::::::
+:terminal_init
+SetObjDir 10,Flag[MFlag[8]]*2;
+Wait 20;
+SetObjDir 10,Flag[MFlag[8]]*2+1;
+Wait 20;
+Goto :terminal_init ;
+
+::調べたとき:::::::::::::::::::::::::::::::::
+:terminal_talk
+Stop 3;
+NewLine 0,0,:terminal_pcard ;
+
+If Flag[MFlag[8]],0,=,:terminal_none ;
+If Flag[MFlag[8]],1,=,:terminal_red ;
+If Flag[MFlag[8]],2,=,:terminal_green ;
+If Flag[MFlag[8]],3,=,:terminal_blue ;
+If Flag[MFlag[8]],4,=,:terminal_black ;
+:terminal_none
+SetMes コノ端末ニハ、$nカードハ収納サレテイマセン。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Goto :terminal_select;
+:terminal_red
+SetMes コノ端末ニハ、$n赤ノカードガ収納サレテイマス。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Goto :terminal_select;
+:terminal_green
+SetMes コノ端末ニハ、$n緑ノカードガ収納サレテイマス。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Goto :terminal_select;
+:terminal_blue
+SetMes コノ端末ニハ、$n青ノカードガ収納サレテイマス。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Goto :terminal_select;
+:terminal_black
+SetMes コノ端末ニハ、$n黒ノカードガ収納サレテイマス。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Goto :terminal_select;
+
+:terminal_select
+Wait 40;
+Select2 カードを交換する。$nしない。,
+        1,ObjX[0],ObjY[0],ObjZ[0],RightTop,:terminal_change,:terminal_talk_end;
+End;
+:terminal_change
+DelMes 0;
+DelMes 6;
+PlayWave 9;
+Wait 40;
+NewLine 0,0,:terminal_pcard ;
+Store MFlag[9],Flag[MFlag[8]];
+Store Flag[MFlag[8]],Flag[66];
+Store Flag[66],MFlag[9];
+SetMes カードヲ交換シマシタ。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Wait 0;
+:terminal_talk_end
+DelMes 6;
+DelMes 0;
+Stop 0;
+End;
+
+::プレイヤーの所持カード:::::::::::::::::::::::::::::::::
+:terminal_pcard
+If Flag[66],0,=,:terminal_pnone ;
+If Flag[66],1,=,:terminal_pred ;
+If Flag[66],2,=,:terminal_pgreen ;
+If Flag[66],3,=,:terminal_pblue ;
+If Flag[66],4,=,:terminal_pblack ;
+:terminal_pnone
+SetMes 所持しているカード：なし,
+       6,ObjX[0]+100,ObjY[0],ObjZ[0]-40,Center,0;
+End ;
+:terminal_pred
+SetMes 所持しているカード：赤色,
+       6,ObjX[0]+100,ObjY[0],ObjZ[0]-40,Center,0;
+End ;
+:terminal_pgreen
+SetMes 所持しているカード：緑色,
+       6,ObjX[0]+100,ObjY[0],ObjZ[0]-40,Center,0;
+End ;
+:terminal_pblue
+SetMes 所持しているカード：青色,
+       6,ObjX[0]+100,ObjY[0],ObjZ[0]-40,Center,0;
+End ;
+:terminal_pblack
+SetMes 所持しているカード：黒色,
+       6,ObjX[0]+100,ObjY[0],ObjZ[0]-40,Center,0;
+End ;
+
+
+

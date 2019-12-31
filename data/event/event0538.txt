@@ -1,0 +1,116 @@
+オーリウェン屋敷
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+PlayBGM 47;
+
+SetAniObj 0,4,2,2,0,32,0,168,1,GravJump,1;
+SetAniObj 1,4,3,2,1,32,0,167,1,GravJump,1;
+SetAniObj 2,2,2,2,4,32,0,167,1,GravJump,1;
+SetAniObj 3,2,3,2,0,32,0,167,1,GravJump,1;
+
+SetObj 10,3,5,2,2,24,0,5,0,GravJump,1;
+SetObj 11,4,5,2,0,24,0,56,0,GravJump,1;
+
+SetCamera 0-100,60,1;
+MapColor 255,0,0,0;
+
+Wait 120;
+SetMes クビッ！　クビッ！$n貴方達全員クビですわッ！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Store MFlag[0],255;
+:black
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]-4;
+If MFlag[0],0,>,:black ;
+MapColor 0,0,0,0;
+
+Wait 0;
+SetMes しかし、お嬢様・・・。,
+       2,ObjX[11],ObjY[11],ObjZ[11],LeftTop,0;
+Wait 30;
+SetMes 言い訳無用！$nさあ、早く出てお行きなさい！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Wait 0;
+SetMes ・・・・・・。,
+       2,ObjX[11],ObjY[11],ObjZ[11],LeftTop,0;
+Wait 50;
+DelMes 2;
+DelMes 1;
+SetObjGoal 11,5,4,2;
+
+Wait 24;
+SetObjDir 0,4;
+Wait 24;
+SetObjGoal 11,6,4,2;
+SetObjDir 0,0;
+Wait 4;
+SetObjDir 0,4;
+Wait 20;
+DelObj 11;
+Wait 10;
+SetObjDir 0,1;
+Wait 20;
+SetObjDir 10,1;
+SetMes あら、$nちょうど起きましたのね。,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 60;
+SetMes あれ・・・？$nここは？,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes 知りませんわ！$nあの連中、宝を奪って$nそのまま逃げたんでしょう！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 90;
+SetMes ・・・ああ、$nそうか、あいつらにやられて・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,RightBottom,0;
+Wait 0;
+SetMes ・・・？？,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,RightBottom,0;
+Wait 20;
+SetObjDir 10,3;
+SetMes たかが賊に、$n我が家の財宝を奪われ、$n挙句の果てボコボコにされるなぞ$n末代までの恥ッ！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 0;
+SetObjDir 10,1;
+DelMes 1;
+Wait 30;
+SetMes 貴方、$nあの連中の事を$n知っているようでしたわね！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 0;
+SetMes ・・・いえ、$n知っているってほどでは。,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,RightBottom,0;
+Wait 30;
+SetMes 何も知らないより$nはるかにマシですわ！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetMes こんな恥をかかされた以上、$nヤツらを地の底まで探しあげて$n根絶やしにしなければ$n気がおさまりませんわ！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 0;
+SetMes いいですわね！$nヤツらの手がかりになりそうな事は$n全て私に連絡なさい！$n絶対命令です！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 80;
+SetMes ・・・はぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,RightBottom,0;
+Wait 0;
+SetMes 返事が$nなってませんわ！,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 30;
+SetMes は、ハイっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,RightBottom,0;
+Wait 0;
+
+DelMes 0;
+DelMes 1;
+Wait 20;
+SetFriend 5;
+Store Flag[35],0;
+NextMonth ;
+ReturnVillage 1;
+End;

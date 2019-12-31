@@ -1,0 +1,114 @@
+洋館：レリーフの間
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+Talk    11 -1 :talk ;
+Talk    12 -1 :talk ;
+Talk    13 -1 :talk ;
+
+_END_HEAD_
+:start
+
+::レリーフの壁::::::
+Store MFlag[0],0;
+:start_relief
+If Flag[104+MFlag[0]],0,=,:no_relief ;
+SetAniObj 10+MFlag[0],MFlag[0]+2,1,3,4,32,0,358,1,GravJump,1;
+Goto :after_relief ;
+
+:no_relief
+SetAniObj 10+MFlag[0],MFlag[0]+2,1,3,0,32,0,358,1,GravJump,1;
+Store MFlag[1],1;
+
+:after_relief
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],4,<,:start_relief ;
+
+
+::鉄格子:::::::
+If MFlag[1],0,=,:end ;
+
+SetAniObj 5,6,4,2,4,32,0,161,1,GravJump,ShowTurn+1;
+:end
+End ;
+
+:walk
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 607,25,10,2,0;
+
+IfBox 0,12,4,12,4,0,Current+2 ;
+ChangeMap 609,2,6,2,2;
+End;
+
+::レリーフとりつけ:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk
+Stop 1;
+Store MFlag[0],ParamA-10;
+If Flag[104+MFlag[0]],0,!=,:seted_relief ;
+SetMes 六角形のくぼみがある。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0 ;
+Wait 0;
+If ItemNo[332+MFlag[0]],0,>,:talk_relief ;
+DelMes 0;
+Stop 0;
+End;
+
+:talk_relief
+Goto MFlag[0]*2+Current+1 ;
+SetMes ネズミのレリーフを・・・,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0 ;
+Goto :after_talk_relief ;
+SetMes スズメのレリーフを・・・,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0 ;
+Goto :after_talk_relief ;
+SetMes キンギョのレリーフを・・・,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0 ;
+Goto :after_talk_relief ;
+SetMes カメのレリーフを・・・,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0 ;
+Goto :after_talk_relief ;
+:after_talk_relief
+Wait 30;
+Select2 取り付ける！$n取り付けない・・・,
+        1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:set_releif,:no_set_relief ;
+:set_releif
+SpendItem 332+MFlag[0];
+SetObjDir 10+MFlag[0],4;
+Store Flag[104+MFlag[0]],1;
+PlayWave 9;
+DelMes 0;
+
+Store MFlag[1],0;
+:check_relief
+If Flag[104+MFlag[1]],0,=,:no_open ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],4,<,:check_relief ;
+Wait 30;
+PlayWave 22;
+DelObj 5;
+SetObjDir 0,2;
+SetCamera 2,0,1;
+Wait 1;
+SetCamera 0-2,0,1;
+Wait 1;
+SetCamera 0,0,1;
+Wait 10;
+Stop 0;
+End;
+
+:no_set_relief
+DelMes 0;
+:no_open
+Stop 0;
+End;
+
+
+:seted_relief
+SetMes レリーフが取り付けられている。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0 ;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;

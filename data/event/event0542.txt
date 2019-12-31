@@ -1,0 +1,41 @@
+ÔF‚R^‚T
+13,14
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Hit     0 1  :battle ;
+Talk    1 -1 :battle ;
+
+_END_HEAD_
+:start
+SetAAObj 10,3,5,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 11,5,5,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetBox 12,4,2,2,3,309;
+If Flag[87],8,>,:end ;
+SetObj 1,4,5,2,3,32,0,61,1,GravJump,1;
+:end
+End ;
+
+:walk
+IfBox 0,4,11,4,11,0,Current+2 ;
+ChangeMap 541,3,2,2,3;
+IfBox 0,2,1,6,1,0,Current+2 ;
+ChangeMap 543,ObjSX[0],10,9,1;
+End;
+
+:battle
+Stop 3;
+SetMes ‚»‚¤ŠÈ’P‚É‚Í$n’Ê‚³‚È‚¢‚í‚æI,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 16;
+Battle 51;
+If Escape,0,>,:escape ;
+Store Flag[87],12;
+DelObj 1;
+
+:escape
+Wait 1;
+Stop 0;
+End;

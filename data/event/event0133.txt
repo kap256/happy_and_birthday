@@ -1,0 +1,116 @@
+ódê∏ÇÃêX
+20,5,28,30
+
+LoadMap   0  -1    :start ;
+Walk      0  -1    :walk ;
+Walk      -1 -1    :del ;
+
+_END_HEAD_
+:start
+SetBox 5,2,13,4,2,70;
+SetWoodObj 40,10,8,6,1,48,0,105,1,1,0;
+SetWoodObj 41,1,10,9,1,48,0,105,1,1,0;
+SetWoodObj 42,10,7,19,1,48,0,105,1,1,0;
+SetWoodObj 43,1,4,26,1,48,0,105,1,1,0;
+SetWoodObj 44,3,2,26,1,48,0,105,1,1,0;
+SetWoodObj 45,9,3,26,1,48,0,105,1,1,0;
+SetWoodObj 46,10,1,26,1,48,0,105,1,1,0;
+:::::::::::::::::::êAó—
+Store MFlag[0],60;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::êAó—èIÇÌÇË
+
+If Flag[14],24,<,:enemy ;
+End;
+
+:enemy
+SetAniObj 1,5,4,25,1,32,0,182,1,GravLock,1;
+SetEne 10,5,5,22,3,36,0,
+       7,5,
+       20,1,4,
+       6,0;
+SetEne 11,6,6,18,0,36,0,
+       7,5,
+       20,1,4,
+       6,0;
+SetEne 12,5,7,12,2,36,0,
+       7,5,
+       20,1,4,
+       6,0;
+SetEne 13,4,8,8,0,36,0,
+       7,5,
+       20,1,4,
+       6,0;
+Store MFlag[5],14;
+Store MFlag[6],EventID;
+:enemyloop
+Wait 60;
+SetObjDir 1,1;
+DelMes 1;
+Wait 120;
+SetMes Ç§Å`ÇÒ•••ÅB,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftTop,0;
+Wait 120;
+DelMes 1;
+Wait 40;
+SetMes Ç¶Å`Ç¢ÅI,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftTop,0;
+SetObjDir 1,5;
+Wait 20;
+SetEne MFlag[5],5,5,24,3,36,0,
+       7,5,
+       20,1,4,
+       6,0;
+Store MFlag[5],MFlag[5]-9%20+10 ;
+Goto :enemyloop ;
+End ;
+:del
+If ParamA,10,<,:end ;
+If ParamA,30,>,:end ;
+IfBox ParamA,6,15,7,15,0,:end ;
+DelObj ParamA ;
+:end
+End;
+
+:walk
+IfBox 0,6,15,7,15,0,Current+2 ;
+ChangeMap 134,ObjSX[0]-2,2,2,3;
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 135,ObjSX[0]+3,14,2,1;
+IfBox 0,1,1,8,4,1,:event ;
+End;
+
+:event
+If Flag[14],23,>,:end ;
+Stop 2;
+Store  Flag[14],24;
+Kill MFlag[6];
+SetObj 1,5,4,25,0,10,0,42,1,GravLock,1;
+SetObjDir 0,2;
+SetMes Ç†ÅEÅEÅEÅB,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftTop,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+SetObjGoal 1,5,1,24;
+Wait 30;
+DelObj 1;
+End;

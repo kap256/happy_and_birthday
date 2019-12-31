@@ -1,0 +1,69 @@
+ラクリア山脈：宝の洞窟
+13,14
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 11;
+SetBox 30,2,5,11,2,40;
+SetWoodObj 40,4,3,7,0,48,0,105,1,1,0;
+SetWoodObj 42,2,7,10,0,48,0,105,1,1,0;
+If Flag[7],16,<,:event1;
+SetWoodObj 41,10,8,6,0,48,0,105,1,1,0;
+SetSavePoint 10,5,4,5;
+
+End;
+
+:walk
+IfBox 0,2,5,2,6,0,Current+2 ;
+ChangeMap 75,9,ObjSY[0]-1,2,0;
+IfBox 0,5,10,6,10,0,Current+2 ;
+ChangeMap 76,ObjSX[0],2,24,3;
+End;
+
+:::::::::::::::::::::::::::::::::::
+:event1
+Store Flag[7],16;
+StartEventSkip ;
+SetAniObj 0,6,6,5,0,32,0,159,0,GravJump,0;
+SetObj 1,7,5,5,0,10,0,7,1,GravJump,0;
+SetAniObj 2,6,7,5,5,16,0,183,1,GravJump,ShowTurn;
+Stop 1;
+Wait 20;
+SetObjDir 0,5;
+SetMes 地図によれば、$nこれが宝の洞窟みたいね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 50;
+SetMes 結構キツかったな、$n登りが・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetObjDir 0,0;
+SetObj 2,6,7,5,1,16,0,0,1,GravJump,0;
+SetMes 待ってるんだよ～、$nお宝ちゃん♪$nみんな見つけてあげるんだ♪,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObjGoal 1,2,5,5,;
+Wait 20;
+SetObjDir 2,0;
+SetObjDir 0,5;
+Wait 30;
+DelObj 1;
+Wait 30;
+SetMes 元気だなぁ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 30;
+SetMes ホントね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+ChangeMap 77,6,6,5,0;
+End;

@@ -1,0 +1,9 @@
+»”™
+26,27,33,34,35
+
+LoadMap 0 0 :desert_init ;
+Walk    0 -1 :desert_walk ;
+Talk    6 -1 :desert_talk ;
+
+_END_HEAD_
+#desert.txt

@@ -1,0 +1,19 @@
+フィーレス地下迷宮：第四層
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    5 -1 :elevator_switch ;
+
+_END_HEAD_
+#elevator.txt
+:start
+PlayBGM 5;
+Store MFlag[8],3;
+Goto :elevator_init ;
+End ;
+
+:walk
+IfBox 0,7,1,7,1,0,Current+2 ;
+ChangeMap 384,4,23,2,1;
+End;

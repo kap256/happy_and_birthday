@@ -1,0 +1,21 @@
+ïÛÇÃì¥åAÅFî†ÇÃñ¿òH
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+_END_HEAD_
+:start
+SetBox 30,2,7,6,3,33;
+
+SetPutObj 20,8,12,5,24,146,1;
+SetPutObj 21,8,9,2,24,146,1;
+SetPutObj 22,8,5,5,24,146,1;
+End;
+
+:walk
+IfBox 0,14,10,14,11,0,Current+2 ;
+ChangeMap 84,2,ObjSY[0]+3,2,2;
+IfBox 0,11,1,12,1,0,Current+2 ;
+ChangeMap 86,ObjSX[0]-8,9,2,1;
+End;

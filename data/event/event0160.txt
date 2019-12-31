@@ -1,0 +1,116 @@
+ハンダバの町：裏路地
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+SetAniObj 10,7,7,2,5,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 11,6,7,2,4,32,0,114,1,GravJump,2+BlockShadow;
+
+SetPutObj 50,3,11,2,24,157,1;
+SetPutObj 51,4,11,2,24,157,1;
+
+If Flag[20],4,=,Current+2;
+BGColor 0;
+
+If Flag[20],2,<,:event;
+End;
+
+:walk
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 158,ObjSX[0]+4,14,3,1;
+End;
+
+:note
+Stop 1;
+SetMes メモが落ちているな。$n何々。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes 「砂漠は広いから、$n　迷わないようにメモをしておこう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes 「右上に２回、右下に１回進んだ後、$n　さらに右上に１回進めば$n　隠れ家にたどり着けるぞ。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+Store Flag[20],3;
+Stop 1;
+
+SetBigObj 0,6,5,2,3,48,0,109,1,1,0;
+SetObj 1,7,6,2,1,32,0,4,1,GravJump,1;
+SetObj 5,6,3,2,3,32,0,46,0,GravJump,1;
+SetCamera 0-80,40,1;
+Wait 20;
+SetMes よいしょっと。,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 0;
+DelMes 5;
+SetObjGoal 5,7,3,2;
+Wait 32;
+SetObjGoal 5,7,4,2;
+Wait 32;
+SetMes ご注文のエメラルド３００個、$n確かに納品しましたよ。,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 50;
+SetMes うむ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 5;
+SetObj 2,4,1,2,1,24,0,0,0,GravJump,1;
+SetObjGoal 2,4,6,2;
+SetObjDir 2,2;
+Wait 40;
+SetObj 3,3,1,2,1,32,0,8,1,GravJump,1;
+SetObjGoal 3,3,4,2;
+SetObjDir 3,2;
+Wait 80;
+SetMes おや、父さん。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetObjDir 1,0;
+SetMes なんだ、$nカリスか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes まだ仕事があったんだ。$n手伝う？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes なに、$nあと１、２件だ。$nたいしたことは無い。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetMes 宿屋の前に置いておけば$nいいんですね？,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 40;
+SetObjDir 1,1;
+SetMes ああ、頼む。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 5;
+SetObjDir 1,0;
+SetObjGoal 5,7,3,2;
+SetMes それよりも、リティスには$n初めての砂漠だろう。$nしっかり楽しませてやれよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 32;
+SetObjGoal 5,6,3,2;
+SetObjDir 5,3;
+Wait 16;
+SetMes じゃあ、そうするよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+
+Wait 20;
+ChangeMap 160,4,4,2,2;

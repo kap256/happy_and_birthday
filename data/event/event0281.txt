@@ -1,0 +1,42 @@
+地下水道：崩れる床
+0,10,39,46
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Hit     0 -1 :fire_tikuwa_hit ;
+Fall    0 -1 :underfloor ;
+
+_END_HEAD_
+#fire_tikuwa.txt
+
+:start
+
+SetEne 1,4,15,20,Rand,48,50,
+       0,5,
+       59,2,4,
+       5,0;
+
+SetBox 5,10,3,20,3,146;
+SetBox 6,11,3,20,3,147;
+
+
+:::::::::::::::::::::::::::::::::MFlag[8]に、高さを定義します。
+Store MFlag[8],18;
+:::::::::::::::::::::::::::::::::MFlag[9]に、落下速度を定義します。16=歩ける  10=要ダッシュ
+Store MFlag[9],16;
+:::::::::::::::::::::::::::::::::MFlag[10]に、画像ファイルを定義します。
+Store MFlag[10],344;
+Goto :fire_tikuwa_start ;
+
+:walk
+IfBox 0,4,20,5,20,0,Current+2 ;
+ChangeMap 280,ObjSX[0]+24,2,10,3;
+IfBox 0,11,15,11,15,0,Current+2 ;
+ChangeMap 282,6,22,8,1;
+End;
+
+
+:underfloor
+ChangeMap 282,ObjSX[0],ObjSY[0],24,ObjDir[0];
+End;

@@ -1,0 +1,137 @@
+ハンダバの町：広場
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :shop1 ;
+Talk    11 -1 :shop1 ;
+Talk    2  -1 :shop1 ;
+Talk    3  -1 :talk1 ;
+Talk    4  -1 :talk2 ;
+Talk    5  -1 :talk1 ;
+Talk    6  -1 :talk3 ;
+Talk    7  -1 :talk3 ;
+
+_END_HEAD_
+:start
+PlayBGM 7;
+EndEventSkip;
+SetHighObj 10,11,12,3,3,32,0,121,1,GravJump,2+BlockShadow+ShowTurn;
+SetHighObj 11,11,13,3,0,32,0,121,1,GravJump,2+BlockShadow+ShowTurn;
+
+SetObj 2,12,13,3,0,32,0,48,1,GravJump,1;
+
+SetObj 3,10,3,3,2,48,0,49,1,GravJump,1;
+SetObj 4,5,7,3,Rand,48,4,47,1,GravJump,1;
+SetObj 5,11,3,3,0,48,0,45,1,GravJump,1;
+
+If Flag[20],4,=,Current+2;
+BGColor 0;
+If Flag[52],0,>,:end ;
+SetObj 6,14,8,3,0,48,0,49,1,GravJump,1;
+SetObj 7,14,9,3,0,48,0,49,1,GravJump,1;
+:end
+End;
+
+:walk
+IfBox 0,1,8,1,9,0,Current+2 ;
+ChangeMap 157,14,ObjSY[0]-1,2,0;
+IfBox 0,15,8,15,9,0,Current+2 ;
+ChangeMap 162,2,ObjSY[0]+7,2,2;
+IfBox 0,7,1,8,1,0,Current+2 ;
+ChangeMap 156,ObjSX[0]+3,11,2,1;
+IfBox 0,7,15,8,15,0,Current+2 ;
+ChangeMap 160,ObjSX[0]-4,2,2,3;
+End;
+
+
+:shop1
+Stop 1;
+SetObjDir 2,ObjDir[0]+2;
+SetMes いらっしゃーい。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+Shop 13,0;
+Wait 1;
+DelMes 0;
+Stop 0;
+End;
+
+:talk1
+Stop 2;
+If Flag[20],20,<,:talk4;
+SetMes おまえ、$nこの卑猥な本は何だ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 40;
+SetMes え、$n兵隊さん、何を･･･。,
+       1,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 0;
+:talk4
+SetMes ちょっと話を$n聞かせてもらおうか。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 40;
+SetMes カンベンしてくださいよ。,
+       1,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Stop 0;
+End;
+
+:talk2
+Stop 2;
+SetObjDir 4,2;
+SetMes すぐそこから出ると$n砂漠ですよ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+SetObjDir 4,ObjDir[0]+2;
+SetMes すごく広くて、$nうっかりすると、$nすぐ迷っちゃうんです。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+SetMes 迷った時には、$n見回りしている兵隊さんに頼めば$n道案内してくれますよ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk3
+Stop 2;
+SetMes この先は街の外だ。,
+       0,ObjX[6],ObjY[6],ObjZ[6],LeftBottom,0;
+Wait 30;
+SetMes 子供連れには$n危険だぞ。,
+       1,ObjX[7],ObjY[7],ObjZ[7],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Stop 0;
+End;
+
+
+:event
+StartEventSkip ;
+Stop 1;
+Store Flag[20],4;
+SetObj 0,8,14,3,1,32,0,0,1,GravJump,1;
+SetObj 1,7,14,3,1,32,0,8,1,GravJump,1;
+Wait 20;
+SetMes もうこんな時間か。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes 大分遅くなって$nしまいましたね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetObjDir 0,0;
+SetMes そろそろ帰ろうか。$n父さんも戻ってるころだろう。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetObjDir 1,2;
+SetMes そうですね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 158,8,14,3,1;

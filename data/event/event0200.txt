@@ -1,0 +1,70 @@
+…ãˆâÕF•‚‚©‚È‚¢Î
+10,12,28,38,39
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Walk    20 -1 :puto ;
+Walk    21 -1 :puto ;
+
+_END_HEAD_
+#water.txt
+:start
+
+SetPutObj 20,11,9,2,24,146,1;
+SetPutObj 21,6,9,2,24,146,1;
+If Flag[29],0,>,Current+3 ;
+SetPutObj 20,22,6,2,24,146,1;
+SetPutObj 21,6,4,2,24,146,1;
+
+SetMapChip 0,ObjSX[20],ObjSY[20],ObjSZ[20];
+SetMapChip 0,ObjSX[20],ObjSY[20],ObjSZ[20]+1;
+SetMapChip 0,ObjSX[21],ObjSY[21],ObjSZ[21];
+SetMapChip 0,ObjSX[21],ObjSY[21],ObjSZ[21]+1;
+
+SetEne 1,6,9,7,Rand,32,32,
+       0,5,
+       10,2,4,
+       10,0;
+SetEne 2,21,6,7,Rand,32,32,
+       0,5,
+       10,0,5,
+       10,0;
+
+SetBox 10,3,3,7,2,98;
+SetBox 11,3,4,7,2,99;
+If Flag[28],1,>,:water_init ;
+If Flag[28],0,>,:water_init ;
+SetEne 4,8,6,2,Rand,48,10,
+       0,5,
+       39,2,6,
+       10,0;
+SetBox 12,3,6,2,2,100;
+Goto :water_init ;
+End;
+:walk
+IfBox 0,8,1,9,1,0,Current+2 ;
+ChangeMap 205,ObjSX[0],10,4,1;
+IfBox 0,13,1,14,1,0,Current+2 ;
+ChangeMap 201,ObjSX[0]-8,9,7,1;
+IfBox3D 0,21,1,5,22,1,5,0,Current+2 ;
+ChangeMap 198,ObjSX[0]-15,12,5,1;
+IfBox3D 0,1,9,5,1,10,5,0,Current+2 ;
+ChangeMap 202,13,ObjSY[0]-2,4,0;
+End;
+
+
+:puto
+If Flag[29],0,>,:end ;
+IfBox 20,11,9,11,9,1,:puto2 ;
+IfBox 21,11,9,11,9,1,:puto2 ;
+:end
+End;
+:puto2
+IfBox 20,6,9,6,9,1,:puto3 ;
+IfBox 21,6,9,6,9,1,:puto3 ;
+End;
+:puto3
+Store Flag[29],1;
+PlayWave 6;
+End;

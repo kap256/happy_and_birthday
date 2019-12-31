@@ -1,0 +1,103 @@
+フィーレス地下迷宮：エントランス
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Fall    0 -1 :underfloor ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+
+PlayBGM 5;
+:lift_loop
+SetLiftObj MFlag[0]*4+10,MFlag[0]+5,5,7,0,32,0,173,NoShadow;
+SetLiftObj MFlag[0]*4+11,MFlag[0]+5,6,7,0,32,0,173,NoShadow;
+SetLiftObj MFlag[0]*4+12,MFlag[0]+5,7,7,0,32,0,173,NoShadow;
+SetLiftObj MFlag[0]*4+13,MFlag[0]+5,8,7,0,32,0,173,NoShadow;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],4,<,:lift_loop ;
+
+If CurrentMonth,15,=,:event ;
+
+If Flag[11],5,<,:skip3 ;
+DelObj 15;
+DelObj 16;
+DelObj 19;
+DelObj 20;
+End ;
+
+:skip3
+If Flag[11],3,<,:skip2 ;
+DelObj 10;
+DelObj 11;
+DelObj 12;
+DelObj 13;
+End ;
+
+:skip2
+If Flag[11],1,<,:skip1 ;
+DelObj 22;
+DelObj 23;
+DelObj 24;
+DelObj 25;
+End ;
+
+:skip1
+End ;
+
+:walk
+IfBox 0,6,12,7,12,0,Current+2 ;
+ChangeMap 88,ObjSX[0]-3,2,2,3;
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 91,10,ObjSY[0]-3,2,0;
+IfBox 0,12,6,12,7,0,Current+2 ;
+ChangeMap 90,2,ObjSY[0]+1,2,2;
+IfBox 0,6,1,7,1,0,Current+2 ;
+ChangeMap 92,ObjSX[0]-3,15,2,1;
+End;
+
+:underfloor
+ChangeMap 93,ObjSX[0],ObjSY[0],24,ObjDir[0];
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+Stop 1;
+SetObj 0,6,12,9,1,32,0,11,1,GravJump,1;
+SetObjGoal 0,6,10,9;
+Wait 60;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 2;
+SetCamera 0,0,1;
+Wait 2;
+SetMes ？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+NewLine 0,0,:shake ;
+Wait 20;
+SetMes 地震！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 494,7,8,9,0;
+
+End ;
+:shake
+PlayWave 22;
+SetCamera 4,0,1;
+Wait 2;
+SetCamera 0,0,1;
+Wait 2;
+SetCamera 0-4,0,1;
+Wait 2;
+SetCamera 0,0,1;
+Wait 2;
+Goto :shake ;
+End;
+

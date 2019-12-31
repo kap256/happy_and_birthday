@@ -1,0 +1,35 @@
+’n‰º…“¹FWÏê
+39,46,63,59,81
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+
+:start
+
+SetEne 2,7,17,12,Rand,48,50,
+       0,5,
+       92,2,4,
+       20,0;
+SetEne 3,6,5,16,Rand,48,10,
+       0,5,
+       92,2,4,
+       20,0;
+
+SetBox 8,10,16,7,3,151;
+End;
+
+:walk
+IfBox 0,15,22,15,23,0,Current+2 ;
+ChangeMap 290,2,ObjSY[0]-17,13,2;
+IfBox3D 0,6,6,10,7,6,10,0,Current+2 ;
+ChangeMap 293,ObjSX[0]+17,34,8,1;
+IfBox 0,9,1,9,1,0,Current+2 ;
+ChangeMap 294,10,14,15,1;
+IfBox 0,15,6,15,6,0,Current+2 ;
+ChangeMap 295,3,5,8,2;
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 296,14,21,23,0;
+End;

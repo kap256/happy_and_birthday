@@ -1,0 +1,43 @@
+ピラミッド：５－４
+0,10,26,27
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    5 -1 :switch ;
+
+_END_HEAD_
+:start
+SetAniObj 5,6,7,2,0,32,0,174,1,GravJump,NoShadow;
+If Flag[24],1,<,Current+2;
+SetAniObj 5,6,7,2,4,32,0,174,1,GravJump,NoShadow;
+
+End;
+
+:walk
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 172,11,ObjSY[0],2,0;
+End;
+
+:switch
+Stop 3;
+If Flag[24],1,<,:switchon ;
+
+SetMes 今はもう$n動かない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;
+:switchon
+Store Flag[24],1;
+PlayWave 9;
+SetObjDir 5,1;
+Wait 4;
+SetObjDir 5,4;
+Wait 30;
+PlayWave 17;
+Stop 0;
+
+End;

@@ -1,0 +1,31 @@
+êÖè„à‚ê’ÅFìÒÇÃä‘
+10,38,39,40
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#water.txt
+:start
+
+SetEne 1,8,6,8,Rand,32,32,
+       0,5,
+       10,6,4,
+       10,0;
+SetEne 2,6,12,6,Rand,32,32,
+       0,5,
+       38,6,4,
+       10,0;
+Goto :water_init ;
+End;
+:walk
+IfBox 0,8,15,9,15,0,Current+2 ;
+ChangeMap 195,7,3,7,3;
+IfBox 0,1,9,1,10,0,Current+2 ;
+ChangeMap 211,13,ObjSY[0]-3,4,0;
+IfBox3D 0,4,1,4,5,1,4,0,Current+2 ;
+ChangeMap 208,ObjSX[0]+5,9,2,1;
+IfBox3D 0,11,1,4,12,1,4,0,Current+2 ;
+ChangeMap 207,ObjSX[0]-6,9,5,1;
+End;

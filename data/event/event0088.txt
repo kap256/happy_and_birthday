@@ -1,0 +1,51 @@
+フィーレス地下迷宮：入り口
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+PlayBGM 5;
+If Flag[55],0,>,:no_wall ;
+SetMapChip 143,1,11,8;
+SetMapChip 143,1,11,9;
+SetMapChip 143,1,11,10;
+SetObj 10,1,11,8,0,32,0,0,1,GravJump,NoShadow;
+:no_wall
+End;
+
+:walk
+IfBox 0,3,20,3,20,0,Current+2 ;
+ReturnVillage  0;
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 89,ObjSX[0]+3,11,9,1;
+IfBox 0,1,11,1,11,0,Current+2 ;
+ChangeMap 413,9,6,2,0;
+End;
+
+:talk
+Stop 1;
+SetMes ここだけ壁が薄い・・・？$n壊せるかも。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+Select2 壊す。$nそっとしておく。,
+        1,ObjX[0],ObjY[0],ObjZ[0],RightTop,:break,:end ;
+
+:break
+DelMes 0;
+PlayWave 22;
+SetCamera 2,0,1;
+Wait 2;
+SetCamera 0,0,1;
+Store Flag[55],1;
+SetMapChip 380,1,11,8;
+SetMapChip 380,1,11,9;
+SetMapChip 380,1,11,10;
+DelObj 10;
+:end
+DelMes 0;
+Stop 0;
+End;

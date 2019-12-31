@@ -1,0 +1,41 @@
+フィーレス村：レーナの寝室
+48
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+
+:start
+
+Stop 1;
+SetAniObj 0,5,6,3,0,32,0,169,0,GravJump,0;
+SetAniObj 1,5,7,3,1,32,0,167,0,GravJump,0;
+MapColor 255,0,0,0;
+Wait 1;
+SetMes きゃああああ！,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,LeftBottom,0;
+Wait 120;
+Store MFlag[0],255;
+:whiteloop
+MapColor MFlag[0],0,0,0;
+Store MFlag[0],MFlag[0]-8;
+Wait 1;
+If MFlag[0],64,>,:whiteloop ;
+Wait 0;
+DelMes 0;
+MapTitle ;
+Wait 120;
+SetObjDir 0,4;
+SetMes ・・・夢、か。,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ・・・今夜も$n眠れそうに無いわね・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]+8,LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 57,9,4,2,0;
+End;

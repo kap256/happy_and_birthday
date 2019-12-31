@@ -1,0 +1,174 @@
+砂漠の町ハンダバ
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetAniObj 11,2,6,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 12,3,6,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,4,6,2,5,32,0,114,1,GravJump,BlockShadow;
+
+SetAniObj 14,2,3,2,0,32,0,167,1,GravJump,BlockShadow;
+SetAniObj 15,2,2,2,4,32,0,167,1,GravJump,BlockShadow;
+SetAniObj 16,4,3,2,0,32,0,167,1,GravJump,BlockShadow;
+SetAniObj 17,4,2,2,4,32,0,167,1,GravJump,BlockShadow;
+SetAniObj 18,6,3,2,0,32,0,167,1,GravJump,BlockShadow;
+SetAniObj 19,6,2,2,4,32,0,167,1,GravJump,BlockShadow;
+If Flag[20],1,<,:event ;
+If Flag[20],4,=,:event2 ;
+
+If Flag[20],20,<,:menu;
+SetParty 4;
+:menu
+OpenMenu 0;
+ChangeMap 159,8,7,5,2;
+End ;
+
+:event
+PlayBGM 7;
+MonthTitle ;
+StartEventSkip;
+Store Flag[20],1;
+
+SetAniObj 0,2,5,2,0,32,0,192,1,GravJump,ShowTurn;
+SetCamera 100,0-300,1;
+SetCamera 100,50,0;
+Wait 330;
+SetMes ５月９日。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+NewLine 0,0,:write ;
+Wait 0;
+SetMes 今週はお店の皆さんと$n船に乗って$n商品の仕入れに来ています。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+NewLine 0,0,:write ;
+Wait 0;
+SetMes 初めての船旅に$n砂ばかりの大地、$nそれに見たこともない文化。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+NewLine 0,0,:write ;
+Wait 0;
+SetMes いろいろなものに出会って$n少しどきどきしています。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+NewLine 0,0,:write ;
+Wait 0;
+SetMes 今日は仕入れも終わって$nみんなで観光に行く予定です。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+NewLine 0,0,:write ;
+Wait 0;
+DelMes 0;
+Wait 20;
+SetObj 1,7,4,2,0,32,0,0,1,GravJump,0;
+SetObjGoal 1,6,4,2;
+Wait 20;
+SetMes やあ。$nもう準備は出来た？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+SetObjDir 0,1;
+Wait 60;
+SetMes あ。はい。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+OpenMenu 0;
+ChangeMap 154,4,5,2,2;
+End;
+
+
+:write
+SetObjDir 0,4;
+Wait 8;
+SetObjDir 0,0;
+Wait 8;
+SetObjDir 0,4;
+Wait 8;
+SetObjDir 0,0;
+End;
+
+:event2
+Store Flag[20],8;
+PlayBGM 17;
+BGColor 2;
+SetAniObj 0,3,4,2,0,32,0,194,1,GravJump,1;
+SetAniObj 1,2,5,2,5,32,0,192,1,GravJump,1;
+NewLine 0,0,:shake ;
+Store MFlag[0],Ret;
+Wait 20;
+SetMes う～ん。$nどっちがババかなぁ･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes ふふふ。$nどっちでしょう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetCamera 100,50,0;
+SetObj 2,7,4,2,0,32,0,4,1,GravJump,0;
+SetObjGoal 2,6,4,2;
+Wait 10;
+SetMes 帰ったぞ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 30;
+Kill MFlag[0];
+SetMes あ、$nお帰り。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+SetObjDir 0,5;
+Wait 0;
+SetObjGoal 2,5,5,2;
+SetObjDir 2,0;
+SetMes なんだ？$nババ抜きか。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 50;
+SetObjDir 0,4;
+SetMes さっきから$n一回も勝てなくてさ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+NewLine 0,0,:shake ;
+Store MFlag[0],Ret;
+Wait 20;
+SetMes う～ん･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes ふふふ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes まるで嫁より先に$n孫が出来たみたいだな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 60;
+Kill MFlag[0];
+SetMes ･･･父さん、$nまたその話～？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+SetObjDir 0,5;
+Wait 0;
+SetObjGoal 2,5,2,2;
+SetObjDir 2,2;
+SetObjDir 0,4;
+SetMes ふふん。まあいいか。$n明日は帰りだから$n忘れ物するなよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 60;
+SetMes は～い。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+SetMes はい。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+ChangeMap 161,8,8,5,0;
+End;
+:shake
+Wait 30;
+SetObjDir 0,1;
+Wait 30;
+SetObjDir 0,0;
+Goto :shake ;
+
+End;

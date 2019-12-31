@@ -1,0 +1,20 @@
+ómäŸÅFínâ∫é∫
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetBox 1,8,6,2,0,329;
+SetSavePoint 2,2,4,7;
+
+SetAniObj 10,2,8,7,4,32,0,114,1,GravJump,BlockShadow+ShowTurn+1;
+SetAniObj 11,2,9,7,0,32,0,115,1,GravJump,BlockShadow+ShowTurn+1;
+SetAniObj 12,2,10,7,5,32,0,114,1,GravJump,BlockShadow+ShowTurn+1;
+End ;
+
+:walk
+IfBox 0,1,6,1,6,0,Current+2 ;
+ChangeMap 611,7,5,2,0;
+End;

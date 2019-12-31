@@ -1,0 +1,58 @@
+東封
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+
+SetAniObj 20,3,3,2,0,32,0,123,1,GravJump,0;
+SetAniObj 21,2,5,2,8,32,0,322,1,GravJump,ShowTurn;
+SetAniObj 22,4,2,2,13,32,0,322,1,GravJump,0;
+SetAniObj 23,5,2,2,15,32,0,322,1,GravJump,0;
+SetCamera 80,0-40,1;
+
+Wait 1;
+SetMes やれやれだネ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes まだ用があるかナ？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+FleaMarket 1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+SetMes こんなときでも$n商品の入荷は欠かさないヨ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes ・・・・・・火事場泥棒じゃないヨ。$n悪いことしてないヨ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+
+
+End;

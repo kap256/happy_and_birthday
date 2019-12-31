@@ -1,0 +1,460 @@
+フィーレス村：村はずれ
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+If CurrentMonth,3,=,:mar ;
+If CurrentMonth ,9,=,:july ;
+If CurrentMonth,10,=,:aug ;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::墓
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:mar
+Stop 1;
+
+SetAniObj 0,7,4,3,8,16,0,52,0,GravJump,1;
+SetObj 1,8,6,3,1,24,0,27,0,GravJump,1;
+SetObj 2,6,5,3,2,24,0,29,0,GravJump,1;
+SetCamera 0-40,40,1;
+Wait 20;
+SetMes う～・・・。$n今週は少ない・・・,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes でも、ホリィちゃんは$nえらいよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+SetMes 自分のお小遣いは、$n自分で稼いでるんだもんね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+SetCamera 0-110,5,0;
+SetObj 3,4,1,3,1,24,0,69,0,GravJump,1;
+SetObjGoal 3,4,4,3;
+SetObjDir 3,2;
+Wait 20;
+SetObjDir 1,0;
+SetObjDir 2,0;
+SetObj 0,7,4,3,0,16,0,2,0,GravJump,1;
+SetMes あ、$nホリィちゃんとこの店長だ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetMes おばちゃん、$nこんにちは。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 60;
+SetMes ・・・あらあら、$n若～い子が寄って集まって。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetMes そのお花、$nきれいですね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 20;
+SetMes 花束なんか持って、$nどこ行くのさ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes ・・・子供には$n関係ないの。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes ・・・むー。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes それじゃ。$n来週は食器割らないように$n気をつけなさいよ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 3;
+SetObjGoal 3,4,10,3;
+SetObjDir 0,3;
+SetObjDir 1,1;
+SetObjDir 2,2;
+SetCamera 0-40,40,0;
+Wait 120;
+PlayBGM 1;
+SetMes ・・・色恋沙汰だよ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetMes だね！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 10;
+SetMes だよね！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes 相手は誰かな！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+SetMes カリスさんかな？$n仲いいし！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes アレは$n良いように利用されてるって$n言うんだよ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes じゃあ$n誰だよ～？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes う～、$nそう言われると・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 30;
+SetMes 私も$nわかんない・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 120;
+SetMes 密着レポートだよ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetMes え～！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 10;
+SetMes やめなよ～。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes おばちゃんに歯向かうと、$nお刺身にされちゃうって・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 60;
+SetMes 前の町でも、$n殺人がばれて$n逃げてきたって・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 120;
+SetMes ・・・都市伝説だよっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+OpenMenu 0;
+Wait 20;
+
+ChangeMap 445,6,2,2,3;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::炎の山
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:july
+Stop 1;
+If Flag[123],2c,>,:july_2 ;
+SetObj 0,5,10,3,1,32,0,6,0,GravJump,1;
+SetObj 1,9,4,3,3,16,0,54,0,GravJump,1;
+SetObj 2,9,6,3,2,16,0,28,0,GravJump,1;
+SetAniObj 3,8,5,3,10,24,0,51,0,GravJump,ShowTurn;
+SetAniObj 4,10,3,3,10,24,0,27,0,GravJump,1;
+SetAniObj 5,11,7,3,10,24,0,29,0,GravJump,ShowTurn;
+NewLine 0,0,:swing ;
+NewLine 0,0,:walkloop2 ;
+SetObjGoal 0,5,6,3;
+PlayBGM 1;
+Wait 48;
+SetMes う～ん。$n追い出されちゃった・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetMes ・・・あのお花、$n気に入ってもらえなかったのかなぁ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetObjDir 0,2;
+SetCamera 120,60,0;
+SetMes ・・・あれ？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 329,0,0,0,0;
+End;
+
+:walkloop2
+SetObjGoal 1,11,6,3;
+SetObjGoal 2,11,4,3;
+Wait 32;
+SetObjGoal 1,11,4,3;
+SetObjGoal 2,9,4,3;
+Wait 32;
+SetObjGoal 1,9,4,3;
+SetObjGoal 2,9,6,3;
+Wait 32;
+SetObjGoal 1,9,6,3;
+SetObjGoal 2,11,6,3;
+Wait 32;
+If MFlag[0],0,=,:walkloop2 ;
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:july_2
+SetObj 1,5,5,3,2,24,0,6,0,GravJump,1;
+SetObj 0,7,5,3,0,16,0,2,0,GravJump,1;
+SetObj 2,9,6,3,0,16,0,28,0,GravJump,1;
+SetObj 3,8,4,3,0,24,0,51,0,GravJump,1;
+SetObj 4,10,3,3,0,24,0,27,0,GravJump,1;
+SetObj 5,11,5,3,0,24,0,29,0,GravJump,1;
+SetCamera 0-80,0-40,1;
+PlayBGM 1;
+Wait 20;
+SetMes あ、ありがとう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes いいってことよ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+SetObjGoal 1,5,1,3;
+NewLine 0,0,:del_lwein ;
+SetCamera 40,20,0;
+SetObjDir 0,2;
+SetObjDir 2,1;
+SetObjDir 3,3;
+SetObjDir 4,3;
+SetObjDir 5,0;
+Wait 20;
+SetMes はやく続きやろー。,
+       2,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 30;
+SetMes よーし、$nいっくぞ～！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+
+PlayWave 36;
+PlayBGM 0;
+Store MFlag[16],12;
+NewLine 0,0,:fire_cloop ;
+SetMes ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,NoSound;
+Wait 2;
+SetMes ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,NoSound;
+SetMes ！,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightBottom,NoSound;
+Wait 6;
+SetMes ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,NoSound;
+Wait 2;
+SetMes ！,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightBottom,NoSound;
+Wait 30;
+DelMes 0;
+Wait 2;
+DelMes 2;
+DelMes 3;
+Wait 3;
+DelMes 4;
+DelMes 5;
+Wait 20;
+ChangeMap 302,5,5,5,2;
+End;
+
+:del_lwein
+Wait 96;
+DelObj 1;
+End;
+
+:fire_cloop
+SetCamera 40+MFlag[16],20,1;
+Wait 1;
+SetCamera 40-MFlag[16],20,1;
+Wait 1;
+Store MFlag[16],MFlag[16]-1;
+If MFlag[16],0,>,:fire_cloop ;
+SetCamera 40,20,1;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::母からの手紙
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:aug
+Stop 1;
+PlayBGM 1;
+
+SetObjPos 0,7,5,3;
+SetObj 1,6,4,3,3,16,0,54,0,GravJump,1;
+SetObj 2,6,6,3,2,16,0,8,0,GravJump,1;
+SetAniObj 3,5,5,3,10,24,0,51,0,GravJump,ShowTurn;
+SetAniObj 4,7,3,3,10,24,0,27,0,GravJump,1;
+SetAniObj 5,8,7,3,10,24,0,29,0,GravJump,ShowTurn;
+
+SetObjView 0,0;
+
+NewLine 0,0,:talk ;
+NewLine 0,0,:swing ;
+Store MFlag[8],Ret;
+SetObjGoal 1,6,6,3;
+SetObjGoal 2,8,6,3;
+Wait 32;
+:walkloop
+SetObjGoal 1,8,6,3;
+SetObjGoal 2,8,4,3;
+Wait 32;
+SetObjGoal 1,8,4,3;
+SetObjGoal 2,6,4,3;
+Wait 32;
+SetObjGoal 1,6,4,3;
+SetObjGoal 2,6,6,3;
+Wait 32;
+SetObjGoal 1,6,6,3;
+SetObjGoal 2,8,6,3;
+Wait 32;
+If MFlag[0],0,=,:walkloop ;
+SetObjSpeed 1,10;
+SetCamera 0,80,0;
+SetCameraSpeed 20;
+SetObjGoal 1,9,6,3;
+SetObjGoal 2,10,6,3;
+DelMes 2;
+SetMes そりゃー！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Kill MFlag[8];
+Wait 10;
+SetAniObj 1,7,6,3,0,10,0,181,0,GravJump,1;
+SetObjGoal 1,9,6,3;
+SetObj 3,5,5,3,2,24,0,51,0,GravJump,1;
+SetObj 4,7,3,3,2,24,0,27,0,GravJump,1;
+SetObj 5,8,7,3,2,24,0,29,0,GravJump,1;
+Wait 6;
+SetMes きゃあああ！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-20,LeftBottom,0;
+SetFadeOut 30;
+SetAniObj 2,9,6,3,0,16,0,305,0,GravJump,1;
+SetAniObj 10,9,6,3,0,8,0,306,0,GravJump,NoShadow;
+SetObjGoal 2,10,6,3;
+SetObjGoal 10,11,6,3;
+PlayWave 17;
+Wait 14;
+SetObjDir 1,4;
+PlayWave 17;
+Wait 2;
+PlayWave 17;
+SetObjDir 2,4;
+SetObjDir 10,4;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjSpeed 0,32;
+SetObjGoal 0,9,5,3;
+
+SetObjDir 1,1;
+SetObjDir 2,1;
+SetObjGoal 3,5,6,3;
+SetObjGoal 4,10,4,3;
+SetObjGoal 5,11,7,3;
+SetObjDir 3,2;
+SetObjDir 4,3;
+SetObjDir 5,1;
+Wait 32;
+SetObjGoal 3,8,6,3;
+
+SetMes う～ん。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightTop,0;
+Wait 10;
+SetMes いたた・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 40;
+SetMes 大丈夫？,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 20;
+SetMes 派手に$n転んだねー。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+DelMes 4;
+SetAniObj 5,11,7,3,10,24,0,29,0,GravJump,ShowTurn;
+SetMes うわー、$nこのクマさん、$nワタが出ちゃってるよ。,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 40;
+SetObjDir 2,5;
+SetMes えっ！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+DelMes 5;
+DelMes 2;
+Wait 30;
+SetObjDir 2,1;
+SetMes そんな･･･。$n母さんの形見なのに･･･。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,RightTop,0;
+Wait 60;
+SetMes あ～あ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 20;
+SetMes ホリィちゃん、$n頭から飛び込むんだもの。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftTop,0;
+Wait 30;
+SetMes う～。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+DelMes 4;
+SetMes あれ？$nでもワタだけじゃなくて、$n何か入ってるよ。,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 60;
+SetObjDir 2,5;
+SetMes えっ。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+SetObjGoal 4,11,5,3;
+SetObjDir 4,3;
+SetObjGoal 3,8,8,3;
+SetMes なんだろう。$n手紙、かな？,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 48;
+SetObjGoal 3,12,8,3;
+SetObjDir 3,1;
+SetMes 手紙･･･？,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 5;
+
+:aug_black
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]+8;
+If MFlag[0],255,<,:aug_black;
+MapColor 255,0,0,0;
+ChangeMap 220,0,0,0,0;
+End;
+
+
+:talk
+Wait 20;
+SetMes 待てー！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 10;
+SetMes あーん！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetMes わーい！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 20;
+SetMes がんばってー！,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+Store MFlag[0],1;
+DelMes 3;
+Wait 5;
+DelMes 4;
+End;
+
+
+:swing
+Wait 20;
+SetObjDir 3,11;
+SetObjDir 4,11;
+SetObjDir 5,11;
+Wait 20;
+SetObjDir 3,10;
+SetObjDir 4,10;
+SetObjDir 5,10;
+Goto :swing ;

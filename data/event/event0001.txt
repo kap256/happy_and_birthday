@@ -1,0 +1,197 @@
+ラクリー街道：途中
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+SetWoodObj 10,1,5,3,3,48,0,105,1,1,0;
+SetWoodObj 11,7,1,4,3,48,0,105,1,1,0;
+
+If Flag[0],2,<,:event1;
+If Flag[0],3,<,:event2;
+End ;
+
+:event1
+StartEventSkip ;
+PlayBGM 32;
+Stop 1;
+Store Flag[0],2;
+SetBigObj 11,3,4,2,3,48,0,109,1,1,0;
+SetAniObj 12,4,4,2,0,48,0,110,1,1,0;
+SetObj 0,4,8,2,1,32,0,0,1,1,0;
+SetObj 1,5,8,2,1,32,0,1,1,1,0;
+SetObj 2,4,7,2,1,16,0,2,1,1,0;
+SetObj 3,5,7,2,1,24,0,3,1,1,0;
+SetCamera 100,0-50,0;
+Wait 5;
+SetMes う～ん・・・。,
+       0,ObjX[12],ObjY[12],ObjZ[12]-16,LeftBottom,0;
+Wait 20;
+SetMes ！,
+       1,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+SetMes ！,
+       2,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+SetMes ！,
+       3,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+SetMes ！,
+       4,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+DelMes 4;
+SetObjGoal 2,4,5,2;
+SetObjGoal 3,5,4,2;
+Wait 1;
+SetObjGoal 0,4,7,2;
+Wait 31;
+SetObjDir 3,0;
+SetMes 大丈夫！？,
+       3,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 3;
+Wait 60;
+SetMes 軽く頭を打ったようですな。$n見たところたいしたことでは$nなさそうじゃ。,
+       4,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 4;
+Wait 20;
+ChangeMap 1,3,6,2,0;
+
+:event2
+Stop 1;
+Store Flag[0],3;
+SetBigObj 11,3,4,2,3,48,0,109,1,1,0;
+SetAniObj 12,1,6,3,4,48,0,110,1,1,1;
+SetObj    0,4,7,2,0,32,0,0,1,1,1;
+SetAniObj 1,3,4,2,0,32,0,111,1,1,1+Wall1;
+SetObj    2,1,7,3,1,16,0,2,1,1,1;
+SetObj    3,2,6,2,0,48,0,3,1,1,1;
+SetCamera 0,100,1;
+SetCamera 0,0-100,0;
+
+NewLine 0,0,:watch ;
+Store MFlag[10],Ret;
+
+Wait 90;
+SetMes いてて・・・。,
+       0,ObjX[12],ObjY[12],ObjZ[12],LeftBottom,0;
+
+Wait 60;
+SetMes こうしておけば、$nだいぶ楽になるじゃろう。,
+       4,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 40;
+SetMes いやー、$n助かりましたよ。,
+       0,ObjX[12],ObjY[12],ObjZ[12],LeftBottom,0;
+Wait 0;
+DelMes 4;
+SetMes 盗賊か何かですかね。,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes 後ろからポカリとやられましてね。$n姿までは見えませんでしたよ。,
+       0,ObjX[12],ObjY[12],ObjZ[12],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Kill MFlag[10];
+Wait 20;
+SetObjDir 1,0;
+SetMes 宝石がやられてるわね。$nガーネットがごっそり全部。,
+       2,ObjX[1],ObjY[1]-16,ObjZ[1],RightBottom,0;
+Wait 60;
+SetObjDir 0,1;
+SetObjDir 3,1;
+SetObjDir 12,1;
+SetMes あちゃ～・・・。,
+       0,ObjX[12],ObjY[12],ObjZ[12],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 16;
+PlayBGM 1;
+Wait 16;
+SetCamera 0-60,0-100,0;
+SetMes ねえねえ、ガーネットって$nどんな宝石？,
+       3,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+SetObjDir 2,2;
+Wait 10;
+SetObjDir 3,0;
+SetObjDir 12,4;
+Wait 0;
+SetMes 1月の誕生石じゃな。$n主に赤い色をした$n綺麗なやつじゃ。,
+       4,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 40;
+SetMes へ～。,
+       3,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 4;
+SetMes そういえば、誕生石って$n使うと不思議な力が$nあるんだよね？,
+       3,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 60;
+SetMes うむ。$nそうじゃな。,
+       4,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes いいな～。$nボクにも使えるかな～。,
+       3,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+SetObjDir 2,1;
+Wait 40;
+SetMes ふぉっふぉっふぉ。$n誕生石の力を引き出すには、$nそれなりの人生経験が要るんじゃよ。$n
+       ホリィには、まだ少し早いじゃろう。,
+       4,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes バカにしないでよ！$nボクだってやれば出来るよ！,
+       3,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+SetObjDir 2,2;
+Wait 50;
+SetMes ふぉっふぉっふぉ。$nその意気なら$nすぐに使えるようになるかもしれんの。,
+       4,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 3;
+DelMes 4;
+Wait 20;
+Tutorial 0;
+Wait 30;
+SetObjDir 1,5;
+SetCamera 120,0-100,0;
+SetMes まだ足跡が$n残ってるみたいね。,
+       2,ObjX[1],ObjY[1]-16,ObjZ[1],RightBottom,0;
+Wait 80;
+SetObjDir 0,1;
+SetObjDir 3,1;
+SetMes 追いかけるのか？,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetMes 人の眠りを邪魔したのよ？$n刺身かステーキにでもしてやらないと$n気が治まらないわ。,
+       2,ObjX[1],ObjY[1]-16,ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes 寝坊した人間が$n言うセリフか。,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 1;
+Wait 20;
+ChangeMap 3,2,6,4,2;
+End;
+
+:walk
+IfBox 0,4,8,5,8,0,Current+2;
+ChangeMap 0,ObjSX[0]-2,2,3,3;
+IfBox 0,8,2,8,3,0,Current+2;
+ChangeMap 3,2,ObjSY[0]+3,4,2;
+:exit
+End;
+
+:watch
+Wait 30;
+SetObjDir 1,4;
+Wait 30;
+SetObjDir 1,0;
+Goto :watch ;
+End;

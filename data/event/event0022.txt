@@ -1,0 +1,142 @@
+トライアック商店
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+If Flag[2],1,<,:event ;
+
+If Flag[2],3,<,Current+2;
+SetParty 4;
+OpenMenu 0;
+ChangeMap 28,7,6,2,3;
+End ;
+
+:event
+PlayBGM 2;
+StartEventSkip;
+
+SetAniObj 10,5,7,2,1,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 11,5,6,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 12,5,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,5,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 14,5,3,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 15,5,2,2,1,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 20,4,4,2,0,32,0,136,1,GravJump,0;
+SetAniObj 0,4,4,2,0,32,0,137,1,GravJump,1;
+
+SetCamera 480,240,1;
+SetCamera 120,60,0;
+
+:readbook
+Wait 180;
+SetObjDir 0,4;
+Wait 16;
+SetObjDir 0,1;
+Wait 16;
+SetObjDir 0,0;
+MapTitle ;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],2,<,:readbook;
+
+Wait 90;
+SetObj 1,8,4,2,0,32,0,20,1,GravJump,1;
+Wait 10;
+SetObjDir 0,5;
+Wait 20;
+SetObjGoal 1,6,4,2;
+SetCamera 80,40,0;
+
+SetMes や、どーも。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes いらっしゃいませ。,
+       1,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetAniObj 0,4,4,2,0,32,0,138,1,GravJump,1;
+DelMes 0;
+SetMes お体のほうは$nいかがです？,
+       1,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 8;
+SetObjDir 0,4;
+Wait 8;
+SetObjDir 0,1;
+Wait 8;
+SetObjDir 0,5;
+SetMes ははは。$nもう一ヶ月たってますからね。$nピンピンしてますよ。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes それは良かった。$nで、今日は何の御用で？,
+       1,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 40;
+SetMes いやあ、実は$n珍しいツボを手に入れたんですよ。$n確かボルテさん、$nツボのコレクターでしたよね。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ええ、$n部屋が狭くなるから$nやめてくれって$n言ってるんですけどね。,
+       1,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes ははは。$nまあ、そう言わずに。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetAniObj 1,6,4,2,4,32,0,139,1,GravJump,1;
+DelMes 1;
+Wait 16;
+SetMes これなんですけどね。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+SetObjDir 1,1;
+SetAniObj 2,5,4,2,5,32,0,139,1,GravJump,NoShadow+5;
+Wait 16;
+SetObjDir 1,0;
+Wait 0;
+SetAniObj 0,4,4,2,0,32,0,140,1,GravJump,1;
+Wait 8;
+SetObjDir 0,4;
+Wait 60;
+SetMes ずいぶんと古そうなつぼですね。$nいつの物です？,
+       1,ObjX[0]+4,ObjY[0],ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes 専門外ですから$n詳しくは知りませんが、$n相当古いみたいですよ。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ふーむ。,
+       1,ObjX[0]+4,ObjY[0],ObjZ[0],RightBottom,0;
+DelMes 0;
+SetObjDir 0,1;
+Wait 60;
+DelMes 1;
+Wait 30;
+SetMes ・・・あれ？,
+       1,ObjX[0]+4,ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes おかしいな。$nフタが取れない。,
+       1,ObjX[0]+4,ObjY[0],ObjZ[0],RightBottom,0;
+Wait 40;
+SetMes ああ、$n私も試してみたんですがね。$nどういうわけか。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ふたは加熱すると$n取りやすくなるって言いますがね。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetObjDir 0,4;
+SetMes こんな骨董品をですか。,
+       1,ObjX[0]+4,ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetObjDir 0,1;
+DelMes 0;
+DelMes 1;
+Wait 90;
+SetMes 父さんのコレクションでも$n見たことが無いな・・・。$nお代は。,
+       1,ObjX[0]+4,ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetObjDir 0,4;
+SetMes こんなもんで$nどうですかね。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 23,3,4,2,0;
+End;
+

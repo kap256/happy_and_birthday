@@ -1,0 +1,43 @@
+空中庭園：キューブ通り
+10,19,63
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+#skygarden.txt
+#forest.txt
+
+:start
+SetEne 1,24,8,11,Rand,20,0,
+       15,7,
+       48,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+SetEne 2,19,4,14,Rand,20,0,
+       15,8,
+       92,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+SetEne 3,9,12,15,Rand,20,0,
+       15,7,
+       92,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+SetEne 4,14,6,17,Rand,20,0,
+       15,7,
+       48,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+SetBox 5,3,6,18,3,338;
+
+Store MFlag[8],489 ;
+Store MFlag[9],19 ;
+Store MFlag[15],:return_forest ;
+
+Goto :forest_init ;
+:return_forest
+Goto :skygarden_init ;
+
+:walk
+IfBox 0,10,1,10,1,0,Current+2 ;
+ChangeMap 639,5,30,11,1;
+IfBox 0,21,15,22,15,0,Current+2 ;
+ChangeMap 637,ObjSX[0]-3,2,20,3;
+
+End;

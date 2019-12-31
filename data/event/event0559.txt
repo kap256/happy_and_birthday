@@ -1,0 +1,24 @@
+‘Œ´F¬ŒŠ
+9,11,2,21,16
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,2,4,2,Rand,16,10,
+       0,6,
+       16,0,8,
+       2,LPx2;
+SetEne 2,6,4,2,Rand,16,10,
+       0,6,
+       11,0,8,
+       2,LPx2;
+SetBox 3,4,2,2,3,315;
+
+End ;
+
+:walk
+IfBox 0,4,7,4,7,0,Current+2 ;
+ChangeMap 557,6,54,7,3;
+End;

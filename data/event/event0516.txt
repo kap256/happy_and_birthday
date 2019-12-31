@@ -1,0 +1,51 @@
+å∂éãÇÃñ¿ã{ÅFÉäÉtÉg
+27,28,29,30,46
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetEne 1,3,7,2,Rand,32,0,
+       0,5,
+       46,0,8,
+       22,0;
+SetEne 2,6,5,4,Rand,32,0,
+       0,5,
+       46,0,8,
+       22,0;
+
+SetObj 10,7,9,2,0,32,0,173,1,GravLock,NoShadow;
+End;
+
+:walk
+IfBox 0,1,10,1,10,0,Current+2 ;
+ChangeMap 512,9,13,2,0;
+IfBox 0,10,6,10,6,0,Current+2 ;
+ChangeMap 515,2,28,2,2;
+IfBox 0,5,1,5,1,0,Current+2 ;
+ChangeMap 519,8,9,2,1;
+
+IfBox 0,7,9,7,9,1,:up ;
+
+End;
+
+:up
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+SetObjGrav 10,GravJump;
+SetObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],16,0,pImage,0,GravJump,1;
+:loop
+SetObjZSpd 0,32;
+SetObjZSpd 10,30;
+Wait 1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],30,<,:loop ;
+ChangeMap 509,7,6,10,ObjDir[0];
+End;

@@ -1,0 +1,82 @@
+#included
+
+:water_switch_init
+If MFlag[8],Flag[28],=,:water_switch_init_on ;
+SetObjDir 10,0;
+Goto :water_init ;
+:water_switch_init_on
+SetObjDir 10,4;
+Goto :water_init ;
+End;
+
+:::::::::::::::::::::::::::::::com_water_switch::::::::::::::::::::::::::::::::::::::::
+
+:water_switch_talk
+Stop 1;
+If ObjDir[10],0,>,:water_switch_no_move ;
+
+PlayWave 9;
+SetObjDir 10,1;
+Wait 4;
+SetObjDir 10,4;
+Wait 30;
+
+PlayWave 34;
+Store MFlag[21],11;
+
+Store MFlag[16],0;
+:water_switch_loop_x
+Store MFlag[17],1;
+:water_switch_loop_y
+Store MFlag[18],1;
+:water_switch_loop_z
+GetMapChip MFlag[20],MFlag[16],MFlag[17],MFlag[18];
+If 60,MFlag[20],!=,:water_switch_loop_after ;
+SetMapChip 0,MFlag[16],MFlag[17],MFlag[18];
+SetAAObj MFlag[21],MFlag[16],MFlag[17],MFlag[18]+1,1,32,0,371,4,8,0,GravLock,NoShadow;
+Store MFlag[21],MFlag[21]+1;
+
+:water_switch_loop_after
+Store MFlag[18],MFlag[18]+1;
+If MFlag[18],10,<,:water_switch_loop_z ;
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],MapY,<,:water_switch_loop_y ;
+Store MFlag[16],MFlag[16]+1;
+If MFlag[16],MapX,<,:water_switch_loop_x ;
+
+Store MFlag[17],0;
+:water_switch_loop_time
+Store MFlag[16],11;
+:water_switch_loop_obj
+SetObjZSpd MFlag[16],MFlag[8]-Flag[28]*5 ;
+Store MFlag[16],MFlag[16]+1;
+If MFlag[16],MFlag[21],<,:water_switch_loop_obj ;
+Wait 1;
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],64,<,:water_switch_loop_time ;
+
+
+Store MFlag[16],11;
+:water_switch_loop_end
+GetMapChip MFlag[20],ObjSX[MFlag[16]],ObjSY[MFlag[16]],ObjSZ[MFlag[16]]-1;
+If 10,MFlag[20],<,:water_switch_loop_end_after ;
+SetMapChip 60,ObjSX[MFlag[16]],ObjSY[MFlag[16]],ObjSZ[MFlag[16]]-1;
+:water_switch_loop_end_after
+DelObj MFlag[16];
+Store MFlag[16],MFlag[16]+1;
+If MFlag[16],MFlag[21],<,:water_switch_loop_end ;
+
+Store Flag[28],MFlag[8];
+Stop 0;
+End ;
+
+
+:water_switch_no_move
+SetMes ¡‚Í“®‚©‚È‚¢‚æ‚¤‚¾B,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+

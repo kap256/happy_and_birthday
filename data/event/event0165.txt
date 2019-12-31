@@ -1,0 +1,66 @@
+ピラミッド
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+Store Flag[22],2;
+Store Flag[21],1;
+If Flag[20],24,<,:event ;
+EndEventSkip ;
+PlayBGM 3;
+SetBox 1,9,1,18,3,83;
+SetSavePoint 10,7,10,2;
+End;
+:walk
+IfBox3D 0,8,2,7,9,7,2,0,Current+2 ;
+ChangeMap 166,ObjSX[0]-2,14,2,1;
+IfBox 0,8,15,9,15,0,Current+2 ;
+ChangeMap 164,ObjSX[0]+8,2,2,3;
+End;
+
+:event
+Stop 1;
+Store Flag[20],24;
+StartEventSkip;
+SetObjPos 0,7,10,2;
+SetObjView 0,0;
+SetObj 1,8,15,2,1,24,0,50,2,GravJump,1;
+SetCameraSpeed 20;
+MapTitle ;
+SetCamera 0,0-600,1;
+SetCamera 0,80,0;
+Wait 200;
+SetObjGoal 1,8,10,2;
+Wait 140;
+SetObjDir 1,2;
+Wait 30;
+SetObjDir 1,0;
+Wait 30;
+SetObjDir 1,3;
+Wait 60;
+SetObjGoal 1,8,7,2;
+Wait 72;
+DelObj 1;
+Wait 16;
+SetCameraSpeed 10;
+SetCamera 0-120,140,0;
+SetObj 2,8,15,2,1,24,0,4,2,GravJump,1;
+SetObj 3,9,15,2,1,32,0,8,2,GravJump,1;
+SetObjGoal 2,8,14,2;
+SetObjGoal 3,9,14,2;
+Wait 40;
+SetMes あの人です！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 30;
+SetMes よし。$n追いかけるぞ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+Wait 20;
+ChangeMap 165,8,14,2,1;
+End;

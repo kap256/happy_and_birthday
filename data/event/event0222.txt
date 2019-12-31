@@ -1,0 +1,62 @@
+オーリウェン屋敷
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+Store Flag[35],4;
+
+SetAniObj 0,4,4,4,0,32,0,129,1,GravJump,1;
+
+Wait 60;
+SetMes この辺から音がしたよな。$n地下室まであったんだ、$nこの屋敷。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 40;
+SetObj 1,1,5,4,2,16,0,5,1,GravJump,1;
+SetObj 0,4,4,4,3,32,0,0,1,GravJump,1;
+SetObjGoal 1,3,5,4;
+SetObjDir 1,1;
+SetCamera 0-60,0,0;
+Wait 10;
+SetMes 何ですの？$n騒々しいですわね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes あら？,
+       2,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes どうしました。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetMes おかしいですわ。$nこんなところに地下室なんて$n無かったはずですのに･･･。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 60;
+SetMes えっ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetAniObj 0,4,4,4,0,32,0,129,1,GravJump,1;
+SetMes 盗賊がトンネルを$n掘ってきた？$n･･･まさかな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes とにかく、$n入ってみますわよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetObj 0,4,4,4,3,32,0,0,1,GravJump,1;
+SetMes 警備の人を$n呼んだほうが･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes 家主に遅れをとる$n警備員なぞ、$n役に立つはずありませんわ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+OpenMenu 0;
+Wait 1;
+DelMes 0;
+DelMes 1;
+Wait 20;
+
+ChangeMap 223,5,9,6,1;
+End;

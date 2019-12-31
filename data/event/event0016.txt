@@ -1,0 +1,166 @@
+盗賊のアジト
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+StartEventSkip;
+PlayBGM 33;
+
+SetAniObj 10,6,7,2,0,48,0,114,1,1,130+NoShadow;
+SetAniObj 12,5,7,2,0,48,0,115,1,1,130+NoShadow;
+SetAniObj 11,4,7,2,4,48,0,114,1,1,130+NoShadow;
+
+SetAniObj 14,6,4,2,1,48,0,114,1,1,130+NoShadow;
+SetAniObj 16,5,4,2,0,48,0,115,1,1,130+NoShadow;
+SetAniObj 15,4,4,2,0,48,0,115,1,1,130+NoShadow;
+
+Store MFlag[0],4;
+:roop2
+Store MFlag[1],4;
+:roop1
+SetAniObj MFlag[0]*5+MFlag[1],MFlag[1],MFlag[0],2,4,32,0,115,1,1,130;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],7,<,:roop1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],8,<,:roop2;
+
+
+SetObj 2,3,4,2,2,32,0,207,1,1,0;
+SetObj 3,3,7,2,2,32,0,207,1,1,0;
+SetObj 5,5,3,2,3,32,0,207,1,1,0;
+SetObj 6,7,6,2,0,32,0,207,1,1,0;
+
+If Flag[0],9,>,:escaped ;
+Store Flag[0],10;
+
+SetObj 0,13,6,2,0,24,0,0,0,1,0;
+SetObj 4,11,5,2,0,32,0,0,1,1,0;
+SetObj 1,11,6,2,0,24,0,1,1,1,0;
+
+SetObjView 0,0;
+SetObjView 1,0;
+SetObjView 4,0;
+
+SetCamera 0-320,0-240,1;
+SetCamera 0-480,0-300,0;
+Wait 100;
+SetMes へっへっへ。$nあの商人のやろう、$nずいぶんたくさん持ってやがったな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetObjDir 3,1;
+SetMes しかし世の中には$n変わったヤツもいるもんだな。$n誕生石を普通の三倍の値段で$n買ってくれるってんだからよ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 80;
+SetObjDir 2,3;
+SetMes ま、$nそんな物好きのおかげで$n今年も商売繁盛ってヤツだ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetObjDir 2,2;
+SetObjDir 3,2;
+DelMes 2;
+DelMes 3;
+SetMes でもよ、$n何でわざわざそんな値段で$n買い集めてるんだろうな。$n変じゃないか？,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 60;
+SetMes いちいち気にするなよ。$nカネさえもらえりゃ$nそれでおしまいだ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 3;
+DelMes 5;
+Wait 60;
+SetObjDir 6,2;
+SetMes おい、$n誰か来たぞ。,
+       6,ObjX[6],ObjY[6],ObjZ[6],RightBottom,0;
+Wait 40;
+SetObjDir 5,2;
+SetMes 噂をすれば$n影ってやつか。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetMes いや、$n違うヤツだ！,
+       6,ObjX[6],ObjY[6],ObjZ[6],RightBottom,0;
+SetObjView 4,1;
+SetObjView 1,1;
+SetCameraSpeed 20;
+SetCamera 0-380,0-250,0;
+
+SetObjGoal 1,8,6,2;
+SetObjGoal 4,9,5,2;
+Wait 50;
+SetMes よくも私の眠りを$n妨げてくれたわね！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+DelMes 6;
+SetMes なんだきさま！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 16;
+
+:battle
+EndEventSkip;
+Battle 0;
+If Escape,0,>,:escape ;
+StartEventSkip;
+SetCamera 0-560,0-340,1;
+SetObjDir 1,2;
+SetObjDir 4,3;
+SetObjPos 1,3,6,2;
+SetObjPos 4,2,3,2;
+SetAniObj 2,3,4,2,1,32,0,103,1,1,0;
+SetAniObj 3,3,7,2,1,32,0,103,1,1,ShowTurn;
+SetAniObj 5,5,3,2,1,32,0,103,1,1,0;
+SetAniObj 6,7,6,2,1,32,0,103,1,1,ShowTurn;
+Wait 20;
+SetMes う～ん･･･。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,LeftTop,0;
+Wait 20;
+SetMes ぐぅぅ･･･。,
+       3,ObjX[3],ObjY[3],ObjZ[3]-16,RightBottom,0;
+Wait 40;
+SetMes これからは$n真面目に働けよ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+DelMes 3;
+Wait 20;
+
+ChangeMap 17,15,10,2,1;
+
+End;
+:escape
+Wait 1;
+SetMes ちょ、ちょっと$nタンマ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+Wait 10;
+ChangeMap 119,3,4,2,2;
+
+
+:escaped
+
+SetCamera 0-400,0-260,1;
+SetObj 0,13,6,2,0,24,0,0,0,1,0;
+SetObj 4,9,5,2,0,24,0,0,1,1,0;
+SetObj 1,8,6,2,0,16,0,1,1,1,0;
+SetObjDir 5,2;
+SetObjDir 6,2;
+SetObjView 0,0;
+Wait 10;
+
+SetMes 性懲りも無く$nまた来たな！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 30;
+SetMes さっきは少し$n眠気が取れてなかっただけよ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+Goto :battle ;
+End;

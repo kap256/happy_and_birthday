@@ -1,0 +1,152 @@
+ピラミッド：玄室
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+StartEventSkip;
+Store Flag[20],50;
+SetFade 20,50;
+
+SetAniObj 4,4,4,2,4,32,0,50,0,GravJump,ShowTurn;
+SetObj 5,4,3,2,2,12,0,211,0,GravHiJump,0;
+SetAniObj 6,5,3,2,4,16,0,195,0,GravHiJump,0;
+SetAniObj 0,5,4,2,1,16,0,195,0,GravHiJump,0;
+SetCamera 0,0-30,1;
+
+Wait 60;
+SetMes 間違いなく、$n本物だ。,
+       6,ObjX[6],ObjY[6],ObjZ[6],LeftBottom,0;
+Wait 40;
+SetMes 当たり前だろ。,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightBottom,0;
+Wait 0;
+SetObj 6,5,3,2,3,16,0,211,0,GravHiJump,0;
+DelMes 6;
+SetMes さあ、$nそっちも約束の金を出せよ。,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightBottom,0;
+Wait 40;
+SetObjDir 5,3;
+SetMes いいだろう。$n                           $nと、言いたいところだが・・・。,
+       5,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 5;
+SetAniObj 5,4,3,2,0,16,0,316,0,GravHiJump,0;
+SetMes ！,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightBottom,0;
+PlayBGM 63;
+Wait 30;
+SetObjDir 5,1;
+Wait 4;
+SetObjDir 5,2;
+SetObjDir 4,8;
+SetObjGoal 4,4,5,2;
+PlayWave 16;
+Wait 4;
+SetMes あぐあっ！,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightBottom,0;
+SetObjDir 5,3;
+SetObjDir 4,9;
+Wait 4;
+SetObjDir 4,10;
+Wait 4;
+SetObjDir 4,11;
+Wait 4;
+SetObjDir 4,12;
+Wait 4;
+SetObjDir 4,13;
+Wait 60;
+PlayBGM 36;
+SetObjDir 5,2;
+Wait 10;
+DelMes 4;
+SetObj 5,4,3,2,3,16,0,211,0,GravHiJump,0;
+Wait 8;
+SetMes 貴様はもう用済みだ。$n我々は闇・・・。$n関係者は始末する。,
+       5,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+SetObjDir 5,2;
+SetObjDir 6,0;
+SetMes 用は済んだ。$n戻るぞ。,
+       5,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+SetCamera 0-100,20,0;
+SetObj 1,4,8,2,1,24,0,0,0,GravJump,0;
+SetObj 2,5,8,2,1,32,0,4,0,GravJump,0;
+SetObjGoal 1,4,6,2;
+SetObjGoal 2,5,7,2;
+Wait 25;
+SetObj 3,4,8,2,1,24,0,8,0,GravJump,0;
+SetObjGoal 3,4,7,2;
+Wait 25;
+SetMes ！$nお前らは！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 20;
+SetObjDir 5,3;
+SetObjDir 6,3;
+SetMes ！,
+       5,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 5;
+Wait 20;
+EndEventSkip ;
+
+PlayBGM 63;
+Battle 16;
+StartEventSkip ;
+SetObjDir 4,14;
+SetAniObj 1,4,4,2,0,32,0,145,0,GravJump,0;
+SetAniObj 2,3,5,2,0,32,0,195,0,GravJump,ShowTurn;
+SetObjGoal 5,3,3,2;
+SetObjGoal 6,6,3,2;
+SetCamera 0,0-30,1;
+Wait 2;
+SetMes ちっ！,
+       5,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 14;
+SetObjGoal 5,3,1,2;
+SetObjGoal 6,6,1,2;
+Wait 16;
+DelMes 5;
+Wait 16;
+DelObj 5;
+DelObj 6;
+Wait 0;
+PlayBGM 44;
+SetCamera 0-100,20,0;
+SetObj 1,4,4,2,3,32,0,0,0,GravJump,0;
+SetMes 出血がひどいな・・・。$n残念だが・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 40;
+SetMes チクショウ・・・。$n・・・ドジっちまったぜ・・・。,
+       4,ObjX[4],ObjY[4],ObjZ[4]-16,LeftTop,0;
+Wait 0;
+DelMes 2;
+SetMes ・・・やっぱり、・・・$n世の中に・・・そんな、$n・・・ウマイ話は・・・無いか・・・。,
+       4,ObjX[4],ObjY[4],ObjZ[4]-16,LeftTop,0;
+Wait 0;
+DelMes 4;
+Wait 60;
+SetMes ・・・何処の誰だか知らないが、$nよかったら・・・$n・・・頼みを・・・聞いてくれ・・・。,
+       4,ObjX[4],ObjY[4],ObjZ[4]-16,LeftTop,0;
+Wait 0;
+SetMes 入り口のほうに・・・息子が$n・・・いるんだ・・・。$nそいつを・・・。,
+       4,ObjX[4],ObjY[4],ObjZ[4]-16,LeftTop,0;
+Wait 0;
+DelMes 4;
+Wait 60;
+SetMes ・・・・・・。,
+       4,ObjX[4],ObjY[4],ObjZ[4]-16,LeftTop,0;
+Wait 60;
+SetMes ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+
+DelMes 4;
+DelMes 2;
+Wait 20;
+ChangeMap 159,9,8,5,2;
+End;

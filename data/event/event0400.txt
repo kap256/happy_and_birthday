@@ -1,0 +1,61 @@
+盗賊のアジト：頭目の間
+13,14
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetBox 10,2,4,4,2,227;
+If Flag[64],30,<,:event1 ;
+End;
+
+:walk
+IfBox 0,11,4,11,4,0,Current+2 ;
+ChangeMap 399,2,10,2,2;
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 399,15,10,2,0;
+End;
+
+:event1
+Stop 1;
+SetObjPos 0,7,4,2;
+SetAniObj 5,4,4,3,4,32,0,116,1,GravJump,0;
+SetCamera 0-160,0-80,1;
+Wait 20;
+If Flag[64],25,>,:event2 ;
+Store Flag[64],28;
+SetMes よくも子分どもを$nいじめてくれたな！$n覚悟しやがれ！,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Goto :battle ;
+:event2
+SetMes まだやる気か！$n覚悟しやがれ！,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+:battle
+Wait 0;
+DelMes 0;
+Wait 20;
+Battle 28;
+If Escape,0,>,:escape ;
+
+Store Flag[64],30;
+SetObjDir 5,5;
+Wait 20;
+SetMes あぐぅ・・・。,
+       0,ObjX[5],ObjY[5],ObjZ[5]-16,LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 400,7,4,2,0;
+End;
+
+:escape
+Wait 1;
+SetMes こいつ！$n逃げるか！,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 397,2,8,2,2;
+End;

@@ -1,0 +1,144 @@
+フィーレス村：雑貨屋前
+22,23,52,53,54
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+If Flag[48],0,=,:event ;
+EndEventSkip ;
+
+SetBox 5,5,5,3,2,170;
+SetBox 6,5,3,3,2,171;
+
+::終了イベント関連::::::::::::::::::::::::::::::::
+Store MFlag[24],:ret_novevent;
+
+::::カメラ
+Store MFlag[25],0-60;
+Store MFlag[26],60;
+
+::::キャラ座標
+SetObj 90,6,5,3,3,32,0,0,1,GravJump,1;
+SetObj 91,7,7,3,1,32,0,8,1,GravJump,1;
+
+Goto :check_novevent;
+#nov_event.txt
+:ret_novevent
+::ここまで::::::::::::::::::::::::::::::::::::::::
+
+SetEne 1,3,8,9,Rand,24,40,
+       0,8,
+       52,2,4,
+       13,0;
+SetEne 3,12,5,4,Rand,24,4,
+       0,2,
+       54,2,4,
+       13,0;
+
+
+End;
+:walk
+IfBox 0,1,12,1,13,0,Current+2 ;
+ChangeMap 311,20,ObjSY[0]-10,10,0;
+IfBox 0,15,4,15,5,0,Current+2 ;
+ChangeMap 313,2,ObjSY[0],13,2;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip;
+Store ShopOK[3],1;
+Store Flag[48],1;
+Stop 1;
+SetObj 1,ObjSX[0],ObjSY[0],ObjSZ[0],0,10,0,0,1,GravJump,0;
+SetObj 3,6,7,3,1,32,0,211,0,GravJump,0;
+SetObj 4,8,3,3,0,32,0,211,0,GravJump,0;
+
+::::::::::::::::::Init:::::::::
+If IsMember[3],0,<,:talgon_init ;
+:boy_init
+SetObj 0,5,4,3,2,16,0,51,1,GravJump,0;
+Wait 20;
+SetMes あわわ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Goto :after_init;
+:talgon_init
+SetObj 0,5,4,3,2,16,0,3,1,GravJump,0;
+Wait 20;
+SetMes ぬうぅ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Goto :after_init;
+:after_init
+SetObjGoal 3,6,6,3;
+SetObjGoal 4,7,3,3;
+
+Wait 0;
+
+IfBox 1,1,10,7,15,1,:left ;
+:right
+SetObjPos 1,13,4,4;
+SetObjGoal 1,10,4,3;
+SetCameraSpeed 20;
+SetCamera 120,60,0;
+Wait 30;
+SetObjDir 3,2;
+SetObjDir 4,2;
+SetAniObj 1,10,4,4,0,10,0,145,1,GravJump,ShowTurn;
+Store MFlag[1],RightBottom;
+Goto :after;
+:left
+SetObjPos 1,7,10,3;
+SetObjGoal 1,7,7,3;
+SetCameraSpeed 20;
+SetCamera 0,60,0;
+Wait 30;
+SetObjDir 3,3;
+SetObjDir 4,3;
+SetObjDir 0,3;
+SetAniObj 1,7,7,3,0,10,0,145,1,GravJump,0;
+Store MFlag[1],RightBottom;
+Goto :after;
+
+:after
+DelMes 0;
+SetMes 大丈夫か！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],MFlag[1],0;
+Wait 0;
+DelMes 1;
+Wait 20;
+EndEventSkip ;
+Battle Rand%2*3+8;
+StartEventSkip ;
+DelObj 3;
+DelObj 4;
+Wait 10;
+::::::::::::::::::End:::::::::
+If IsMember[3],0,<,:talgon_end ;
+:boy_end
+SetMes あ～ん、$n怖かったよぉ･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes もう大丈夫だ。$nさ、早く避難を！,
+       1,ObjX[1],ObjY[1],ObjZ[1],MFlag[1],0;
+Goto :after_end ;
+:talgon_end
+SetMes 怪我は無いか！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],MFlag[1],0;
+Wait 0;
+SetMes おお、坊ちゃん。$n商品は全部無事ですぞ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes いいから早く避難を！,
+       1,ObjX[1],ObjY[1],ObjZ[1],MFlag[1],0;
+Goto :after_end ;
+:after_end
+
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 312,ObjSX[1],ObjSY[1],ObjSZ[1],3;
+
+
+End;

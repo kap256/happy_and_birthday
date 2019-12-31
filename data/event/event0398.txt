@@ -1,0 +1,63 @@
+盗賊のアジト：呪詛の間
+13,14
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+If Flag[64],20,<,:event1 ;
+End;
+
+:walk
+IfBox 0,8,4,8,4,0,Current+2 ;
+ChangeMap 397,2,8,2,2;
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 399,15,10,2,0;
+End;
+
+:event1
+Stop 1;
+SetAniObj 5,3,4,3,0,32,0,332,1,GravJump,0;
+SetObj 6,2,3,4,2,32,0,207,1,GravJump,0;
+SetObj 7,2,5,4,2,32,0,207,1,GravJump,0;
+SetCamera 0-160,0-80,1;
+Wait 20;
+If Flag[64],15,>,:event2 ;
+Store Flag[64],18;
+SetMes ほっほっほ。かわいい侵入者。$nこの呪詛のゴーン様が、$nあなたを呪い殺してやりましょう。,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Goto :battle ;
+:event2
+SetMes ほっほっほ。$n懲りずにまた来ましたね。$n今度こそ呪い殺してやりましょう。,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+:battle
+Wait 0;
+DelMes 0;
+Wait 20;
+Battle 27;
+If Escape,0,>,:escape ;
+
+Store Flag[64],20;
+SetObjDir 5,4;
+SetAniObj 6,2,3,4,1,32,0,103,1,GravJump,0;
+SetAniObj 7,2,5,4,1,32,0,103,1,GravJump,0;
+Wait 20;
+SetMes 人を呪わば、$n穴二つぅぅぅ・・・。,
+       0,ObjX[5],ObjY[5],ObjZ[5]-16,LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 398,5,4,2,0;
+End;
+
+:escape
+Wait 1;
+SetMes ほっほっほ。$nお逃げになるのですか？$nまあ、今回は勘弁してあげましょう。,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 397,2,8,2,2;
+End;

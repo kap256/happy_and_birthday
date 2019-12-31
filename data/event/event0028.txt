@@ -1,0 +1,17 @@
+クロボーの巣：主の間
+59,58
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEneL 1,4,4,3,2,32,0,
+       0,0,15;
+SetBox 10,2,4,4,2,184;
+End;
+:walk
+IfBox 0,15,11,15,12,0,Current+2 ;
+ChangeMap 26,2,ObjSY[0]-2,17,2;
+End;

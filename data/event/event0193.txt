@@ -1,0 +1,47 @@
+“ì‚Ì“‡F‘Œ´
+28,38,39
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+
+SetEne 1,17,14,2,Rand,48,10,
+       0,5,
+       38,2,3,
+       1,0;
+SetEne 2,14,5,2,Rand,48,10,
+       0,5,
+       39,0,5,
+       1,0;
+SetEne 3,7,8,4,Rand,48,10,
+       1,5,
+       38,2,4,
+       1,0;
+
+SetBox 5,7,15,2,2,93;
+SetBox 6,5,4,6,2,94;
+
+SetWoodObj 10,13,16,2,3,48,0,193,1,1,0;
+SetWoodObj 11,17,11,2,3,48,0,193,1,1,0;
+SetWoodObj 12,19,7,4,3,48,0,193,1,1,0;
+SetWoodObj 13,10,6,4,3,48,0,193,1,1,0;
+SetWoodObj 14,8,14,2,3,48,0,193,1,1,0;
+SetWoodObj 15,7,9,4,3,48,0,193,1,1,0;
+If Flag[27],14,>,:end ;
+If HardMode,0,=,:end ;
+SetMapChip 0,17,20,1;
+SetMapChip 0,18,20,1;
+:end
+End;
+
+
+:walk
+IfBox 0,1,7,1,8,0,Current+2 ;
+ChangeMap 194,14,ObjSY[0]-3,3,0;
+IfBox 0,17,20,18,20,0,Current+2 ;
+ChangeMap 192,ObjSX[0]-13,2,2,3;
+End;

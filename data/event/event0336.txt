@@ -1,0 +1,17 @@
+ピラミッド：玄室前
+0
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetSavePoint 1,2,4,2;
+End;
+
+:walk
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 337,4,7,2,1;
+IfBox 0,3,16,4,16,0,Current+2 ;
+ChangeMap 335,ObjSX[0]+9,4,2,3;
+End;

@@ -1,0 +1,32 @@
+マルゴ火山：第一層・南東部
+49
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+SetEne 2,9,5,5,3,32,0,
+       0,2,
+       49,0,6,
+       12,0;
+
+
+SetBox 10,9,2,5,3,341;
+
+SetNormalTrap  20,6,5,5,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  21,9,8,5,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  22,11,6,5,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  23,13,3,5,315,Rand%40+40,Rand%40,50,41,NoShadow;
+Goto :fire_start ;
+
+:walk
+IfBox 0,1,6,1,6,0,Current+2 ;
+ChangeMap 650,15,6,9,0;
+IfBox 0,11,11,11,11,0,Current+2 ;
+ChangeMap 655,10,6,6,3;
+IfBox 0,14,1,14,1,0,Current+2 ;
+ChangeMap 653,14,13,3,1;
+
+End;

@@ -1,0 +1,210 @@
+フィーレス村：教会の一室
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+
+Stop 1;
+MapColor 255,0,0,0;
+SetAniObj 1,5,2,2,0,32,0,312,0,GravJump,ShowTurn ;
+SetObj 2,6,4,2,1,32,0,8,0,GravJump,1 ;
+SetHighObj 5,2,6,2,3,32,0,317,0,GravJump,1 ;
+SetObjView 0,0;
+SetObjPos 0,6,3,2;
+Wait 1;
+MonthTitle ;
+Wait 200;
+SetFadeOut 50;
+Wait 100;
+PlayBGM 51;
+DelMes 0;
+Store MFlag[0],255;
+:black_loop
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]-3;
+If MFlag[0],0,>,:black_loop ;
+MapColor 0,0,0,0;
+Wait 20;
+SetMes くそぉ、$nついに来たか・・・っ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 50;
+PlayWave 11 ;
+SetCamera 0-200,50,0;
+SetObjDir 2,3;
+SetAniObj 1,5,2,2,0,12,0,320,0,GravJump,0 ;
+Wait 60;
+PlayWave 11 ;
+Wait 90;
+SetMes はいるよ。$nいーい？,
+       3,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 50;
+SetMes ああ、レーナか。$n構わないよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+PlayWave 9;
+DelObj 5;
+DelMes 1;
+SetObj 3,2,6,2,2,64,0,58,0,GravJump,0 ;
+Wait 30;
+SetObjGoal 3,3,6,2;
+Wait 40;
+SetMes なんだい？$nレーナ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes わたし、いいこと思いついたの。$nとってもいいこと。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetCameraSpeed 8;
+SetCamera 0-100,0,0;
+SetObjGoal 3,3,4,2;
+DelMes 3;
+SetMes ・・・良いこと？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 60;
+SetObjDir 2,0;
+SetMes うん。$nすっごくいいこと。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+Wait 30;
+SetMes それはね。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 3;
+Wait 30;
+SetAniObj 3,3,4,2,0,12,0,318,0,GravJump,ShowTurn;
+Wait 4;
+SetObjDir 3,1;
+Wait 4;
+SetObjDir 3,2;
+SetMes ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 16;
+SetObjDir 3,3;
+SetAniObj 2,6,4,2,0,24,0,319,0,GravJump,0;
+SetObjGoal 3,5,4,2;
+Wait 4;
+SetObjGoal 2,7,4,2;
+SetObjDir 3,4;
+Wait 4;
+SetObjDir 3,5;
+DelMes 2;
+Wait 8;
+SetObjDir 3,6;
+SetObjDir 2,1;
+Wait 4;
+SetObjDir 3,7;
+SetObjDir 2,4;
+PlayWave 18;
+Wait 4;
+SetObjDir 3,8;
+Wait 2;
+SetMes くそっ！$nはずした！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+SetObjDir 2,5;
+SetObjDir 3,9;
+Wait 2;
+SetObjDir 3,10;
+SetObjGoal 1,5,4,2;
+SetObjDir 1,1;
+SetMes ！！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 20;
+SetCameraSpeed 40;
+SetCamera 0-200,50,0;
+PlayWave 17;
+DelMes 3;
+SetObjGoal 3,5,6,2;
+SetObjDir 3,11;
+Wait 4;
+SetObjDir 1,4;
+Wait 4;
+SetObjDir 3,12;
+Wait 8;
+SetObjDir 3,13;
+SetMes 何のつもりだ！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+SetMes 邪魔しないでよ！,
+       3,ObjX[3],ObjY[3],ObjZ[3]-10,RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes その娘が死んじゃえば、$nぜんぶ解決じゃない！$n卵のカギになるその娘が！,
+       3,ObjX[3],ObjY[3],ObjZ[3]-10,RightBottom,0;
+Wait 50;
+SetMes だからと言って！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes みんな死んじゃうのよ！$nあの黒いやつらに、$nカリスも、私も、$nみんな殺されちゃうのよ！,
+       3,ObjX[3],ObjY[3],ObjZ[3]-10,RightBottom,0;
+Wait 50;
+SetMes やってみなきゃ$n分からないだろう！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes 出来るわけ無いわ！$nあいつらに卵を奪われたら、$nどうやって責任取るの！？,
+       3,ObjX[3],ObjY[3],ObjZ[3]-10,RightBottom,0;
+Wait 50;
+SetMes そんなことさせない！$n僕が必ず守る！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 3;
+DelMes 1;
+Wait 20;
+SetMes 約束してやるさ！$n誰一人、死なせやしないって！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+Wait 60;
+SetMes あなた、私より$nその娘のほうが大事なの・・・？,
+       3,ObjX[3],ObjY[3],ObjZ[3]-10,RightBottom,0;
+Wait 90;
+SetMes ・・・・・・え？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetObj 4,1,6,2,2,16,0,4,0,GravJump,0;
+SetObjGoal 4,3,6,2;
+Wait 24;
+DelMes 3;
+SetMes どうした？　騒々しいな。$nこんなときに夫婦喧嘩か。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 4;
+SetObjDir 3,14;
+SetObjParam 3,NoShadow+ShowTurn;
+SetObj 5,5,6,2,0,8,0,1,0,GravJump,0;
+SetObjGoal 5,1,6,2;
+Wait 12;
+PlayWave 17;
+SetObjGoal 4,3,7,2;
+SetObjDir 4,1;
+SetMes うおっ。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 20;
+DelObj 5;
+Wait 0;
+SetMes ・・・一体どうしたんだ？$nカリス。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 80;
+SetMes ・・・・・・        $nなんでもないよ、父さん。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 16;
+SetObjDir 1,0;
+Wait 0;
+DelMes 1;
+DelMes 4;
+Wait 30;
+ChangeMap 302,3,6,4,3;
+End;

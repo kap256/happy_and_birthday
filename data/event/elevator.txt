@@ -1,0 +1,152 @@
+#included
+::使い方
+::::MFlag[8]に、現在の階層を入力する。0～3
+
+::変数定義
+::::MFlag[16]　ループカウンタ
+::::MFlag[17]　ループカウンタ
+::::MFlag[18]　目標階層
+::::MFlag[19]　主人公の移動速度
+::::MFlag[20]　リフトの移動速度
+
+::::elevatore_init::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:elevator_init
+If Flag[56],8,<,:elevator_no_relief;
+Store Flag[57],1;
+If Flag[56],12,<,:elevator_no_relief;
+Store Flag[57],2;
+If Flag[56],16,<,:elevator_no_relief;
+Store Flag[57],3;
+:elevator_no_relief
+
+SetAniObj 5,2,5,7,0,32,0,328,1,GravLock,NoShadow;
+If Flag[57],0,=,Current+2 ;
+SetAniObj 5,2,5,7,1,32,0,328,1,GravLock,NoShadow;
+
+SetObj 10,3,4,5,0,32,0,173,1,GravLock,NoShadow;
+SetObj 11,4,4,5,0,32,0,173,1,GravLock,NoShadow;
+SetObj 12,5,4,5,0,32,0,173,1,GravLock,NoShadow;
+SetObj 13,3,5,5,0,32,0,173,1,GravLock,NoShadow;
+SetObj 14,4,5,5,0,32,0,173,1,GravLock,NoShadow;
+SetObj 15,5,5,5,0,32,0,173,1,GravLock,NoShadow;
+SetObj 16,3,6,5,0,32,0,173,1,GravLock,NoShadow;
+SetObj 17,4,6,5,0,32,0,173,1,GravLock,NoShadow;
+SetObj 18,5,6,5,0,32,0,173,1,GravLock,NoShadow;
+
+End ;
+
+::::elevatore_switch::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:elevator_switch
+If Flag[57],0,=,:elevator_nomove ;
+
+::::エレベーター・移動可能な階層をフラグに代入::::::
+
+Store MFlag[16],0;
+Store MFlag[17],0;
+:elevatore_getfloor_loop
+
+If MFlag[17],MFlag[8],=,:elevatore_getfloor_after ;
+Store Flag[58+MFlag[16]],MFlag[17]+1;
+Store MFlag[16],MFlag[16]+1 ;
+
+:elevatore_getfloor_after
+Store MFlag[17],MFlag[17]+1 ;
+If MFlag[16],3,<,:elevatore_getfloor_loop ;
+
+::::エレベーター・階層を選択::::::
+If Flag[57],2,<,:elevatore_select2 ;
+If Flag[57],3,<,:elevatore_select3 ;
+
+:elevatore_select4
+Select4 第$s $f60 $s層へ。$n第$s $f59 $s層へ。$n第$s $f58 $s層へ。$nやめる。,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftTop,:elevator_move3,:elevator_move2,:elevator_move1,:elevator_end ;
+
+:elevatore_select3
+Select3 第$s $f59 $s層へ。$n第$s $f58 $s層へ。$nやめる。,
+        2,ObjX[0],ObjY[0],ObjZ[0],LeftTop,:elevator_move2,:elevator_move1,:elevator_end ;
+
+:elevatore_select2
+Select2 第$s $f58 $s層へ。$nやめる。,
+        1,ObjX[0],ObjY[0],ObjZ[0],LeftTop,:elevator_move1,:elevator_end ;
+
+
+:elevator_move1
+Store MFlag[18],Flag[58];
+Goto :elevator_afterselect ;
+:elevator_move2
+Store MFlag[18],Flag[59];
+Goto :elevator_afterselect ;
+:elevator_move3
+Store MFlag[18],Flag[60];
+Goto :elevator_afterselect ;
+
+::::エレベーター・選択した階層に移動::::::
+:elevator_afterselect
+Stop 1;
+PlayWave 9;
+SetObjDir 5,4;
+Wait 8;
+SetObjDir 5,5;
+Wait 30;
+
+If MFlag[18]-1,MFlag[8],>,:elevator_spdinit_down ;
+
+:elevator_spdinit_up
+Store MFlag[19],42 ;
+Store MFlag[20],40 ;
+Goto :elevator_spdinit_end;
+:elevator_spdinit_down
+Store MFlag[19],0-38 ;
+Store MFlag[20],0-40 ;
+Goto :elevator_spdinit_end;
+:elevator_spdinit_end
+
+Store MFlag[17],10;
+:elevator_set_liftloop
+SetObjGrav MFlag[17],GravJump;
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],19,<,:elevator_set_liftloop ;
+
+SetAniObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],4,16,0,pImage,0,GravJump,1;
+
+Store MFlag[16],0;
+:elevator_moveloop
+
+SetObjZSpd 0,MFlag[19];
+Store MFlag[17],10;
+:elevator_move_liftloop
+SetObjZSpd MFlag[17],MFlag[20];
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],19,<,:elevator_move_liftloop ;
+
+Wait 1;
+Store MFlag[16],MFlag[16]+1;
+If MFlag[16],30,<,:elevator_moveloop ;
+
+ChangeMap 340+MFlag[18],4,5,7,0;
+End;
+
+::::エレベーター・動作していない場合::::::
+:elevator_nomove
+Stop 1;
+SetMes 動作していないようだ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+:elevator_end
+Stop 0;
+End;
+
+:up
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+ChangeMap 92,ObjSX[0]-2,ObjSY[0]-6,8,ObjDir[0];
+End;
+

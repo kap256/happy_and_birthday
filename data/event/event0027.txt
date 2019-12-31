@@ -1,0 +1,19 @@
+クロボーの巣：青眼の精鋭
+59
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,5,4,3,2,32,0,
+       0,0,
+       59,20,4,
+       2,0;
+SetBox 10,3,4,4,2,183;
+End;
+:walk
+IfBox 0,10,4,10,4,0,Current+2 ;
+ChangeMap 26,2,14,2,2;
+End;

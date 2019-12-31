@@ -1,0 +1,46 @@
+ラルドの研究室
+19
+
+LoadMap 0 -1 :start ;t ;
+
+_END_HEAD_
+:start
+Stop 1;
+PlayBGM 17;
+SetAniObj 0,4,3,2,10,48,0,53,1,GravJump,ShowTurn;
+SetAniObj 10,3,2,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 11,4,2,2,1,32,0,124,1,GravJump,BlockShadow;
+SetAniObj 12,5,2,2,5,32,0,114,1,GravJump,BlockShadow;
+Wait 90;
+SetMes ふむ･･･。$nなるほど･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+PlayWave 7;
+Wait 20;
+PlayWave 7;
+Wait 30;
+SetObjDir 0,0;
+SetObjParam 0,0;
+SetMes ん？$nこんな時間に客か？$n迷惑なヤツだな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+PlayWave 7;
+Wait 20;
+PlayWave 7;
+Wait 30;
+SetMes はいはい。$n今開けますよ。$nまったく･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+SetCamera 0,0-10240,0;
+
+:cameraroop
+SetCameraSpeed MFlag[4]+10;
+Store MFlag[4],MFlag[4]+1;
+Wait 2;
+If MFlag[4],60,<,:cameraroop ;
+
+Store Flag[27],0;
+NextMonth ;
+ReturnVillage 1;
+
+End;

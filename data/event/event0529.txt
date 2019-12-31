@@ -1,0 +1,19 @@
+フィーレス地下迷宮：吸血の槍
+66
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetEneL 1,7,4,4,0,32,0,
+        0,0,46;
+SetBox 5,9,4,5,0,301;
+End;
+
+:walk
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 523,9,9,11,0;
+
+End;

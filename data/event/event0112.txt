@@ -1,0 +1,25 @@
+フィーレス地下迷宮：左の隠し通路
+9
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 5;
+End;
+
+:walk
+IfBox 0,6,22,6,23,0,Current+2 ;
+ChangeMap 111,5,ObjSY[0]+5,2,2;
+IfBox 0,1,3,1,3,0,:end ;
+If Flag[13],<,2,:jwlshop ;
+ReturnVillage 0;
+End;
+
+:jwlshop
+Store Flag[13],1;
+ChangeMap 51,5,2,2,0;
+:end
+End;

@@ -1,0 +1,21 @@
+名も無き遺跡：盗賊のアジト前
+1
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+SetAniObj 10,3,3,2,0,32,0,185,1,GravJump,ShowTurn;
+SetAniObj 11,3,6,2,0,32,0,185,1,GravJump,ShowTurn;
+SetAniObj 12,4,2,2,0,32,0,186,1,GravJump,ShowTurn;
+SetAniObj 13,4,7,2,0,32,0,185,1,GravJump,ShowTurn;
+End;
+:walk
+IfBox 0,1,4,1,5,0,Current+2 ;
+ChangeMap 16,15,5,2,0;
+IfBox 0,9,4,9,5,0,Current+2 ;
+ChangeMap 12,2,ObjSY[0]-2,2,2;
+End;

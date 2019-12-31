@@ -1,0 +1,64 @@
+フィーレス地下迷宮：右の終端
+17
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :switch ;
+
+_END_HEAD_
+:start
+SetEne 1,8,4,2,2,16,0,
+       6,2,
+       17,4,3,
+       5,0;
+
+SetBox 5,5,6,2,1,54;
+SetAniObj 10,5,3,2,0,32,0,174,1,GravJump,NoShadow+ShowTurn;
+If Flag[11],3,<,Current+2;
+SetAniObj 10,5,3,2,4,32,0,174,1,GravJump,NoShadow+ShowTurn;
+End;
+
+:walk
+IfBox 0,16,4,16,5,0,Current+2 ;
+ChangeMap 101,6,ObjSY[0]+13,5,2;
+IfBox 0,1,4,1,5,0,Current+2 ;
+ChangeMap 90,8,ObjSY[0]-1,8,0;
+End;
+
+
+:switch
+Stop 3;
+If Flag[11],3,<,:switchon ;
+
+SetMes 今はもう$n動かない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;
+:switchon
+Store Flag[11],3;
+PlayWave 9;
+SetObjDir 10,1;
+Wait 4;
+SetObjDir 10,4;
+Wait 30;
+
+:shake
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 3;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],8,<,:shake ;
+Wait 30;
+SetMes どこかで何かが$n動く音がした。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;

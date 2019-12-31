@@ -1,0 +1,338 @@
+地下墓所
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+
+:start
+If Flag[79],16,=,:event2 ;
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event1
+StartEventSkip ;
+PlayBGM 0;
+Stop 1;
+SetObj 0,5,8,2,1,24,0,1,1,GravJump,0;
+SetObjGoal 0,5,5,2;
+Wait 72;
+SetMes ・・・！？$nあそこに見えるのは・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetObjGoal 0,5,3,2;
+:black_loop
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]+16;
+If MFlag[0],255,<,:black_loop ;
+MapColor 255,0,0,0;
+
+Store Flag[79],16;
+ChangeMap 496,0,0,0,0;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+
+Stop 1;
+SetObjSpeed 0,32;
+SetObjPos 0,5,2,2;
+SetObjView 0,0;
+SetObj 1,5,3,2,1,8,0,1,1,GravJump,0;
+SetCamera 100,0,1;
+Wait 1;
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetObjGoal 1,7,3,2;
+DelMes 0;
+NewLine 0,0,:battle ;
+Wait 16;
+SetAniObj 1,7,3,2,1,10,0,312,1,GravJump,ShowTurn;
+Wait 10;
+SetMes （あいつだ・・・！$n　やっぱり来てたんだ・・・！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Store MFlag[0],1;
+Wait 30;
+SetMes （あぶないっ！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Store MFlag[0],2;
+Wait 20;
+If MFlag[0],3,<,Current-1;
+SetMes （だめ・・・っ！$n　このままじゃやられちゃう・・・！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 40;
+SetMes （助けないと・・・っ！$n　早く助けないと・・・っ！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 16;
+ShowImage 1;
+NewLine 0,0,:show_image ;
+Wait 40;
+SetMes （・・・っ！$n　ダメよっ！ イヤな事、思い出さ・・・！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 10;
+ShowImage 2;
+NewLine 0,0,:show_image ;
+Wait 60;
+Store MFlag[0],4;
+SetMes （ダメ・・・！$n・・・早く・・・動・・・っ！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 10;
+ShowImage 3;
+NewLine 0,0,:show_image ;
+Wait 60;
+SetMes （・・・助・・・$n　た・・・ぁっ・・・！）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Store MFlag[0],5;
+End ;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:show_image
+MapColor 255,255,255,255;
+Wait 1;
+MapColor 192,255,255,255;
+Wait 1;
+MapColor 128,255,255,255;
+Wait 1;
+MapColor 64,64,64,0;
+Wait 16;
+MapColor 128,0,0,0;
+Wait 1;
+MapColor 192,0,0,0;
+Wait 1;
+MapColor 255,0,0,0;
+Wait 1;
+ShowImage 0;
+MapColor 0,0,0,0;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:battle
+Wait 10;
+SetMes ん・・・？$n今のは・・・。,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Wait 10;
+If MFlag[0],1,<,Current-1;
+SetMes オラオラ！$nよそ見してる場合かよ！,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Wait 10;
+PlayWave 18;
+Wait 10;
+SetMes うわっ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Wait 10;
+PlayWave 22;
+Wait 60;
+SetMes ヘッ！$nよく避けたじゃねぇか！,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Wait 40;
+SetMes 伊達に$n訓練してないんでね・・・っ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Wait 40;
+Wait 20;
+If MFlag[0],2,<,Current-1;
+SetMes じゃあ、$nこんなのはどーだ！？,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Wait 10;
+PlayWave 3;
+Wait 10;
+PlayWave 31;
+SetMes ぐっ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Store MFlag[0],3;
+Wait 30;
+PlayWave 17;
+Wait 50;
+SetMes ハッハッハ！$nいいねぇ！$nそうでなくちゃ面白くねぇ！,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Wait 40;
+SetMes く・・・そっ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Wait 60;
+SetMes さあて！$nもっとペース上げてくぜ・・・！,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Wait 30;
+SetMes ・・・そう簡単に$nやらせるかよっ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Wait 60;
+:battle_loop
+Goto Rand%4*2+Current+1;
+SetMes オラオラオラ！,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Goto :gal_end ;
+SetMes ほらよぉ！,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Goto :gal_end ;
+SetMes まだまだァ！！,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Goto :gal_end ;
+SetMes そぉぉりゃっ！,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Goto :gal_end ;
+:gal_end
+Wait Rand%20+1;
+NewLine 0,0,:play_sound ;
+Wait Rand%30+20;
+
+Goto Rand%4*2+Current+1;
+SetMes くっ・・・！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Goto :loy_end ;
+SetMes ぬぉ・・・っ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Goto :loy_end ;
+SetMes ・・・な、なんの！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Goto :loy_end ;
+SetMes させるか・・・ッ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Goto :loy_end ;
+:loy_end
+Wait Rand%20+1;
+NewLine 0,0,:play_sound ;
+Wait Rand%30+20;
+
+If MFlag[0],4,<,:battle_loop ;
+
+DelMes 3;
+:loy_loop
+Goto Rand%4*2+Current+1;
+SetMes ごふっ・・・！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Goto :loy_end2 ;
+SetMes ゲボォ・・・ッ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Goto :loy_end2 ;
+SetMes ・・・う・・・$nぎゃぁ・・・っ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Goto :loy_end2 ;
+SetMes あ・・・がっ！,
+       2,ObjX[0]+20,ObjY[0]-80,ObjZ[0],LeftTop,0;
+Goto :loy_end2 ;
+:loy_end2
+Wait Rand%20+10;
+NewLine 0,0,:play_sound ;
+Wait Rand%20+10;
+NewLine 0,0,:play_sound ;
+Wait Rand%20+10;
+
+If MFlag[0],5,<,:loy_loop ;
+
+Wait 10;
+ShowImage 4;
+NewLine 0,0,:show_image ;
+
+Wait 100;
+SetFadeOut 100 ;
+DelMes 1;
+DelMes 2;
+Wait 180;
+SetMes （あ・・・・・・。）,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes さてと・・・。$n今度こそ本物みたいだな。,
+       3,ObjX[0]-20,ObjY[0]-40,ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes ！！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+SetObj 1,7,3,2,2,8,0,1,1,GravJump,0;
+SetObjGoal 1,8,3,2;
+Wait 8;
+SetObjGoal 1,8,5,2;
+Wait 16;
+SetAniObj 1,8,5,2,1,10,0,312,1,GravJump,0;
+SetObj 3,5,1,2,3,24,0,62,0,GravJump,0;
+SetObjGoal 3,5,5,2;
+SetObjGoal 0,5,5,2;
+SetCameraSpeed 5;
+SetCamera 52,0,0;
+Wait 120;
+SetMes へっ。$n今日のヤツは$nなかなかホネがあったな。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetMes ハッハッハ！$nやっぱり殺しは$nこうでなくちゃあなァ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 3;
+Wait 20;
+SetObjGoal 3,5,9,2;
+Wait 96;
+DelObj 3;
+Wait 120;
+SetObj 1,8,5,2,1,48,0,72,1,GravJump,0;
+SetObjGoal 1,8,6,2;
+Wait 60;
+SetCamera 52,64,0;
+SetAniObj 1,8,6,2,1,48,0,364,1,GravJump,0;
+Wait 20;
+SetMes ・・・なんで・・・？$nどうして、一歩も動けなかったの・・・？,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+SetMes 助け・・・られたかも、$n・・・しれないのに・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+SetMes ・・・怖くて、$n足が・・・すくんで・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+SetMes わたしの・・・せいで・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetObjDir 1,5;
+SetMes いやあああああああああああ！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 10;
+SetAniObj 1,8,6,2,11,48,0,363,1,GravJump,0;
+
+:redroop
+MapColor MFlag[4],255,0,0;
+Store MFlag[4],MFlag[4]+3;
+Wait 1;
+If MFlag[4],255,<,:redroop ;
+MapColor 255,255,0,0;
+Wait 30;
+DelMes 1;
+Wait 30;
+
+Store Flag[79],0;
+NextMonth ;
+ReturnVillage 1;
+End;
+::::::::::::::::::::::::::::::
+:play_sound
+Goto Rand%6*2+Current+1;
+PlayWave 18;
+End;
+PlayWave 22;
+End;
+PlayWave 31;
+End;
+PlayWave 19;
+End;
+PlayWave 16;
+End;
+PlayWave 17;
+End;

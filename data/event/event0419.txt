@@ -1,0 +1,20 @@
+フィーレス地下迷宮：隠し通路・深部
+16,17,80,81
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,7,4,2,2,24,0,
+       0,0,
+       43,28,1,
+       5,POWx15 + LPx2;
+SetBox 10,3,4,2,2,235;
+End;
+:walk
+IfBox 0,12,4,12,4,0,Current+2 ;
+ChangeMap 418,2,9,2,2;
+
+End;

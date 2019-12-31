@@ -1,0 +1,192 @@
+ハンダバの町：港
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :shop1 ;
+Talk    11 -1 :shop1 ;
+Talk    2  -1 :shop1 ;
+Talk    3  -1 :talk1 ;
+Talk    4  -1 :talk2 ;
+
+_END_HEAD_
+:start
+SetAniObj 10,7,8,5,5,32,0,114,1,GravJump,2+BlockShadow+ShowTurn;
+SetAniObj 11,7,7,5,4,32,0,114,1,GravJump,2+BlockShadow+ShowTurn;
+
+SetObj 2,6,8,5,2,32,0,46,1,GravJump,1;
+
+PlayBGM 7;
+If Flag[20],4,=,Current+2;
+BGColor 0;
+If Flag[20],50,=,:event;
+SetObj 3,12,10,5,Rand,48,4,21,1,GravJump,1;
+SetObj 4,10,3,5,Rand,48,4,49,1,GravJump,1;
+End;
+
+:walk
+IfBox 0,15,5,15,6,0,Current+2 ;
+ChangeMap 157,2,ObjSY[0]+2,2,2;
+End;
+
+
+:shop1
+Stop 1;
+SetObjDir 2,ObjDir[0]+2;
+SetMes ここは港です。$nちょうど今船が出るところですよ。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+ReturnVillage 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk1
+Stop 2;
+SetObjDir 3,ObjDir[0]+2;
+SetMes ふう、$nやっぱり砂漠は暑いなぁ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+:talk2
+Stop 2;
+SetObjDir 4,ObjDir[0]+2;
+SetMes 犯罪対策は$n水際が大切なのだ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+Stop 1;
+SetObj 0,11,7,5,3,32,0,0,1,GravJump,1;
+SetObj 5,11,7,5,3,24,0,0,1,GravJump,1;
+SetObj 1,8,8,5,0,24,0,4,0,GravJump,1;
+SetObj 3,11,8,5,1,24,0,51,0,GravJump,1;
+SetObj 4,12,6,5,3,24,0,8,0,GravJump,1;
+SetObjView 0,0;
+::NewLine 0,0,:bolte_talk ;
+Wait 20;
+SetMes おいしかった～。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes おじちゃんたち$nやさしいね！$nおとうさんと仲いいの？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 50;
+SetMes おじ・・・っ。$n・・・うん、まあ、そうだよ。,
+       0,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 3;
+Wait 60;
+SetMes でも、$nおとうさんは$nどこにいっちゃったのかな・・・？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 60;
+SetMes ・・・ちょっと$n用事があって、$n長いこと帰れないんだって。,
+       0,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 0;
+SetMes だから、$nおとうさんに頼まれて$n君を引き取ることになったんだ。,
+       0,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 60;
+SetMes へ～$nそうなんだ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 3;
+Wait 60;
+SetObjGoal 1,9,8,5;
+SetObjDir 4,0;
+SetObjDir 5,0;
+SetObjDir 3,0;
+SetCamera 0-64,0-32,0;
+Wait 32;
+SetMes 船が取れたぞ。$nすぐ出るそうだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes うん、$nわかった。,
+       0,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+SetObjGoal 1,9,9,5;
+SetObjGoal 3,11,9,5;
+SetObjGoal 4,12,9,5;
+Wait 24;
+SetObjGoal 1,3,9,5;
+SetObjGoal 3,3,9,5;
+Wait 48;
+SetObjGoal 4,3,9,5;
+Wait 30;
+SetObjDir 5,3;
+SetFadeOut 40;
+Wait 30;
+SetCamera 0,0,0;
+SetObjDir 5,2;
+Wait 60;
+SetMes ・・・あいつら。$nあんな小さな子もいたのに・・・。,
+       0,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ・・・くそっ。,
+       0,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 0;
+
+DelMes 0;
+Wait 20; 
+NewLine 0,0,:blackout ;
+SetObjGoal 5,11,9,5;
+Wait 48;
+SetObjGoal 5,3,9,5;
+
+End;
+
+:blackout
+Store MFlag[2],0;
+
+:blackup
+MapColor MFlag[2]*4,0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],64,<,:blackup;
+MapColor 255,0,0,0;
+
+NextMonth ;
+Store Flag[20],0 ;
+SetFriend 4;
+ReturnVillage 1;
+End;
+
+
+::::::::::::::::::::::::::::::::::::::::::
+:bolte_talk
+Wait 40;
+SetMes ご予約されていた$nフィーレス村の$nボルテさんですね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 80;
+SetMes うむ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 240;
+SetMes 一人増やしたいのだが、$n大丈夫かね？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 80;
+SetMes ええっと、$n少々お待ちください。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 200;
+DelMes 2;
+DelMes 1;
+Wait 100;
+SetMes ああ、大丈夫です。$nあいてます。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 80;
+SetMes では頼む。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 240;
+DelMes 1;
+DelMes 2;
+End;

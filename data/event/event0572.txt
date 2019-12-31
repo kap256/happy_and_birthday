@@ -1,0 +1,75 @@
+村落：南部
+13,14,22,23,52,53,54
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk1 ;
+Talk    2 -1 :talk2 ;
+Talk    3 -1 :talk3 ;
+
+_END_HEAD_
+:start
+SetObj 1,7,5,2,3,32,0,62,1,GravJump,1;
+SetObj 2,4,8,2,Rand,32,4,50,1,GravJump,1;
+SetObj 3,12,10,2,Rand,64,2,31,1,GravJump,1;
+SetEne 10,6,3,2,Rand,24,10,
+       0,2,
+       13,0,8,
+       23,POWx15;
+End ;
+
+:walk
+IfBox 0,7,1,7,1,0,Current+2 ;
+ChangeMap 578,9,31,2,1;
+
+IfBox 0,8,11,9,11,0,Current+2 ;
+ChangeMap 571,ObjSX[0]-2,2,2,3;
+
+IfBox 0,15,7,15,9,0,Current+2 ;
+ChangeMap 573,2,ObjSY[0]+25,2,2;
+IfBox 0,1,7,1,9,0,Current+2 ;
+ChangeMap 576,10,ObjSY[0]+15,2,0;
+End;
+
+
+:talk1
+Stop 3;
+SetObjDir 1,ObjDir[0]+2;
+SetMes この奥の裏通りは、$nガラの悪いヤツラがたまってるぜ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes ケンカ売りに行きたいならともかく、$n意味も無く近寄るような$nところじゃないぜ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;
+
+:talk2
+Stop 3;
+SetObjDir 2,ObjDir[0]+2;
+SetMes 北のほうに、$n宝石屋さんができたんだ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetMes ここからだと、$n裏通りを通ると近いよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetMes あぶないから、$n遠回りしたほうが$nいいと思うけど。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 2;
+Stop 0;
+End;
+
+:talk3
+Stop 3;
+SetObjDir 3,ObjDir[0]+2;
+SetMes ？？？$nもう耳が遠くなって$nよく聞こえんのじゃ。,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes そうじゃなあ。$nいい天気じゃなあ。,
+       1,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;

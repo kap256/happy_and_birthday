@@ -1,0 +1,57 @@
+トライアック商店
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetObj    20,4,3,2,3,32,0,3,1,GravJump,0;
+SetAniObj 21,2,2,2,4,32,0,167,1,GravJump,0;
+SetAniObj 22,2,3,2,0,32,0,167,1,GravJump,0;
+SetAniObj 23,2,5,2,9,32,0,322,1,GravJump,ShowTurn;
+SetAniObj 24,5,2,2,14,32,0,322,1,GravJump,0;
+SetCamera 80,0-40,1;
+
+Wait 1;
+SetMes 何が御入用でしょう。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes 他に御用は？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+Shop 5+Business,1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+SetMes 旦那様は$n陣頭指揮をなさってますので、$nわしが代理ですぞ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+If HardMode,0,>,:oncemore ;
+SetMes 坊ちゃんも$nお怪我のないように・・・。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+End;

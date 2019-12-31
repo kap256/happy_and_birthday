@@ -1,0 +1,131 @@
+妖精の森
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+PlayBGM 6;
+
+:::::::::::::::::::植林
+Store MFlag[0],10;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::植林終わり
+
+If Flag[14],20,<,:event ;
+End;
+
+:walk
+IfBox 0,1,4,1,5,0,Current+2 ;
+ChangeMap 122,11,ObjSY[0],2,0;
+IfBox 0,10,4,10,5,0,Current+2 ;
+ChangeMap 132,2,ObjSY[0]+3,6,2;
+End;
+
+:event
+StartEventSkip;
+PlayBGM 38;
+Stop 1;
+SetObj 0,8,4,2,0,24,0,42,1,GravAir,1;
+SetObj 1,7,4,2,2,24,0,210,1,GravAir,1;
+SetObj 2,7,5,2,2,24,0,210,1,GravAir,1;
+Wait 16;
+SetMes 人間だよっ。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-10,LeftTop,0;
+Wait 20;
+SetMes 人間？,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftBottom,0;
+Wait 10;
+SetMes 人間？,
+       2,ObjX[2],ObjY[2],ObjZ[2]-10,RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+SetObj 3,2,4,2,2,32,0,0,1,GravJump,1;
+SetObjGoal 3,4,4,2;
+SetCamera 0-150,0-75,0;
+Wait 80;
+SetObjDir 1,0;
+SetObjDir 2,0;
+SetMes あっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0]-10,LeftTop,0;
+Wait 20;
+SetMes 人間！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftBottom,0;
+Wait 10;
+SetMes 人間だ！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-10,RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes やっちゃえー。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftBottom,0;
+SetObjGoal 1,6,4,2;
+Wait 10;
+SetMes やっちゃおー。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-10,RightBottom,0;
+SetObjGoal 2,6,5,2;
+Wait 40;
+SetMes ･･･えっ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+SetObjGoal 1,5,4,2;
+SetObjGoal 2,5,5,2;
+Wait 24;
+EndEventSkip;
+Battle 12;
+StartEventSkip ;
+SetObjGoal 1,5,1,30;
+SetObjGoal 2,5,8,30;
+Wait 4;
+SetMes わー！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,RightTop,0;
+Wait 4;
+SetMes こわーい！。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-10,LeftTop,0;
+Wait 40;
+DelMes 1;
+DelMes 2;
+Wait 16;
+DelObj 1;
+DelObj 2;
+SetMes い、いたずらが$n過ぎるぞ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 40;
+SetMes うぐっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0]-10,LeftTop,0;
+Wait 0;
+DelMes 0;
+SetObjGoal 0,10,4,2;
+SetMes こらっ！逃げるなー！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+SetObjGoal 3,5,4,2;
+Wait 45;
+Store Flag[14],20;
+ChangeMap 131,5,4,2,2;
+
+
+End;

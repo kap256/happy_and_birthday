@@ -1,0 +1,70 @@
+ódê∏ÇÃêX
+5,8,20
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 6;
+SetEne 5,6,4,2,1,48,10,
+       0,8,
+       20,3,4,
+       6,0;
+SetBox 4,5,8,2,3,73;
+
+:::::::::::::::::::êAó—
+Store MFlag[0],10;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::êAó—èIÇÌÇË
+
+SetObj 1,6,13,2,3,20,0,42,0,GravAir,1;
+Stop 3;
+Wait 2;
+SetMes ÇøÇ·ÇÒÇ∆$nÇ¬Ç¢ÇƒóàÇƒÇÊÇ¡ÅB,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,LeftTop,0;
+Wait 0;
+Stop 0;
+DelMes 1;
+SetObjGoal 1,6,4,5;
+Wait 180;
+SetObjGoal 1,8,4,3;
+Wait 40;
+SetObjGoal 1,8,1,3;
+Wait 60;
+DelObj 1;
+End ;
+
+:walk
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 139,ObjSX[0],14,2,1;
+IfBox 0,2,1,3,1,0,Current+2 ;
+ChangeMap 139,ObjSX[0]+3,14,2,1;
+
+IfBox 0,8,1,9,1,0,Current+3 ;
+Store Flag[17],1;
+ChangeMap 140,ObjSX[0]-2,29,2,1;
+IfBox 0,5,15,6,15,0,Current+2 ;
+ChangeMap 138,ObjSX[0],2,2,3;
+End;
+
+

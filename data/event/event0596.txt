@@ -1,0 +1,75 @@
+鍾乳洞：最深部
+76,77,38,39,40
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk ;
+
+_END_HEAD_
+:start
+If Flag[103],0,>,Current+2;
+SetObj 1,6,6,2,0,32,0,357,1,GravJump,1;
+IfBox 0,2,3,2,4,0,Current+2 ;
+SetObjGoalDir 0,2,10;
+End ;
+
+:walk
+IfBox 0,6,10,6,10,0,:walk2 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+If Flag[93],1,>,Current+2;
+Store Flag[93],1;
+Store Flag[103],0;
+ChangeMap 535,9,15,2,1;
+
+:walk2
+IfBox 0,11,4,11,4,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 585,7,5,3,3;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:talk
+
+Stop 3;
+SetMes 人魚族の威信にかけて、$nここは通しませんわ！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 16;
+Battle 57;
+If Escape,0,>,:escape ;
+Store Flag[103],1;
+Wait 10;
+SetMes 人間に従うことに$nなるなんて・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+SetEggFriend 5;
+LeaveParty Member[1]; 
+SetParty 5; 
+OpenMenu 2;
+Wait 20;
+ChangeMap 596,6,5,3,3;
+End;
+
+:escape
+Wait 1;
+Stop 0;
+End;

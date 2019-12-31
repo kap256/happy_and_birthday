@@ -1,0 +1,23 @@
+フィーレス地下迷宮：踏み台
+9,63,5,47
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,4,6,2,Rand,48,0,
+       0,4,
+       17,2,6,
+       5,0;
+
+SetBox 2,2,5,5,2,61;
+SetBox 3,2,8,5,2,62;
+End ;
+
+:walk
+IfBox 0,4,12,5,12,0,Current+2 ;
+ChangeMap 113,ObjSX[0]+1,2,9,3;
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 115,ObjSX[0]-1,15,9,1;
+End;

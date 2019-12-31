@@ -1,0 +1,40 @@
+ÉŽqzŽRFˆâÕ‚Ì“ü‚èŒû
+32,45,46
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Hit     0 1  :battle ;
+Talk    1 -1 :battle ;
+
+_END_HEAD_
+:start
+SetAniObj 5,4,6,2,0,32,0,185,1,GravJump,ShowTurn;
+SetAniObj 6,4,3,2,0,32,0,185,1,GravJump,ShowTurn;
+SetSavePoint 10,8,3,2;
+If HardMode,0,=,:end ;
+If Flag[40],15,>,:end ;
+SetBigObj 1,4,5,2,3,32,0,339,1,GravJump,NoShadow;
+:end
+End ;
+
+:walk
+IfBox 0,13,4,13,5,0,Current+2 ;
+ChangeMap 264,2,ObjSY[0]+7,4,2;
+IfBox 0,1,4,1,5,0,Current+2 ;
+ChangeMap 269,9,ObjSY[0]-1,2,0;
+End;
+
+
+:battle
+Stop 3;
+Wait 1;
+Battle 37;
+If Escape,0,>,:escape ;
+Store Flag[40],16;
+DelObj 1;
+
+:escape
+Wait 1;
+Stop 0;
+End;

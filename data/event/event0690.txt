@@ -1,0 +1,58 @@
+èHÇÃéRÅFéµçáñ⁄
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+PlayBGM 6;
+
+SetEne 1,8,15,7,Rand,32,40,
+       0,5,
+       48,0,3,
+       31,0;
+SetEne 2,7,13,25,Rand,32,40,
+       0,5,
+       48,0,3,
+       31,0;
+SetEne 3,23,36,25,Rand,32,40,
+       1,3,
+       11,0,3,
+       31,0;
+
+
+SetBox 10,7,1,13,3,245;
+SetBox 11,2,23,27,2,370;
+
+Store MFlag[8],416;
+Store MFlag[9],31;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,1,6,1,7,0,Current+2;
+ChangeMap 695,7,ObjSY[0]-2,2,0;
+
+IfBox3D 0,5,21,9,5,21,9,0,Current+2;
+ChangeMap 689,24,7,2,0;
+IfBox3D 0,6,17,9,6,17,9,0,Current+2;
+ChangeMap 692,24,12,2,0;
+IfBox3D 0,8,10,11,8,10,11,0,Current+2;
+ChangeMap 698,24,13,2,0;
+IfBox3D 0,6,3,3,6,3,3,0,Current+2;
+ChangeMap 691,9,7,2,0;
+
+IfBox3D 0,5,19,16,5,19,16,0,Current+2;
+ChangeMap 693,19,22,3,0;
+IfBox3D 0,6,15,16,6,15,16,0,Current+2;
+ChangeMap 692,24,9,8,0;
+IfBox3D 0,6,3,20,6,3,20,0,Current+2;
+ChangeMap 693,19,4,6,0;
+
+IfBox3D 0,3,19,26,3,19,26,0,Current+2;
+ChangeMap 698,8,23,17,0;
+
+End;

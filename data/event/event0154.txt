@@ -1,0 +1,199 @@
+ハンダバの町：宿屋前
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+
+_END_HEAD_
+:start
+If Flag[20],3,=,:event ;
+If Flag[20],8,<,Current+2;
+SetAniObj 10,4,2,2,5,32,0,152,1,GravJump,NoShadow;
+If Flag[20],4,=,Current+2;
+BGColor 0;
+
+If Flag[20],8,=,:event2 ;
+SetSavePoint 30,6,4,2;
+EndEventSkip ;
+PlayBGM 7;
+End;
+
+
+:walk
+IfBox 0,10,5,10,6,0,Current+2 ;
+ChangeMap 155,2,ObjSY[0],2,2;
+IfBox 0,2,5,3,6,0,:end ;
+Stop 1;
+SetMes 少し休む？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 30;
+Select2 休む$n休まない,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:break,Current+1;
+DelMes 0;
+SetObjGoalDir 0,2,1;
+Stop 0;
+:end
+End;
+
+:break
+DelMes 0;
+NewLine 16,255,:blackout ;
+Wait 60;
+HealAll ;
+PlayWave 21;
+Wait 60;
+NewLine 0-16,0,:blackout ;
+SetObjGoalDir 0,2,1;
+Wait 32;
+SetMes ふー。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:blackout
+Store MFlag[2],0;
+
+:blackup
+MapColor 255+k[MFlag[2]*ParamA]-ParamB,0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],16,<,:blackup;
+MapColor ParamB,0,0,0;
+End;
+
+:talk
+Stop 1;
+SetMes メモが落ちているな。$n何々。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes 「砂漠は広いから、$n　迷わないようにメモをしておこう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes 「右上に２回、右下に１回進んだ後、$n　さらに右上に１回進めば$n　隠れ家にたどり着けるぞ。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+Store Flag[20],4;
+Store Flag[52],1;
+Stop 1;
+SetFade 30,30;
+
+SetCamera 50,0,1;
+SetBigObj 0,5,4,2,3,48,0,109,1,1,0;
+SetObj 1,6,4,2,1,16,0,50,0,GravJump,Wall0;
+Wait 20;
+SetMes これで、よし、っと・・・。,
+       0,ObjX[1]-16,ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetCamera 50,100,0;
+SetObj 2,10,6,2,0,24,0,0,0,GravJump,0;
+SetObjGoal 2,8,6,2;
+Wait 24;
+SetObj 3,10,5,2,0,32,0,8,0,GravJump,0;
+SetObjGoal 3,9,5,2;
+Wait 24;
+SetFade 20,100;
+SetMes お、$nちゃんと届いてる。,
+       1,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 20;
+SetObjDir 1,2;
+SetMes おおっと！,
+       0,ObjX[1]-16,ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes 急に後ろから$n話しかけねえでくだせえよ。$nビックリする。,
+       0,ObjX[1]-16,ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes やあ、$nすいません。,
+       1,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+SetMes あれ？$nさっきの人と違う人ですね･･･。,
+       1,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 50;
+SetMes ああ、$n荷物運びしてるんッスよ。$nあっし。,
+       0,ObjX[1]-16,ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes ひょっとして荷主さん？$nずいぶんお金持ちみたいッスね。$nうらやましいッスよ。,
+       0,ObjX[1]-16,ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetMes ああ、$nまあそれなりに・・・。,
+       1,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 1;
+SetMes じゃ、あっしはこれで。,
+       0,ObjX[1]-16,ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetObjGoal 1,7,4,2;
+Wait 8;
+SetObjPos 1,6,4,2;
+SetObjParam 1,0;
+SetObjGoal 1,6,5,2;
+Wait 16;
+SetObjGoal 1,10,5,2;
+Wait 16;
+SetObjDir 2,1;
+Wait 16;
+SetObjGoal 3,9,6,2;
+SetObjDir 3,2;
+Wait 16;
+SetObjDir 2,2;
+Wait 16;
+DelObj 1;
+Wait 60;
+SetMes ・・・・・・・・・？$nまあいっか。,
+       1,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+ChangeMap 153,4,4,2,0;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+Store Flag[20],20;
+Stop 1;
+PlayBGM 42;
+SetAniObj 0,5,4,2,4,32,0,104,1,GravJump,1;
+SetObj 1,4,5,2,1,32,0,4,1,GravJump,1;
+SetObj 2,6,6,2,1,32,0,8,1,GravJump,1;
+Wait 20;
+SetMes ああっ！$n無いっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 20;
+SetMes 盗賊か・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetObj 0,5,4,2,3,32,0,0,1,GravJump,1;
+
+SetMes 参ったな・・・。$nあれにはリーリン嬢に頼まれた$n誕生石が積んであったのだが・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes ひょっとして昨日の$nあの人・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetObjDir 0,3;
+SetObjDir 1,2;
+SetObjDir 2,0;
+Wait 40;
+SetMes ああ、あの・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetMes とにかく、$n何としても取り戻さねば。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+SetParty 4;
+ChangeMap 154,5,5,2,2;
+End;

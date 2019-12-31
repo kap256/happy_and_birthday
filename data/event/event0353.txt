@@ -1,0 +1,47 @@
+フィーレス地下迷宮：第一層
+36,56,57,65
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#ld_trap.txt
+:start
+
+SetEne 1,7,18,2,Rand,40,10,
+       0,5,
+       56,0,4,
+       5,0;
+SetEne 2,16,15,2,Rand,40,10,
+       0,5,
+       56,0,4,
+       5,0;
+SetEne 3,9,12,2,Rand,40,10,
+       0,5,
+       56,0,4,
+       5,0;
+SetEne 4,6,6,2,Rand,40,10,
+       0,5,
+       56,0,4,
+       5,0;
+SetEne 5,14,6,2,Rand,40,10,
+       0,5,
+       56,0,4,
+       5,0;
+
+SetBox 7,18,3,2,0,201;
+SetBox 8,18,7,2,3,195;
+SetBox 9,3,3,2,2,196;
+
+Goto :ld_trap_init ;
+End;
+
+:walk
+IfBox 0,1,12,1,16,0,Current+2 ;
+ChangeMap 354,20,ObjSY[0]-10,2,0;
+
+IfBox 0,18,21,19,21,0,Current+2 ;
+ChangeMap 349,ObjSX[0],2,2,3;
+
+End;

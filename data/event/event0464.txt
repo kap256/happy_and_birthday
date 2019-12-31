@@ -1,0 +1,125 @@
+獣の森：墓
+0
+
+
+LoadMap 0 0 :start ;
+_END_HEAD_
+#forest.txt
+:start
+Store MFlag[8],22;
+Store MFlag[9],8;
+
+Stop 1;
+StartEventSkip ;
+
+SetObj 0,17,5,3,1,16,0,0,0,GravJump,NoShadow;
+SetObjView 0,0;
+SetObj 1,17,5,3,0,24,0,2,0,GravJump,1;
+SetObj 2,18,6,3,0,48,0,11,0,GravJump,1;
+SetAniObj 5,5,5,3,0,32,0,338,0,GravJump,NoShadow;
+SetAniObj 6,9,6,3,1,32,0,338,0,GravJump,NoShadow;
+SetObjGoal 1,15,5,3;
+SetObjGoal 2,14,6,3;
+NewLine 0,0,:event2 ;
+Goto :forest_init ;
+
+:event2
+SetFadeOut 60;
+Wait 48;
+SetMes ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 20;
+SetObjGoal 1,10,5,3;
+SetObjGoal 0,8,5,3;
+Wait 40;
+PlayBGM 54;
+DelMes 1;
+Wait 80;
+SetMes ・・・え？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes これって・・、お墓？$n何でこんなところに・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+SetCameraSpeed 14;
+SetCamera 0-140,0-70,0;
+SetObjGoal 1,6,5,3;
+Wait 0;
+DelMes 1;
+Wait 76;
+SetMes 日付は・・・、$n５年前、かな？$n名前は・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetObjGoal 2,13,6,3;
+DelMes 1;
+Wait 60;
+SetMes あれ～？$nどこにも書いてない？$n・・・変なの。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetCamera 0,0,0;
+SetObjSpeed 2,32;
+SetObjGoal 2,10,6,3;
+Wait 120;
+SetAniObj 2,10,6,3,0,48,0,337,0,GravJump,1;
+Wait 30;
+SetMes まったく・・・。$nあの子ったら、$nまた途中で投げ出して・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 20;
+SetObjDir 2,4;
+DelObj 6;
+Wait 24;
+SetObj 2,10,6,3,0,48,0,11,0,GravJump,1;
+Wait 10;
+SetMes それじゃ、ホリィ。$n満足、したかしら？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 50;
+SetObjDir 1,2;
+SetMes ねえ、フィルミナさん、$nこれって・・・？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes もう帰りましょう。$n遅くなると、お母様が心配なさるわ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes えっ、$nでも・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 20;
+SetObjGoal 2,11,6,3;
+Wait 60;
+DelMes 1;
+SetMes ・・・そっとしておいてあげて。$nホリィは偉い子でしょう？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 120;
+SetMes えっと・・・。$n・・・うん。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjGoal 2,18,6,3;
+Wait 30;
+SetObjGoal 1,10,5,3;
+SetObjDir 1,0;
+Wait 120;
+SetMes ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObjGoal 1,18,5,3;
+
+
+:loop
+MapColor MFlag[4],0,0,0;
+Store MFlag[4],MFlag[4]+2;
+Wait 1;
+If MFlag[4],255,<,:loop ;
+MapColor 255,0,0,0;
+
+Store Flag[73],0;
+SetFriend 11;
+NextMonth ;
+ReturnVillage 1;
+End;
+

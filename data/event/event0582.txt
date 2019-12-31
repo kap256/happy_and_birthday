@@ -1,0 +1,47 @@
+村落：民家
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk ;
+
+
+_END_HEAD_
+:start
+SetObj 1,3,5,2,Rand,32,5,34,1,GravJump,1;
+
+End ;
+
+:walk
+IfBox 0,7,4,7,4,0,Current+2 ;
+ChangeMap 575,6,8,2,2;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk
+Stop 3;
+SetObjDir 1,ObjDir[0]+2;
+If Flag[102],15,>,:talk2 ;
+If ItemNo[325],0,>,:talk1 ;
+SetMes リンゴくれたら$nいいこと教えてあげるよ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :end_talk ;
+:talk1
+SpendItem 325;
+Store Flag[102],16 ;
+SetMes あ！$nリンゴくれるの？$nありがとう！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes お礼に、$n私だけの秘密を$n教えてあげるよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+:talk2
+SetMes 裏通りの人の中にも、$nいきなり襲い掛かってこないで$n話を聞いてくれる人が$nいるんだよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes ときどき$n遊び相手になって$nくれるんだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+:end_talk
+Wait 0;
+DelMes 1;
+Stop 0;
+End;

@@ -1,0 +1,191 @@
+硝子鉱山：遺跡
+32,45,46
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+StartEventSkip ;
+Stop 1;
+Store Flag[40],0;
+SetAniObj 11,4,5,2,0,32,0,185,1,GravJump,ShowTurn+Wall0;
+SetAniObj 12,4,3,2,0,32,0,185,1,GravJump,ShowTurn+Wall0;
+SetAniObj 13,4,6,2,0,32,0,185,1,GravJump,ShowTurn+Wall0;
+SetAniObj 14,4,2,2,0,32,0,185,1,GravJump,ShowTurn+Wall0;
+SetAniObj 15,3,11,2,0,32,0,185,1,GravJump,ShowTurn;
+SetAniObj 16,3,14,2,0,32,0,185,1,GravJump,ShowTurn;
+
+SetObj 0,6,5,2,0,24,0,0,0,GravJump,0;
+SetObjView 0,0;
+
+SetObj 1,9,5,2,0,24,0,1,0,GravJump,0;
+SetObj 2,10,4,2,0,32,0,0,0,GravJump,0;
+SetObj 3,2,12,2,2,24,0,62,0,GravJump,0;
+SetObj 4,2,13,2,2,32,0,61,0,GravJump,0;
+SetObj 5,1,12,2,2,48,0,211,0,GravJump,0;
+SetObj 6,1,13,2,2,48,0,211,0,GravJump,0;
+
+SetBAObj 10,7,13,2,0,32,0,197,1,GravJump,NoShadow;
+
+SetObjGoal 1,5,5,2;
+SetObjGoal 2,6,4,2;
+SetObjDir 1,3;
+Wait 100;
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+SetFadeOut 40;
+Wait 30;
+SetMes ん？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes 隠れて！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+SetObjSpeed 1,16;
+SetObjSpeed 2,16;
+SetObjGoal 1,7,5,2;
+SetObjGoal 0,6,12,2;
+SetCamera 0-84,0,0;
+SetCameraSpeed 5;
+Wait 32;
+SetObjDir 2,2;
+SetMes どうかしたの？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+SetObjGoal 1,7,4,2;
+Wait 16;
+SetObjGoal 1,3,4,2;
+Wait 8;
+SetMes いいから！,
+       3,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+DelMes 1;
+SetObjGoal 2,3,4,2;
+Wait 48;
+PlayBGM 36;
+SetObjGoal 3,5,12,2;
+SetObjGoal 4,4,13,2;
+SetObjGoal 5,2,12,2;
+SetObjGoal 6,2,13,2;
+SetObjGoal 2,3,3,2;
+Wait 8;
+SetObjGoal 1,3,5,2;
+Wait 70;
+SetAniObj 3,5,12,2,0,24,0,313,0,GravJump,0;
+Wait 16;
+SetObjDir 3,4;
+DelMes 2;
+SetMes へっ！$nチョロイもんだぜ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 8;
+SetObjDir 3,1; 
+Wait 8;
+SetObjDir 3,5; 
+Wait 8;
+SetObjDir 3,1; 
+Wait 8;
+SetObjDir 3,4;
+Wait 0;
+SetObjDir 3,0; 
+DelMes 3;
+SetMes 用は済んだから$n早く帰るよ。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftTop,0;
+Wait 16;
+SetObj 3,5,12,2,0,24,0,62,0,GravJump,0;
+Wait 32;
+SetMes へいへい。$nさっさと御いとま$nしましょーか。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 4;
+SetMapChip 132,11,4,1;
+SetMapChip 132,11,5,1;
+SetObjSpeed 0,32;
+SetObjGoal 0,6,4,2;
+SetAniObj 1,3,3,2,0,32,0,314,0,GravJump,0;
+SetAniObj 2,3,5,2,1,32,0,314,0,GravJump,0;
+
+SetObjSpeed 4,24;
+SetObjSpeed 5,24;
+SetObjSpeed 6,24;
+SetObjGoal 3,6,12,2;
+SetObjGoal 4,5,13,2;
+SetObjGoal 5,6,12,2;
+SetObjGoal 6,5,12,2;
+Wait 24;
+SetObjGoal 3,6,4,2;
+SetObjGoal 4,5,5,2;
+Wait 64;
+SetObjGoal 5,6,5,2;
+SetObjGoal 6,5,5,2;
+Wait 120;
+SetObjGoal 3,11,4,2;
+SetObjGoal 4,11,5,2;
+Wait 48;
+SetObjGoal 5,11,4,2;
+SetObjGoal 6,11,5,2;
+Wait 180;
+SetObj 1,3,3,2,2,32,0,0,0,GravJump,0;
+SetObjGoal 1,3,4,2;
+SetObjDir 1,2;
+SetCamera 0-184,0-50,0;
+SetCameraSpeed 10;
+Wait 32;
+DelObj 3;
+DelObj 4;
+DelObj 5;
+DelObj 6;
+SetMes くそぉ、$n先を越されたか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes とにかく、$n追いかけないと・・・。,
+       1,ObjX[1]-MFlag[0],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 40;
+SetObjGoal 1,4,4,2;
+SetObj 2,3,5,2,2,16,0,1,0,GravJump,0;
+SetObjGoal 2,3,4,2;
+Wait 16;
+SetAniObj 2,3,4,2,4,16,0,314,0,GravJump,0;
+SetMes やめてよ！$nそんな危ない事！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 2;
+SetAniObj 1,4,4,2,1,32,0,0,0,GravJump,0+Wall0+ShowTurn;
+Store MFlag[0],16;
+SetObjDir 2,5;
+Wait 0;
+SetObjImg 1,129;
+SetObjDir 1,0;
+SetMes そんな事言ったって、$n追いかけないと$n聖石を取り返せないだろ。,
+       1,ObjX[1]-MFlag[0],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 60;
+SetObjDir 2,4;
+SetMes 今回はあきらめて、$nまた他のところを$n探せばいいでしょ・・・！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetObjDir 2,5;
+SetMes 十二個もあるんだから、$n一つ二つぐらい・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes どうしたんだよ、急に。$nらしくないぞ。,
+       1,ObjX[1]-MFlag[0],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetObjDir 2,4;
+DelMes 1;
+SetMes とにかく、$n追いかけるなんて$n危ない真似しないでよ・・・っ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 90;
+SetMes レーナ・・・・・・。,
+       1,ObjX[1]-MFlag[0],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 2;
+SetMes ・・・・・・。,
+       1,ObjX[1]-MFlag[0],ObjY[1],ObjZ[1],LeftTop,0;
+
+SetCamera 0-184,0-10240,0;
+
+:cameraroop
+SetCameraSpeed MFlag[4]+10;
+Store MFlag[4],MFlag[4]+1;
+Wait 2;
+If MFlag[4],70,<,:cameraroop ;
+NextMonth ;
+ReturnVillage 1;
+End;

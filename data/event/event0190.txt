@@ -1,0 +1,19 @@
+ピラミッド：下り階段
+0
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+SetBox 5,5,17,2,1,91;
+SetBox 6,6,17,2,1,92;
+End;
+
+:walk
+IfBox 0,5,5,6,5,0,Current+2 ;
+ChangeMap 166,ObjSX[0]+1,2,2,3;
+IfBox 0,5,12,6,12,0,Current+2 ;
+ChangeMap 191,ObjSX[0]-2,5,2,1;
+End;

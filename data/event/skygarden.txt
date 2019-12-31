@@ -1,0 +1,59 @@
+#included
+
+
+Fall 0 0 :skygarden ;
+Fall 1 0 :skygarden_fall_enemy ;
+Fall 2 0 :skygarden_fall_enemy ;
+Fall 3 0 :skygarden_fall_enemy ;
+Fall 4 0 :skygarden_fall_enemy ;
+_END_HEAD_
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
+::   空中庭園 
+::
+::　　　　(開始時に、:skygarden_init を呼び出す。)
+::　　　　(MFlag[24] …… 雑用)
+::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:skygarden
+Store Flag[109],1;
+ChangeMap MapNo,StartX,StartY,StartZ,StartDir;
+End;
+
+::::::::::::::::::::::::::::::::::::
+
+:skygarden_init
+If Flag[109],0,=,:skygarden_end ;
+
+SetAniObj 90,ObjSX[0],ObjSY[0],ObjSZ[0],15,32,0,72,1,GravJump,1;
+SetObjView 0,0;
+Store Flag[109],0;
+Stop 4;
+MapColor 255,0,0,0;
+Wait 1;
+SetObjPos 0,ObjSX[90],ObjSY[90],ObjSZ[90];
+
+Store MFlag[24],255;
+:skygarden_black_out
+MapColor MFlag[24],0,0,0;
+Wait 1;
+Store MFlag[24],MFlag[24]-12;
+If MFlag[24],0,>,:skygarden_black_out ;
+MapColor 0,0,0,0;
+Wait 10;
+SetObjDir 90,14;
+Wait 16;
+DelObj 90;
+SetObjView 0,1;
+Stop 0;
+
+:skygarden_end
+End;
+
+:::::::::::::::::::::::::::::::::::::::
+
+:skygarden_fall_enemy
+Store MFlag[24],ParamA;
+SetObjPos MFlag[24],ObjSX[MFlag[24]],ObjSY[MFlag[24]],32;
+End;

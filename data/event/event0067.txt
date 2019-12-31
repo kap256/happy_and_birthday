@@ -1,0 +1,24 @@
+ラクリアの洞窟：下り階段
+1,8,9,11
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,3,5,10,Rand,32,5,
+       0,2,
+       9,6,4,
+       2,0;
+
+SetEne 2,3,10,5,Rand,48,5,
+       0,2,
+       1,6,8,
+       2,0;
+
+End;
+:walk
+IfBox 0,3,1,3,1,0,Current+2 ;
+ChangeMap 66,4,6,2,1;
+End;

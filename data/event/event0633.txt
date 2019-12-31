@@ -1,0 +1,35 @@
+‹ó’†’ë‰€F‹ó’†•à“¹
+10,19,63
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+#skygarden.txt
+#forest.txt
+
+:start
+SetEne 1,13,6,16,Rand,20,0,
+       15,6,
+       92,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+SetEne 2,10,17,15,Rand,20,0,
+       15,6,
+       48,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+Store MFlag[8],489 ;
+Store MFlag[9],16 ;
+Store MFlag[15],:return_forest ;
+
+Goto :forest_init ;
+:return_forest
+Goto :skygarden_init ;
+
+:walk
+IfBox 0,20,6,20,6,0,Current+2 ;
+ChangeMap 636,2,14,11,2;
+IfBox 0,1,7,1,7,0,Current+2 ;
+ChangeMap 632,19,5,11,0;
+IfBox 0,15,20,15,20,0,Current+2 ;
+ChangeMap 634,18,3,11,3;
+
+End;

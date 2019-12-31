@@ -1,0 +1,99 @@
+フィーレス村：北門
+22,23,52,53,54
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+
+#hamari.txt
+:start
+SetEne 1,4,2,3,3,24,0,
+       100,0,
+       22,2,4,
+       13,0;
+SetEne 2,5,2,3,3,24,0,
+       100,0,
+       23,2,4,
+       13,0;
+SetEne 3,4,1,5,3,24,0,
+       100,0,
+       22,2,4,
+       13,0;
+SetEne 4,5,1,5,3,24,0,
+       100,0,
+       23,2,4,
+       13,0;
+
+::ここに宝箱番号を代入:::::::::::::::::::::::
+Store MFlag[8],176;
+:::::::::::::::::::::::::::::::::::::::::::::
+
+If Box[MFlag[8]],0,>,:box ;
+SetAniObj 10,10,10,3,1,32,0,322,1,GravJump,1;
+Goto :afterbox;
+:box
+SetBox 11,10,10,3,2,MFlag[8];
+:afterbox
+SetObj 19,9,10,3,0,24,0,157,0,GravJump,1+NoShadow;
+
+::移動オブジェクトを目印があるところに配置。::::::::::::::::::::::::::::
+Store MFlag[0],20;
+Store MFlag[1],1;
+:put_loop_x
+Store MFlag[2],1;
+:put_loop_y
+GetMapChip MFlag[4],MFlag[1],MFlag[2],3;
+If MFlag[4],4,!=,:put_loop_after ;
+SetPutObj MFlag[0],MFlag[1],MFlag[2],3,24,157,1;
+Store MFlag[0],MFlag[0]+1;
+:put_loop_after
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],11,<,:put_loop_y ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],16,<,:put_loop_x ;
+
+::配置終わり::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+End;
+
+:walk
+IfBox 0,4,11,5,11,0,Current+2 ;
+ChangeMap 317,ObjSX[0]+1,2,3,3;
+End;
+
+:talk 
+Stop 3;
+SetMes あ～ん・・・。,
+       1,ObjX[10],ObjY[10],ObjZ[10]-10,LeftTop,0;
+Wait 30;
+SetMes 大丈夫かい！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 10;
+PlayWave 21;
+SetObjDir 10,ObjDir[10]+8;
+Wait 50;
+SetObj 12,ObjSX[10],ObjSY[10],ObjSZ[10],ObjDir[0]+2,16,0,29,1,GravHiJump,1;
+DelObj 10;
+SetMes あ、ありがとう！,
+       1,ObjX[12],ObjY[12],ObjZ[12],LeftTop,0;
+Wait 30;
+SetMes 早く教会へ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Stop 0;
+PlayWave 6;
+SetBox 11,ObjSX[12],ObjSY[12],ObjSZ[12]+1,ObjDir[12],MFlag[8];
+:::::ここから、村人の避難。:::::::::::::::::::::::::::::::::::::::::::::::::::::::
+SetObjGoal 12,5,10,3;
+Wait 80;
+SetObjGoal 12,5,11,3;
+Wait 16;
+DelObj 12;
+
+End;

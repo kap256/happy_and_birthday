@@ -1,0 +1,29 @@
+フィーレス地下迷宮：隠し通路・右
+16,17,80,81
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,11,2,7,Rand,32,10,
+       0,5,
+       16,10,Rand%3+2,
+       5,0;
+SetEne 2,3,2,7,Rand,32,10,
+       0,5,
+       17,10,Rand%3+2,
+       5,0;
+End;
+:walk
+
+IfBox 0,11,8,11,8,0,Current+2 ;
+ChangeMap 414,13,2,2,3;
+IfBox 0,3,8,3,8,0,Current+2 ;
+ChangeMap 414,5,2,2,3;
+IfBox 0,5,8,5,8,0,Current+2 ;
+ChangeMap 414,7,2,7,3;
+IfBox 0,9,8,9,8,0,Current+2 ;
+ChangeMap 414,11,2,7,3;
+End;

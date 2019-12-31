@@ -1,0 +1,47 @@
+マルゴ火山：第三層・東部
+7,26,35,58,98
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+SetEne 1,7,8,5,Rand,32,500,
+       0,6,
+       48,0,5,
+       12,0;
+SetEne 2,10,4,6,Rand,32,10,
+       0,3,
+       49,0,5,
+       12,0;
+SetEne 3,12,11,3,Rand,32,10,
+       0,3,
+       35,0,6,
+       12,0;
+SetEne 4,7,13,3,Rand,32,10,
+       0,3,
+       58,0,6,
+       12,0;
+
+SetBox 10,12,7,3,3,348;
+
+SetNormalTrap  20,7,3,4,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  21,11,5,7,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  22,12,10,3,315,40,Rand%40,50,41,NoShadow;
+SetNormalTrap  23,16,11,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  24,6,12,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+
+Goto :fire_start ;
+
+:walk
+IfBox 0,19,15,19,15,0,Current+2 ;
+ChangeMap 654,4,10,20,3;
+IfBox 0,2,11,2,11,0,Current+2 ;
+ChangeMap 660,14,13,3,0;
+IfBox 0,4,2,4,2,0,Current+2 ;
+ChangeMap 658,3,6,10,1;
+IfBox 0,15,5,15,5,0,Current+2 ;
+ChangeMap 664,2,18,8,2;
+
+End;

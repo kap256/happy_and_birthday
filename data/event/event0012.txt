@@ -1,0 +1,30 @@
+ñºÇ‡ñ≥Ç´à‚ê’ÅFè\éöòH
+10,1,2
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,4,11,2,0,40,10,
+       0,5,
+       10,3,5,
+       7,0;
+SetEne 2,7,2,2,0,40,0,
+       0,3,
+       2,3,5,
+       7,0;
+
+SetBox 5,2,11,2,2,5;
+SetBox 6,2,12,2,2,6;
+
+SetAniObj 10,6,13,2,0,32,0,185,1,GravJump,ShowTurn;
+SetAniObj 11,6,10,2,0,32,0,186,1,GravJump,ShowTurn;
+End;
+:walk
+IfBox 0,10,11,10,12,0,Current+2 ;
+ChangeMap 11,2,ObjSY[0]-8,2,2;
+IfBox 0,1,2,1,3,0,Current+2 ;
+ChangeMap 119,8,ObjSY[0]+2,2,0;
+End;

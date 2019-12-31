@@ -1,0 +1,59 @@
+ƒ}ƒ‹ƒS‰ÎRF‘æO‘wE–À˜H
+7,26,35,58,98
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+SetEne 1,23,9,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+SetEne 2,21,16,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+SetEne 3,15,5,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+SetEne 4,14,13,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+SetEne 5,18,22,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+SetEne 6,7,9,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+SetEne 7,9,23,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+SetEne 8,3,9,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+SetEne 9,4,17c,2,Rand,32,10,
+       0,6,
+       Rand%2+48,0,4,
+       2,0;
+
+SetBox 10,19,13,2,0,350;
+SetBox 11,5,20,2,3,351;
+
+Goto :fire_start ;
+
+:walk
+IfBox 0,3,1,3,1,0,Current+2 ;
+ChangeMap 662,14,19,3,1;
+IfBox 0,19,1,19,1,0,Current+2 ;
+ChangeMap 660,7,16,3,1;
+
+
+End;

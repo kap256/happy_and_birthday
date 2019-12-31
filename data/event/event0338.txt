@@ -1,0 +1,32 @@
+フィーレス地下迷宮：入り口
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 5;
+EndEventSkip ;
+OpenMenu 0;
+IfBox 0,3,18,3,20,0,Current+2 ;
+SetObjDir 0,1;
+If Flag[56],0,>,:no_event ;
+Stop 1;
+StartEventSkip ;
+MapColor 255,0,0,0;
+MonthTitle ;
+Store Flag[56],1;
+Wait 300;
+ChangeMap 338,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0];
+End;
+
+:no_event
+End;
+:walk
+IfBox 0,1,11,1,11,0,Current+2 ;
+ChangeMap 339,9,6,2,0;
+IfBox 0,3,20,3,20,0,Current+2 ;
+ReturnVillage  0;
+End;

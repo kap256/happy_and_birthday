@@ -1,0 +1,23 @@
+ómäŸÅFèëç÷
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetHAObj 1,7,2,2,2,24,0,317,1,GravJump,1;
+
+SetAniObj 10,5,4,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 11,6,4,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 12,7,4,2,1,32,0,114,1,GravJump,BlockShadow+1;
+
+SetAniObj 13,5,5,2,4,32,0,114,1,GravJump,BlockShadow+1;
+SetAniObj 14,6,5,2,0,32,0,115,1,GravJump,BlockShadow+1;
+SetAniObj 15,7,5,2,0,32,0,114,1,GravJump,BlockShadow+1;
+End ;
+
+:walk
+IfBox 0,12,6,12,6,0,Current+2 ;
+ChangeMap 610,2,5,2,2;
+End;

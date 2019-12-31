@@ -1,0 +1,102 @@
+地下水道：休憩所
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :sleep ;
+Talk    20 -1 :shop ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 10;
+SetAniObj  1,2,6,3,0,32,0,161,1,GravJump,1;
+SetSavePoint 2,2,4,3;
+If Month,5,>,:shopman ;
+End ;
+:shopman
+SetAniObj 20,2,5,3,4,24,0,110,1,GravLock,1;
+End ;
+
+:walk
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 272,4,14,3,1;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:sleep
+Stop 1;
+SetMes ここなら、$n少しは休憩出来そうだが･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 30;
+Select2 休んでいく$nまだまだ,
+        1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:break,:end;
+:break
+DelMes 0;
+NewLine 16,255,:blackout ;
+Wait 60;
+HealAll ;
+PlayWave 21;
+Wait 60;
+NewLine 0-16,0,:blackout ;
+Wait 32;
+:end
+DelMes 0;
+Stop 0;
+End;
+
+
+:blackout
+Store MFlag[2],0;
+
+:blackup
+MapColor 255+k[MFlag[2]*ParamA]-ParamB,0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],16,<,:blackup;
+MapColor ParamB,0,0,0;
+End;
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:shop
+Stop 1;
+SetMes 何故$nこんなところに人が？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 30;
+SetMes 気にしちゃ$n負けですよ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetMes んで、$nなんか用です？,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 30;
+Select3 商品を買う$n帰り道を教えてもらう$n特に用は無い,
+        2,ObjX[0],ObjY[0],ObjZ[0],RightTop,:buy,:village,:end_shop;
+End;
+
+:buy
+SetMes 何が欲しいんです？,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+Shop 14,0;
+Wait 1;
+:end_shop
+SetMes 今後とも$nよろしく。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+DelMes 2;
+Stop 0;
+End;
+
+:village
+SetMes お安い御用ですよ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+DelMes 2;
+Wait 20;
+LeaveParty 9;
+LeaveParty 12;
+SetParty 1;
+ReturnVillage 1;
+End;

@@ -1,0 +1,76 @@
+’n‰º•æŠF–Ú‰B‚µ
+36,56,57
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#coffin.txt
+:start
+Store MFlag[8],8;
+SetEne 1,6,2,7,3,4,0,
+       13,30,
+       36,0,8,
+       21,0;
+SetEne 2,8,2,7,2,4,0,
+       13,30,
+       36,0,8,
+       21,0;
+SetEne 3,10,2,7,1,4,0,
+       13,30,
+       36,0,8,
+       21,0;
+SetEne 4,6,6,7,1,4,0,
+       13,30,
+       36,0,8,
+       21,0;
+SetEne 5,8,6,7,0,4,0,
+       13,30,
+       36,0,8,
+       21,0;
+SetEne 6,10,6,7,3,4,0,
+       13,30,
+       36,0,8,
+       21,0;
+
+If Flag[80],1,<,:after_red ;
+SetMapChip 483,6,3,7;
+SetMapChip 483,6,3,8;
+SetMapChip 483,8,3,7;
+SetMapChip 483,8,3,8;
+SetMapChip 483,10,3,7;
+SetMapChip 483,10,3,8;
+SetMapChip 483,6,5,7;
+SetMapChip 483,6,5,8;
+SetMapChip 483,8,5,7;
+SetMapChip 483,8,5,8;
+SetMapChip 483,10,5,7;
+SetMapChip 483,10,5,8;
+
+SetMapChip 0,13,9,5;
+SetMapChip 0,13,9,4;
+SetMapChip 483,13,10,2;
+
+:after_red
+If Flag[81],1,<,:coffin_init ;
+SetMapChip 484,9,13,2;
+SetMapChip 0,8,13,4;
+SetMapChip 0,8,13,5;
+
+Goto :coffin_init ;
+
+:walk
+IfBox 0,16,4,16,4,0,Current+2 ;
+ChangeMap 470,2,8,5,2;
+IfBox 0,16,13,16,13,0,Current+2 ;
+ChangeMap 481,2,3,5,2;
+
+IfBox 0,3,1,3,1,0,Current+2 ;
+ChangeMap 473,9,9,2,1;
+
+IfBox 0,6,13,6,13,0,Current+2 ;
+ChangeMap 484,7,4,2,0;
+
+IfBox 0,13,16,13,16,0,Current+2 ;
+ChangeMap 483,6,2,5,3;
+End;

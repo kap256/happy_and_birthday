@@ -1,0 +1,107 @@
+図書館
+82,83
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk   20 -1 :door_talk ;
+Hit     0 20 :door_hit ;
+Talk   50 -1 :talk ;
+
+_END_HEAD_
+#lib_door.txt
+:start
+SetAAObj 50,1,8,3,0,32,0,333,4,10,1,GravJump,ShowTurn;
+SetAniObj 20,7,7,2,13,32,0,334,1,GravLock,NoShadow;
+
+
+SetEne 30,8,3,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 31,11,8,2,Rand,48,10,
+       0,3,
+       46,0,6,
+       19,POWx15+LPx3;
+SetEne 32,4,8,2,Rand,48,10,
+       0,3,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 33,9,12,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+
+SetBox 40,8,11,2,0,245;
+End;
+
+:walk
+IfBox 0,3,1,3,1,0,Current+2 ;
+ChangeMap 439,3,13,2,1;
+
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk
+Stop 3;
+SetMes 「ある男の手記」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 20;
+Select2 読む。$n読まない。,
+        1,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:talk_read,:talk_end;
+End;
+:talk_read
+SetMes 「九月二十九日。$n　上司に怒鳴られる。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「十二月三日。$n　友人に叱られる。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「二月十一日。$n　上司に怒られる。$n　上司が嫌いになった。$n　なぜこんなに怒るんだろう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月十一日。$n　両親に非難される。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「四月五日。$n　同僚に文句を言われる。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「四月二十一日。$n　上司になじられる。$n　同僚が嫌いになった。$n　遠くでクスクス笑ってたのは忘れない。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「六月十九日。$n　母に悪態をつかれる。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「八月二十四日。$n　上司に怒鳴られる。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「十月七日。$n　両親に怒られる。$n　両親が嫌いになった。$n　勝手に産んだくせに。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「十二月十八日。$n　友人から嫌がらせを受ける。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「一月九日。$n　同僚に陰口を叩かれる。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月十二日。$n　上司に殴られる。$n　自分が嫌いになった。$n　なぜ僕は生まれてきたんだろう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月十四日。$n　上司に叱られる。$n　三月十七日。$n　友人に縁を切られる。$n　三月十八日。$n　父に殴られる。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月二十一日。$n　同僚に悪態をつかれる。$n　三月二十二日。$n　近所の子供に馬鹿にされる。$n　三月二十四日。$n　母に泣かれる。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月二十五日。$n　上司に蹴られる。。$n　三月二十八日。$n　両親に勘当を受ける。$n　三月二十九日。$n　同僚が喋ってくれない。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「四月一日。$n　上司に無理難題を言われる。$n　もう、この世が嫌になった。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes ・・・手記はここで$n終わっている。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+:talk_end
+DelMes 0;
+Stop 0;
+End;

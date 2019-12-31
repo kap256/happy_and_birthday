@@ -1,0 +1,339 @@
+南の島：海岸
+0
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+Talk    20 -1 :talk ;
+Talk    21 -1 :talk ;
+_END_HEAD_
+:start
+SetAniObj 20,9,8,2,5,32,0,114,1,GravJump,2+BlockShadow+ShowTurn;
+SetAniObj 21,9,7,2,4,32,0,114,1,GravJump,2+BlockShadow+ShowTurn;
+SetWoodObj 30,2,2,2,2,32,0,193,1,GravJump,2;
+SetWoodObj 31,8,3,2,2,32,0,193,1,GravJump,2;
+SetWoodObj 32,10,2,2,2,32,0,193,1,GravJump,2;
+SetWoodObj 33,14,4,2,2,32,0,193,1,GravJump,2;
+SetObj 10,10,8,2,0,32,0,31,1,GravJump,1;
+If Flag[27],50,=,:event2 ;
+PlayBGM 14;
+If Flag[27],10,<,:event ;
+EndEventSkip;
+
+End;
+:talk
+Stop 1;
+SetObjDir 10,ObjDir[0]+2;
+SetMes 帰りの船に乗るかい？,
+       1,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 0;
+ReturnVillage 0;
+DelMes 1;
+Stop 0;
+End;
+:walk
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 193,ObjSX[0]+13,19,2,1;
+IfBox 0,11,26,12,26,0,Current+2 ;
+ChangeMap 401,ObjSX[0]-3,2,3,3;
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+Stop 1;
+PlayBGM 35;
+BGColor 3;
+SetObj 0,6,2,2,3,32,0,0,1,GravJump,1;
+SetObj 1,4,2,2,3,32,0,1,1,GravJump,1;
+SetObj 2,5,4,2,1,32,0,53,1,GravJump,1;
+SetCamera 0-110,40,1;
+Wait 20;
+SetMes 今日はありがとう。$nおかげで良い物が$n見つかったよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 50;
+SetMes いえいえ。$nこちらこそ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,1;
+Wait 0;
+SetMes では先に失礼。$n何か分かったら、連絡するよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 40;
+SetMes 研究頑張ってくださいね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,1;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetObjGoal 2,5,10,2;
+Wait 96;
+SetObjDir 1,2;
+SetMes 私も。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,1;
+Wait 50;
+SetObjDir 0,0;
+SetMes ん？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,1;
+Wait 0;
+SetMes 今日はありがとうね。$nなんだか気を使わせたみたいで。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,1;
+Wait 60;
+SetMes あ、ああ～。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,1;
+Wait 0;
+SetMes そりゃ、僕だって、$nレーナには元気に$n嫌がらせしてもらいたいし。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,1;
+Wait 60;
+SetMes 何よ、それ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,1;
+Wait 0;
+SetMes は、ははは。$n冗談だよ。冗談。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,1;
+Wait 40;
+SetMes ホントかしら。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,1;
+Wait 0;
+SetMes じゃ、じゃあ、$nそろそろ帰ろうか。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,1;
+Wait 40;
+SetMes 顔が赤いわよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,1;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 20;
+ChangeMap 217,5,4,2,0;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+Stop 1;
+SetCameraSpeed 14;
+MonthTitle ;
+SetCamera 80-500,250,1;
+SetCamera 80,0,0;
+SetObj 0,5,10,2,3,32,0,0,1,GravJump,1;
+SetAniObj 1,6,8,2,5,32,0,130,1,GravJump,1;
+If Member[2],0,<,Current+2;
+SetObj 2,7,10,2,3,23,0,Member[2],1,GravJump,1;
+StartEventSkip ;
+
+Wait 320;
+Store Flag[27],10;
+Store Flag[28],1;
+If Member[2],2,=,:holytalk ;
+If Member[2],3,=,:tolguntalk ;
+If Member[2],4,=,:boltetalk ;
+If Member[2],7,=,:ranytalk ;
+If Member[2],8,=,:litythtalk ;
+If Member[2],10,=,:clotalk ;
+If Member[2],11,=,:filtalk ;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Wait 30;
+SetMes 海はいいなぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetObjDir 0,1;
+SetMes そんなところで$n縮こまって無いで、$nこっち来なよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Goto :aftertalk ;
+
+:holytalk
+SetAniObj 2,7,10,2,15,23,0,52,1,GravJump,1;
+Wait 30;
+SetAniObj 50,6,11,2,0,23,0,327,1,GravJump,NoShadow;
+PlayWave 32;
+Wait 4;
+SetObjDir 50,4;
+Wait 4;
+SetObjDir 50,1;
+Wait 4;
+PlayWave 33;
+SetObjDir 50,5;
+Wait 4;
+DelObj 50;
+Wait 20;
+SetMes わぁ！$n綺麗なサカナ！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,RightTop,1;
+Wait 50;
+SetObjDir 0,2;
+SetMes 熱帯の魚は$nカラフルで綺麗だよな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+SetObjDir 0,1;
+SetObj 2,7,10,2,1,23,0,2,1,GravJump,1;
+DelMes 0;
+SetMes レーナもみよーよ。$nすごいよ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Goto :aftertalk ;
+
+:tolguntalk
+Wait 30;
+SetMes ･･･人がおりませんの。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 40;
+SetMes ･･･まだ六月だからなぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+SetMes ･･･肌寒いですの。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 40;
+SetMes ･･･まだ六月だからなぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Goto :aftertalk ;
+
+:boltetalk
+Wait 30;
+SetMes ･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 30;
+SetMes ･･･。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 0;
+SetObjGoal 2,6,10,2;
+SetMes カリス。$nここまで来て$n何をやっとる。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 60;
+SetObjDir 0,2;
+SetMes いや、別に$nそーゆーつもりじゃ･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+SetMes 男は度胸だ。$n父さんは$n影から見守ってるぞ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 60;
+SetMes だから、別に$nそーゆー訳じゃ･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+SetMes はっはっは。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+SetObjGoal 2,15,10,2;
+Wait 40;
+SetMes え～っと。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Goto :aftertalk ;
+
+
+:ranytalk
+Wait 30;
+SetAniObj 2,7,10,2,0,23,0,163,1,GravJump,1;
+SetMes 青い海！南の島！$n絶好のお宝日和だね！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 50;
+SetMes そーなのかな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+SetObjDir 2,4;
+SetMes きっと海賊王の財宝が$nこの島に眠っているに$n違いないのだ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 50;
+SetMes そーなのかな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+DelMes 0;
+SetObjDir 2,1;
+SetMes 今日こそお宝を見つけて、$nこの前のツケを返すんだからね！$n待ってなよ～！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 20;
+SetObjDir 2,5;
+Wait 20;
+SetObjDir 2,1;
+Wait 20;
+SetObjDir 2,5;
+Wait 20;
+SetObjDir 2,1;
+SetObjDir 0,2;
+SetMes ･･･まだ払ってないんだ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Goto :aftertalk ;
+
+
+:litythtalk
+Wait 30;
+SetMes ･･････。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 20;
+SetMes ･･････。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,RightBottom,1;
+Wait 50;
+SetMes （う～ん、$n　この組み合わせは$n　気まずい・・・。）,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+SetMes ･･････。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 20;
+SetMes ･･････。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,RightBottom,1;
+Wait 50;
+SetMes （もう少し$n　にぎやかな人も$n　連れて来ればよかった・・・。）,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Goto :aftertalk ;
+
+:clotalk
+Wait 60;
+SetObjDir 2,0;
+SetMes ねえ、アニキ、知ってる？$nワカメを食べると、$n肥満に効果があるんだって。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 50;
+SetObjDir 0,2;
+SetMes なんだよ、$n突然。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Wait 0;
+DelMes 2;
+Wait 30;
+SetObjDir 2,3;
+SetMes オヤジがこんど、$n海草の栽培も始めようかって。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 50;
+SetObjDir 0,3;
+SetMes 相変わらず$nすごいおじさんだなぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+Goto :aftertalk ;
+
+:filtalk
+SetObjDir 2,1;
+Wait 60;
+SetMes こんなところに$n来たんだから、$nもう少し楽しそうになさいよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Wait 50;
+SetMes ・・・別に良いじゃない。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,RightBottom,1;
+Wait 0;
+SetObjGoal 2,7,9,2;
+DelMes 1;
+SetMes カリスくんも、$n心配してるのよ。$nわざわざ旅のチケットも仕入れて。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,1;
+Goto :aftertalk ;
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:aftertalk
+Wait 60;
+SetMes ･･････。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-10,RightBottom,1;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 60;
+SetObjDir 0,1;
+SetObjDir 2,1;
+SetObj 1,6,8,2,3,32,0,1,1,GravJump,1;
+SetMes ･･･少し散歩$nしてくるわ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,1;
+Wait 60;
+SetMes あ、ああ。$nうん。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,1;
+SetObjGoal 1,6,2,2;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+If HardMode,1,=,:hard ;
+:normal
+LeaveParty 1;
+ChangeMap 192,7,7,2,1;
+End;
+:hard
+Store Flag[77],Member[2];
+Store Flag[78],Member[3];
+LeaveParty 0;
+LeaveParty Member[2];
+LeaveParty Member[3];
+ChangeMap 193,17,18,2,1;
+End;

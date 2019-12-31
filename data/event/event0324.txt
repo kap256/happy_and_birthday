@@ -1,0 +1,99 @@
+フィーレス村：防具屋前
+22,23,52,53,54
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetWoodObj 10,7,3,2,3,48,0,105,1,1,0;
+SetWoodObj 11,10,4,2,3,48,0,105,1,1,0;
+SetWoodObj 12,14,1,2,3,48,0,105,1,1,0;
+
+SetPutObj 15,1,6,2,24,158,1+Heavy1;
+SetPutObj 16,1,7,2,24,158,1+Heavy1;
+SetPutObj 17,1,6,4,24,158,1+Heavy1;
+
+If Flag[47],0,=,:event ;
+EndEventSkip ;
+
+SetBox 5,4,5,2,3,178;
+SetBox 6,6,5,2,3,179;
+
+::終了イベント関連::::::::::::::::::::::::::::::::
+Store MFlag[24],:ret_novevent;
+
+::::カメラ
+Store MFlag[25],60;
+Store MFlag[26],20;
+
+::::キャラ座標
+SetObj 90,4,7,2,2,32,0,0,1,GravJump,1;
+SetObj 91,6,6,2,0,32,0,8,1,GravJump,1;
+
+Goto :check_novevent;
+#nov_event.txt
+:ret_novevent
+::ここまで::::::::::::::::::::::::::::::::::::::::
+
+End;
+:walk
+IfBox 0,15,6,15,7,0,Current+2 ;
+ChangeMap 319,2,ObjSY[0]+20,2,2;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip;
+Store ShopOK[2],1;
+Store Flag[47],1;
+Stop 1;
+SetObj 1,ObjSX[0],ObjSY[0],ObjSZ[0],0,10,0,0,1,GravJump,0;
+SetObjPos 0,4,4,7;
+SetObjView 0,0;
+SetMapChip 0,4,4,7;
+SetMapChip 0,4,4,8;
+SetAniObj 2,4,4,7,1,32,0,355,0,GravJump,0;
+SetCamera 0-20,100,1;
+Wait 20;
+SetObjDir 0,0;
+
+SetMes ああ、$nやっと助けが来た！,
+       0,ObjX[2],ObjY[2]+10,ObjZ[2]-10,RightBottom,0;
+
+SetObjPos 1,7,6,2;
+SetObjGoal 1,4,6,2;
+SetObjDir 1,1;
+Wait 30;
+SetObjParam 0,ShowTurn;
+
+SetMes 大丈夫ですか！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 30;
+SetMes うん、$nもうピンピン。,
+       2,ObjX[2],ObjY[2]+10,ObjZ[2]-10,LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetMes 旅の剣士さんかな？$nふらりとあらわれて、$nこの辺の連中を$nしばき倒していってくれたんだ。,
+       0,ObjX[2],ObjY[2]+10,ObjZ[2]-10,RightBottom,0;
+Wait 0;
+SetMes 旅の剣士・・・？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes うん、$nおかげで全然無事だよ。,
+       0,ObjX[2],ObjY[2]+10,ObjZ[2]-10,RightBottom,0;
+Wait 0;
+SetMes とにかく！$n早く避難してください！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes ああ、$nありがとう！,
+       0,ObjX[2],ObjY[2]+10,ObjZ[2]-10,RightBottom,0;
+Wait 0;
+
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 324,ObjSX[1],ObjSY[1],ObjSZ[1],3;
+
+
+End;

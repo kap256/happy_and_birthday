@@ -1,0 +1,39 @@
+フィーレス地下迷宮：第一層
+36,56,57
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+Store MFlag[16],0;
+Store MFlag[17],10;
+
+:desert_enemy_loop
+Store MFlag[16],Rand%4+MFlag[16]+2;
+If MFlag[16],80,>,:desert_enemy_end ;
+SetEne MFlag[17],MFlag[16]%9*2+4,MFlag[16]/9*2+4,2,Rand,32,10,
+       0,5,
+       36,0,4,
+       5,0;
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],80,>,:desert_enemy_end ;
+Goto :desert_enemy_loop;
+:desert_enemy_end
+
+SetBox 1,18,8,2,2,200;
+
+End;
+
+:walk
+IfBox 0,3,26,3,26,0,Current+2 ;
+ChangeMap 355,3,2,2,3;
+
+IfBox 0,1,11,1,11,0,Current+2 ;
+ChangeMap 360,25,11,2,0;
+
+IfBox 0,26,19,26,19,0,Current+2 ;
+ChangeMap 358,2,20,2,2;
+End;

@@ -1,0 +1,27 @@
+水上遺跡：スイッチ（水位２）
+12
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :talk ;
+
+_END_HEAD_
+#water.txt
+#water_switch.txt
+:::::MFlag[8]には、希望する水位を代入してください。
+:::::10番目のオブジェクトには、スイッチを配置してください。
+:start
+Store MFlag[8],2;
+SetAniObj 10,4,5,7,0,32,0,174,1,GravJump,1+NoShadow;
+
+Goto :water_switch_init ;
+End;
+:walk
+IfBox 0,5,10,6,10,0,Current+2 ;
+ChangeMap 210,ObjSX[0]-1,2,7,3;
+End;
+
+:talk
+Goto :water_switch_talk ;
+End;

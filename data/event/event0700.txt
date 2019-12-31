@@ -1,0 +1,143 @@
+フィーレス村：教会の一室
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetHAObj 20,5,2,2,2,24,0,317,0,1,1;
+SetAniObj 21,6,4,2,1,48,0,367,1,1,BlockShadow;
+SetAniObj 22,6,3,2,4,48,0,114,1,1,ShowTurn+BlockShadow;
+SetAniObj 0,3,4,2,1,32,0,167,1,GravJump,ShowTurn+NoShadow ;
+SetAniObj 1,2,4,2,5,32,0,365,1,GravJump,ShowTurn+NoShadow ;
+
+SetObj 2,2,3,2,3,32,0,0,1,GravJump,0 ;
+SetObj 3,3,3,2,3,32,0,8,1,GravJump,0 ;
+SetObj 4,5,3,2,0,32,0,2,1,GravJump,0 ;
+SetObj 5,4,2,2,3,32,0,3,1,GravJump,0 ;
+SetObj 6,5,4,2,0,32,0,4,1,GravJump,0 ;
+SetObj 7,6,5,2,0,32,0,5,1,GravJump,0 ;
+SetObj 8,5,6,2,1,32,0,6,1,GravJump,0 ;
+SetObj 9,4,6,2,1,32,0,7,1,GravJump,0 ;
+SetObj 10,3,6,2,1,32,0,10,1,GravJump,0 ;
+SetObj 11,2,5,2,1,32,0,11,1,GravJump,0 ;
+SetCamera 0,0-20,1;
+
+Wait 60;
+SetObjDir 1,1;
+Wait 50;
+SetObjDir 1,5;
+Wait 10;
+SetObjDir 1,1;
+SetMes ・・・ん。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes 気がついた！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes 大丈夫？$nどこか変なところとか・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes え・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetObjImg 1,373;
+Wait 24;
+SetObjDir 1,5;
+Wait 60;
+DelMes 2;
+SetMes やめてよ・・・。$nそんな優しい顔しないで・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes 私、ひどい事したのに・・・。$nあんなひどい事・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ・・・私なんか、あのまま、$n死んでしまえばよかったのに・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+Wait 30;
+SetMes ごめんなさい・・・。$n・・・ごめんなさい・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes ・・・・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 50;
+SetMes ・・・少し混乱してたんだよ。$nみんな必死だったんだ。$n仕方ない・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes それに、$n約束したじゃないか。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 30;
+SetMes ・・・誰一人、$n死なせはしないって。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 80;
+SetMes ・・・・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetMes だから、ほら。$n顔を上げてよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+SetObjDir 1,1;
+Wait 20;
+SetObjDir 1,0;
+Wait 60;
+DelMes 1;
+SetMes それじゃ、$n今年は思いっきり祝わないとね！,
+       0,ObjX[4],ObjY[4],ObjZ[4],RightTop,0;
+Wait 0;
+DelMes 0;
+SetMes ・・・？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+SetMes 今夜は$n新年祭じゃよ。,
+       2,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 50;
+SetMes あなたがいなくなってから、$nもう一ヶ月になるのよ。,
+       0,ObjX[11],ObjY[11],ObjZ[11],LeftTop,0;
+Wait 0;
+SetCamera 0,50,0;
+DelMes 1;
+DelMes 0;
+DelMes 2;
+SetMes そうとなれば、$n早く出店の準備を$nしなければな。,
+       3,ObjX[6],ObjY[6],ObjZ[6],RightTop,0;
+Wait 0;
+SetMes 私も、飾りつけとか$nがんばったのだ！,
+       4,ObjX[9],ObjY[9],ObjZ[9],LeftBottom,0;
+Wait 0;
+DelMes 3;
+SetMes フィルの晴れ姿・・・。$nどんな感じなんだろう・・・。,
+       0,ObjX[8],ObjY[8],ObjZ[8],RightTop,0;
+Wait 0;
+DelMes 4;
+SetMes わたくしも、$n見せたい物がありますの。,
+       2,ObjX[7],ObjY[7],ObjZ[7],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetMes ウマイ野菜料理作って、$n待ってるぜ！,
+       3,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+Wait 30;
+SetMes さあ、今年のお祭りも、$n盛り上げよう！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 20;
+ChangeMap 701,2,2,2,2 ; 
+End;
+

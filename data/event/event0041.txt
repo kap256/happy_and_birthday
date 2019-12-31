@@ -1,0 +1,25 @@
+“Œ‚Ì“´ŒAF“ü‚èŒû
+1,5,10
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+PlayBGM 4;
+
+SetEne 4,5,7,6,0,64,0,
+       0,0,
+       5,3,4,
+       2,0;
+
+SetBox 10,4,4,2,3,17;
+End;
+
+:walk
+IfBox 0,4,12,5,12,0,Current+2 ;
+ChangeMap 145,6,2,2,3;
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 43,3,9,7,1;
+End;

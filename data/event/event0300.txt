@@ -1,0 +1,165 @@
+フィーレス村：自警団の詰所
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+If HardMode,0,=,:normal ;
+If Flag[83],4,<,:h_event ;
+
+If Flag[83],12,<,Current+2 ;
+SetParty 1;
+OpenMenu 0;
+If Flag[83],8,<,Current+2 ;
+ChangeMap 494,7,10,9,1;
+ChangeMap 88,3,19,13,1;
+
+:h_event
+StartEventSkip ;
+
+:normal
+Stop 1;
+PlayBGM 2;
+MapTitle ;
+SetAniObj 0,6,3,2,4,32,0,114,1,GravJump,BlockShadow+ShowTurn+2;
+SetAniObj 16,5,6,2,0,32,0,136,1,GravJump,0;
+SetAniObj 17,6,4,2,0,32,0,115,1,GravJump,BlockShadow+ShowTurn+2;
+SetAniObj 18,6,5,2,0,32,0,115,1,GravJump,BlockShadow+ShowTurn+2;
+SetAniObj 19,6,6,2,5,32,0,114,1,GravJump,BlockShadow+ShowTurn+2;
+
+SetObj 1,7,3,2,0,32,0,56,1,GravJump,1;
+SetObj 2,5,6,2,2,32,0,57,1,GravJump,1;
+SetObj 3,3,5,2,1,16,0,56,1,GravJump,1;
+SetCamera 0-140,0-320,1;
+SetCamera 0-140,40,0;
+
+Wait 90;
+SetObjDir 3,3;
+Wait 90;
+SetObjGoal 2,5,4,2;
+SetObjDir 2,2;
+SetObjDir 3,1;
+Wait 90;
+SetObjDir 3,2;
+SetMes ふぅ。$n今日も平和だったなぁ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes 最近は$n迷子のネコ探しぐらいしか$nまともな事件なかったし。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetMes 事件といえば、$n最近トライアックさんとこが$nなんかやってるよな。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetObjDir 2,0;
+Wait 60;
+SetMes ああ、$n古代文明だの卵だのってやつ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 2;
+SetMes ハハハ。$nこんな平和な村に、$nそんな大それた事件が$nおこるわけ無いよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+DelMes 3;
+SetMes そうそう。$nそんなことより、$n新年祭でやる隠し芸でも$n考えとけよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 60;
+SetMes だよな～。$nハハハ・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetObjDir 2,2;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+Wait 60;
+SetObj 4,7,4,16,1,10,0,211,1,GravJump,1;
+PlayBGM 0;
+PlayWave 28;
+Wait 10;
+PlayWave 28;
+SetObj 5,5,3,16,3,10,0,211,1,GravJump,1;
+Wait 20;
+SetObjDir 1,3;
+SetMes え・・・っ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetAniObj 4,7,4,2,4,10,0,316,1,GravJump,1;
+Wait 2;
+SetObjDir 2,2;
+SetObjDir 4,5;
+Wait 2;
+SetObjDir 4,6;
+PlayWave 16;
+SetMes ぐあっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+SetAniObj 1,7,3,2,8,10,0,316,1,GravJump,1;
+Wait 2;
+SetObjDir 4,7;
+Wait 4;
+SetAniObj 5,5,3,2,0,10,0,316,1,GravJump,1;
+Wait 2;
+SetObjDir 5,1;
+Wait 2;
+SetObjDir 5,2;
+PlayWave 16;
+SetObjDir 1,9;
+SetMes がふっ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+SetAniObj 2,5,4,2,12,10,0,316,1,GravJump,1;
+Wait 2;
+SetObjDir 5,3;
+Wait 8;
+SetObjDir 1,10;
+SetObjDir 2,13;
+Wait 10;
+SetObjDir 2,14;
+Wait 20;
+DelMes 1;
+DelMes 2;
+Wait 0;
+PlayBGM 36;
+
+SetMes 黒い・・・衣！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetObjDir 4,6;
+SetObjDir 5,2;
+Wait 16;
+SetObj 4,7,4,2,1,10,0,211,1,GravJump,1;
+SetObj 5,5,3,2,3,10,0,211,1,GravJump,1;
+Wait 0;
+SetObjGoal 3,3,4,2;
+SetMes う、わあああ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 14;
+SetObjGoal 3,1,4,2;
+Wait 24;
+DelMes 3;
+SetObjDir 4,0;
+SetObjDir 5,0;
+SetMes ！$n逃がしたか。,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 60;
+SetMes 放っておけ。$n出入り口は封鎖したんだ。$n素人集団に何が出来る。,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightTop,0;
+
+Wait 0;
+DelMes 5;
+SetMes そんなことより、$nターゲットの娘には気をつけろ。$n絶対に殺すな。,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightTop,0;
+SetObjDir 5,2;
+Wait 40;
+SetMes 分かってる。,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightBottom,0;
+Wait 0;
+DelMes 4;
+DelMes 5;
+Wait 20;
+
+If HardMode,0,=,Current+2;
+::ハード
+ChangeMap 493,5,3,2,3;
+
+::ノーマル
+ChangeMap 301,6,4,2,3;
+End;

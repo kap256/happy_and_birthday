@@ -1,0 +1,101 @@
+妖精の森
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+:::::::::::::::::::植林
+Store MFlag[0],10;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::植林終わり
+PlayBGM 37;
+
+SetObj 0,12,5,2,0,24,0,0,1,GravJump,0;
+SetObj 1,12,6,2,0,32,0,8,1,GravJump,0;
+SetObjGoal 0,6,5,2;
+SetObjGoal 1,7,6,2;
+SetCamera 20,30,1;
+
+Wait 168;
+SetMes ふう。$nやっと出られた。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 40;
+SetObjDir 0,2;
+SetMes しかし、何者なんだ？$n君の事を狙ってたようだけど。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetMes 分かりません、$n私には何が何なのか・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes 母さんも、父さんも、$nみんなあの人たちに・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 90;
+SetMes ・・・短い間でしたけど、$nお世話になりました。$nそれでは・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetObjGoal 1,7,8,2;
+SetObjDir 1,1;
+SetCamera 0-80,80,0;
+
+Wait 16;
+SetObjDir 0,3;
+SetMes それでは・・・って、$nどうするのさ。$n両親もいないんでしょ？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes でも、見も知らない方に$nこれ以上ご迷惑をかけるわけには$nいきませんので・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetMes まだ子供なのに、$nそんな迷惑とか考えないの。$n素直に甘えちゃえよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes でも・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetObjDir 0,0;
+SetMes 知り合いが$nおいしい食堂をやっててね。$nおなか空いただろ？$n食べに行こう。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetMes えっと・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 20;
+Store Flag[14],0;
+
+SetFriend 8;
+NextMonth ;
+ReturnVillage 1;
+End ;

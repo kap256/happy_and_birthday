@@ -1,0 +1,112 @@
+フィーレス村：教会の一室
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+
+Stop 1;
+MapColor 255,0,0,0;
+
+SetObj 1,8,3,2,2,32,0,4,0,GravJump,0 ;
+SetObj 2,2,2,2,2,32,0,3,0,GravJump,0 ;
+SetObj 3,1,3,2,2,40,0,11,0,GravJump,0 ;
+SetObjPos 0,7,3,2;
+SetObjView 0,0;
+
+Wait 1;
+SetMes （もう、おしまいよ！）,
+       0,ObjX[0],ObjY[0],ObjZ[0]+30,Center,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetMes （みんな死んじゃうの！$n　あいつらが、みんな殺しちゃうの！）,
+       0,ObjX[0],ObjY[0],ObjZ[0]+30,Center,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetMes （私に何ができるの！？$n　どうせ何にもできやしないわ！）,
+       0,ObjX[0],ObjY[0],ObjZ[0]+30,Center,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetMes （最後の手段だったのに・・・っ！）,
+       0,ObjX[0],ObjY[0],ObjZ[0]+30,Center,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetMes （だから、早く・・・！$n　遠く・・・どこか・・・！）,
+       0,ObjX[0],ObjY[0],ObjZ[0]+30,Center,0;
+Wait 0;
+DelMes 0;
+Wait 40;
+MonthTitle ;
+Wait 240;
+SetFadeOut 40;
+Wait 40;
+PlayBGM 32;
+SetObjGoal 2,6,2,2;
+SetObjGoal 3,5,3,2;
+Store MFlag[0],255;
+:black_loop
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]-3;
+If MFlag[0],0,>,:black_loop ;
+MapColor 0,0,0,0;
+
+Wait 20;
+SetMes 村人の$n避難と応急手当、$n一通り終わりましたぞ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+SetObjDir 1,0;
+Wait 40;
+SetMes おう、$n分かった。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes とはいえ、坊ちゃん他$nけが人ばかりですぞ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 40;
+SetMes むぅ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes このままでいても、$nジリ貧ですぞ。$n何とか抜け出して$n救援を求めぬと・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 60;
+SetMes しかし、村の周囲は$n奴らの手で完全に$n封鎖されてしまった・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 60;
+SetObjDir 2,0;
+SetMes ・・・教会の地下遺跡から$n村の外に出られるかもしれません。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes ・・・地下遺跡？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes まだ、全容は調べていませんし、$n教会のほかにも$n出口があるかも知れません。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes 確かに・・・。$nその可能性はあるな。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+Wait 30;
+SetMes ・・・頼めるか？$nフィルミナさん。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes ええ。$nきっと救援を$n呼んできます。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+Wait 20;
+
+Store Flag[83],4;
+OpenMenu 0;
+ChangeMap 88,3,19,13,1;
+End;

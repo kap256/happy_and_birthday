@@ -1,0 +1,157 @@
+硝子鉱山
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 4;
+If Flag[40],4,<,:event;
+
+
+SetEne 4,15,6,2,Rand,48,10,
+       0,5,
+       0,2,8,
+       2,0;
+
+SetSavePoint 10,6,3,2;
+End ;
+
+:event
+StartEventSkip ;
+Stop 1;
+Store Flag[40],4;
+
+SetObj 0,16,6,2,0,16,0,0,0,GravJump,1;
+SetObj 1,16,9,2,1,24,0,0,0,GravJump,1;
+SetObj 2,17,10,2,1,32,0,1,0,GravJump,1;
+SetObj 3,6,3,2,3,24,0,61,0,GravJump,1;
+SetObj 4,5,5,2,1,24,0,62,0,GravJump,1;
+SetObj 5,8,4,2,0,24,0,211,0,GravJump,1;
+SetObj 6,7,6,2,1,24,0,211,0,GravJump,1;
+SetObjView 0,0;
+SetObjGoal 1,16,6,2;
+SetObjGoal 2,17,7,2;
+SetObjDir 1,0;
+SetObjDir 2,0;
+
+Wait 60;
+SetMes まだ見つかんねぇのか！？,
+       4,9*32,6*32,1*32,LeftTop,0;
+Wait 20;
+SetMes しかし・・・。,
+       3,19*16,9*16,1*32,LeftTop,0;
+Wait 50;
+SetMes ・・・話し声？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes 例の連中かしら・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetFadeOut 40;
+SetObjGoal 0,7,6,2;
+SetObjGoal 1,12,4,2;
+SetObjGoal 2,12,7,2;
+SetCamera 0,0-72,0;
+SetCameraSpeed 5;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+DelMes 4;
+Wait 100;
+PlayBGM 36;
+SetMes 全然見つかんねぇじゃねーか！$n本当にココなんだろーな！？,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightTop,0;
+Wait 50;
+SetMes まだ大して探してないだろ？$n気が短いんだよ。,
+       3,ObjX[3],ObjY[3],ObjZ[4],RightBottom,0;
+Wait 0;
+SetMes ちっ・・・。$n大体なんでお前と一緒なんだよ。$nオレ一人で十分だってのによ。,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightTop,0;
+Wait 70;
+SetMes ごちゃごちゃうるさいね。$nしゃべってる暇があるなら、$nさっさと探すよ。,
+       3,ObjX[3],ObjY[3],ObjZ[4],RightBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 4;
+SetObjGoal 3,6,4,2;
+SetObjGoal 5,1,4,2;
+Wait 24;
+SetObjGoal 3,1,4,2;
+SetObjDir 6,0;
+Wait 48;
+SetObjDir 4,0;
+Wait 72;
+DelObj 3;
+Wait 24;
+DelObj 5;
+Wait 20;
+SetMes ハッ・・・！$n女のクセにいきがりやがって！,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 50;
+SetMes ・・・やれやれ。,
+       6,ObjX[6],ObjY[6],ObjZ[6],LeftTop,0;
+Wait 0;
+DelMes 4;
+Wait 20;
+SetObjDir 4,2;
+SetMes ・・・なんか言ったか？$nおい。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 40;
+SetMes いえ。$nなにも。,
+       6,ObjX[6],ObjY[6],ObjZ[6],LeftTop,0;
+Wait 0;
+DelMes 4;
+DelMes 6;
+SetObjGoal 4,1,5,2;
+SetObjGoal 6,7,5,2;
+SetObjSpeed 0,32;
+SetObjGoal 0,12,6,2;
+SetCamera 0,0,0;
+SetAniObj 1,12,4,2,0,32,0,312,1,GravJump,0;
+SetAniObj 2,12,7,2,1,32,0,312,1,GravJump,0;
+Wait 24;
+SetObjGoal 6,1,5,2;
+Wait 60;
+SetMes くそぉ、$n先を越されてたか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 80;
+SetMes ・・・何であいつらが$nこんなところにいるのよ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes ・・・知ってるのか？$nレーナ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+SetObjDir 1,4;
+Wait 60;
+SetMes な、何言ってるのよ。$n知らないわ。$nあんなやつら知らない・・・！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetObjDir 2,5;
+Wait 0;
+SetMes それより、そろそろ帰りましょうよ。$n先を越されたんだから、$nもう意味は無いでしょ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 80;
+SetMes 何いってるのさ。$nまだ見つけてない様子だったのに。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetObjDir 1,0;
+SetMes 急がないと先を越される。$n早く見つけないと。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+ChangeMap 257,12,5,2,0;
+End;
+
+:walk
+IfBox 0,16,10,17,10,0,Current+2;
+ChangeMap 256,ObjSX[0]-1,2,2,3;
+IfBox 0,1,4,1,5,0,Current+2;
+ChangeMap 258,24,ObjSY[0]+7,2,0;
+End;

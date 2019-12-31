@@ -1,0 +1,105 @@
+幽夜の砦
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetObjPos 0,4,7,2;
+SetObj 1,4,1,2,0,32,0,60,0,GravJump,0;
+SetObj 2,4,1,2,0,24,0,62,0,GravJump,0;
+SetObj 3,5,1,2,0,24,0,61,0,GravJump,0;
+SetObj 4,5,1,2,0,32,0,67,0,GravJump,0;
+SetObjView 0,0;
+
+SetCamera 0,100,1;
+SetCamera 0,0,0;
+SetObjGoal 1,4,8,2;
+Wait 120;
+SetObjGoal 2,4,6,2;
+Wait 60;
+SetMes おい、ディアノ。$nディアノさんよぉ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetObjDir 1,1;
+SetMes 何の用だ。ガルドス。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes 部下が愚痴ってたぜ。$nまた敵に情けをかけたんだってなぁ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes わざわざ殺すこともあるまい。$n無駄なことだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes へぇ～？$n可哀想に！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes 飛び散る血飛沫に$n心地良い断末魔！$nあれほど楽しいことは無いってのによ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 90;
+SetMes ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjGoal 3,5,4,2;
+SetObjSpeed 0,64;
+SetObjGoal 0,4,6,2;
+Wait 20;
+SetMes 相変わらず$nあんたは野蛮だね。$n昔からちっとも成長しね～の。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 3;
+SetObjDir 2,1;
+SetMes なんだ、ジュラ。$nお前、この野郎の肩を持つってのか？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 50;
+SetMes べつに～。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 2;
+SetMes そんなことよりディアノ、$nちょっと付き合いなよ。$nうまい酒が入ったんだって。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 80;
+SetMes 遠慮する。$n酒に興味は無い。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+SetObjDir 2,3;
+SetObjSpeed 1,24;
+SetObjGoal 1,4,14,2;
+Wait 120;
+SetMes 相変わらず$nつれね～の。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 40;
+SetMes ああいうヤツなんだよ。$n放っとけよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+SetObjDir 2,1;
+SetMes 酒なら$nオレが付き合ってやるぜ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 40;
+SetMes アンタと呑んで$nど～すんだよ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 2;
+SetObjGoal 3,5,12,2;
+SetMes あ～あ。$nつまんないの。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 60;
+SetObjDir 2,3;
+Wait 60;
+DelMes 3;
+Wait 60;
+SetMes チッ！$nどいつもこいつも・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 2;
+SetFadeOut 30;
+Wait 20;
+ChangeMap 248,4,2,2,3;
+End;

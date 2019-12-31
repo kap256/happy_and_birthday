@@ -1,0 +1,34 @@
+洋館：倉庫
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+#hamari.txt
+:start
+SetBox 1,10,2,2,0,327;
+
+::移動オブジェクトを目印があるところに配置。::::::::::::::::::::::::::::
+Store MFlag[0],20;
+Store MFlag[1],1;
+:put_loop_x
+Store MFlag[2],1;
+:put_loop_y
+GetMapChip MFlag[4],MFlag[1],MFlag[2],2;
+If MFlag[4],4,!=,:put_loop_after ;
+SetPutObj MFlag[0],MFlag[1],MFlag[2],2,24,157,1;
+Store MFlag[0],MFlag[0]+1;
+:put_loop_after
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],11,<,:put_loop_y ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],16,<,:put_loop_x ;
+
+::配置終わり::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+End ;
+
+:walk
+IfBox 0,1,6,1,6,0,Current+2 ;
+ChangeMap 610,7,5,2,0;
+End;

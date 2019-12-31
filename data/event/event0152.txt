@@ -1,0 +1,152 @@
+フィーレス村：住宅街
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    2 -1 :talk ;
+Talk    3 -1 :talk ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+SetObj 2,9,7,2,0,32,0,21,1,GravJump,1;
+SetObj 3,7,7,2,2,32,0,4,1,GravJump,1; 
+SetAniObj 10,8,7,2,4,32,0,114,1,GravJump,2+BlockShadow+ShowTurn;
+SetAniObj 11,8,8,2,5,32,0,114,1,GravJump,2+BlockShadow+ShowTurn;
+SetAniObj 13,8,7,2,5,32,0,139,1,GravJump,2+NoShadow;
+SetAniObj 12,7,14,2,5,32,0,103,1,GravJump,1;
+SetAAObj 20,2,11,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 21,2,14,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 22,5,11,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 23,5,14,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 24,8,11,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 25,5,4,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 26,8,4,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+
+If Flag[0],20,=,:event ;
+
+Wait 10;
+:loop
+SetMes ぐがー。, 
+       5,ObjX[12],ObjY[12],ObjZ[12]-10,LeftBottom,NoSound;
+Wait 50;
+DelMes 5;
+Wait 30;
+Goto :loop ;
+
+:walk
+IfBox 0,1,12,1,13,0,Current+2;
+ChangeMap 19,14,ObjSY[0]-6,2,0;
+IfBox 0,6,1,7,1,0,Current+2;
+ChangeMap 18,ObjSX[0]-2,10,2,1;
+End;
+
+:talk
+If Flag[0],20,<,:eventstart ;
+Stop 1;
+SetMes もう少し$n安くならんかね？, 
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 30;
+SetMes カンベンして$nくださいよ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+Stop 0;
+DelMes 2;
+DelMes 3;
+End;
+:eventstart
+Store Flag[0],20;
+ChangeMap 152,9,10,2,1;
+
+
+:event
+Store Flag[0],21;
+StartEventSkip ;
+Stop 1;
+SetAniObj 0,7,9,2,0,32,0,104,1,GravJump,1;
+SetObj 1,6,9,2,1,32,0,1,1,GravJump,1;
+SetCamera 60,0-30,1;
+Wait 20;
+SetMes もう少し$n安くならんかね？, 
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 30;
+SetMes カンベンして$nくださいよ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes 父さん、$n何してるの？, 
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetObjDir 3,3;
+Wait 60;
+SetMes なんだ、カリス。$n今日も彼女と一緒か。, 
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 40;
+SetMes ち、違うよ！$nたまたま店番のクジで$n一緒になっただけで！, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+SetObjDir 0,4;
+Wait 2;
+SetObjDir 0,1;
+Wait 2;
+SetObjDir 0,4;
+Wait 2;
+SetObjDir 0,5;
+Wait 2;
+SetObjDir 0,4;
+Wait 2;
+SetObjDir 0,1;
+Wait 2;
+SetObjDir 0,4;
+Wait 2;
+SetObjDir 0,5;
+Wait 2;
+SetObjDir 0,4;
+Wait 0;
+SetMes ハハハ。$nじゃあそういうことに$nしておいてやろう。, 
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes ･･･もー。$n父さんったら。, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+SetObjDir 0,0;
+Wait 0;
+SetMes で、結婚は$nいつするんだ？, 
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 40;
+SetMes だ、だからっ！$nもうっ！, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+SetObjDir 0,4;
+Wait 2;
+SetObjDir 0,1;
+Wait 2;
+SetObjDir 0,4;
+Wait 2;
+SetObjDir 0,5;
+Wait 2;
+SetObjDir 0,4;
+SetAniObj 1,6,9,2,4,32,0,159,1,GravJump,1;
+Wait 2;
+SetObjDir 0,1;
+Wait 2;
+SetObjDir 0,4;
+Wait 2;
+SetObjDir 0,5;
+Wait 2;
+SetObjDir 0,4;
+SetObjDir 1,1;
+Wait 2;
+SetObjDir 0,1;
+Wait 2;
+SetObjDir 0,4;
+Wait 2;
+SetObjDir 0,5;
+Wait 2;
+SetObjDir 0,4;
+SetObjDir 1,4;
+Wait 0;
+DelMes 0;
+DelMes 3;
+Wait 20;
+ChangeMap 152,7,9,2,1;
+
+End;

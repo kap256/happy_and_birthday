@@ -1,0 +1,134 @@
+‘Œ´
+9,11,2,21,16
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 11;
+SetBox 1,85,36,11,1,314;
+Store MFlag[0],ObjSX[0]-1/15 ;
+Store MFlag[1],ObjSY[0]/15 ;
+NewLine MFlag[0]  ,MFlag[1]-1,:set_obj ;
+NewLine MFlag[0]  ,MFlag[1]  ,:set_obj ;
+NewLine MFlag[0]  ,MFlag[1]+1,:set_obj ;
+NewLine MFlag[0]-1,MFlag[1]-1,:set_obj ;
+NewLine MFlag[0]-1,MFlag[1]  ,:set_obj ;
+NewLine MFlag[0]-1,MFlag[1]+1,:set_obj ;
+NewLine MFlag[0]+1,MFlag[1]-1,:set_obj ;
+NewLine MFlag[0]+1,MFlag[1]  ,:set_obj ;
+NewLine MFlag[0]+1,MFlag[1]+1,:set_obj ;
+Wait 1;
+End ;
+
+:walk
+IfBox 0,25,63,25,63,0,Current+7 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+If Flag[91],1,>,Current+2;
+Store Flag[91],1;
+ChangeMap 535,12,12,2,0;
+IfBox 0,1,32,1,33,0,Current+2 ;
+ChangeMap 555,8,ObjSY[0]-27,2,0;
+IfBox3D 0,64,2,7,64,2,7,0,Current+2 ;
+ChangeMap 558,3,5,6,1;
+IfBox3D 0,64,22,3,64,22,3,0,Current+2 ;
+ChangeMap 558,4,24,2,1;
+IfBox3D 0,6,53,7,6,53,7,0,Current+2 ;
+ChangeMap 559,4,6,2,1;
+
+Store MFlag[2],MFlag[0];
+Store MFlag[3],MFlag[1];
+Store MFlag[0],ObjSX[0]-1/15 ;
+Store MFlag[1],ObjSY[0]/15 ;
+
+If MFlag[0],MFlag[2],<,:x_down ;
+If MFlag[0],MFlag[2],>,:x_up ;
+If MFlag[1],MFlag[3],<,:y_down ;
+If MFlag[1],MFlag[3],>,:y_up ;
+End;
+:x_down
+NewLine MFlag[0]-1,MFlag[1]-1,:set_obj ;
+NewLine MFlag[0]-1,MFlag[1]  ,:set_obj ;
+NewLine MFlag[0]-1,MFlag[1]+1,:set_obj ;
+End;
+:x_up
+NewLine MFlag[0]+1,MFlag[1]-1,:set_obj ;
+NewLine MFlag[0]+1,MFlag[1]  ,:set_obj ;
+NewLine MFlag[0]+1,MFlag[1]+1,:set_obj ;
+End;
+:y_down
+NewLine MFlag[0]-1,MFlag[1]-1,:set_obj ;
+NewLine MFlag[0]  ,MFlag[1]-1,:set_obj ;
+NewLine MFlag[0]+1,MFlag[1]-1,:set_obj ;
+End;
+:y_up
+NewLine MFlag[0]-1,MFlag[1]+1,:set_obj ;
+NewLine MFlag[0]  ,MFlag[1]+1,:set_obj ;
+NewLine MFlag[0]+1,MFlag[1]+1,:set_obj ;
+End;
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:set_obj
+Store MFlag[16],ParamA ;
+Store MFlag[17],ParamB ;
+If MFlag[16],0,<,:end ;
+If MFlag[16],5,>,:end ;
+If MFlag[17],0,<,:end ;
+If MFlag[17],5,>,:end ;
+
+Store MFlag[18],k[MFlag[16]%3*10]+k[MFlag[17]%3*30]+5;
+Store MFlag[19],MFlag[18]+9;
+Store MFlag[20],MFlag[16]*15+1;
+Store MFlag[21],MFlag[17]*15;
+
+Store MFlag[22],0;
+:set_obj_loop_x
+Store MFlag[23],0;
+:set_obj_loop_y
+Store MFlag[24],4;
+:set_obj_loop_z
+GetMapChip MFlag[25],MFlag[22]+MFlag[20],MFlag[23]+MFlag[21],MFlag[24];
+If MFlag[25],4,=,:set_enemy ;
+If MFlag[25],5,=,:set_wood ;
+:no_set
+Store MFlag[24],MFlag[24]+1;
+If MFlag[24],21,<,:set_obj_loop_z ;
+Store MFlag[23],MFlag[23]+1;
+If MFlag[23],15,<,:set_obj_loop_y ;
+Store MFlag[22],MFlag[22]+1;
+If MFlag[22],15,<,:set_obj_loop_x ;
+:end
+End;
+
+:::::::::::::
+:set_enemy
+SetEne MFlag[18],MFlag[22]+MFlag[20],MFlag[23]+MFlag[21],MFlag[24],Rand,24,50,
+       0,5,
+       Rand%2*12+9,0,Rand%4+4,
+       1,LPx2;
+Store MFlag[18],MFlag[18]+1;
+If MFlag[18],MFlag[19],>,:end ;
+Goto :no_set ;
+
+:set_wood
+SetWoodObj MFlag[18],MFlag[22]+MFlag[20],MFlag[23]+MFlag[21],MFlag[24],
+           0,48,0,105,1,1,0;
+Store MFlag[18],MFlag[18]+1;
+If MFlag[18],MFlag[19],>,:end ;
+Goto :no_set ;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+

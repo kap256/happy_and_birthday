@@ -1,0 +1,30 @@
+èHÇÃéRÅFéRí∏ÇÃà‚ê’
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+SetAniObj 10,3,3,2,0,32,0,185,1,GravJump,NoShadow+ShowTurn+1;
+SetAniObj 11,3,5,2,0,32,0,186,1,GravJump,NoShadow+ShowTurn+1;
+SetAniObj 12,5,3,2,0,32,0,186,1,GravJump,NoShadow+ShowTurn+1;
+SetAniObj 13,5,5,2,0,32,0,185,1,GravJump,NoShadow+ShowTurn+1;
+
+Store MFlag[8],416;
+Store MFlag[9],12;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,7,8,8,8,0,Current+2;
+ChangeMap 694,ObjSX[0]+6,2,12,3;
+
+IfBox3D 0,2,4,2,2,4,2,0,Current+2;
+ChangeMap 697,13,4,2,0;
+
+
+
+End;

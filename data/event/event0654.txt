@@ -1,0 +1,38 @@
+マルゴ火山：東の外壁
+7,10,27,35
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,8,7,5,Rand,32,0,
+       0,2,
+       49,0,5,
+       30,0;
+SetEne 2,7,21,7,Rand,32,10,
+       0,4,
+       27,0,5,
+       30,0;
+SetEne 3,5,29,11,Rand,32,10,
+       0,4,
+       35,0,5,
+       30,0;
+
+SetBox 11,2,16,20,3,344;
+
+End;
+
+:walk
+IfBox3D 0,6,16,6,6,16,6,0,Current+2 ;
+ChangeMap 653,16,7,3,0;
+IfBox3D 0,3,20,13,3,20,13,0,Current+2 ;
+ChangeMap 657,20,5,3,0;
+IfBox3D 0,4,9,20,4,9,20,0,Current+2 ;
+ChangeMap 659,19,14,3,1;
+IfBox3D 0,5,3,13,5,3,13,0,Current+2 ;
+ChangeMap 658,19,11,3,0;
+IfBox 0,1,29,1,30,0,Current+2 ;
+ChangeMap 655,15,ObjSY[0]-25,11,0;
+
+End;

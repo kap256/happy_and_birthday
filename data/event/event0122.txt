@@ -1,0 +1,197 @@
+妖精の森：行商人の広場
+0,2,8,20
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    15 -1 :shop ;
+Talk    16 -1 :return ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 6;
+
+
+IfBox 0,5,13,6,15,1,:left ;
+SetWoodObj 12,5,10,2,1,48,0,105,1,1,0;
+SetWoodObj 13,6,10,2,1,48,0,105,1,1,0;
+:left
+
+:::::::::::::::::::植林
+Store MFlag[0],20;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::植林終わり
+
+
+If Flag[14],4,<,:event1 ;
+If Flag[14],8,=,:event2 ;
+
+SetAniObj 15,4,4,2,0,32,0,182,1,GravJump,1;
+SetSavePoint 14,6,7,2;
+If Month,3,>,:fairy ;
+End ;
+:fairy
+SetObj 16,8,6,3,1,24,0,43,1,GravLock,1;
+End;
+
+:walk
+IfBox 0,7,1,8,1,0,Current+2 ;
+ChangeMap 121,ObjSX[0]+1,14,2,1;
+
+IfBox 0,12,4,12,5,0,Current+3 ;
+Store Flag[15],1;
+ChangeMap 123,2,ObjSY[0]+1,2,2;
+
+IfBox 0,5,15,6,15,0,Current+3 ;
+Store Flag[15],3;
+ChangeMap 129,ObjSX[0]-1,2,2,3;
+End;
+
+:shop
+Stop 1;
+SetMes 商品が重くてさ。$nよかったら買ってってくれよ。,
+       0,ObjX[15],ObjY[15],ObjZ[15],RightBottom,0;
+Wait 0;
+Shop 9+Flag[16],0 ;
+DelMes 0;
+Stop 0;
+End;
+
+:return
+
+Stop 1;
+SetObjDir 16,ObjDir[0]+2;
+SetMes よかったら村まで$n送ってあげますけど。,
+       0,ObjX[16],ObjY[16],ObjZ[16]-10,LeftTop,0;
+Wait 0;
+ReturnVillage 0;
+Wait 1;
+DelMes 0;
+Stop 0;
+End;
+
+
+:::::::::::::::::::::::::::::::::::::::::ここからイベント1
+:event1
+Store Flag[14],4;
+StartEventSkip ;
+Stop 1;
+PlayBGM 38;
+
+SetCamera 120,60,0;
+SetObj 1,7,2,2,3,32,0,0,1,GravJump,1;
+SetObj 2,8,1,2,3,32,0,8,1,GravJump,1;
+SetAniObj 0,4,4,2,4,32,0,182,1,GravJump,1;
+
+SetObjGoal 1,7,4,2;
+SetObjGoal 2,8,4,2;
+SetObjDir 1,0;
+SetObjDir 2,0;
+Wait 20;
+SetMes ふー。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes そこの方、$nこの辺は危ないですよ。$n早く離れたほうがいいです。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetObjDir 0,0;
+SetMes 出来ることなら$nそうしたいんだがね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetObjDir 0,4;
+SetMes 歩けども歩けども、$n気がついたら$nもといた所に戻ってるんだ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetObjDir 0,0;
+SetMes 森に入ってかれこれ６時間、$nいい加減疲れたから$n休憩してるのさ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes ･･･変な話ですね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes ひょっとして$n森の妖精さんに$n化かされてるのかな～。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes ハハ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes 知らないのか？$nこの辺には出るんだぞ～。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetMes お化けみたいに$n言わないでくださいよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes そうそう、$n山のように商品を持ってきたから$n重くて大変なんだ。$n少し買ってかないか？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 80;
+SetMes 考えておきます。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 122,7,4,2,0;
+:::::::::::::::::::::::::::::::::::::::::ここからイベント2
+:event2
+Store Flag[14],12;
+Store Flag[16],1;
+StartEventSkip ;
+Stop 1;
+PlayBGM 38;
+
+SetCamera 0,50,1;
+SetCamera 100,50,0;
+SetObj 1,7,1,2,3,32,0,0,1,GravJump,1;
+SetAniObj 0,4,4,2,0,32,0,182,1,GravJump,1;
+SetObjGoal 1,7,5,2;
+
+Wait 100;
+SetMes よう。$nまたあったな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetObjDir 1,0;
+SetMes あれ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetMes おっかしいなぁ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 50;
+SetMes 言ったろ～。$nいくら歩いても$n戻ってくるって。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes そうそう、$nカバンをあさってたら$n新しい商品を見つけたんだ。$n買ってかないか？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 80;
+SetMes 考えておきます。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 122,7,4,2,0;
+End;

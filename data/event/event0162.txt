@@ -1,0 +1,15 @@
+çªîô
+26,27,33,34,35
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :desert_walk ;
+Talk    6 -1 :desert_talk ;
+
+_END_HEAD_
+#desert.txt
+:start
+PlayBGM 3;
+Store Flag[21],0;
+Store Flag[22],0;
+Goto :desert_init ;
+End;

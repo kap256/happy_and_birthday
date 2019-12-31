@@ -1,0 +1,94 @@
+フィーレス村：宝石屋前
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    2 -1 :talk ;
+Talk    11 -1 :talk ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+SetAniObj 2,5,5,2,4,32,0,136,1,GravJump,1+ShowTurn;
+SetAniObj 10,4,6,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 11,5,6,2,0,32,0,115,1,GravJump,2+BlockShadow;
+SetAniObj 12,6,6,2,5,32,0,114,1,GravJump,2+BlockShadow;
+
+SetAAObj 20,4,5,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 21,6,5,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 22,6,9,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 23,9,6,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 24,9,9,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 25,12,6,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 26,12,3,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 27,9,3,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 28,3,9,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+
+If Flag[0],24,=,:event ;
+
+:walk
+IfBox 0,4,11,5,11,0,Current+2;
+ChangeMap 152,ObjSX[0]+2,2,2,3;
+IfBox 0,10,1,11,1,0,Current+2;
+ChangeMap 20,6,15,2,1;
+End;
+
+:talk
+Stop 1;
+SetMes 今晩は。$n一年の始まりに$n素敵な宝石をいかがです？, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+ShopMan 0,301,288,288,288,10000,100000,100000,100000;
+DelMes 2;
+If Flag[0],24,<,:eventstart ;
+Stop 0;
+End;
+
+:eventstart
+Wait 20;
+Store Flag[0],24;
+ChangeMap 18,5,7,2,1;
+
+
+:event
+Stop 1;
+Store Flag[0],25;
+StartEventSkip ;
+SetObj 0,5,7,2,1,32,0,0,1,GravJump,1;
+SetObj 1,4,7,2,1,32,0,1,1,GravJump,1;
+SetCamera 0,0-50,1;
+Wait 60;
+SetMes ･･･高いわね。, 
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 50;
+SetMes 最近は特に$n入荷が難しくなって、$n私たちも大変なんですの･･･。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes 一つだけ特に高いのがあるけど、$nこれは何です？, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 60;
+SetMes あ、それは$n少し特殊なものですわ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes 特殊、って言うと？, 
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes 使うと、$n普通の誕生石と違う$n特別な能力を引き出せると言いますわ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes へぇ～。$nすごいんだ。, 
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+DelMes 1;
+SetMes ええ。$nただ、数が少なくて、あまり見かけないので、$nどう使うかは$nしっかり考えてくださいね。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+Tutorial 8;
+Wait 20;
+ChangeMap 18,5,7,2,1;
+End;

@@ -1,0 +1,80 @@
+フィーレス村：出入り口
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+#forest.txt
+:start
+
+Stop 1;
+
+SetObj 0,5,7,2,1,32,0,72,0,GravJump,0;
+SetObj 1,5,5,2,3,48,0,60,0,GravJump,0;
+Store MFlag[8],88;
+Store MFlag[15],:after_forest ;
+
+SetCamera 20,0-10,1;
+
+Goto :forest_init ;
+
+:after_forest
+
+Wait 90;
+SetMes どうしても、$n行っちゃうの？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 60;
+SetMes ああ。$nしかるべき場所で$n裁きを受ける。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes どうして・・・。$nあなたのおかげで助かった人も、$nたくさん居るでしょう？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+SetMes 少しでも、$nあいつ等の暴虐を止めるために、$n内側から・・・,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 30;
+SetMes それは$n言い訳だよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetMes 僕は、$n僕自身の望みのために、$n奴らに加担した。$n・・・それが真実だ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 80;
+SetMes ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjGoal 1,5,4,2;
+Wait 80;
+SetMes ・・・もう、$n会えることも無いだろう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes だから、$n僕のことは忘れて、$n幸せになってほしい。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 最愛の人が$n不幸になる事が、$n一番、つらい事だから・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes さようなら・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObjSpeed 1,32;
+SetObjGoal 1,5,1,2;
+DelMes 0;
+DelMes 1;
+Wait 80;
+SetMes ディアノ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 706,5,11,3,1;
+End;

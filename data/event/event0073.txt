@@ -1,0 +1,18 @@
+ƒ‰ƒNƒŠƒAŒÎ”ÈF…Œ¹
+1
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+SetBox 5,5,4,6,3,36;
+SetBox 6,6,4,6,3,37;
+End;
+
+:walk
+IfBox 0,5,10,6,10,0,Current+2 ;
+ChangeMap 72,ObjSX[0],2,20,3;
+End;

@@ -1,0 +1,19 @@
+ピラミッド：左の小室
+36,56,57
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne   1,3,4,3,3,32,0,
+         0,0,
+         36,2,8,
+         11,0;
+SetBox 10,3,2,4,3,186;
+End;
+
+:walk
+IfBox 0,6,5,6,6,0,Current+2 ;
+ChangeMap 333,2,ObjSY[0]+11,2,2;
+End;

@@ -1,0 +1,30 @@
+ƒ‰ƒNƒŠƒAŒÎ”ÈF“ü‚èŒû
+2,9,37
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 11;
+SetEne 1,2,9,10,1,32,0,
+       1,3,
+       9,0,4,
+       1,0;
+
+SetEne 2,5,9,5,1,32,10,
+       0,3,
+       2,0,4,
+       1,0;
+
+SetBox 10,2,12,10,1,27;
+End;
+:walk
+IfBox 0,6,15,7,15,0,Current+2 ;
+ChangeMap 59,ObjSX[0]+5,2,3,3;
+IfBox 0,1,1,2,1,0,Current+3 ;
+Store Flag[64],0;
+ReturnVillage  0;
+End;

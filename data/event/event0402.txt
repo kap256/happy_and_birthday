@@ -1,0 +1,17 @@
+“ì‚Ì“‡Fl‹›‚Ì‰Q
+38,76
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 14;
+End;
+:walk
+IfBox 0,7,1,8,1,0,Current+2 ;
+ChangeMap 401,ObjSX[0]-4,25,3,1;
+IfBox 0,1,7,1,8,0,Current+2 ;
+ChangeMap 403,9,ObjSY[0]+1,5,0;
+End;

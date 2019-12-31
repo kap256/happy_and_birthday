@@ -1,0 +1,41 @@
+ƒ}ƒ‹ƒS‰ÎRF‘æˆê‘wE–k¼•”
+7,10,27,35
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+SetEne 1,5,11,3,Rand,32,10,
+       0,5,
+       35,0,6,
+       12,0;
+SetEne 2,5,6,5,Rand,32,10,
+       0,5,
+       49,0,4,
+       12,0;
+SetEne 3,10,7,5,Rand,32,80,
+       0,5,
+       10,0,4,
+       12,0;
+
+
+SetNormalTrap  20,4,7,6,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  21,8,5,4,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  22,11,4,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  23,9,9,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  24,5,12,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+Goto :fire_start ;
+
+:walk
+IfBox 0,7,15,7,15,0,Current+2 ;
+ChangeMap 650,7,2,9,3;
+IfBox 0,14,8,14,8,0,Current+2 ;
+ChangeMap 653,2,8,3,2;
+IfBox 0,14,5,14,5,0,Current+2 ;
+ChangeMap 653,2,5,3,2;
+IfBox 0,3,4,3,4,0,Current+2 ;
+ChangeMap 657,4,6,3,1;
+
+End;

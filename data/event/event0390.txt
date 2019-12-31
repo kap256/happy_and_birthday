@@ -1,0 +1,367 @@
+フィーレス地下迷宮：第四層
+0,1,2
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+SetAniObj 1,8,7,2,4,32,0,329,1,GravJump,1+NoShadow;
+SetAniObj 2,4,5,2,1,32,0,329,0,GravJump,0;
+
+If Flag[63],0,>,:event2 ;
+If Flag[62],0,>,:event ;
+
+SetSavePoint 80,2,7,2;
+
+End;
+
+:walk
+IfBox 0,4,14,4,14,0,Current+2 ;
+ChangeMap 389,8,2,2,3;
+
+IfBox 0,9,1,9,1,0,Current+2 ;
+ChangeMap 391,3,29,2,1;
+
+IfBox 0,ObjSX[2],ObjSY[2],ObjSX[2],ObjSY[2],1,:switch ;
+If MFlag[0],0,>,:out_switch ;
+End;
+
+::スイッチまわり:::::::::::::::::::::::
+:switch
+Store MFlag[0],1;
+Stop 1;
+PlayWave 9;
+SetObjDir 2,5;
+Wait 20;
+SetCameraSpeed 40;
+SetCamera 80,80,0;
+Wait 30;
+PlayWave 12;
+SetObjDir 0,2;
+SetObjGoal 1,8,6,2;
+Wait 32;
+Stop 0;
+If Flag[56],29,>,:switch_event ;
+SetCamera 0,0,0;
+
+End ;
+
+:out_switch
+SetCamera 80,80,0;
+Store Flag[56],30;
+Stop 1;
+PlayWave 9;
+SetObjDir 2,1;
+PlayWave 12;
+SetObjDir 0,2;
+SetObjGoal 1,8,7,2;
+Wait 20;
+SetMes ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+:switch_event
+Store Flag[62],1;
+ChangeMap 390,5,7,2,2;
+End ;
+
+::居残りを決めるイベント::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:event
+
+StartEventSkip ;
+Stop 1;
+Store Flag[62],0;
+SetObj 0,5,7,2,2,32,0,0,1,GravJump,1;
+
+If Member[1],0,<,:friend1 ;
+SetObj 10,3,7,2,2,24,0,Member[1],0,GravJump,1;
+Store Flag[58+MFlag[1]] , Member[1];
+Store MFlag[8+MFlag[1]] , 10;
+Store MFlag[1],MFlag[1]+1;
+
+:friend1
+If Member[2],0,<,:friend2 ;
+SetObj 11,4,8,2,2,24,0,Member[2],0,GravJump,1;
+Store Flag[58+MFlag[1]] , Member[2];
+Store MFlag[8+MFlag[1]] , 11;
+Store MFlag[1],MFlag[1]+1;
+
+:friend2
+If Member[3],0,<,:friend3 ;
+SetObj 12,4,6,2,2,24,0,Member[3],0,GravJump,1;
+Store Flag[58+MFlag[1]] , Member[3];
+Store MFlag[8+MFlag[1]] , 12;
+Store MFlag[1],MFlag[1]+1;
+
+:friend3
+
+Wait 20;
+SetMes 誰かがスイッチを押していないと、$n先に進めないのか・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetObjDir 0,0;
+Wait 20;
+SetMes ええっと。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+
+If MFlag[1],0,=,:no_friend ;
+If MFlag[1],1,=,:select1 ;
+If MFlag[1],2,=,:select2 ;
+Goto :select3 ;
+
+:no_friend
+Wait 40;
+SetMes ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetAniObj 0,5,7,2,5,32,0,183,1,GravJump,ShowTurn;
+SetMes ・・・いったん戻るか。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 390,4,7,2,2;
+End;
+
+::メンバー選択::::::::::::::::::::::::::::::::::::::::::::
+:select3
+Select4 $mf58$sに頼む。$n$mf59$sに頼む。$n$mf60$sに頼む。$nやめる。,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftTop,:select_friend1,:select_friend2,:select_friend3,:no_select ;
+:select2
+Select3 $mf58$sに頼む。$n$mf59$sに頼む。$nやめる。,
+        2,ObjX[0],ObjY[0],ObjZ[0],LeftTop,:select_friend1,:select_friend2,:no_select ;
+:select1
+Select2 $mf58$sに頼む。$nやめる。,
+        1,ObjX[0],ObjY[0],ObjZ[0],LeftTop,:select_friend1,:no_select ;
+
+:no_select
+Wait 20;
+SetMes ・・・いや、$nもう一度考え直そう。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 390,4,7,2,2;
+End;
+
+:select_friend1
+Store MFlag[2],Flag[58];
+Store MFlag[3],MFlag[8];
+Goto :after_select ;
+:select_friend2
+Store MFlag[2],Flag[59];
+Store MFlag[3],MFlag[9];
+Goto :after_select ;
+:select_friend3
+Store MFlag[2],Flag[60];
+Store MFlag[3],MFlag[10];
+Goto :after_select ;
+
+::居残りメンバーとの会話::::::::::::
+:after_select
+Wait 20;
+If MFlag[2],2,=,:holy_before ;
+If MFlag[2],3,=,:tolgun_before ;
+If MFlag[2],4,=,:bolte_before ;
+If MFlag[2],5,=,:misely_before ;
+If MFlag[2],7,=,:rany_before ;
+If MFlag[2],10,=,:clo_before ;
+
+SetMes お願いします。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Goto :before_end ;
+
+:holy_before
+SetMes ホリィ、$nお願いするよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes え～。$nちょっと怖いなぁ･･･。,
+       1,ObjX[MFlag[3]],ObjY[MFlag[3]],ObjZ[MFlag[3]],LeftBottom,0;
+Goto :before_end ;
+
+:tolgun_before
+SetMes トルガン、$n頼んだ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes ご無事で。,
+       1,ObjX[MFlag[3]],ObjY[MFlag[3]],ObjZ[MFlag[3]],LeftBottom,0;
+Goto :before_end ;
+
+:bolte_before 
+SetMes 父さん、$nお願いします。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes ふむ、$n仕方ないな・・・。,
+       1,ObjX[MFlag[3]],ObjY[MFlag[3]],ObjZ[MFlag[3]],LeftBottom,0;
+Goto :before_end ;
+
+:misely_before 
+SetMes ミゼリアさん、$nお願いできます？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes わたくしを置いて行こうとは$nいい度胸ですわね。,
+       1,ObjX[MFlag[3]],ObjY[MFlag[3]],ObjZ[MFlag[3]],LeftBottom,0;
+Goto :before_end ;
+
+:rany_before 
+SetMes ラニー、$nよろしく。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes そんな～、$nまだまだお宝が$nありそうなのに・・・。,
+       1,ObjX[MFlag[3]],ObjY[MFlag[3]],ObjZ[MFlag[3]],LeftBottom,0;
+Goto :before_end ;
+
+:clo_before
+SetMes クロット、$n頼む。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes まっかせなよ！,
+       1,ObjX[MFlag[3]],ObjY[MFlag[3]],ObjZ[MFlag[3]],LeftBottom,0;
+Goto :before_end ;
+
+:before_end
+Wait 0;
+DelMes 0;
+DelMes 1;
+::居残りメンバーの移動::::::::::::
+If MFlag[3],10,=,:move1 ;
+If MFlag[3],11,=,:move2 ;
+Goto :move3 ;
+
+:move1
+SetObjGoal 10,3,5,2;
+Wait 48;
+SetObjGoal 10,4,5,2;
+Wait 24;
+Goto :after_move ;
+:move2
+SetObjGoal 11,4,5,2;
+Wait 32;
+SetObjGoal 12,3,6,2;
+SetObjDir 12,2;
+Wait 40;
+Goto :after_move ;
+:move3
+SetObjGoal 12,4,5,2;
+Wait 24;
+Goto :after_move ;
+
+:after_move
+
+PlayWave 9;
+SetObjDir 2,5;
+SetObjDir MFlag[3],3;
+Wait 20;
+PlayWave 12;
+SetObjDir 0,2;
+SetObjGoal 1,8,6,2;
+Wait 40;
+SetMes よし、$n行くぞ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+
+LeaveParty MFlag[2];
+Store Flag[63],MFlag[2];
+ChangeMap 391,3,29,2,1;
+
+End;
+
+::帰ってきたときのイベント::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:event2
+Stop 1;
+StartEventSkip ;
+SetAniObj 1,8,6,2,4,32,0,329,1,GravJump,1+NoShadow;
+SetAniObj 2,4,5,2,5,32,0,329,0,GravJump,0;
+
+SetObj 0,4,5,2,3,32,0,Flag[63],0,GravJump,1;
+SetObj 10,9,7,2,3,16,0,0,0,GravJump,0;
+
+SetCamera 0-80,40,1;
+SetObjGoal 10,4,7,2;
+SetObjDir 10,1;
+Wait 80;
+
+::居残りくらったメンバーとの会話::::::::::::
+If Flag[63],2,=,:holy_after ;
+If Flag[63],3,=,:tolgun_after ;
+If Flag[63],4,=,:bolte_after ;
+If Flag[63],5,=,:misely_after ;
+If Flag[63],7,=,:rany_after ;
+If Flag[63],10,=,:clo_after ;
+
+SetMes ただいま。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Goto :after_end ;
+
+:holy_after
+SetMes ホリィ、$nありがとう。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 40;
+SetMes う～。$n怖かったよぉ･･･。,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Goto :after_end ;
+
+:tolgun_after
+SetMes トルガン、$nありがとう。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 40;
+SetMes お帰りですかの。,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Goto :after_end ;
+
+:bolte_after
+SetMes 父さん、$nありがとう。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 40;
+SetMes 何も無かったのか？,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Goto :after_end ;
+
+:misely_after
+SetMes ミゼリアさん、$nすいません。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 40;
+SetMes まったくですわ！,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Goto :after_end ;
+
+:rany_after
+SetMes ラニー、$nありがとう。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 40;
+SetMes お宝あった～？,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Goto :after_end ;
+
+:clo_after
+SetMes クロット、$nありがとう。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftTop,0;
+Wait 40;
+SetMes このぐらい$nお安い御用だぜ！,
+       1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Goto :after_end ;
+
+
+:after_end
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+SetParty Flag[63];
+Store Flag[63],0;
+ChangeMap 390,4,7,2,3;
+End;

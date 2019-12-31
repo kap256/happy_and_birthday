@@ -1,0 +1,303 @@
+秋の山：秘密の花園
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+If Flag[125],64,=,:event3;
+If Flag[125],16,<,:event1;
+If Flag[125],20,<,:event2;
+PlayBGM 6;
+EndEventSkip ;
+SetAniObj 10,5,9,10,4,32,0,338,1,GravJump,NoShadow+1;
+
+Store MFlag[8],416;
+Store MFlag[9],19;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,16,12,16,13,0,Current+2;
+ChangeMap 695,2,ObjSY[0]-10,2,2;
+IfBox 0,13,1,14,1,0,Current+2;
+ChangeMap 696,ObjSX[0]-6,7,2,1;
+
+
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event1
+Stop 1;
+MapColor 255,0,0,0;
+Store Flag[125],16;
+PlayBGM 0;
+StartEventSkip ;
+Wait 20;
+SetMes ・・・ごめん、なさい。$n私・・・もう、ダメみたい・・・。,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 50;
+SetMes 何を言っているんだ！$nしっかりしろ！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+SetMes 私が・・・死んだら、$n・・・あの山に、埋めて・・・。$n思い出の・・・あの花畑に・・・。,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 60;
+SetMes 弱気になるな！$nそんなこと・・・！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+SetMes ・・・・・・この子の事、$nお願・・・・・・ボ・・ル・・・。,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 60;
+SetMes マリン！$nしっかりしろ、マリン！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+SetMes マリン！$n目を開けるんだ、マリン！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes 　$n　　　　マリーン！　　　　$n　,
+       0,ObjX[0],ObjY[0],ObjZ[0]+16,Center,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 694,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0];
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+Stop 1;
+PlayBGM 6;
+Store Flag[125],20;
+SetAniObj 0,5,9,10,0,32,0,338,0,GravJump,NoShadow+1;
+SetAniObj 1,6,9,10,4,16,0,370,0,GravJump,1;
+SetObj 2,7,8,10,0,32,0,0,0,GravJump,1;
+SetObj 3,8,10,10,0,32,0,8,0,GravJump,1;
+SetCamera 80,40,1;
+
+Store MFlag[8],416;
+Store MFlag[9],19;
+Store MFlag[15],:forest_return;
+Goto :forest_fall_init ;
+
+
+:forest_return
+Wait 60;
+SetObjDir 1,5;
+Wait 16;
+SetObjDir 1,6;
+SetObjDir 0,4;
+Wait 16;
+SetObjDir 1,7;
+Wait 60;
+SetMes マリン・・・・・・。,
+       0,ObjX[1],ObjY[1],ObjZ[1]-8,LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetObj 1,6,9,10,0,16,0,4,0,GravJump,1;
+Wait 8;
+SetObjDir 1,2;
+Wait 8;
+SetMes 時間をとらせたな。$n・・・先を急ごう。,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・・・・うん。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetCamera 200,100,0;
+SetObjGoal 1,6,5,10;
+Wait 40;
+SetObjDir 2,1;
+Wait 24;
+SetObjGoal 1,12,5,10;
+Wait 24;
+SetObjGoal 2,7,7,10;
+SetObjDir 2,3;
+SetMes ・・・カリスさんも、$n私と一緒だったんですね。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 50;
+SetMes ・・・え？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 3;
+SetObjDir 3,1;
+Wait 30;
+SetMes お母さんを・・・、$n大切な人を亡くして・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 80;
+SetMes ・・・あ、ああ～。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 3;
+SetMes な、亡くしたっていっても、$n生まれる前の話だし、$n僕は全然覚えてないし・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 2;
+Wait 30;
+SetMes それに、$n僕には父さんが居たし、$n寂しい思いをすることなんて・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 60;
+SetMes わ、私も・・・！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 0;
+DelMes 3;
+DelMes 2;
+Wait 60;
+SetMes ・・・私にも、$nカリスさん達が$n居てくれますから・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 60;
+SetMes え・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+Wait 80;
+DelMes 3;
+SetMes お～い。$n先に行ってしまうぞ～。　　　　,
+       0,10*32,5*32,10*16,RightBottom,0;
+SetObjDir 2,1;
+Wait 0;
+DelMes 0;
+SetObjDir 2,3;
+Wait 30;
+SetMes ・・・ご、ごめんなさい。$nは、早く行きましょう。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 40;
+SetMes あ、・・・うん。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+
+Wait 20;
+ChangeMap 694,7,7,10,3;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event3
+Stop 1;
+PlayBGM 16;
+SetAniObj 0,5,9,10,4,32,0,338,1,GravJump,NoShadow+1;
+SetObj 1,11,5,10,0,12,0,4,0,GravJump,1;
+SetObj 2,9,5,10,0,12,0,0,0,GravJump,1;
+SetObj 3,13,5,10,0,12,0,8,0,GravJump,1;
+SetCameraSpeed 50;
+SetCamera 400,40,1;
+SetCamera 80,40,0;
+SetObjGoal 2,7,5,10;
+SetObjGoal 1,7,5,10;
+SetObjGoal 3,6,5,10;
+
+Store MFlag[8],416;
+Store MFlag[9],19;
+Store MFlag[15],:forest_return_e3;
+Goto :forest_fall_init ;
+
+:forest_return_e3
+Wait 24;
+SetObjGoal 2,7,9,10;
+SetObjDir 2,0;
+SetBAObj 5,2,10,18,4,16,0,177,0,GravFallNone,ShowTurn+1;
+PlayWave 28;
+SetObjGoal 5,5,10,10;
+Wait 24;
+PlayWave 42;
+SetObjGoal 1,7,8,10;
+SetObjDir 1,0;
+Wait 12;
+SetMes ！$nよりによって、$nこんな時に！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 23;
+SetObjGoal 3,6,6,10;
+SetObjDir 3,3;
+SetMes 来るぞっ！,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+PlayWave 42;
+DelMes 0;
+DelMes 2;
+SetObjSpeed 5,8;
+SetObjZSpd 5,20;
+SetObjGoal 5,7,10,10;
+Wait 16;
+EndEventSkip ;
+Battle 75;
+SetFadeOut 30;
+DelObj 5;
+StartEventSkip ;
+SetObj 1,10,11,10,2,24,0,4,0,GravJump,1;
+SetAniObj 2,7,12,10,0,12,0,314,0,GravJump,1;
+SetAniObj 3,8,9,10,1,12,0,306,0,GravJump,1;
+SetCamera 100,200,1;
+Wait 30;
+PlayBGM 19;
+Wait 30;
+SetMes ・・・・・・もうずいぶん$n遠くへ行ってしまったな・・・。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 70;
+SetMes ・・・くそぉ、$nあと一息だったのに・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+SetCameraSpeed 10;
+SetCamera 20,160,0;
+DelMes 0;
+SetMes もう、$n分かってるだけでも三つ・・・。$n全部集められていても$n不思議じゃない・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+SetMes くっ、$n一体どうしたら・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetObjGoal 1,9,11,10;
+SetMes 落ち着け、$nまだそうと決まったわけではない。,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes もし、そうだとしても、$n卵は村の地下にあるのだ。$nそう簡単には手出しできまい。,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetMes 今は出来ることをするんだ。$n落ち込むのはその後だ。,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ・・・うん、そうだ。$n・・・・・・ごめん、父さん。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 50;
+SetMes うむ。,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 30;
+SetMes （・・・私の、せいで・・・。）,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+
+SetCamera 20,0-10240,0;
+Store Flag[125],0;
+
+:cameraroop
+SetCameraSpeed MFlag[4];
+Store MFlag[4],MFlag[4]+1;
+Wait 2;
+If MFlag[4],90,<,:cameraroop ;
+
+Store Flag[0],0;
+Store Flag[124],0;
+If Month,1,>,:next_month ;
+Store ShopOK[0],1;
+Store ShopOK[3],1;
+Store ShopOK[4],1;
+:next_month
+NextMonth ;
+ReturnVillage 1;
+
+End;

@@ -1,0 +1,42 @@
+フィーレス村：アーゲリオ農場
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+:start
+
+Stop 1;
+
+SetCamera 0-60,0-40,1;
+SetObj 0,6,6,2,0,32,0,36,0,GravJump,0;
+SetObj 1,4,6,2,2,24,0,10,0,GravJump,0;
+SetAniObj 2,4,7,2,5,32,0,325,0,GravJump,ShowTurn;
+
+Wait 30;
+SetMes 今日から$n現場復帰だぜ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 30;
+SetMes やったぜ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetMes 一時は$nどうなることかと$n思ったけど。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 50;
+SetMes ハッハッハ！$nこのオレ様が$nそう簡単にやられるかよ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 2;
+SetMes これでまた、$nみんなで農業できるな！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+SetMes ああ！$n今年も大豊作に$nしてやるぜ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 705,5,11,3,1;
+End;

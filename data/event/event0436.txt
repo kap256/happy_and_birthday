@@ -1,0 +1,99 @@
+図書館
+82,83
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk   20 -1 :door_talk ;
+Hit     0 20 :door_hit ;
+Talk   50 -1 :talk ;
+
+_END_HEAD_
+#lib_door.txt
+:start
+SetAniObj 20,9,7,2,12,32,0,334,1,GravLock,NoShadow;
+
+
+SetEne 30,5,9,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 31,5,5,2,Rand,48,10,
+       0,3,
+       46,0,6,
+       19,POWx15+LPx3;
+SetEne 32,7,9,2,Rand,48,10,
+       0,3,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 33,7,5,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+
+SetBox 40,11,7,2,0,244;
+End;
+
+:walk
+IfBox 0,7,1,7,1,0,Current+2 ;
+ChangeMap 434,7,13,2,1;
+
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk
+Stop 3;
+SetMes 「ある司書の手記」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 20;
+Select2 読む。$n読まない。,
+        1,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:talk_read,:talk_end;
+End;
+:talk_read
+SetMes 「二月九日。$n　今日もいい天気だ。$n　虫干しをしよう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「二月十二日。$n　雨の音が風流だ。$n　小説を読んで一日を過ごす。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「二月十六日。$n　散歩中に、$n　見知らぬ壮年の男を見かける。
+         $n　腹が減って倒れていたようだ。$n　せっかくなので、ウチに運び込む。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「二月二十二日。$n　ゾロ目記念日。$n　十一月十一日が待ち遠しい。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+
+SetMes 「二月二十六日。$n　先日助けた人は$n　すっかり元気になった。$n　もう外も一人で歩けるみたいだ。$n　よかったよかった。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月四日。$n　例の人はまだいる。$n　この辺鄙な村に興味を持ったみたいだ。
+        $n　村人たちも、外の人は珍しいので、$n　よくウチに遊びに来る。$n　おかげで少し寝不足だ。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月九日。$n　学者をやっているという話なので、$n　図書館を案内してあげた。$n　
+        こんな蔵書は見たことが無いと、$n　一日中本を読んでいた。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月十四日。$n　今日も彼は一日中本を読んでいる。$n　寝食を忘れて本を読んでいるせいか、$n　
+        顔色がすごかった。$n　今夜はたっぷり料理を作ろう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月十八日。$n　彼が突然姿を消した。$n　お金とか、ケチ臭いことは言わないけど、$n　最後に一言挨拶してほしかった。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月二十二日。$n　結婚式。$n　僕のじゃないけど。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「三月二十九日。$n　隣の家の子が本に落書きをした。$n　今度落書きしないように$n　注意書きに書いておこう。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 「四月五日。$n　外が騒がしい。$n　火事だろうか。」,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes ・・・手記はここで$n終わっている。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+:talk_end
+DelMes 0;
+Stop 0;
+End;

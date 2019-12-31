@@ -1,0 +1,18 @@
+#included
+
+Talk 0 -1 :hamari ;
+
+_END_HEAD_
+:hamari
+Stop 3;
+Select2 まだまだ！$nやりなおす・・・。,
+        0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:hamari_mada,:hamari_reset ;
+:hamari_mada
+Stop 0;
+End ;
+:hamari_reset
+ChangeMap MapNo,StartX,StartY,StartZ,StartDir;
+End ;
+
+
+

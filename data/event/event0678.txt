@@ -1,0 +1,82 @@
+～２５年前～　秘密の花園
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+#forest.txt
+:start
+
+If Flag[125],1,<,:event ;
+OpenMenu 0;
+ChangeMap 680,14,7,2,0;
+End ;
+
+:event
+StartEventSkip ;
+Stop 1;
+PlayBGM 6;
+
+Store MFlag[8],22;
+Store MFlag[9],19;
+Store MFlag[15],:after_forest ;
+Goto :forest_init ;
+
+:after_forest
+
+SetAniObj 0,5,8,10,9,32,0,370,1,GravJump,0;
+SetAniObj 1,5,9,10,8,32,0,370,1,GravJump,0;
+MapTitle ;
+SetCamera 480,0-240,1;
+SetCamera 0-32,16,0;
+SetCameraSpeed 14;
+Wait 400;
+SetMes ・・・きれい。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 60;
+SetMes だろう？$nここは俺のお気に入りなんだ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 1,12;
+Wait 60;
+SetMes ・・・ところで、$n話って何かしら？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 60;
+SetMes ああ、$n実は・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 0,10;
+Wait 16;
+SetObjDir 0,14;
+Wait 60;
+SetObjDir 0,11;
+Wait 60;
+SetObjDir 0,15;
+SetMes 結婚、してくれないか？$n・・・マリン。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes ・・・もちろんよ、$nボルテ・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 30;
+SetCamera 0-32,0-10240,0;
+
+:cameraroop
+SetCameraSpeed MFlag[4];
+Store MFlag[4],MFlag[4]+1;
+Wait 2;
+If MFlag[4],70,<,:cameraroop ;
+
+:black
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]+8;
+If MFlag[0],255,<,:black ;
+MapColor 255,0,0,0;
+MonthTitle ;
+Wait 300;
+ChangeMap 679,11,16,2,1;
+End;

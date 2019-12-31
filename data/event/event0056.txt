@@ -1,0 +1,78 @@
+「切り株の子うさぎ亭」前
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+
+SetAniObj 1,5,5,8,0,32,0,101,1,1,0;
+SetWoodObj 6,3,12,4,0,48,0,105,1,1,0;
+SetWoodObj 7,2,6,3,1,48,0,105,1,1,0;
+SetWoodObj 8,8,10,3,1,48,0,105,1,1,0;
+SetWoodObj 9,9,5,3,0,48,0,105,1,1,0;
+
+
+Store MFlag[0],0;
+:roof1
+SetObj MFlag[0]*6+10,3,MFlag[0]+1,11,0,32,0,103,1,1,0;
+SetObj MFlag[0]*6+11,6,MFlag[0]+1,11,2,32,0,103,1,1,0;
+SetObj MFlag[0]*6+12,8,MFlag[0]+1,8,2,32,0,103,1,1,0;
+SetObj MFlag[0]*6+13,4,MFlag[0]+1,11,2,32,0,104,1,1,0;
+SetObj MFlag[0]*6+14,5,MFlag[0]+1,11,2,32,0,104,1,1,0;
+SetObj MFlag[0]*6+15,7,MFlag[0]+1,8,2,32,0,104,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],5,<,:roof1;
+
+Store MFlag[0],0;
+:roof2
+SetObj MFlag[0]*5+46,5,MFlag[0]+12,8,0,32,0,103,1,1,0;
+SetObj MFlag[0]*5+47,9,MFlag[0]+12,8,2,32,0,103,1,1,0;
+SetObj MFlag[0]*5+48,6,MFlag[0]+12,8,2,32,0,104,1,1,0;
+SetObj MFlag[0]*5+49,7,MFlag[0]+12,8,2,32,0,104,1,1,0;
+SetObj MFlag[0]*5+50,8,MFlag[0]+12,8,2,32,0,104,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],4,<,:roof2;
+
+PlayBGM 2;
+Store Flag[7],1;
+
+Stop 1;
+
+SetCamera 0,0-380,1;
+SetCamera 0,80,0;
+MapTitle ;
+
+SetObj 2,6,7,3,1,32,0,6,1,1,1;
+SetObj 3,4,8,3,1,32,0,7,1,1,1;
+Wait 340;
+
+SetMes ね～、お兄ちゃ～ん。$nお宝って、$nこんなところにあるの～？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetObjDir 3,2;
+Wait 60;
+SetMes まあ、待て。$n宝探しといえば、$n屈強な冒険者仲間だろ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetObjDir 2,0;
+Wait 0;
+SetMes そして冒険者といえば$n酒場に決まってるぜ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetObjDir 2,1;
+Wait 60;
+SetMes でもここ、$n酒場って言うより$n食堂だよ～？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetObjDir 3,1;
+Wait 0;
+SetMes なーに。$n似たようなもんさ。$nほら、入るぞ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+Wait 20;
+
+ChangeMap 57,8,7,2,1;
+
+End;
+
+

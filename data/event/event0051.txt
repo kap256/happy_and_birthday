@@ -1,0 +1,201 @@
+リーリン
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:church
+ChangeMap 421,5,4,2,0;
+End;
+
+:start
+Stop 1;
+
+If CurrentMonth,14,=,:church ;
+If CurrentMonth,15,=,:church ;
+If Month,12,=,:church ;
+
+SetAniObj 11,2,4,2,4,32,0,114,1,GravJump,BlockShadow;
+SetAniObj 12,3,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,4,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 14,5,4,2,5,32,0,114,1,GravJump,BlockShadow;
+
+SetAAObj 15,2,3,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 16,5,3,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+
+SetAniObj 20,4,3,2,4,32,0,136,1,GravJump,ShowTurn;
+If Flag[13],1,=,:secret ;
+
+SetCamera 80,0-40,1;
+
+Wait 1;
+SetMes こんにちは。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes 他にも用はあるかしら。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+Shop 2,1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+
+If Flag[13],2,<,:nosecret ;
+If CurrentMonth,10,=,:usesecret ;
+:nosecret
+
+If Month,3,=,:march ;
+If Month,4,=,:april ;
+If Month,5,=,:may ;
+If Month,6,=,:june ;
+If Month,7,=,:july ;
+If Month,8,=,:aug ;
+If Month,9,=,:sep ;
+If Month,10,=,:oct ;
+If Month,11,=,:nov ;
+
+SetMes 今月の誕生石は$nアメジスト、$n紫水晶ですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 昔から酔い覚ましの力が$nあると言われていますわ。$nお酒には気をつけてくださいね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:march
+SetMes 今月の誕生石は$nアクアマリン、$n藍玉ですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes その名のとおり$n海の水のような宝石ですわ。$n海に落とすと見えなくなるといいますから、$n水辺では気をつけてくださいね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:april
+SetMes 今月の誕生石は$nダイアモンド、$n金剛石ですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 世界で一番硬い宝石と$n言われていますわ。$n他の宝石と混ぜると、$n傷だらけにしてしまうので、$n別々に保管してくださいね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:may
+SetMes 今月の誕生石は$nエメラルド、$n翠玉ですね。$n緑色の綺麗な宝石ですわ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+:june
+SetMes 今月の誕生石は$nパール、$n真珠ですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 真珠貝から取れる$n生物由来の宝石ですわ。$n油に弱いので$n扱うときは手袋をしてくださいね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+
+:july
+SetMes 今月の誕生石は$nルビー、$n紅玉ですね。$n赤く綺麗な宝石ですわ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:aug
+SetMes 今月の誕生石は$nペリドット、$n橄欖石ですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes あまり有名でないかもしれませんけど、$n綺麗な緑色をした宝石ですわ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:sep
+SetMes 今月の誕生石は$nサファイア、$n青玉ですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 赤い色でないルビーの$n総称ですわ。$n少しかわいそうですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:oct
+SetMes 今月の誕生石は$nトルマリン、$n電気石ですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 温めると、$nその名のとおり$n静電気を帯びる宝石ですわ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:nov
+SetMes 今月の誕生石は$nトパーズ、$n黄玉ですね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 名前は似てますけど、$nルビーやサファイアとは$n特に関係の無い宝石ですわ。$n気をつけてくださいね。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:usesecret
+SetMes あんなところに$n隠し通路があったなんて$n知りませんでしたわ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes お使いになりたい、$nというなら、どうぞ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 16;
+ChangeMap 112,2,3,21,2;
+End;
+
+:secret
+PlayBGM 2;
+Store  Flag[13],2;
+SetMapChip 96,6,2,1;
+Wait 40;
+SetMes ・・・あれ？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 20;
+SetAniObj 20,4,3,2,4,32,0,136,1,GravJump,0;
+SetMes あら。,
+       1,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+SetMes どうしました？$nそんなところから。,
+       1,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 40;
+SetObjDir 0,3;
+SetMes かくかくしかじかで。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetMes 大変ですね。$nでは、通路を使いたくなったら$n「雑談」してくださいね。,
+       1,ObjX[20],ObjY[20],ObjZ[20],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 20;
+ReturnVillage 1;
+End;

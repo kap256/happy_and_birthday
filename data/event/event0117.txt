@@ -1,0 +1,35 @@
+ƒtƒB[ƒŒƒX’n‰º–À‹{F‹RŽm‚ÌŠÔ
+19
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Hit     0 1  :battle ;
+Talk    1 -1 :battle ;
+
+_END_HEAD_
+:start
+SetSavePoint 11,7,8,2;
+If Flag[9],4,>,:end ;
+SetBigObj 1,6,5,2,3,32,0,307,1,GravJump,1;
+:end
+End ;
+
+:walk
+IfBox 0,5,15,6,15,0,Current+2 ;
+ChangeMap 116,ObjSX[0]-2,2,2,3;
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 118,ObjSX[0],10,2,1;
+End;
+
+:battle
+Stop 3;
+Wait 1;
+Battle 4;
+If Escape,0,>,:escape ;
+Store Flag[9],5;
+DelObj 1;
+
+:escape
+Wait 1;
+Stop 0;
+End;

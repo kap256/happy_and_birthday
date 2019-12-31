@@ -1,0 +1,24 @@
+¼‚Ì“´ŒAF“ü‚èŒû
+0,1,9
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 4;
+SetEne 1,5,6,2,1,32,8,
+       1,4,
+       9,0,4,
+       2,0;
+End;
+:walk
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 36,ObjSX[0],10,3,1;
+IfBox 0,1,7,1,8,0,Current+2 ;
+ChangeMap 149,8,ObjSY[0]-3,2,0;
+IfBox 0,10,7,10,8,0,Current+2 ;
+ChangeMap 145,6,2,2,3;
+End;

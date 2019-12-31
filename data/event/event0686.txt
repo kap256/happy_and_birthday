@@ -1,0 +1,29 @@
+èHÇÃéRÅFélçáñ⁄
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+
+SetSavePoint 5,5,4,3;
+
+SetBox 10,2,4,3,2,246;
+SetBox 11,2,6,3,2,247;
+
+Store MFlag[8],416;
+Store MFlag[9],10;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,5,10,6,10,0,Current+2;
+ChangeMap 685,ObjSX[0]+5,2,6,3;
+
+IfBox 0,11,5,11,6,0,Current+2;
+ChangeMap 687,2,ObjSY[0]+7,8,2;
+
+End;

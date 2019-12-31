@@ -1,0 +1,135 @@
+フィーレス村：大通り
+0
+
+LoadMap 0 -1 :start ;
+TimeSec 0 0 :newwalker ;
+
+_END_HEAD_
+:newwalker
+Store MFlag[0],Rand%4;
+:roopnew
+Store MFlag[4],Rand%2; 
+SetObj MFlag[1]+30,MFlag[4]*20+3,MFlag[0]+4,2,MFlag[4]*2+2,Rand%32+32,0,Rand%12+21,0,GravJump,MFlag[1];
+Store MFlag[1],MFlag[1]+1%50;
+Store MFlag[0],MFlag[0]-1; 
+If MFlag[0],0,>,:roopnew ;
+
+End;
+
+:everytime
+Store MFlag[0],30;
+
+:roopwalk
+SetObjGoalDir MFlag[0],ObjDir[MFlag[0]],10; 
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],80,<,:roopwalk; 
+
+Wait 2;
+Goto :everytime;
+End ;
+
+
+:start
+Stop 1;
+MapTitle ;
+
+NewLine 0,0,:everytime; 
+
+PlayBGM 9;
+
+SetObj 0,15,10,2,1,32,0,1,1,GravJump,1; 
+SetObj 1,16,10,2,1,32,0,0,1,GravJump,1; 
+SetObj 2,15,8,2,3,32,0,10,1,GravJump,1;
+SetObj 3,11,10,2,1,32,0,21,1,GravJump,1;
+SetObj 4,20,10,2,1,32,0,31,1,GravJump,1; 
+SetObj 5,6,1,2,3,32,0,25,1,GravJump,1;
+SetObj 6,10,1,2,3,32,0,24,1,GravJump,1;
+SetHighObj 10,15,9,2,3,32,0,120,1,GravJump,2+BlockShadow;
+SetHighObj 11,16,9,2,0,32,0,120,1,GravJump,2+BlockShadow;
+SetHighObj 12,20,9,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 13,21,9,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 14,10,9,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 15,11,9,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 16,5,2,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 17,6,2,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 18,10,2,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 19,11,2,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetAAObj 20,13,9,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 21,18,9,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 22,8,2,2,0,32,0,122,4,15,1,GravJump,LightShadow; 
+SetAAObj 23,13,2,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+
+Store MFlag[1],0;
+:roop1
+Store MFlag[3],Rand%20+2;
+Store MFlag[4],Rand%4+4;
+
+Store MFlag[2],0;
+:roop2
+If MFlag[2],MFlag[1],>,:roop2exit;
+IfBox MFlag[2]+30,MFlag[3],MFlag[4],MFlag[3],MFlag[4],1,:roop1 ;
+Store MFlag[2],MFlag[2]+1;
+Goto :roop2;
+:roop2exit
+
+SetObj MFlag[1]+30,MFlag[3],MFlag[4],2,Rand%2*2,Rand%32+32,0,Rand%12+21,0,GravJump,MFlag[1];
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],20,<,:roop1;
+
+
+
+
+SetCamera 50,0-320,1;
+SetCamera 50,0-50,0;
+Wait 90;
+
+SetMes 一つ買ってかない？$nこのちょっとつぶらな瞳のヤツとか。, 
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes そんな丸いのを買うだけで$n幸せが呼べたら、$n苦労しねーよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetMes 買ってくれると、$n私は幸せだなぁ～。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 50;
+SetMes おいらには$n関係ないね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetObj 7,19,8,2,0,32,0,2,0,GravJump,1;
+SetObj 8,20,8,2,0,48,0,3,1,GravJump,1;
+SetObjGoal 7,17,8,2;
+SetObjGoal 8,18,8,2;
+SetMes ・・・かわいく無いわね。, 
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetMes やっほー。$n交代だよ～。, 
+       3,ObjX[7],ObjY[7],ObjZ[7],RightTop,0;
+Wait 30;
+SetObjDir 1,2;
+SetMes ああ、もうそんな時間か。, 
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 10;
+DelMes 0;
+SetObjDir 0,2;
+Wait 5;
+SetObjDir 2,2;
+Wait 0;
+DelMes 1;
+SetObjDir 1,0;
+SetMes じゃ、行こうぜ。, 
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 30;
+SetObjDir 2,3;
+SetMes ぐぅ・・・。, 
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+DelMes 0;
+Wait 20;
+LeaveParty 2;
+LeaveParty 3;
+ChangeMap 151,1,6,2,2;
+End;
+

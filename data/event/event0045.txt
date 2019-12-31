@@ -1,0 +1,122 @@
+東の洞窟：タネの間
+1,5,7
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :open ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 4;
+If Flag[18],14,>,Current+2 ;
+SetEneL 5,4,4,3,3,48,0,
+        0,0,
+        1;
+SetBox 10,4,2,4,3,20;
+
+If Flag[18],14,<,:event ;
+If Flag[18],15,=,:event2 ;
+
+SetSavePoint 11,2,5,2;
+End;
+
+:walk
+IfBox 0,4,8,4,8,0,Current+2 ;
+ChangeMap 43,12,2,8,3;
+End;
+
+:open
+Stop 1;
+Wait 1;
+If ItemNo[404],1,<,:end ;
+If Flag[18],14,>,:end ;
+Store Flag[18],15;
+ChangeMap 45,4,3,4,0;
+
+:end
+Stop 0;
+Wait 1;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:event
+Stop 1;
+StartEventSkip;
+Store Flag[18],14;
+
+SetObj 0,3,6,2,1,32,0,0,1,GravJump,1;
+SetObj 1,5,6,2,1,32,0,1,1,GravJump,1;
+SetCamera 64,0,1;
+Wait 10;
+SetMes あいつは$nマジカル先生･･･。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetObjDir 0,2;
+SetMes 強いのか？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+SetMes それほどじゃないけど、$nまわりにいる弟子たちと協力すると$n一気に強くなるわね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+
+Wait 80;
+SetMes ふーん。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+SetMes 固まってるから、$n範囲攻撃でまとめて$nやっつけちゃえばいいんだけど･･･。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetMes なるほど。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+SetObjDir 1,0;
+SetMes さっきの、$n火薬草とか$n投げつけてみるといいかも。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetObjDir 2,2;
+SetMes 火薬草ね･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 45,4,6,2,1;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+Stop 1;
+StartEventSkip;
+Store Flag[18],16;
+PlayBGM 34;
+
+SetCamera 40,0,1;
+SetObj 0,4,4,3,1,32,0,10,1,GravJump,1;
+SetObj 1,5,3,4,0,32,0,0,1,GravJump,1;
+SetObj 2,3,3,4,2,32,0,1,1,GravJump,1;
+Wait 10;
+SetMes う～ん、$nさっきと同じに見える・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetObjDir 1,3;
+SetObjDir 2,3;
+SetMes だからいったじゃない。$n育ててみないとわかんないぜ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 40;
+SetMes そんなに自信満々に言われても・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetMes 早く帰ろうぜ！$n母ちゃんが首を長くして$n待ってる！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 60;
+SetMes 釈然としないな・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 45,4,3,4,3;
+End;

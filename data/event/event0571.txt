@@ -1,0 +1,36 @@
+村落：村はずれ
+13,14,22,23,52,53,54
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk ;
+
+_END_HEAD_
+:start
+SetObj 1,5,10,2,0,32,10,71,1,GravJump,1;
+SetEne 10,6,5,2,Rand,24,10,
+       0,5,
+       13,0,8,
+       23,POWx15;
+End ;
+
+:walk
+IfBox 0,4,13,4,13,0,Current+2 ;
+ChangeMap 570,7,8,2,0;
+IfBox 0,6,1,7,1,0,Current+2 ;
+ChangeMap 572,ObjSX[0]+2,10,2,1;
+End;
+
+
+:talk
+Stop 3;
+SetObjDir 1,ObjDir[0]+2;
+SetMes え、ええ？$nカギを探している？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes この家の彼女、$n昨日急いで宝石屋に行ったから、$nそこで落としたかも知れないよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Stop 0;
+End;

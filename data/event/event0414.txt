@@ -1,0 +1,50 @@
+ƒtƒB[ƒŒƒX’n‰º–À‹{F‰B‚µ’Ê˜H
+16,17,80,81
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,14,4,2,Rand,32,10,
+       0,5,
+       16,10,Rand%3+2,
+       5,0;
+SetEne 2,5,4,2,Rand,32,10,
+       0,5,
+       17,10,Rand%3+2,
+       5,0;
+SetEne 3,11,4,7,Rand,32,10,
+       0,5,
+       80,10,Rand%3+2,
+       5,0;
+SetEne 4,7,4,7,Rand,32,10,
+       0,5,
+       81,10,Rand%3+2,
+       5,0;
+End;
+:walk
+IfBox 0,18,4,18,4,0,Current+2 ;
+ChangeMap 413,2,10,2,2;
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 417,11,5,2,0;
+
+IfBox 0,13,1,13,1,0,Current+2 ;
+ChangeMap 415,11,7,2,1;
+IfBox 0,5,1,5,1,0,Current+2 ;
+ChangeMap 415,3,7,2,1;
+IfBox 0,7,1,7,1,0,Current+2 ;
+ChangeMap 415,5,7,7,1;
+IfBox 0,11,1,11,1,0,Current+2 ;
+ChangeMap 415,9,7,7,1;
+
+IfBox 0,13,8,13,8,0,Current+2 ;
+ChangeMap 416,11,2,2,3;
+IfBox 0,5,8,5,8,0,Current+2 ;
+ChangeMap 416,3,2,2,3;
+IfBox 0,7,8,7,8,0,Current+2 ;
+ChangeMap 416,5,2,7,3;
+IfBox 0,11,8,11,8,0,Current+2 ;
+ChangeMap 416,9,2,7,3;
+End;

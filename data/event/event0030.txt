@@ -1,0 +1,297 @@
+二階建ての建物：二階
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk1 ; 
+Talk    2 -1 :talk2 ; 
+Talk    3 -1 :talk3 ; 
+Talk    4 -1 :talk4 ; 
+Talk    5 -1 :talk5 ; 
+
+
+_END_HEAD_
+:start
+SetObj 1,6,4,4,3,64,0,25,1,GravJump,1;
+SetObj 2,5,7,4,1,32,0,29,1,GravJump,1;
+SetObj 3,8,3,4,3,32,0,21,1,GravJump,1;
+SetObj 4,2,8,4,2,32,0,24,1,GravJump,1;
+SetObj 5,7,7,4,1,32,0,27,1,GravJump,1;
+
+SetAniObj 19,5,6,4,4,32,0,114,1,GravJump,BlockShadow+2;
+SetAniObj 11,6,6,4,0,32,0,115,1,GravJump,BlockShadow+2;
+SetAniObj 12,7,6,4,0,32,0,114,1,GravJump,BlockShadow+2;
+SetAniObj 16,5,5,4,0,32,0,115,1,GravJump,BlockShadow+2;
+SetAniObj 17,6,5,4,0,32,0,115,1,GravJump,BlockShadow+2;
+SetAniObj 18,7,5,4,1,32,0,114,1,GravJump,BlockShadow+2;
+
+End;
+:walk
+IfBox 0,4,2,9,2,0,Current+2 ;
+ChangeMap 29,6,2,3,2;
+End;
+
+:talk1
+Stop 2;
+SetObjDir 1,ObjDir[0]+2;
+SetMes 人生、これ経験。$nしかし、漠然と戦うだけでは$n強くなれんぞ。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+Tutorial 0;
+Wait 1;
+DelMes 0;
+Wait 20;
+SetMes 誕生石も無いのにレベルを上げても$n意味がないぞい。$n適度なレベルが一番じゃな。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk2
+Stop 2;
+SetObjDir 2,ObjDir[0]+2;
+SetMes キャンセルボタンを$n押しながら移動すると、$nダッシュできるよ。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+SetMes 敵を避けたりするのに$n大活躍だね。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk4
+Stop 2;
+SetObjDir 4,ObjDir[0]+2;
+SetMes 技術の中には、$n戦闘中じゃなくて$n移動中に使えるものもあるわ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+Tutorial 6;
+Wait 1;
+DelMes 0;
+Wait 20;
+SetMes めざせ、$n宝箱コンプリート！,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk5
+Stop 2;
+SetObjDir 5,ObjDir[0]+2;
+SetMes 困ったときは、$nメニューボタンで$nヘルプを見られるよ。,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+Tutorial 10;
+Wait 1;
+DelMes 0;
+Wait 20;
+SetMes 敵を知り、己を知れば、$n百戦あやうからずよ。,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+::長いの:::::::::::::::::::::::::::::::::::
+:talk3
+Stop 2;
+NewLine 0,0,:blackout ;
+Wait 17;
+StartEventSkip ;
+SetObjDir 3,ObjDir[0]+2;
+Wait 40;
+SetMes そこのキミ！$n私は今から君に$n遠大な長話をしようと思うッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes この話は、ハッキリいって$n退屈極まりない上に$n何の役にも立たんッ！$n聞くだけ時間の無駄だッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes だが君は簡単に$n聞き流すことができるッ！$nイベントスキップを使えば$nどんな長話も一瞬だッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 使い方は簡単だッ！$nイベントが始まったら、$nメニューボタンを押すッ！$nたったのこれだけだッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes イベントスキップが$n使えるかどうかは、$n上下に出る$n映画的演出と見せかけた$n黒い帯を頼りにするんだッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes さてッ！$nでは今から退屈極まりない話を$nしようではないかッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes 突然だが、$n最近、雨が多くて困っているんだ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 洗濯物が乾かなくてね。$nいい加減着るものが無くて、$nこの服も大分長いこと着てる。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 幸い、$n今日は晴れてくれたから$n干してきたけど、$n明日はどうなるか分からない。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes まあ、雨が降らないって言うのも$n野菜の育成上は$nあんまり良くないんだろうが。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 水がないと、$n生き物は生きていけないからね。$nそう考えると仕方ないか。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ところで、$n君達は雨の日は$n何をやってるんだい？,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes ・・・いや、ごめん。$n聞かなかったことにしてくれ。$nどうせ二人で$nキャッキャウフフしてるんだろう・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes いいよなぁ～。彼女。$n僕なんか雨の日は好きな小説を$n一人で黙々と読んでるだけさ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes まあ、そのおかげで、$n小説に関する無駄な知識は$nたくさん手に入ったけどね。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 最近読んでるのはアレだよ。$n名前は忘れちゃったけど、$n超能力者とスゴイ生き物が戦うお話。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 主人公がだらしないヤツなんだけど、$nやるときはピシッと決めて、$nカッコいいんだ、コレが。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 最後にはカワイイ彼女もゲットして、$n幸せな家庭を築いたんだね。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes やっぱりいいなぁ。$nくそぉ、うらやましい・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 道行く美人に声をかけても、$n振り向いてすらしてくれない。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 母ちゃんも$n早く結婚しろって言うけど、$n相手が見つかんないんじゃなぁ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 僕だって分かってるんだ。$nそろそろ年齢的もヤバイって。$n来月で35才だからなぁ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes とてもじゃないけど、$nハッピーバースデー！$nなんて祝える気分じゃないよ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes あ、でも、$n誕生日のケーキはいいね。$nイチゴのショートケーキ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes イチゴは僕の好物でさ。$nあの赤いツブツブがたまらない。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes そういえば、イチゴって$n果物っぽいけど、$nちゃんとしたところによれば$n実は野菜らしいね。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 木に生るか、草に生るかとか、$n一年生か多年生かとか、$nその辺で区別されるらしいね。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes だから、ホラ。$nスイカとかも確か$n野菜だったと思ったよ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes そろそろ後悔して来た？$n言っただろ？$n時間の無駄だって。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes そんなくたびれた顔しないでくれよ。$nこっちだって疲れるんだ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 勉強のためとはいえ、$n意味も無いくだらない話を$n延々としゃべらなきゃいけない気分、$n分かる？,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes そうだね、$nちょうど地獄で石を積んで$nまた崩される気分に近いね。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes そろそろ僕も飽きてきたけど、$nそう簡単に逃がしてやら無いからな。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 幸せそうな人を見ると、$n嫉妬の炎が燃え上がるだろ？$n今まさにそんな気分さ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes がんばって手に入れた給料が、$n子供のころの友達の給料の$n半額以下だった、$nそんな気分さ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes まあ、ここで愚痴るだけの$n簡単な仕事です、といえば$n簡単な仕事なわけだけど。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes だからって、$n半額はないよなぁ・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ハァ・・・。$nどうして僕って、$nこんなにダメ人間なんだろうなぁ。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 仕事もダメ、恋愛もダメ、$nしかもこの前医者に酒を止められ、$n健康もダメ・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes ああ、憂鬱だ。$n実に憂鬱だ・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes もしもこの世に$nなんでも願いをかなえてくれる$nモノがあったら、$n世界の消滅でも願っちゃおうかな。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes どうせこのまま生きてても、$nきっといいこと無いだろうし。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes ハァ・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes いけない・・・。$nまた持病のネガティブ病が$n出てきた・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes 落ち着け・・・。$n落ち着くんだ・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes こんなときは、$n好きな小説を思い出すんだ$n小説は夢と希望を与えてくれる・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes ・・・。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes フィーレス村の科学力は$n世界一ィィィッ！$n不可能なことは無いィィッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes そうだッ！$nやれば出来るッ！$n負けるなッ！俺ッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetMes うおっしゃあアアァァッ！,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+NewLine 0,0,:blackout ;
+Wait 64;
+Stop 0;
+End;
+
+:blackout
+Store MFlag[2],0;
+
+:blackup
+MapColor MFlag[2]*16,0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+2;
+If MFlag[2],16,<,:blackup;
+
+EndEventSkip;
+MapColor 255,0,0,0;
+Store MFlag[2],0;
+
+:blackdown
+MapColor 255-k[MFlag[2]*16],0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+2;
+If MFlag[2],16,<,:blackdown;
+
+MapColor 0,0,0,0;
+End;

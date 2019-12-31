@@ -1,0 +1,19 @@
+#included
+:conveyer_switch
+Store MFlag[16],ObjDir[ParamA]+4%8;
+PlayWave 9;
+Stop 1;
+SetObjDir ParamA,1;
+Wait 4;
+ChangeAllChip 300,20;
+ChangeAllChip 304,21;
+ChangeAllChip 308,300;
+ChangeAllChip 312,304;
+ChangeAllChip 20,308;
+ChangeAllChip 21,312;
+SetObjDir ParamA,MFlag[16];
+Stop 0;
+End ;
+
+
+

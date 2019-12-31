@@ -1,0 +1,57 @@
+êXó—ÅFÇS
+20,12,15,8,92,26
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest.txt
+:start
+SetAniObj 6,4,4,2,1,32,0,187,1,GravJump,1;
+SetAniObj 7,5,4,2,1,32,0,187,1,GravJump,1;
+SetAniObj 8,6,4,2,0,32,0,187,1,GravJump,1;
+SetAniObj 9,7,4,2,1,32,0,187,1,GravJump,1;
+
+SetEne 1,12,21,2,Rand,24,20,
+       0,5,
+       20,0,6,
+       6,LPx2+PUpWOutBig;
+SetEne 2,6,16,2,Rand,24,20,
+       0,5,
+       20,0,6,
+       6,LPx2+PUpWOutBig;
+SetEne 3,13,11,2,Rand,24,20,
+       0,5,
+       20,0,6,
+       6,LPx2+PUpWOutBig;
+SetEne 4,5,8,2,Rand,24,20,
+       0,5,
+       20,0,6,
+       6,LPx2+PUpWOutBig;
+
+Store MFlag[8],22;
+Store MFlag[9],4;
+Goto :forest_init;
+End ;
+
+:walk
+IfBox 0,11,1,12,1,0,Current+2 ;
+ChangeMap 569,ObjSX[0]-4,9,2,1;
+
+IfBox 0,10,27,11,27,0,Current+2 ;
+ChangeMap 565,ObjSX[0]+2,2,2,3;
+
+IfBox 0,13,27,14,27,0,Current+2 ;
+ChangeMap 561,ObjSX[0]-9,2,2,3;
+IfBox 0,7,27,8,27,0,Current+2 ;
+ChangeMap 561,ObjSX[0]-3,2,2,3;
+IfBox 0,4,27,5,27,0,Current+2 ;
+ChangeMap 561,ObjSX[0],2,2,3;
+
+IfBox 0,1,21,1,22,0,Current+2 ;
+ChangeMap 563,26,ObjSY[0]-14,2,0;
+
+IfBox 0,17,20,17,21,0,Current+2 ;
+ChangeMap 561,2,ObjSY[0]-14,2,2;
+
+End;

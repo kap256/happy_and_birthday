@@ -1,0 +1,86 @@
+ピラミッド：入り口
+26,27,33,34,35
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    5 -1 :switch ;
+
+_END_HEAD_
+:start
+PlayBGM 13;
+EndEventSkip ;
+
+SetEne 2,7,10,2,0,48,10,
+       0,8,
+       36,2,3,
+       9,0;
+
+SetEne 3,5,10,2,0,48,10,
+       0,8,
+       36,2,3,
+       9,0;
+
+SetAniObj 5,6,11,2,0,32,0,174,1,GravJump,NoShadow+ShowTurn;
+If Flag[23],1,<,Current+2;
+SetAniObj 5,6,11,2,4,32,0,174,1,GravJump,NoShadow+ShowTurn;
+
+If Flag[23],0,>,Current+3;
+SetAniObj 10,7,7,2,4,32,0,161,1,GravJump,1+NoShadow;
+SetAniObj 11,6,7,2,4,32,0,161,1,GravJump,1+NoShadow;
+If Flag[24],0,>,Current+3;
+SetAniObj 12,7,6,2,4,32,0,161,1,GravJump,1+NoShadow;
+SetAniObj 13,6,6,2,4,32,0,161,1,GravJump,1+NoShadow;
+If Flag[25],0,>,Current+3;
+SetAniObj 14,7,5,2,4,32,0,161,1,GravJump,1+NoShadow;
+SetAniObj 15,6,5,2,4,32,0,161,1,GravJump,1+NoShadow;
+If Flag[26],0,>,Current+3;
+SetAniObj 16,7,4,2,4,32,0,161,1,GravJump,1+NoShadow;
+SetAniObj 17,6,4,2,4,32,0,161,1,GravJump,1+NoShadow;
+End;
+
+:walk
+IfBox 0,6,1,7,1,0,Current+2 ;
+ChangeMap 190,ObjSX[0]-1,4,11,1;
+IfBox 0,6,15,7,15,0,Current+2 ;
+ChangeMap 165,ObjSX[0]+2,8,2,3;
+IfBox 0,12,10,12,11,0,Current+2 ;
+ChangeMap 167,2,ObjSY[0]-4,2,2;
+IfBox 0,1,10,1,11,0,Current+2 ;
+ChangeMap 169,11,ObjSY[0]-4,2,0;
+End;
+
+:switch
+Stop 3;
+If Flag[23],1,<,:switchon ;
+
+SetMes 今はもう$n動かない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;
+:switchon
+Store Flag[23],1;
+PlayWave 9;
+SetObjDir 5,1;
+Wait 4;
+SetObjDir 5,4;
+Wait 30;
+SetCameraSpeed 42;
+SetCamera 300,0-150,0;
+Wait 100;
+PlayWave 17;
+SetCamera 302,0-150,1;
+DelObj 10;
+DelObj 11;
+Wait 1;
+SetCamera 298,0-150,1;
+Wait 1;
+SetCamera 300,0-150,1;
+Wait 20;
+SetCamera 0,0,0;
+Wait 30;
+Stop 0;
+
+End;

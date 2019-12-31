@@ -1,0 +1,31 @@
+盗賊のアジト：幹部の部屋
+13,14
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,8,10,2,1,32,5,
+       0,5,
+       13,20,8,
+       2,0;
+SetEne 2,8,4,2,1,32,5,
+       0,5,
+       13,20,8,
+       2,0;
+SetEne 3,8,16,2,1,32,5,
+       0,5,
+       13,20,8,
+       2,0;
+
+SetBox 20,3,13,2,3,226;
+End;
+
+:walk
+IfBox 0,16,10,16,10,0,Current+2 ;
+ChangeMap 398,2,4,4,2;
+IfBox 0,1,10,1,10,0,Current+2 ;
+ChangeMap 400,10,4,2,0;
+End;

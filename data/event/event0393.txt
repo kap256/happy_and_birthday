@@ -1,0 +1,634 @@
+フィーレス地下迷宮：卵の間
+74
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+StartEventSkip ;
+Stop 1;
+If CurrentMonth,17,=,:hard ;
+If Flag[56],40,<,:event1 ;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+SetBAObj 0,6,5,2,2,32,0,308,0,GravJump,NoShadow+Wall0;
+SetCamera 0-120,60,1;
+
+SetObj 2,6,6,2,1,32,0,8,0,GravJump,1;
+SetAniObj 1,5,7,2,12,16,0,63,0,GravJump,1;
+SetAniObj 3,6,9,2,13,16,0,330,0,GravJump,1;
+NewLine 0,0,:flash_egg ;
+Wait 20;
+SetMes ぬぐおぉぉ・・・。$n体が、・・・重いッ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes 傷が治っていく・・・。$nこれが卵の力・・・？,
+       3,ObjX[3],ObjY[3],ObjZ[3]-8,LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+SetObjGoal 2,6,8,2;
+SetCamera 0-160,80,0;
+Wait 64;
+SetMes だ、大丈夫ですか・・・？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 50;
+SetMes ああ、$nなんとか・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetAniObj 3,6,9,2,0,16,0,145,0,GravJump,1;
+SetObjGoal 2,7,8,2;
+SetObjDir 1,0;
+DelMes 2;
+DelMes 3;
+SetMes ぐぬぬ・・・。$nなめおって・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 32;
+SetObjGoal 2,7,9,2;
+SetObjDir 2,1;
+Wait 18;
+SetMes ！$n動けるのか・・・！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes ・・・私を甘く見たことを、$n後悔させてくれるわ・・・っ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+DelMes 3;
+Wait 0;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+Wait 20;
+
+SetParty 8;
+HealAll ;
+OpenMenu 1;
+EndEventSkip ;
+Wait 1;
+PlayBGM 0;
+Battle 25;
+StartEventSkip ;
+SetObjDir 1,12;
+Wait 20;
+SetMes ぐ・・・。$nぬおお・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 40;
+SetMes もうやめろ！$n勝負はついた・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 3;
+SetMes ぐおお・・・。$n貴様らなぞに・・・。$n貴様らごときにィィ・・・ッ！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 30;
+SetObjDir 1,13;
+NewLine 0,0,:pikupiku ;
+Store MFlag[0],Ret ;
+Wait 3;
+Kill MFlag[0];
+SetObjPos 1,5,7,2;
+SetMes ぐおっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 10;
+SetMes ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+SetMes ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetObjDir 1,14;
+NewLine 0,0,:pikupiku ;
+Store MFlag[0],Ret ;
+SetMes 発作・・・か・・ッ！$nあと・・少・・・・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+SetMes あと・・・ッ・・・！$n死に・・がハ・・・ッ！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Kill MFlag[0];
+SetObjPos 1,5,7,2;
+Wait 60;
+SetObjDir 1,15;
+Wait 30;
+SetMes ・・・・・・・・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 30;
+SetMes 終わった・・・、のか・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetCamera 0-240,120,0;
+DelMes 2;
+DelMes 3;
+Wait 30;
+SetObj 3,6,9,2,1,32,0,0,0,GravJump,1;
+Wait 30;
+SetObjDir 3,2;
+PlayBGM 37:
+Wait 60;
+SetMes ・・・帰ろう。$nリティス。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 50;
+SetMes え・・・。$nでも、卵が・・・。。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetObjDir 2,0;
+Wait 0;
+DelMes 3;
+SetObjDir 3,1;
+Wait 60;
+SetMes もう、$n卵を悪用しようとした奴は$nいないんだ・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 2;
+SetObjDir 3,2;
+DelMes 3;
+Wait 30;
+SetMes そう、$nリティスは$n卵を守りきったんだ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetObjDir 3,1;
+DelMes 3;
+Wait 30;
+SetMes だから、$nもうこんなものに$n縛られなくていいんだ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetMes 卵だとか、古代人だとか、$nそんなことを気にしないで$n生きていけばいいんだ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetMes また何かあったら、$n僕たちがどうにかするさ。$nそれがきっと、$n大人のすることだから。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetObjDir 3,2;
+DelMes 3;
+Wait 30;
+SetMes だから、帰ろう。$nきっと、みんなが待ってる。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 60;
+SetMes ・・・・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+Wait 60;
+SetMes ・・・帰りましょう。$nカリスさん。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes ああ・・・！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetObjGoal 3,6,16,2;
+SetObjGoal 2,6,9,2;
+Wait 32;
+SetObjGoal 2,6,16,2;
+NewLine 0,0,:black_out ;
+End ;
+
+:pikupiku
+SetObjGoal 1,5,6,2;
+Wait 2;
+SetObjPos 1,5,7,2;
+Wait Rand%60+2;
+Goto :pikupiku ;
+
+:black_out
+MapColor MFlag[2]*4,0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],64,<,:black_out;
+
+MapColor 255,0,0,0;
+SetFadeOut 60;
+
+Wait 60;
+
+::Store Flag[56],60;
+
+DelMes 1;
+DelMes 2;
+Wait 20;
+
+Store Flag[56],0;
+Store Flag[63],0;
+Ending ;
+End ;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event1
+PlayBGM 57;
+Store Flag[56],40;
+SetBAObj 0,6,5,2,0,32,0,308,0,GravJump,NoShadow+Wall0;
+
+SetObj 1,5,12,2,1,32,0,63,0,GravJump,1;
+SetAniObj 2,5,13,2,0,32,0,330,0,GravJump,Wall1;
+
+SetCamera 0-100,0-200,1;
+SetCamera 0-100,50,0;
+
+:walk_loop
+SetObjGoalDir 1,1,1;
+SetObjGoalDir 2,1,1;
+
+Wait 64;
+If ObjSY[1],7,>,:walk_loop ;
+
+Wait 32;
+SetAniObj 1,5,7,2,8,32,0,63,0,GravJump,1;
+Wait 8;
+PlayWave 18;
+SetObjDir 1,9;
+SetObjGoal 2,5,6,2;
+SetObjDir 2,1;
+SetObjSpeed 2,16;
+Wait 24;
+PlayWave 17;
+SetObjSpeed 2,32;
+SetObjDir 2,2;
+Wait 32;
+SetObjDir 1,10;
+Wait 16;
+SetObjDir 1,11;
+Wait 60;
+SetMes 起動しろ、娘。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetObjDir 2,3;
+Wait 10;
+SetObjDir 2,4;
+Wait 60;
+SetMes 嫌です！$nそんなことをするなら、$n私・・・・・・。,
+       2,ObjX[2],ObjY[2]-16,ObjZ[2]-8,LeftBottom,0;
+Wait 60;
+SetMes 自害、でも$nするというのかね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes ・・・・・・っ。,
+       2,ObjX[2],ObjY[2]-16,ObjZ[2]-8,LeftBottom,0;
+Wait 40;
+SetMes コッコッコ・・・。$nしかし、残念だの。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetCamera 0-200,75,0;
+SetObj 3,6,12,2,1,16,0,0,0,GravJump,1;
+SetObjGoal 3,6,9,2;
+Wait 48;
+SetMes リティス！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+SetAniObj 3,6,9,2,0,16,0,145,0,GravJump,1;
+Wait 20;
+SetMes カリスさん！,
+       2,ObjX[2],ObjY[2]-16,ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetObj 1,5,7,2,2,32,0,63,0,GravJump,1;
+Wait 30;
+SetObjDir 1,3;
+Wait 30;
+SetMes コッコッコ・・・。$n来たか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes ・・・リティスから$n離れろ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes コッコッコ・・・。$n聞こえんなぁ。$n年をとると耳が遠くてかなわん。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes ・・・このッ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+
+DelMes 3;
+DelMes 1;
+Wait 20;
+EndEventSkip ;
+Battle 24;
+StartEventSkip ;
+SetAniObj 2,6,6,2,5,16,0,330,0,GravJump,1;
+SetAniObj 3,6,9,2,6,16,0,330,0,GravJump,1;
+
+Wait 20;
+SetMes カリスさん・・・！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 10;
+SetMes う・・・$nつ、強い・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3]-8,LeftTop,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetObj 2,6,6,2,3,16,0,8,0,GravJump,1;
+SetObjGoal 2,6,8,2;
+Wait 32;
+SetAniObj 2,6,8,2,8,16,0,330,0,GravJump,1;
+Wait 16;
+SetMes コッコッコ・・・。$n死なない程度に加減してやったわ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes さて、では娘よ。$nそやつめの命と引き換えだ。$n卵を起動させるのだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetObjDir 2,9;
+Wait 8;
+SetObjDir 2,10;
+SetMes ！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftTop,0;
+Wait 0;
+SetMes どうした？$n早くせねば、$n出血多量で死ぬやも知れんぞ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 80;
+SetMes そんな・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 30;
+SetMes 構うな・・・。$nリティス・・・っ！,
+       3,ObjX[3],ObjY[3],ObjZ[3]-8,LeftTop,0;
+Wait 30;
+SetObjDir 2,9;
+Wait 8;
+SetObjDir 2,8;
+SetMes ！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetObjDir 3,7;
+SetObjDir 2,5;
+SetMes ・・・どうせ、$n用済みになれば$n殺されるだけだ・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3]-8,LeftTop,0;
+Wait 0;
+SetMes ・・・ここは任せて、$n早く、逃げろ・・・っ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+SetObjDir 3,11;
+Wait 50;
+SetMes ほほう。$nまだ立ち上がるだけの$n気力があるとは。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 3;
+SetMes だが、愚かだな。$nじっとしていれば$n命だけは助かったやも$n知れぬものを。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・ふざ、$nけるな・・・っ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetMes ・・・この子は、$nずっと、大人たちに$n振り回されてきたんだ・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes お前たちに追い回されて・・・。$n強大な力を持つ宝を$n勝手に託されて・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 3;
+Wait 30;
+SetMes ・・・そんなの、$n間違ってる！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes 僕らが・・・大人たちが$n子供を守れなくって、$nどうするんだ・・・っ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 3;
+Wait 30;
+SetObjDir 3,7;
+SetMes ・・・ぐっ・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3]-8,LeftTop,0;
+Wait 60;
+SetMes コッコッコ・・・。$nご高説、ご苦労だったな。$nまだ痛めつけ足りないと見える。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 3;
+SetMes そうだな・・・。$n腕の一本や二本でも飛ばしてやれば、$n静かになるやもしれんな。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetObjDir 2,9;
+Wait 8;
+SetObjDir 2,10;
+SetMes ・・・や、$nやめて下さい！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftTop,0;
+Wait 0;
+SetMes ほほう？$nわしに頼み事か。$n分かっておるのだろうな。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・や、やります。$n卵を・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObj 2,6,8,2,1,32,0,8,0,GravJump,1;
+Wait 30;
+SetObjGoal 2,6,7,2;
+SetMes ・・・リ、リティス・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3]-8,LeftTop,0;
+Wait 60;
+SetObjDir 1,2;
+SetObjGoal 2,6,6,2;
+Wait 30;
+DelMes 3;
+SetAniObj 1,5,7,2,11,32,0,63,0,GravJump,1;
+Wait 30;
+SetAniObj 2,6,6,2,12,16,0,330,0,GravJump,1;
+Wait 60;
+SetCamera 0-100,25,0;
+SetMes ・・・・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-8,LeftTop,0;
+Wait 0;
+DelMes 2;
+SetFadeOut 60;
+Wait 60;
+SetMes ・・・お願いします、$n卵さん・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+PlayBGM 52:
+DelMes 2;
+Wait 60;
+Store MFlag[0],0;
+:stone_loop
+NewLine MFlag[0],0,:stone_move ;
+Wait 32;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],12,<,:stone_loop ;
+Wait 120;
+PlayWave 5;
+Wait 30;
+PlayWave 5;
+Wait 30;
+PlayWave 5;
+Wait 90;
+
+Store MFlag[0],0;
+
+:whiteup
+PlayWave 8;
+MapColor MFlag[2]*16,255,255,255;
+Wait 1;
+Store MFlag[2],MFlag[2]+2;
+If MFlag[2],16,<,:whiteup;
+
+MapColor 255,255,255,255;
+Store MFlag[2],0;
+NewLine 0,0,:flash_egg ;
+SetObj 2,6,6,2,1,32,0,8,0,GravJump,1;
+
+Store MFlag[0],0;
+:stone_del_loop
+DelObj MFlag[0]+30 ;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],12,<,:stone_del_loop ;
+
+Wait 30;
+
+:whitedown
+MapColor 255-k[MFlag[2]*4],255,255,255;
+Wait 1;
+Store MFlag[2],MFlag[2]+2;
+If MFlag[2],64,<,:whitedown;
+
+MapColor 0,0,0,0;
+Wait 60;
+SetMes お、おおおおお・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes コッコッコッコッコ・・・。$nついに、ついに$nたどり着いたのだ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 永遠の命さえ・・・。$n永遠の力さえ・・・。$nすべてがこの手の中に・・・っ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・させませんっ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes ・・・何・・・？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetObjDir 2,3;
+SetMes ・・・この村の人たちは、$n私に優しくしてくれたんです！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes 身よりもない、$n厄介者なだけの私を・・・。$n・・・だから！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes 貴様、$nあやつがどうなっても$nいいのか！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetObjDir 2,1;
+SetMes 卵よ！$nこの小さな村に$n平穏を！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 30;
+SetMes 小娘ェ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+ChangeMap 304,8,6,4,0;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:hard
+If Flag[85],0,=,:hard_event ;
+OpenMenu 0;
+ChangeMap 534,3,19,2,1;
+End ;
+
+:hard_event
+PlayBGM 5;
+SetBAObj 0,6,5,2,2,32,0,308,0,GravJump,NoShadow+Wall0;
+
+SetObj 1,6,12,2,1,32,0,1,0,GravJump,1;
+SetAniObj 2,5,7,2,15,16,0,63,0,GravJump,1;
+
+SetCamera 0-100,0-300,1;
+SetCamera 0-100,50,0;
+
+NewLine 0,0,:flash_egg ;
+MonthTitle ;
+Wait 120;
+SetObjGoal 1,6,8,2;
+Wait 200;
+SetMes ・・・もう、$n起動しているの？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes ・・・まあ、$n関係ないか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetAniObj 1,6,8,2,0,24,0,130,0,GravJump,1;
+Wait 8;
+SetObjDir 1,1;
+Wait 30;
+SetMes どうせ、もう$n壊れてしまうんだから。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObj 1,6,8,2,1,64,0,349,0,GravJump,1;
+SetObjGoal 1,6,6,2;
+Wait 128;
+SetCamera 0-102,50,1;
+PlayWave 12;
+Wait 1;
+SetCamera 0-98,50,1;
+Wait 1;
+SetCamera 0-100,50,1;
+Wait 8;
+SetMes ・・・え？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+PlayWave 8;
+PlayBGM 0;
+SetObjView 1,0;
+MapColor 255,255,255,255;
+Wait 2;
+Store MFlag[0],255;
+:hard_flash_loop
+MapColor MFlag[0],255,255,255;
+Wait 1;
+Store MFlag[0],MFlag[0]-12;
+If MFlag[0],0,>,:hard_flash_loop ;
+
+MapColor 0,255,255,255;
+Wait 60;
+ChangeMap 534,3,19,2,1;
+End ;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:flash_egg
+SetObjDir 0,2;
+Wait 20;
+SetObjDir 0,1;
+Wait 20;
+SetObjDir 0,2;
+Wait 20;
+SetObjDir 0,3;
+Wait 20;
+Goto :flash_egg ;
+End;
+
+:stone_move
+PlayWave 3;
+Store MFlag[8],ParamA;
+SetAniObj MFlag[8]+30,6,6,2,MFlag[8],32,0,336,0,GravAir,0;
+
+SetObjGoal ParamA+30,4,6,4;
+Wait 64;
+:stone_move_loop
+SetObjGoal ParamA+30,4,3,4;
+Wait 95;
+SetObjGoal ParamA+30,7,3,4;
+Wait 95;
+SetObjGoal ParamA+30,7,6,4;
+Wait 95;
+SetObjGoal ParamA+30,4,6,4;
+Wait 95;
+Goto :stone_move_loop ;
+End ;

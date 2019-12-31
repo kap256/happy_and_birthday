@@ -1,0 +1,179 @@
+フィーレス地下迷宮：卵の間
+16
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+StartEventSkip ;
+Stop 1;
+Store Flag[39],0;
+Store Flag[9],0;
+SetBigObj 0,6,5,2,3,32,0,308,0,GravJump,NoShadow+Wall0;
+SetObj 1,5,8,2,1,32,0,0,1,GravJump,1;
+SetObj 2,7,9,2,1,24,0,1,1,GravJump,1;
+SetObj 3,6,7,2,1,64,0,8,1,GravJump,1;
+SetCamera 0-100,200,1;
+SetCamera 0-100,50,0;
+Wait 100;
+SetMes これが・・・、$n手紙の宝？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes タマゴ・・・、$nっぽいわね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjGoal 3,6,6,2;
+Wait 60;
+SetMes これが・・・？$n母さんはこれのために・・・？,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetCamera 0,0,0;
+DelMes 3;
+SetObjGoal 1,5,6,2;
+SetObjGoal 2,7,5,2;
+SetObjDir 2,0;
+Wait 60;
+SetMes で、何のタマゴなの？$nえらく大きいけど。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 50;
+SetMes わからないです。$n母さんは何も・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+Wait 60;
+PlayBGM 63;
+PlayWave 0;
+Wait 4;
+PlayWave 0;
+Wait 40;
+PlayWave 0;
+Wait 4;
+PlayWave 0;
+Wait 4;
+PlayWave 0;
+Wait 20;
+SetAniObj 3,6,6,2,1,64,0,306,1,GravJump,1;
+SetMes ！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 10;
+SetObjDir 2,3;
+SetObjDir 1,2;
+SetMes 何の音？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 20;
+SetMes そのクマさんから？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+PlayBGM 49;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+SetMes 「リティス、$n　かわいいリティス。」,
+       4,ObjX[0],ObjY[0],ObjZ[0]+64,Center,0;
+NewLine 0,0,:flash ;
+Wait 40;
+SetMes 母さんの声・・・！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 20;
+SetMes 声を記録する装置！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+SetMes 「これが、$n　私たちに代々伝わる宝、$n　「夢の卵」です。」,
+       4,ObjX[0],ObjY[0],ObjZ[0]+64,Center,0;
+NewLine 0,0,:flash ;
+Wait 0;
+SetMes 「使うものの望みを$n　すべて叶えるといわれる、$n　古代文明の残した$n　最後の遺物。」,
+       4,ObjX[0],ObjY[0],ObjZ[0]+64,Center,0;
+NewLine 0,0,:flash ;
+Wait 0;
+SetMes 「今は封印されていますが、$n　動力源となる$n　12の特殊な誕生石と・・・」,
+       4,ObjX[0],ObjY[0],ObjZ[0]+64,Center,0;
+NewLine 0,0,:flash ;
+Wait 50;
+SetMes 聖石のことかしら。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 2;
+SetMes 「私たち、$n　最後の古代人の力によって$n　卵は再び目覚めます。」,
+       4,ObjX[0],ObjY[0],ObjZ[0]+64,Center,0;
+NewLine 0,0,:flash ;
+Wait 40;
+SetMes ・・・！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 0;
+DelMes 3;
+SetMes 「この卵を、$n　自分たちの欲望のために$n　狙っている者たちがいるのです。」,
+       4,ObjX[0],ObjY[0],ObjZ[0]+64,Center,0;
+NewLine 0,0,:flash ;
+Wait 0;
+SetMes 「卵を守ってください。$n　身勝手な母からの、$n　最後のお願いです。」,
+       4,ObjX[0],ObjY[0],ObjZ[0]+64,Center,0;
+NewLine 0,0,:flash ;
+Wait 0;
+DelMes 4;
+Wait 60;
+SetMes なるほど。$nだから、あの黒衣の連中は$nリティスや聖石を$n狙っていたのか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+SetMes ふーん。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 2;
+SetMes とにかく、一大事じゃないか。$n目的のためには$n手段も選ばないような連中だ。$nろくな望みじゃあるまい。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+SetObj 3,6,6,2,0,64,0,8,1,GravJump,1;
+SetMes でも、$nどうやって守れば・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+SetObjDir 3,2;
+SetObjDir 2,0;
+SetMes 簡単よ。$n聖石を一つでも見つけて、$n壊すなり、海に沈めるなりすれば$nいいのよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes なるほど。$n聖石が無ければ$n卵は動かない。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes そうと決まれば、$n早速もどって調査よ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetMes 僕は商人仲間に$n聞き込みをしてみよう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjGoalDir 1,3,100;
+SetObjGoalDir 2,3,100;
+SetObjDir 3,1;
+SetFadeOut 100;
+Wait 100;
+SetMes ・・・お母さん。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 0;
+DelMes 3;
+Wait 20;
+NextMonth ;
+ReturnVillage 1;
+End;
+
+:flash
+SetObjDir 3,5;
+Wait 6;
+SetObjDir 3,1;
+Wait 6;
+SetObjDir 3,5;
+Wait 6;
+SetObjDir 3,1;
+Wait 6;
+SetObjDir 3,5;
+Wait 6;
+SetObjDir 3,1;
+End;

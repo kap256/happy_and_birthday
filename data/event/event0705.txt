@@ -1,0 +1,68 @@
+フィーレス村：教会の一室
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetAniObj 21,6,4,2,1,48,0,367,1,1,BlockShadow;
+SetAniObj 22,6,3,2,4,48,0,114,1,1,ShowTurn+BlockShadow;
+SetAniObj 10,3,4,2,0,32,0,167,1,GravJump,ShowTurn+NoShadow ;
+SetAniObj 11,2,4,2,4,32,0,167,1,GravJump,ShowTurn+NoShadow ;
+
+SetCamera 0-20,40,1;
+SetObj 0,4,4,2,3,32,0,34,1,GravJump,0 ;
+SetObj 1,5,6,2,1,32,0,6,1,GravJump,0 ;
+
+Wait 16;
+SetObjDir 0,0;
+Wait 16;
+SetObjDir 0,1;
+Wait 16;
+SetObjDir 0,2;
+Wait 16;
+SetObjDir 0,3;
+Wait 16;
+SetMes コレが、$n去年のなのだけど・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes うん。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 今年は$n何を着ようかしら・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 60;
+SetMes フィルは何着ても$n可愛いよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes そういうのが、$nいい加減って言うのよ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetMes え、ええっと・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 30;
+SetMes じゃあ、$n赤がいいよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes 赤？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes うん。$nフィルの好きな花の色。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 90;
+SetMes ・・・そうね。$n赤が良いかしらね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 703,5,11,3,1;
+End;

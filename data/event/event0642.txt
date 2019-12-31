@@ -1,0 +1,89 @@
+夢の卵：管理人の部屋
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk ;
+
+_END_HEAD_
+:start
+If Flag[122],0,=,:event ;
+SetObj 1,4,4,2,3,32,0,8,1,GravJump,1;
+End ;
+
+:walk
+IfBox 0,4,10,4,10,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 641,8,2,2,3;
+
+End;
+
+:talk
+Stop 1;
+SetObjDir 1,ObjDir[0]+2;
+SetMes 今度こそ$nギッタギタにしてやるぅっ！,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+Battle 60;
+Wait 20;
+SetMes うぐぐ・・・。$nつ、次こそは・・・っ！！,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 641,8,2,2,3;
+End;
+
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+PlayBGM 0;
+StartEventSkip ;
+Stop 1;
+SetObj 0,4,4,2,3,32,0,8,1,GravJump,1;
+SetObj 1,4,10,2,1,24,0,1,1,GravJump,1;
+SetObjGoal 1,4,7,2;
+SetCameraSpeed 20;
+SetCamera 0-300,150,1;
+SetCamera 0-100,50,0;
+Wait 100;
+SetMes ふっふっふ・・・！$n今までよくもいじめてくれたわね！$n今日こそ復讐してやるわ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+EndEventSkip ;
+Battle 60;
+SetAniObj 0,4,4,2,1,32,0,305,1,GravJump,ShowTurn;
+Wait 20;
+SetMes ううう・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+
+SetEggFriend 8;
+LeaveParty Member[1]; 
+SetParty 8;
+OpenMenu 2;
+Store Flag[122],1;
+Wait 1;
+DelMes 0;
+Wait 20;
+ChangeMap 641,8,2,2,3;
+End ;

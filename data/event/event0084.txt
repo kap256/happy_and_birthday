@@ -1,0 +1,48 @@
+•ó‚Ì“´ŒAF’B–—Ž‚Æ‚µ
+5,8,9,11,12,15,37
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Walk    11 -1 :puto ;
+Walk    12 -1 :puto ;
+Walk    13 -1 :puto ;
+
+#hamari.txt
+:start
+SetPutObj 11,2,8,2,24,310,1;
+SetPutObj 12,2,7,2,24,310,1;
+SetPutObj 13,2,9,2,24,310,1;
+If Flag[51],2,>,:qend ;
+SetPutObj 11,5,7,2,24,310,1;
+SetPutObj 12,5,7,4,24,310,1;
+SetPutObj 13,5,7,6,24,310,1;
+
+:qend
+SetEne 1,5,18,8,Rand,32,10,
+       0,3,
+       9,6,4,
+       2,0;
+SetEne 3,9,7,6,Rand,32,0,
+       1,1,
+       11,4,3,
+       2,0;
+
+End;
+
+:walk
+IfBox 0,9,21,9,22,0,Current+2 ;
+ChangeMap 83,2,ObjSY[0]-16,2,2;
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 86,ObjSX[0],9,2,1;
+End;
+
+:puto
+IfBox3D 11,2,6,2,2,9,3,0,:end ;
+IfBox3D 12,2,6,2,2,9,3,0,:end ;
+IfBox3D 13,2,6,2,2,9,3,0,:end ;
+If Flag[51],2,>,:end ;
+Store Flag[51],3;
+PlayWave 6;
+:end
+End;

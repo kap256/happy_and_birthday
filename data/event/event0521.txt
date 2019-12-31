@@ -1,0 +1,131 @@
+フィーレス地下迷宮：昇降ホール
+29,63,5,30
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :switch ;
+
+_END_HEAD_
+:start
+PlayBGM 5;
+SetObj 10,11,3,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 11,11,4,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 12,12,3,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 13,12,4,0,0,32,0,173,1,GravLock,NoShadow;
+
+Store MFlag[8],173;
+If Flag[84],0,!=,Current+2 ;
+Store MFlag[8],175;
+SetObj 20,4,3,0,0,32,0,MFlag[8],1,GravLock,NoShadow;
+SetObj 21,4,4,0,0,32,0,MFlag[8],1,GravLock,NoShadow;
+SetObj 22,5,3,0,0,32,0,MFlag[8],1,GravLock,NoShadow;
+SetObj 23,5,4,0,0,32,0,MFlag[8],1,GravLock,NoShadow;
+
+SetAniObj 1,8,7,2,0,32,0,174,1,GravJump,NoShadow+ShowTurn;
+If Flag[84],1,<,Current+2;
+SetAniObj 1,8,7,2,4,32,0,174,1,GravJump,NoShadow+ShowTurn;
+
+End ;
+
+:walk
+IfBox 0,8,1,8,1,0,Current+2 ;
+ChangeMap 523,5,25,11,1;
+IfBox 0,11,3,12,4,1,:down ;
+IfBox 0,4,3,5,4,1,:down2 ;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:switch
+Stop 3;
+If Flag[84],1,<,:switchon ;
+
+SetMes 今はもう$n動かない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;
+:switchon
+Store Flag[84],1;
+PlayWave 9;
+SetObjDir 1,1;
+Wait 4;
+SetObjDir 1,4;
+Wait 30;
+
+:shake
+PlayWave 22;
+SetCamera 2,0,1;
+SetObj 20,4,3,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 21,4,4,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 22,5,3,0,0,32,0,173,1,GravLock,NoShadow;
+SetObj 23,5,4,0,0,32,0,173,1,GravLock,NoShadow;
+Wait 1;
+SetCamera 0,0,4;
+Wait 30;
+Stop 0;
+
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::
+:down
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+SetObjGrav 10,GravJump;
+SetObjGrav 11,GravJump;
+SetObjGrav 12,GravJump;
+SetObjGrav 13,GravJump;
+SetObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],16,0,pImage,0,GravJump,1;
+:loop
+SetObjZSpd 0,32;
+SetObjZSpd 10,30;
+SetObjZSpd 11,30;
+SetObjZSpd 12,30;
+SetObjZSpd 13,30;
+Wait 1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],30,<,:loop ;
+ChangeMap 520,ObjSX[0]-8,4,20,3;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:down2
+If Flag[84],0,=,:nodown ;
+Stop 3;
+Wait 20;
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 20;
+SetObjGrav 20,GravJump;
+SetObjGrav 21,GravJump;
+SetObjGrav 22,GravJump;
+SetObjGrav 23,GravJump;
+SetObj 0,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0],16,0,pImage,0,GravJump,1;
+:loop2
+SetObjZSpd 0,32;
+SetObjZSpd 20,30;
+SetObjZSpd 21,30;
+SetObjZSpd 22,30;
+SetObjZSpd 23,30;
+Wait 1;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],30,<,:loop2 ;
+ChangeMap 498,7,4,20,0;
+End;
+
+:nodown
+Stop 1;
+SetMes 動作していないようね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;

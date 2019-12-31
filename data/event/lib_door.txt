@@ -1,0 +1,59 @@
+#included
+
+::MFlag[10] 使用します
+::MFlag[11] 使用します
+::オブジェクト番号は自由。方向で色を自動指定します。
+::扉を調べたとき、:door_talkを呼び出す。
+::扉を衝突したとき、:door_hitを呼び出す。
+
+
+::調べたとき:::::::::::::::::::::::::::::::::
+:door_talk
+Store MFlag[10],ParamA;
+Goto :door_main ;
+:door_hit
+Store MFlag[10],ParamB;
+Goto :door_main ;
+
+:door_main
+Stop 3;
+
+If ObjDir[MFlag[10]],Flag[66]+11,!=,:door_error ;
+PlayWave 6;
+PlayWave 12;
+Store MFlag[11],0;
+:door_up_loop
+SetObjZSpd MFlag[10],20;
+Wait 1;
+Store MFlag[11],MFlag[11]+1;
+If MFlag[11],20,<,:door_up_loop ;
+Stop 0;
+End;
+
+:door_error
+If ObjDir[MFlag[10]],12,=,:door_red ;
+If ObjDir[MFlag[10]],13,=,:door_green ;
+If ObjDir[MFlag[10]],14,=,:door_blue ;
+If ObjDir[MFlag[10]],15,=,:door_black ;
+:door_red
+SetMes ココヲ通行スルニハ$n赤ノカードガ必要デス。,
+       0,ObjX[MFlag[10]],ObjY[MFlag[10]],ObjZ[MFlag[10]],LeftBottom,0;
+Goto :door_error_end;
+:door_green
+SetMes ココヲ通行スルニハ$n緑ノカードガ必要デス。,
+       0,ObjX[MFlag[10]],ObjY[MFlag[10]],ObjZ[MFlag[10]],LeftBottom,0;
+Goto :door_error_end;
+:door_blue
+SetMes ココヲ通行スルニハ$n青ノカードガ必要デス。,
+       0,ObjX[MFlag[10]],ObjY[MFlag[10]],ObjZ[MFlag[10]],LeftBottom,0;
+Goto :door_error_end;
+:door_black
+SetMes ココヲ通行スルニハ$n黒ノカードガ必要デス。,
+       0,ObjX[MFlag[10]],ObjY[MFlag[10]],ObjZ[MFlag[10]],LeftBottom,0;
+Goto :door_error_end;
+:door_error_end
+PlayWave 4;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;

@@ -1,0 +1,82 @@
+秋の山：五合目
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest_fall.txt
+:start
+EndEventSkip ;
+If Flag[125],12,<,:event ;
+PlayBGM 6;
+SetEne 1,10,13,9,Rand,32,40,
+       0,5,
+       48,0,3,
+       31,0;
+SetEne 3,15,7,11,Rand,32,40,
+       0,5,
+       48,0,3,
+       31,0;
+SetEne 4,14,14,8,Rand,32,4,
+       0,2,
+       11,0,4,
+       31,0;
+
+
+SetBox 10,20,20,6,0,239;
+
+Store MFlag[8],416;
+Store MFlag[9],14;
+Goto :forest_fall_init ;
+
+
+:walk
+IfBox 0,13,1,14,1,0,Current+2;
+ChangeMap 688,ObjSX[0]-9,34,3,1;
+
+IfBox 0,1,12,1,13,0,Current+2;
+ChangeMap 686,10,ObjSY[0]-7,3,0;
+
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+Stop 1;
+MapColor 255,0,0,0;
+Store Flag[125],12;
+PlayBGM 0;
+StartEventSkip;
+Wait 20;
+SetMes ・・・ダメです！$n出血が止まりません！,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 40;
+SetMes ・・・くそっ！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+SetMes なんとしても止めるんだ！$n今、生まれてきた子供のためにも・・・っ！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 60;
+SetMes ですが、$n先生・・・！,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 90;
+SetMes ・・・くっ！$nくそっ、ダメなのか・・・っ！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 40;
+SetMes 奥さん、しっかり・・・！,
+       0,ObjX[0]-64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 60;
+SetMes ・・・旦那さんを呼んで来い！$n隣の部屋だ！,
+       1,ObjX[0]+64,ObjY[0],ObjZ[0],Center,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 687,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0];

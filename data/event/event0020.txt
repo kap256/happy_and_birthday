@@ -1,0 +1,115 @@
+フィーレス村：広場
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+
+:start
+
+StartEventSkip ;
+Stop 1;
+MapTitle ;
+
+SetAAObj 0,6,6,3,0,32,0,132,4,16,1,GravJump,0;
+
+NewLine 0,0, :clown ;
+
+SetAniObj 10,6,10,2,0,32,0,107,1,GravJump,0;
+SetObj 11,5,10,2,1,32,0,3,1,GravJump,0;
+
+Store MFlag[0],0;
+:person
+SetObj MFlag[0]*8+20,3,MFlag[0]+4,2,2,32,0,Rand%12+21,0,GravJump,0;
+SetObj MFlag[0]*8+21,4,MFlag[0]+4,2,2,32,0,Rand%12+21,0,GravJump,0;
+SetObj MFlag[0]*8+22,8,MFlag[0]+5,2,0,32,0,Rand%12+21,0,GravJump,0;
+SetObj MFlag[0]*8+23,9,MFlag[0]+5,2,0,32,0,Rand%12+21,0,GravJump,0;
+SetObj MFlag[0]*8+24,MFlag[0]+5,3,2,3,32,0,Rand%12+21,0,GravJump,0;
+SetObj MFlag[0]*8+25,MFlag[0]+5,4,2,3,32,0,Rand%12+21,0,GravJump,0;
+SetObj MFlag[0]*8+26,MFlag[0]+4,8,2,1,32,0,Rand%12+21,0,GravJump,0;
+SetObj MFlag[0]*8+27,MFlag[0]+4,9,2,1,32,0,Rand%12+21,0,GravJump,0;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],4,<,:person;
+
+SetAAObj Rand%30+20,3,3,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj Rand%30+20,3,9,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj Rand%30+20,3,13,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj Rand%30+20,9,3,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj Rand%30+20,9,9,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj Rand%30+20,9,13,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+
+SetCamera 200,0-100,1;
+SetCamera 0-150,75,0;
+SetCameraSpeed 14;
+
+Wait 200;
+SetObjDir 10,1;
+SetMes わ～、$nすご～い！,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Wait 16;
+SetObjDir 10,4;
+Wait 16;
+SetObjDir 10,1;
+Wait 16;
+SetObjDir 10,4;
+SetMes ほほ～っ！,
+       1,ObjX[11],ObjY[11],ObjZ[11],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 10,0;
+
+SetObj 12,7,15,2,1,48,0,1,1,GravJump,1; 
+SetObj 13,6,14,2,3,32,0,0,1,GravJump,1;
+SetObjGoal 12,7,11,2;
+SetObjGoal 13,6,12,2;
+SetObjDir 12,0;
+SetCamera 0-300,150,0;
+Wait 64;
+SetMes あれ？$nふたりとも、こんなところで。$n店番はどうしたの？,
+       3,ObjX[13],ObjY[13],ObjZ[13],RightBottom,0;
+Wait 20;
+SetObjDir 10,5;
+SetObjDir 11,3;
+Wait 0;
+SetMes もう全部$n売り切れちゃったから$nおしまいにしたよ。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Wait 50;
+SetMes ふ～ん・・・。,
+       3,ObjX[13],ObjY[13],ObjZ[13],RightBottom,0;
+Wait 30;
+SetMes な～んか、$n負けた気がするわね・・・。,
+       2,ObjX[12],ObjY[12],ObjZ[12],LeftTop,0;
+Wait 0;
+DelMes 2;
+DelMes 0;
+SetMes それじゃ、$nそろそろ教会に行かないか？$n早めに行ったほうが$nいい席取れるし。,
+       3,ObjX[13],ObjY[13],ObjZ[13],RightBottom,0;
+Wait 50;
+SetMes そーだね。,
+       0,ObjX[10],ObjY[10],ObjZ[10],LeftBottom,0;
+Wait 10;
+SetMes そうしますかの。,
+       1,ObjX[11],ObjY[11],ObjZ[11],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 3;
+Wait 20;
+
+ChangeMap 21,3,6,4,0;
+End;
+
+:clown 
+SetAAObj 1,6,6,3,0,32,0,133,16,1,0,GravJump,NoShadow;
+SetAAObj 2,6,6,3,0,32,0,133,16,1,0,GravJump,NoShadow+ShowTurn;
+SetObjZSpd 1,80;
+SetObjZSpd 2,80;
+Wait 15;
+SetAAObj 3,6,6,3,0,32,0,133,16,1,0,GravJump,NoShadow;
+SetAAObj 4,6,6,3,0,32,0,133,16,1,0,GravJump,NoShadow+ShowTurn;
+SetObjZSpd 3,80;
+SetObjZSpd 4,80;
+Wait 15;
+Goto :clown ;
+

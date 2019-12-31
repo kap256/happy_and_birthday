@@ -1,0 +1,93 @@
+フィーレス地下迷宮：立体迷路
+9,29,63
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,8,23,2,Rand,32,10,
+       0,4,
+       16,2,3,
+       5,0;
+SetEne 2,13,28,2,Rand,32,10,
+       0,4,
+       16,2,3,
+       5,0;
+SetEne 4,3,12,2,Rand,32,10,
+       0,4,
+       16,2,3,
+       5,0;
+SetEne 5,12,4,2,Rand,32,10,
+       0,4,
+       16,2,3,
+       5,0;
+
+
+SetEne 6,10,20,15,Rand,24,10,
+       0,6,
+       63,2,4,
+       5,0;
+SetEne 7,8,11,15,Rand,24,10,
+       0,6,
+       63,2,4,
+       5,0;
+
+SetBox 10,3,4,2,3,48;
+SetBox 11,11,25,5,0,49;
+
+SetLiftObj 20,7,11,3,0,24,0,173,BlockShadow;
+SetLiftObj 21,10,13,3,0,24,0,173,BlockShadow;
+
+SetLiftObj 22,7,24,12,0,16,0,173,BlockShadow;
+SetLiftObj 23,7,21,12,0,16,0,173,BlockShadow;
+
+SetLiftObj 24,6,12,12,0,16,0,173,BlockShadow;
+SetLiftObj 25,4,12,12,0,16,0,173,BlockShadow;
+SetLiftObj 26,12,5,12,0,16,0,173,BlockShadow;
+NewLine 0,0,:lift3 ;
+NewLine 0,0,:lift7 ;
+NewLine 0,0,:lift8 ;
+Wait 10;
+End;
+
+:walk
+IfBox 0,8,31,9,31,0,Current+2 ;
+ChangeMap 94,ObjSX[0]+4,2,6,3;
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 97,ObjSX[0]-1,5,2,1;
+End;
+
+
+:lift3
+SetObjGoal 20,9,11,3;
+SetObjGoal 21,10,15,3;
+Wait 80;
+SetObjGoal 20,7,11,3;
+SetObjGoal 21,10,13,3;
+Wait 80;
+Goto :lift3 ;
+End;
+
+:lift7
+SetObjGoal 24,12,12,12;
+SetObjGoal 25,4,6,12;
+SetObjGoal 26,12,11,12;
+Wait 140;
+SetObjGoal 24,6,12,12;
+SetObjGoal 25,4,12,12;
+SetObjGoal 26,12,5,12;
+Wait 140;
+Goto :lift7 ;
+End;
+
+:lift8
+SetObjGoal 23,7,14,12;
+SetObjGoal 22,14,24,12;
+Wait 160;
+SetObjGoal 23,7,21,12;
+SetObjGoal 22,7,24,12;
+Wait 160;
+Goto :lift8 ;
+End;

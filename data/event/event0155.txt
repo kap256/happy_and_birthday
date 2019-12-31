@@ -1,0 +1,103 @@
+ハンダバの町：街路
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :shop1 ;
+Talk    11 -1 :shop1 ;
+Talk    2  -1 :shop1 ;
+Talk    12 -1 :shop2 ;
+Talk    13 -1 :shop2 ;
+Talk    1  -1 :shop2 ;
+Talk    3  -1 :talk1 ;
+Talk    4  -1 :talk2 ;
+
+_END_HEAD_
+:start
+SetHighObj 10,18,7,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 11,19,7,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 12,7,3,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 13,8,3,2,0,32,0,121,1,GravJump,2+BlockShadow;
+
+SetPutObj 20,14,3,2,24,157,1;
+SetPutObj 21,15,3,2,24,157,1;
+SetPutObj 22,14,2,2,24,157,1;
+SetPutObj 23,15,2,2,24,157,1;
+
+SetObj 1,7,2,2,3,32,0,45,1,GravJump,1;
+SetObj 2,18,8,2,1,32,0,48,1,GravJump,1;
+SetObj 3,6,5,2,Rand,48,4,47,1,GravJump,1;
+SetObj 4,16,5,2,Rand,48,4,46,1,GravJump,1;
+
+If Flag[20],4,=,Current+2;
+BGColor 0;
+End;
+
+:walk
+IfBox 0,1,5,1,6,0,Current+2 ;
+ChangeMap 154,9,ObjSY[0],2,0;
+IfBox 0,20,5,20,6,0,Current+2 ;
+ChangeMap 156,2,ObjSY[0]+2,2,2;
+IfBox 0,10,10,11,10,0,Current+2 ;
+ChangeMap 157,ObjSX[0]+1,2,2,3;
+End;
+
+
+:shop1
+Stop 1;
+SetObjDir 2,ObjDir[0]+2;
+SetMes いらっしゃいです。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 0;
+Shop 12,0;
+Wait 1;
+DelMes 0;
+Stop 0;
+End;
+
+:shop2
+Stop 1;
+SetObjDir 1,ObjDir[0]+2;
+SetMes なんか売ってくれない？,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+Sell 0;
+Wait 1;
+DelMes 0;
+Stop 0;
+End;
+
+:talk1
+Stop 2;
+SetObjDir 3,ObjDir[0]+2;
+SetMes ここはハンダバの町です。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetObjDir 3,2;
+SetMes あっちがお城で、,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetObjDir 3,3;
+SetMes あっちが港です。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+SetObjDir 3,ObjDir[0]+2;
+SetMes 迷いやすいから$n気をつけてくださいね。,
+       0,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+:talk2
+Stop 2;
+SetObjDir 4,ObjDir[0]+2;
+SetMes 砂漠のどこかに、$n大きなピラミッドが$nあるらしいぜ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+SetMes てっぺんまで登ると、$nなんかあるのかなぁ。,
+       0,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;

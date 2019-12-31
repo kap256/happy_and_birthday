@@ -1,0 +1,147 @@
+アーゲリオ農場
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:church
+ChangeMap 425,5,4,2,0;
+End;
+
+:start
+Stop 1;
+
+If Flag[79],4,=,:octh ;
+If CurrentMonth,14,=,:church ;
+If CurrentMonth,15,=,:church ;
+If Month,12,=,:church ;
+
+
+SetAniObj 20,5,4,2,0,32,0,128,1,GravJump,1; 
+SetAniObj 4,5,3,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 5,6,3,2,0,32,0,124,1,GravJump,2+BlockShadow;
+
+SetCamera 0-80,40,1;
+
+If Month,3,<,:nochange ;
+If Month,9,<,:green ;
+If Month,11,<,:red ;
+
+:nochange
+
+Wait 1;
+SetMes よう。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 30;
+:select
+Select4 作物をもらう$nタネを渡す$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:seed,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes 他にも用はあるか？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 20;
+Goto :select ;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+Farm 1;
+Goto :oncemore ;
+
+:seed
+Seed 1;
+Goto :oncemore ;
+
+:talk
+If Month,4,=,:march ;
+If Month,5,=,:march ;
+If Month,6,=,:june ;
+If Month,7,=,:aug ;
+If Month,8,=,:aug ;
+If Month,9,=,:sep ;
+If Month,10,=,:sep ;
+
+SetMes 要するに、$nお前さんがタネを持ってきて、$nオレが栽培するわけだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+SetMes 一度に作れる量は$n限られちまうが、$n少ししたら$nちゃんと補充しておくぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+SetMes だから数なんか気にせず$nバンバン使いな。$n腐らせちまうのも、もったいねぇぞ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+Goto :oncemore ;
+
+:march
+SetMes それにしても、$nもうすっかり春だな。$n緑が綺麗だぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+SetMes まあ、$n季節が変わっても$n生産量は変わらんがな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Goto :tech;
+
+:june
+SetMes この時期は雨が多くて$n助かるぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+SetMes まあ、$n雨量が変わっても$n生産量は変わらんがな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Goto :tech;
+
+:aug
+SetMes 最近、暑っ苦しくて$nたまんねぇな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+SetMes まあ、$n暑くなっても$n生産量は変わらんがな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Goto :tech;
+
+:sep
+SetMes もうすっかり秋だな。$n落ち葉の掃除がめんどくさいぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+SetMes まあ、$nもちろん秋でも$n生産量は変わらんがな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Goto :tech;
+
+:tech
+Wait 0;
+SetMes そのあたりは$nアーゲリオ農場$n脅威のテクノロジー、ってことで$nカンベンしてくれ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+Goto :oncemore ;
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:green
+ChangeAllChip 20,22;
+Goto :nochange ;
+End;
+:red
+ChangeAllChip 20,416;
+Goto :nochange ;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:octh
+ChangeAllChip 20,416;
+SetObj 0,5,2,2,3,32,0,1,1,GravJump,1;
+SetAniObj 20,5,4,2,0,32,0,128,1,GravJump,1; 
+SetAniObj 4,5,3,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 5,6,3,2,0,32,0,124,1,GravJump,2+BlockShadow;
+SetCamera 0-80,40,1;
+
+Wait 1;
+SetMes クロット？$n隣町までタネを買いに行ったぜ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 50,5,5,5,1;
+End;
+

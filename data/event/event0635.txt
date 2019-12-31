@@ -1,0 +1,21 @@
+‹ó’†’ë‰€F—³‰¤‚ÌŠÔ
+10,19,63
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+
+:start
+SetEne 1,4,3,2,2,20,0,
+       0,0,
+       103,0,1,
+       11,0;
+SetBox 2,2,3,2,2,336;
+End ;
+
+:walk
+IfBox 0,8,3,8,3,0,Current+2 ;
+ChangeMap 634,6,6,15,2;
+
+End;

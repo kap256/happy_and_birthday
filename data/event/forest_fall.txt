@@ -1,0 +1,41 @@
+#included
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
+::    秋の植林メソッド ( :forest_fall_init )
+::
+::MFlag[8]--植林後の画像番号（草地は22）
+::MFlag[9]--Z座標の最大高度、0でも可（1～MFlag[9]の範囲を植林）
+::MFlag[15]--指定されていた場合、その値に Goto する。
+::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:forest_fall_init
+Store MFlag[10],30;
+Store MFlag[11],1;
+:forest_woodx
+Store MFlag[12],1;
+:forest_woody
+Store MFlag[13],1;
+:forest_woodz
+GetMapChip MFlag[14],MFlag[11],MFlag[12],MFlag[13];
+If MFlag[14],21,=,:forest_wood ;
+:forest_nowood
+Store MFlag[13],MFlag[13]+1;
+If MFlag[13],MFlag[9],<,:forest_woodz ;
+Store MFlag[12],MFlag[12]+1;
+If MFlag[12],MapY,<,:forest_woody ;
+Store MFlag[11],MFlag[11]+1;
+If MFlag[11],MapX,<,:forest_woodx ;
+
+If MFlag[15],0,!=,MFlag[15];
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:forest_wood
+SetMapChip MFlag[8],MFlag[11],MFlag[12],MFlag[13];
+SetWoodObj MFlag[10],MFlag[11],MFlag[12],MFlag[13]+1,1,48,0,193,1,1,0;
+Store MFlag[10],MFlag[10]+1;
+Goto :forest_nowood ;
+
+

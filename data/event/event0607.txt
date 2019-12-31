@@ -1,0 +1,33 @@
+—mŠÙF’†‰›˜L‰º
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+End ;
+
+:walk
+IfBox 0,1,10,1,10,0,Current+2 ;
+ChangeMap 606,11,6,2,0;
+
+IfBox 0,26,10,26,10,0,Current+2 ;
+ChangeMap 608,2,4,2,2;
+
+IfBox 0,5,7,5,7,0,Current+2 ;
+ChangeMap 610,4,19,2,1;
+IfBox 0,5,14,5,14,0,Current+2 ;
+ChangeMap 610,4,2,2,3;
+
+IfBox 0,21,7,21,7,0,Current+2 ;
+ChangeMap 611,4,19,2,1;
+IfBox 0,21,14,21,14,0,Current+2 ;
+ChangeMap 611,4,2,2,3;
+
+IfBox 0,11,3,11,3,0,Current+2 ;
+ChangeMap 621,4,15,7,0;
+IfBox 0,16,3,16,3,0,Current+2 ;
+ChangeMap 621,8,15,7,2;
+
+End;

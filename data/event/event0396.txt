@@ -1,0 +1,63 @@
+盗賊のアジト：鉄球の間
+13,14
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+If Flag[64],10,<,:event1 ;
+End;
+
+:walk
+IfBox 0,8,4,8,4,0,Current+2 ;
+ChangeMap 395,2,8,2,2;
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 397,19,8,2,0;
+End;
+
+:event1
+Stop 1;
+SetAniObj 5,3,4,2,1,32,0,332,1,GravJump,0;
+SetObj 6,2,3,2,2,32,0,207,1,GravJump,0;
+SetObj 7,2,5,2,2,32,0,207,1,GravJump,0;
+SetCamera 0-160,0-80,1;
+Wait 20;
+If Flag[64],5,>,:event2 ;
+Store Flag[64],8;
+SetMes 貴様らが侵入者か。$nこの鉄球のジン様が$nボッコボコにしてやるぜ！,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Goto :battle ;
+:event2
+SetMes 懲りずにまた来たのか。$nもう一度、この鉄球のジン様が$nボッコボコにしてやるぜ！,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+:battle
+Wait 0;
+DelMes 0;
+Wait 20;
+Battle 26;
+If Escape,0,>,:escape ;
+
+Store Flag[64],10;
+SetObjDir 5,5;
+SetAniObj 6,2,3,2,1,32,0,103,1,GravJump,0;
+SetAniObj 7,2,5,2,1,32,0,103,1,GravJump,0;
+Wait 20;
+SetMes ぐああぁぁ・・・。$nこの、ザ・無敵と呼ばれたジン様が$nやられるとは・・・。,
+       0,ObjX[5],ObjY[5],ObjZ[5]-16,LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 396,4,4,2,0;
+End;
+
+:escape
+Wait 1;
+SetMes ふふん、$n思い知ったか！,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 395,2,8,2,2;
+End;

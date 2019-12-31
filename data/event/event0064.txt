@@ -1,0 +1,23 @@
+ƒ‰ƒNƒŠƒAŒÎ”ÈF“ú‰AÒ‚Ì˜r
+20
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,8,4,4,3,32,0,
+       0,0,
+       20,0,4,
+       1,LPx2+POWx15;
+
+SetBox 10,8,2,5,3,32;
+SetSavePoint 11,8,7,3;
+End;
+:walk
+IfBox 0,16,6,16,7,0,Current+2 ;
+ChangeMap 62,5,ObjSY[0]+9,3,2;
+IfBox 0,1,5,1,6,0,Current+2 ;
+ChangeMap 65,15,ObjSY[0]+2,2,0;
+End;

@@ -1,0 +1,59 @@
+ƒtƒB[ƒŒƒX’n‰º–À‹{F‘æO‘w
+16,17,44,48,11
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+:::’áŠ‚Ì“G::::
+
+SetEne 1,27,5,2,Rand,40,10,  1,8,
+         16,8,Rand%3+3,        14,0;
+SetEne 2,12,7,2,Rand,40,10,  1,8,
+         44,8,Rand%3+3,        14,0;
+SetEne 3,9,20,2,Rand,40,10,  1,8,
+         11,8,Rand%3+3,        14,0;
+SetEne 4,3,10,2,Rand,40,10,  1,8,
+         16,8,Rand%3+3,        14,0;
+SetEne 5,25,27,2,Rand,40,10,  1,8,
+         44,8,Rand%3+3,        14,0;
+
+:::‚Š‚Ì“G::::
+
+SetEne 10,16,15,4,Rand,40,10,  1,8,
+         16,8,Rand%3+3,        14,0;
+SetEne 11,23,11,4,Rand,40,10,  1,8,
+         11,8,Rand%3+3,        14,0;
+SetEne 12,10,25,4,Rand,40,10,  1,8,
+         16,8,Rand%3+3,        14,0;
+SetEne 13,6,19,4,Rand,40,10,  1,8,
+         44,8,Rand%3+3,        14,0;
+SetEne 14,25,25,4,Rand,40,10,  1,8,
+         16,8,Rand%3+3,        14,0;
+
+:::‚½‚©‚ç‚Î‚±::::
+
+SetBox 50,3,5,2,3,212;
+SetBox 51,3,27,2,2,213;
+SetBox 52,10,5,4,0,214;
+
+End;
+
+:walk
+IfBox 0,30,15,30,15,0,Current+2 ;
+ChangeMap 343,3,2,7,2;
+
+IfBox 0,19,1,20,1,0,Current+2 ;
+ChangeMap 378,ObjSX[0],29,5,1;
+IfBox 0,11,1,12,1,0,Current+2 ;
+ChangeMap 378,ObjSX[0],29,2,1;
+
+IfBox 0,21,30,22,30,0,Current+2 ;
+ChangeMap 379,ObjSX[0],2,2,3;
+
+IfBox 0,1,21,1,22,0,Current+2 ;
+ChangeMap 381,29,ObjSY[0],5,0;
+End;

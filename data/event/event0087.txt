@@ -1,0 +1,127 @@
+宝の洞窟：宝物庫
+0
+
+
+LoadMap 0 0 :start ;
+_END_HEAD_
+:start
+
+:event
+Stop 1;
+StartEventSkip ;
+PlayBGM 40;
+Store Flag[64],0;
+
+
+SetObj 4,5,7,5,1,32,0,0,0,GravJump,1;
+SetObj 1,4,7,5,1,32,0,1,0,GravJump,1;
+SetObj 2,4,5,5,1,32,0,7,0,GravJump,1;
+
+SetAniObj 0,2,4,5,1,32,0,100,1,GravJump,ShowTurn;
+SetAniObj 10,2,6,5,1,32,0,100,1,GravJump,ShowTurn;
+SetAniObj 12,7,2,5,1,32,0,100,1,GravJump,0;
+SetAniObj 13,7,4,5,5,32,0,100,1,GravJump,0;
+SetAniObj 14,7,7,5,5,32,0,100,1,GravJump,0;
+SetObj    15,2,2,3,1,32,0,173,0,GravLock,1;
+SetAniObj 16,2,2,3,0,32,0,191,0,GravLock,0;
+SetAniObj 17,4,2,5,0,32,0,300,1,GravJump,ShowTurn;
+SetAniObj 18,5,2,5,0,32,0,300,1,GravJump,ShowTurn;
+
+SetCamera 50,150,1;
+Wait 30;
+
+SetMes げげっ！$nなにもない！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes あらあら。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetObjDir 2,3;
+SetObjDir 3,3;
+DelMes 2;
+DelMes 1;
+SetMes 誰かに$n先を越された見たいだな。,
+       4,ObjX[4],ObjY[4],ObjZ[4],RightTop,0;
+Wait 40;
+SetMes そんなぁ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 3;
+DelMes 4;
+SetMes まあ、$nヒマ潰しには$nちょうどよかったわ。$nそろそろ帰りましょ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 60;
+SetMes うぐ～。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetObjGoal 1,4,8,5;
+SetObjGoal 2,4,8,5;
+SetObjGoal 4,5,8,5;
+Wait 32;
+DelObj 1;
+DelObj 4;
+Wait 32;
+DelObj 3;
+Wait 32;
+DelObj 2;
+Wait 20;
+
+SetCameraSpeed 5;
+SetCamera 150,25,0;
+SetMes くっそ～。$nこれで15回目の失敗だよ･･･。,
+       1,120,280,80,LeftBottom,0;
+Wait 60;
+SetMes そう簡単に宝が見つかるなら、$n料理人なんてやってられないわよ。,
+       2,180,280,80,LeftBottom,0;
+Wait 160;
+DelMes 1;
+DelMes 2;
+SetFadeOut 80;
+Wait 80;
+PlayWave 12;
+SetObjGoal 15,2,1,3;
+Wait 70;
+PlayBGM 41;
+SetObj 16,2,2,3,2,32,0,60,0,GravLock,0;
+Wait 30;
+SetObjDir 16,3;
+Wait 30;
+SetMes 行ったか。$n危ないところだった･･･。,
+       1,ObjX[16],ObjY[16],ObjZ[16],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 40;
+SetMes しかし、今のは･･･？$n$nひょっとして･･･。,
+       1,ObjX[16],ObjY[16],ObjZ[16],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes いや、$nそんなはずは無いか。$nもう、過ぎたことだ･･･。,
+       1,ObjX[16],ObjY[16],ObjZ[16],RightBottom,0;
+SetAniObj 16,2,2,3,4,32,0,191,0,GravLock,0;
+Wait 8;
+SetObjDir 16,1;
+Wait 8;
+SetObjDir 16,4;
+Wait 8;
+SetObjDir 16,5;
+Wait 8;
+SetObjDir 16,4;
+Wait 0;
+SetMes ･････････。,
+       1,ObjX[16],ObjY[16],ObjZ[16],RightBottom,0;
+
+SetCamera 150,0-10240,0;
+
+:cameraroop
+SetCameraSpeed MFlag[4]+2;
+Store MFlag[4],MFlag[4]+1;
+Wait 2;
+If MFlag[4],70,<,:cameraroop ;
+
+Store Flag[7],100;
+ChangeMap 57,1,2,3,4;
+End;
+

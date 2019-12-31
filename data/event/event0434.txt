@@ -1,0 +1,48 @@
+ê}èëäŸ
+82,83
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :terminal_talk ;
+Talk   20 -1 :door_talk ;
+Hit     0 20 :door_hit ;
+Talk   21 -1 :door_talk ;
+Hit     0 21 :door_hit ;
+
+_END_HEAD_
+#lib_terminal.txt
+#lib_door.txt
+:start
+SetAniObj 20,3,4,2,12,32,0,334,1,GravLock,NoShadow+ShowTurn;
+SetAniObj 21,3,7,2,14,32,0,334,1,GravLock,NoShadow+ShowTurn;
+SetAniObj 10,3,1,2,10,32,0,334,1,GravJump,NoShadow+ShowTurn;
+
+SetEne 30,9,8,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 31,9,11,2,Rand,48,10,
+       0,4,
+       46,0,6,
+       19,POWx15+LPx3;
+SetEne 32,7,3,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+
+Store MFlag[8],69;
+Goto :terminal_init ;
+End;
+
+:walk
+IfBox 0,7,14,7,14,0,Current+2 ;
+ChangeMap 436,7,2,2,3;
+
+IfBox 0,14,4,14,4,0,Current+2 ;
+ChangeMap 430,2,9,2,2;
+
+IfBox 0,1,11,1,11,0,Current+2 ;
+ChangeMap 433,13,11,2,0;
+
+
+End;

@@ -1,0 +1,37 @@
+フィーレス地下迷宮：左の子部屋
+16
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+If Flag[9],4,<,:event ;
+End;
+
+:walk
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 106,ObjSX[0]+8,29,2,1;
+IfBox 0,6,4,6,5,0,Current+2 ;
+ChangeMap 103,2,ObjSY[0]-1,2,2;
+End;
+
+:event
+Stop 1;
+Store Flag[9],4;
+SetObj 0,5,4,2,0,32,0,0,1,GravJump,1;
+SetObj 1,5,5,2,0,32,0,1,1,GravJump,1;
+SetObj 2,3,4,2,2,32,0,27,1,GravJump,1;
+Wait 10;
+SetMes あとで$nお仕置きだからな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 30;
+SetMes ごめんなさ～い。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+ChangeMap 104,5,4,2,0;
+End;

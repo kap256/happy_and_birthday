@@ -1,0 +1,32 @@
+’n‰º•æŠF\š˜H
+0
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#coffin.txt
+:start
+Store MFlag[8],2;
+IfBox 0,6,5,8,7,1,Current+2 ;
+SetEneL 1,6,6,2,0,16,0,
+       0,0,40;
+IfBox 0,1,5,3,7,1,Current+2 ;
+SetEneL 2,2,6,2,2,16,0,
+       0,0,39;
+
+Goto :coffin_init ;
+
+:walk
+IfBox 0,1,6,1,6,0,Current+2 ;
+ChangeMap 489,15,8,2,0;
+
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 488,6,19,2,1;
+
+IfBox 0,8,6,8,6,0,Current+2 ;
+ChangeMap 478,2,5,2,2;
+
+IfBox 0,4,10,4,10,0,Current+2 ;
+ChangeMap 479,11,2,4,3;
+End;

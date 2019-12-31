@@ -1,0 +1,31 @@
+フィーレス地下迷宮：宝物部屋
+16
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,12,3,5,3,32,0,
+       0,0,
+       16,8,3,
+       5,0;
+
+SetBox 5,7,2,5,3,50;
+SetBox 6,12,2,5,3,51;
+SetLiftObj 10,6,5,3,0,10,0,173,BlockShadow;
+SetPutObj 11,5,4,2,24,146,10;
+
+
+:lift
+SetObjGoal 10,9,5,3;
+Wait 30;
+SetObjGoal 10,6,5,3;
+Wait 30;
+Goto :lift ;
+
+:walk
+IfBox 0,3,10,3,10,0,Current+2 ;
+ChangeMap 97,18,2,8,3;
+End;

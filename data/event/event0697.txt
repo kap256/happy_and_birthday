@@ -1,0 +1,225 @@
+聖石の祭壇
+1,2,11,63,64
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+
+Stop 1;
+PlayBGM 41;
+StartEventSkip ;
+SetAniObj 0,2,4,2,1,32,0,300,1,GravJump,NoShadow;
+SetAniObj 10,2,5,2,0,32,0,198,1,GravJump,NoShadow;
+
+SetObj 4,4,4,2,0,32,0,60,0,GravJump,1;
+SetObj 5,5,3,2,0,32,0,211,0,GravJump,1;
+SetObj 6,5,5,2,0,32,0,211,0,GravJump,1;
+
+NewLine 0,0,:stone ;
+Store MFlag[0],Ret;
+MapTitle ;
+SetCameraSpeed 14;
+SetCamera 280,160,1;
+SetCamera 80,60,0;
+
+Wait 160;
+
+SetMes ・・・これで最後か。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+SetObjGoal 4,3,4,2;
+Wait 16;
+Wait 0;
+DelMes 4;
+SetAniObj 4,3,4,2,0,32,0,302,0,GravJump,ShowTurn;
+Wait 60;
+SetMes ・・・・・・。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 30;
+SetMes いかがなさいました？,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 0;
+DelMes 4;
+SetObj 4,3,4,2,2,32,0,60,0,GravJump,1;
+Wait 20;
+SetMes いや、なんでもない。$n少し考え事をしていただけだ。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 4;
+DelMes 5;
+SetAniObj 4,3,4,2,0,32,0,302,0,GravJump,ShowTurn;
+Wait 12;
+Kill MFlag[0];
+SetAniObj 0,2,4,2,0,32,0,300,1,GravJump,NoShadow;
+SetAniObj 10,2,5,2,0,32,0,300,1,GravJump,NoShadow;
+SetObjDir 4,4;
+Wait 12;
+SetObj 4,3,4,2,0,32,0,60,0,GravJump,1;
+Wait 20;
+SetObjDir 4,2;
+Wait 8;
+SetMes よし、早く帰るぞ。$nそろそろ・・・,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+SetCamera 180,110,0;
+
+SetObj 1,11,4,2,0,16,0,0,0,GravJump,1;
+SetObj 2,12,3,2,0,16,0,4,0,GravJump,1;
+SetObj 3,12,5,2,0,16,0,8,0,GravJump,1;
+
+SetObjGoal 1,7,4,2;
+SetObjGoal 2,8,3,2;
+SetObjGoal 3,8,5,2;
+
+Wait 64;
+SetObjDir 5,2;
+SetObjDir 6,2;
+SetAniObj 1,7,4,2,0,16,0,145,0,GravJump,ShowTurn;
+SetMes くそぉ、$n先を越されたか・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes ・・・くっ、$nもう来たか。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 20;
+SetMes ！$nお前は・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 4;
+SetMes お待ちください、ディアノ様。$nすぐに排除致しましょう。,
+       5,ObjX[5],ObjY[5],ObjZ[5],RightTop,0;
+Wait 0;
+DelMes 5; 
+SetObjGoal 5,6,3,2;
+SetObjGoal 6,6,5,2;
+SetMes まて・・・！$nお前たちでは・・・,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 32;
+EndEventSkip ;
+Battle 74;
+StartEventSkip ;
+DelMesQ 4;
+DelObj 5;
+DelObj 6;
+Wait 20;
+SetMes ・・・腕を上げたようだな。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 40;
+SetMes こんどこそ渡さないぞ！$n聖石は！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes そう血気にはやるな。$n今の君が相手では、$n手加減できる自信が無い。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 50;
+SetMes 何をっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes それより聞かせてくれないか？$nこの聖石を何に使う。$n君は卵に何を願うつもりか。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 60;
+SetMes お前たちと$n一緒にするな！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes 海に捨てるっ！$nお前たちのような連中が$n二度と変なことを考えられないように！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 90;
+SetMes なるほど。$nそういうことか。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+SetMes だが、それで解決になるのか？$n見つからなければ、$n彼らは永遠に$n石を求め暴虐を続けるだろう。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 70;
+SetMes ッ！！$n他人事の様に！$nお前たちがしている事だろう！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 4;
+SetAniObj 4,3,4,2,4,32,0,191,0,GravJump,ShowTurn;
+Wait 60;
+SetMes そうか・・・。$nそうだな・・・。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 4;
+SetObj 4,3,4,2,2,32,0,60,0,GravJump,1;
+Wait 60;
+SetMes だが、もう決めたことだ。$n・・・それだけの理由がある。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 60;
+SetMes たくさんの人を傷つけてまで、$n何をするって言うんだ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes 君と話せてよかった。$n君なら安心できるだろう。,
+       4,ObjX[4],ObjY[4],ObjZ[4],LeftBottom,0;
+Wait 60;
+SetMes なにを言っている！$n質問に答えろ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 4;
+Wait 60;
+SetAniObj 4,3,4,2,6,32,0,326,0,GravJump,ShowTurn;
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 16;
+PlayWave 46;
+MapColor 255,255,255,255;
+DelObj 4;
+Wait 8;
+Store MFlag[0],255;
+:flash
+MapColor MFlag[0],255,255,255;
+Wait 1;
+Store MFlag[0],MFlag[0]-4;
+If MFlag[0],0,>,:flash ;
+
+MapColor 0,0,0,0;
+SetCamera 380,210,0;
+DelMes 1;
+Wait 60;
+SetObj 1,7,4,2,2,16,0,0,0,GravJump,1;
+SetMes 閃光弾・・・！？$nくそぉ、やられた！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes まだ近くにいるはず・・・。$n追いかけないと！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetObjGoal 1,17,4,2;
+SetObjGoal 2,18,3,2;
+SetObjGoal 3,18,5,2;
+DelMes 1;
+
+Store MFlag[0],0;
+:black
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]+8;
+If MFlag[0],255,<,:black ;
+MapColor 255,0,0,0;
+Wait 20;
+Store Flag[125],64;
+ChangeMap 694,13,3,11,2;
+End;
+
+
+::::::::::::::::::::::::::::::::::::
+
+:stone
+Wait 16;
+SetObjDir 0,4;
+Wait 16;
+SetObjDir 0,1;
+Wait 16;
+SetObjDir 0,5;
+Wait 16;
+SetObjDir 0,1;
+Goto :stone ;
+End;
+
+:upcamera
+SetCamera 0-160,0-10240,0;
+
+:cameraroop
+SetCameraSpeed MFlag[4]+10;
+Store MFlag[4],MFlag[4]+1;
+Wait 2;
+If MFlag[4],90,<,:cameraroop ;
+End;

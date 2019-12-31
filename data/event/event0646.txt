@@ -1,0 +1,148 @@
+夢の卵：最深部
+32
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+StartEventSkip ;
+Stop 1;
+
+LeaveParty Member[1];
+LeaveParty Member[2];
+LeaveParty Member[3];
+
+BGColor 16;
+SetBAObj 0,10,6,2,2,32,0,360,0,GravLock,NoShadow+Wall0;
+SetObj 2,9,11,2,1,64,0,1,1,GravJump,1;
+SetAniObj 3,9,7,3,0,64,0,362,0,GravLock,1;
+SetObj 5,9,8,0,0,32,0,361,1,GravLock,1;
+SetCamera 0-200,80,1;
+
+
+Store MFlag[21],11;
+Store MFlag[16],0;
+:fire_tikuwa_loop_x
+Store MFlag[17],1;
+:fire_tikuwa_loop_y
+GetMapChip MFlag[20],MFlag[16],MFlag[17],1;
+If 4,MFlag[20],!=,:fire_tikuwa_loop_after ;
+SetLiftObj MFlag[21],MFlag[16],MFlag[17],0,0,32,0,361,NoShadow;
+Store MFlag[21],MFlag[21]+1;
+If MFlag[21],79,>,:fire_tikuwa_exit ;
+
+:fire_tikuwa_loop_after
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],MapY,<,:fire_tikuwa_loop_y ;
+Store MFlag[16],MFlag[16]+1;
+If MFlag[16],MapX,<,:fire_tikuwa_loop_x ;
+:fire_tikuwa_exit
+Store MFlag[21],MFlag[21]-11;
+
+NewLine 0,0,:move_camera ;
+Store MFlag[0],Ret;
+NewLine 0,0,:fall_yuka ;
+NewLine 0,0,:flash_egg ;
+NewLine 0,0,:fire_start ;
+NewLine 0,0,:float_baby ;
+Wait 60;
+SetMes ・・・・・・あ。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 100;
+DelMes 0;
+Wait 20;
+SetObjGoal 2,9,10,2;
+Wait 32;
+SetMes ・・・こ・・・ども？,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 120;
+DelMes 0;
+SetObjGoal 2,9,9,2;
+Wait 32;
+SetMes ・・・わたしの・・・・・・？,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 120;
+DelMes 0;
+SetObjGoal 2,9,8,2;
+Wait 32;
+SetMes わたしの・・・$n・・・赤ちゃん・・・？,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+Kill MFlag[0] ;
+Wait 60;
+DelMes 0;
+SetObjGrav 5,GravFallNone ;
+SetObjGrav 2,GravFallNone ;
+Wait 16;
+SetMes ！,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 16;
+SetObjDir 2,3;
+Wait 48;
+
+
+DelMes 0;
+Wait 20;
+ChangeMap 647,3,13,2,1;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:flash_egg
+SetObjDir 0,2;
+Wait 20;
+SetObjDir 0,1;
+Wait 20;
+SetObjDir 0,2;
+Wait 20;
+SetObjDir 0,3;
+Wait 20;
+Goto :flash_egg ;
+End;
+
+:fall_yuka
+Wait Rand%20+10;
+SetObjGrav Rand%MFlag[21]+11,GravFallNone ;
+Goto :fall_yuka ;
+
+:move_camera
+Store MFlag[4],MFlag[4]+1;
+If MFlag[16],0,!=,Current+2 ;
+SetCamera MFlag[4]-200,0-MFlag[4]/2+80,1;
+Wait 6;
+Goto :move_camera ;
+
+:fire_start
+Wait Rand%60 + 5;
+If Rand%8,0,=,:fire_hard ;
+PlayWave 22;
+Store MFlag[16],4;
+Goto :fire_cloop ;
+
+:fire_hard
+PlayWave 36;
+Store MFlag[16],12;
+Goto :fire_cloop ;
+
+:fire_cloop
+SetCamera MFlag[4]+MFlag[16]-200,0-MFlag[4]/2+80,1;
+Wait 1;
+SetCamera MFlag[4]-MFlag[16]-200,0-MFlag[4]/2+80,1;
+Wait 1;
+Store MFlag[16],MFlag[16]-1;
+If MFlag[16],0,>,:fire_cloop ;
+SetCamera MFlag[4]-200,0-MFlag[4]/2+80,1;
+Goto :fire_start ;
+End;
+
+
+:float_baby
+Store MFlag[10],MFlag[10]%128+1 ;
+If MFlag[10],64,>,:float_baby_a ;
+SetObjZSpd 3,MFlag[10]-32/8;
+Goto :float_baby_end;
+:float_baby_a
+SetObjZSpd 3,0-MFlag[10]+96/8;
+:float_baby_end
+Wait 1;
+Goto :float_baby ;
+

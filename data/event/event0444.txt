@@ -1,0 +1,262 @@
+図書館
+2,9,47
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+#fire.txt
+:start
+
+StartEventSkip ;
+Stop 1;
+Store Flag[65],0;
+
+SetObjPos 0,5,8,2;
+SetObjView 0,0;
+
+SetObj 1,5,14,2,1,24,0,0,0,GravJump,1;
+SetObj 2,5,15,2,1,32,0,8,0,GravJump,1;
+SetObj 3,5,2,2,3,32,0,67,0,GravJump,1;
+SetAniObj 4,4,9,2,12,32,0,68,0,GravJump,1;
+SetAniObj 5,6,9,2,12,32,0,66,0,GravJump,1;
+SetObjGoal 3,5,8,2;
+SetCamera 0,0-170,1;
+SetCamera 0,20,0;
+Wait 192;
+SetMes ケタケタケタ。$n仕掛けは終わったから$nさっさと帰ろうかな。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 0;
+DelMes 3;
+SetCameraSpeed 14;
+SetCamera 0-140,90,0;
+SetObjGoal 1,5,11,2;
+SetObjGoal 2,5,12,2;
+Wait 64;
+SetObjGoal 2,6,12,2;
+SetObjDir 2,1;
+Wait 8;
+SetMes ！$nお前らは！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetObjDir 4,8;
+SetObjDir 5,8;
+SetAniObj 1,5,11,2,0,24,0,145,0,GravJump,1;
+Wait 20;
+SetMes おやおや。これは珍しいお客さん。$n聖石の手がかりでも$n探しに来たのかな？,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes でも、ざ～んね～ん。$nこの図書館は証拠隠滅のため、$n焼却処分されます。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 60;
+SetMes 何だと！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+SetMes で、でも、どうしてここに・・・？$nここには私たちしか$n入れないハズなのに・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes ん～？$nああ、それね。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 2;
+SetMes 突然ですが問題です。$n僕の専門は何でしょう？,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 60;
+SetMes それがどうした・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes ネクロマンシー、$n死霊使いだよ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 10;
+PlayWave 28;
+SetObjDir 4,9;
+SetObjDir 5,9;
+Wait 10;
+SetObjDir 4,10;
+SetObjDir 5,10;
+Wait 10;
+SetObjDir 4,11;
+SetObjDir 5,11;
+Wait 10;
+SetObjDir 4,15;
+SetObjDir 5,15;
+Wait 20;
+SetMes ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 2;
+SetMes と、隣のニアお姉ちゃんに、$n向かいのお兄ちゃんも・・・っ！？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetMes なっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes ケタケタケタ。卵に使えるかは知らないけど、$nココに入るには問題なかったんでね。$n利用させてもらったんだよ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 60;
+Wait 0;
+DelMes 1;
+DelMes 2;
+SetMes 君はなかなかいい体をしてるね～。$n・・・よい素材になれそうだよ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 60;
+SetMes ・・・こいつッ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+Wait 20;
+EndEventSkip ;
+Battle 32;
+StartEventSkip ;
+SetCamera 0,0,1;
+SetObjPos 0,5,11,2;
+SetAniObj 3,5,8,2,8,32,0,67,0,GravJump,1;
+SetObj 4,4,9,2,3,32,0,68,0,GravJump,1;
+SetObj 5,6,9,2,3,32,0,66,0,GravJump,1;
+Wait 20;
+SetMes ぐぐぐ・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3]-8,RightBottom,0;
+Wait 0;
+DelMes 3;
+NewLine 0,0,:spin ;
+Store MFlag[0],Ret;
+Wait 30;
+SetObjDir 3,9;
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 20;
+SetMes コ、コントロールが$n効かない！？,
+       3,ObjX[3],ObjY[3],ObjZ[3]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 3;
+Kill MFlag[0];
+SetObjGoal 4,4,8,2;
+SetObjGoal 5,6,8,2;
+Wait 32;
+SetObjGoal 4,5,8,2;
+SetObjGoal 5,5,8,2;
+Wait 16;
+PlayWave 11;
+SetObjDir 3,10;
+SetAniObj 4,5,8,2,13,32,0,68,0,GravJump,Wall0+ShowTurn;
+SetAniObj 5,6,8,2,13,32,0,66,0,GravJump,Wall0;
+Wait 20;
+SetMes な、何をする！$n放せ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 3;
+NewLine 0,0,:walk ;
+Store MFlag[0],Ret;
+Wait 50;
+SetMes 放せ！$n言うことを聞けぇぇ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightTop,0;
+Wait 80;
+DelMes 3;
+Wait 60;
+SetMes ぐぎゃああぁぁ・・・！　　　　　,
+       3,128,128,ObjZ[3],RightTop,0;
+PlayWave 16;
+Wait 20;
+SetMes ・・・っ！？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetMes ・・・うっ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+PlayWave 16;
+Wait 40;
+DelMes 3;
+PlayWave 19;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 30;
+SetObj 1,5,11,2,1,24,0,0,0,GravJump,1;
+Wait 60;
+NewLine 0,0,:fire ;
+Wait 1;
+NewLine 0,0,:fire_hard;
+
+SetMes ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 30;
+SetMes くそ！$nもう火が上がったのか！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetObjDir 1,3;
+DelMes 1;
+SetMes 仕方ない！$n早く避難しよう！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes でも、$n聖石の場所が・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 2;
+SetObjDir 1,0;
+SetMes これじゃ無理だ！$n急がないと、囲まれるぞ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 10;
+SetObjDir 1,2;
+Wait 10;
+SetObjDir 1,3;
+Wait 20;
+SetMes ・・・でも・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes 早く！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+DelMes 2;
+Wait 40;
+SetObjSpeed 1,10;
+SetAniObj 2,6,12,2,4,10,0,8,0,GravJump,ShowTurn;
+SetObjGoal 1,5,15,2;
+Wait 8;
+SetObjGoal 2,5,12,2;
+Wait 10;
+DelMes 1;
+SetObjGoal 2,5,15,2;
+Wait 22;
+DelObj 1;
+Wait 8;
+DelObj 2;
+
+Wait 20;
+NextMonth ;
+ReturnVillage 1;
+End;
+
+:::サブルーチン::::::::::::::::::::::::::::::::
+:spin
+SetObjDir 4,Rand;
+SetObjDir 5,Rand;
+Wait 20;
+Goto :spin ;
+End;
+
+:walk
+SetObjGoalDir 3,1,1;
+SetObjGoalDir 4,1,1;
+SetObjGoalDir 5,1,1;
+SetObjDir 4,14;
+SetObjDir 5,14;
+Wait 16;
+SetObjDir 4,13;
+SetObjDir 5,13;
+Wait 32;
+Goto :walk ;
+End;
+
+:fire
+Store MFlag[2],0;
+
+:fireup
+MapColor MFlag[2],255,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+2;
+If MFlag[2],128,<,:fireup;
+
+MapColor 128,255,0,0;
+End;

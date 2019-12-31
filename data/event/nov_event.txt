@@ -1,0 +1,80 @@
+#included
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+::
+::    １１月のイベントメソッド ( :check_novevent )
+::
+::    イベントスキップ後に実行するようにしましょう。
+::
+::MFlag[24]---イベントが発生しない場合の戻り先のアドレス
+::MFlag[25]---カメラ-X
+::MFlag[26]---カメラ-Y
+::Obj-90,91---それぞれ、イベントが発生した場合の主人公とパートナーの位置。
+::            イベントの発生に関わらず削除されます。
+::            主人公はLeftBottom、パートナーはRightTopにメッセージを出します。
+::
+::
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:check_novevent
+::イベント発生判定::::::::::::
+
+If Flag[126],0,>,:novevent_no_event ;
+If ShopOK[0],0,=,:novevent_no_event ;
+If ShopOK[1],0,=,:novevent_no_event ;
+If ShopOK[2],0,=,:novevent_no_event ;
+If ShopOK[3],0,=,:novevent_no_event ;
+If ShopOK[4],0,=,:novevent_no_event ;
+If ShopOK[5],0,=,:novevent_no_event ;
+
+::イベント本体::::::::::::
+StartEventSkip ;
+Stop 1;
+Store Flag[126],1;
+SetCamera MFlag[25],MFlag[26],1;
+SetObj 0,ObjSX[90],ObjSY[90],ObjSZ[90],ObjDir[90],32,0,0,1,GravJump,1;
+DelObj 90;
+
+Wait 10;
+SetObjDir 0,ObjDir[0]+1;
+Wait 10;
+SetMes これで村中$nひととおり回ったかな・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 10;
+SetObjDir 0,ObjDir[0]+2;
+Wait 20;
+SetObjDir 0,ObjDir[0]+3;
+Wait 30;
+SetMes ・・・・・・。,
+       1,ObjX[91],ObjY[91],ObjZ[91],RightTop,0;
+Wait 0;
+DelMes 0;
+Wait 40;
+SetObjDir 0,ObjDir[0]+2;
+Wait 10;
+SetMes ・・・リティス？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 40;
+SetMes ・・・あ、$nな、なんでしょう？,
+       1,ObjX[91],ObjY[91],ObjZ[91],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes ・・・ひとまず教会に戻ろう。$nみんなも心配だ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap MapNo,ObjSX[0],ObjSY[0],ObjSZ[0],ObjDir[0];
+End;
+
+::イベントが発生しなかった::::::::::::
+:novevent_no_event
+DelObj 90;
+DelObj 91;
+Goto MFlag[24];
+End;
+
+
+

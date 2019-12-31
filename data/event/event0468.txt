@@ -1,0 +1,52 @@
+セントティル大聖堂：裏口
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+
+:start
+Stop 1;
+SetObjPos 0,4,5,2;
+SetObjView 0,0;
+PlayBGM 17;
+
+:loop
+MapColor 255-MFlag[0],0,0,0;
+Store MFlag[0],MFlag[0]+4;
+Wait 1;
+If MFlag[0],255,<,:loop ;
+
+Wait 30;
+SetObj 1,4,6,2,1,24,0,1,0,GravJump,0;
+SetObjGoal 1,4,5,2;
+Wait 40;
+
+SetMes 聖堂の裏って、$nここでいいのかしら。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes ・・・まだ来てないのね。$nちょっと早かったな・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+PlayWave 17;
+Wait 8;
+SetMes ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes だ・・・誰か・・・。,
+       0,128,96,64,RightTop,0;
+Wait 20;
+SetMes ！！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjSpeed 1,12;
+SetObjGoal 1,4,2,2;
+Wait 36;
+
+ChangeMap 469,3,6,2,0;
+End;

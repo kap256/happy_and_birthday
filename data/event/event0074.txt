@@ -1,0 +1,111 @@
+宝の洞窟：罠
+11,12,15,37
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    12 -1 :talk ;
+
+#hamari.txt
+:start
+EndEventSkip ;
+PlayBGM 4;
+SetAniObj 12,7,2,2,0,24,0,161,1,GravJump,ShowTurn;
+SetPutObj 10,5,4,4,24,310,1;
+SetBox 11,7,6,2,1,24;
+
+If Flag[7],28,<,:skip;
+IfBox 0,5,2,8,7,0,:skip ;
+SetObjPos 0,2,8,7;
+:skip
+If Flag[7],20,<,:event1;
+If Flag[7],24,<,:event2;
+If Flag[7],28,<,:event3;
+End;
+
+:walk
+IfBox 0,2,9,3,9,0,Current+2 ;
+ChangeMap 75,ObjSX[0]+1,2,2,3;
+IfBox 0,2,1,3,1,0,Current+2 ;
+ChangeMap 78,ObjSX[0]+1,19,2,1;
+End;
+
+:talk
+Stop 1;
+SetMes 「はまったら、$n　あせらず騒がず$n　決定ボタン」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes 「何もない方を向いて押すのが$n　ポイントだ」,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:event1
+StartEventSkip ;
+Store Flag[7],20;
+Stop 1;
+PlayBGM 39;
+SetObj 0,4,5,7,2,32,0,1,1,GravJump,1;
+SetObj 1,4,6,7,2,24,0,7,0,GravJump,1;
+SetCameraSpeed 20;
+SetCamera 50,200,0;
+Wait 50;
+SetMes アレに見えるは、$n夢とロマンの箱！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 50;
+SetMes いつもの宝箱じゃない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetObjGoal 1,4,7,7;
+SetObjDir 0,3;
+SetMes らんらんる～♪,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 24;
+SetObjGoal 1,5,7,7;
+Wait 24;
+SetObjDir 0,2;
+SetObjGoal 1,5,4,4;
+Wait 48;
+SetMes ちょっとちょっと、$nそんな軽率に降りると・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+SetObjGoal 10,5,3,3;
+Wait 24;
+SetObjGoal 1,7,4,2;
+SetObjDir 1,0;
+DelMes 1;
+Wait 48;
+SetObjDir 1,0;
+Wait 60;
+SetMes あうっ！$nハマった！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 言わんこっちゃない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 40;
+SetMes むぐぅ・・・。$nどうしよう・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+ChangeMap 74,7,4,2,0;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::
+:event2
+Store Flag[7],24;
+SetObjPos 10,5,3,3;
+SetObj 0,7,4,2,0,16,0,7,1,GravJump,1;
+SetObj 1,4,5,7,2,16,0,1,1,GravJump,1;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::
+:event3
+Store Flag[7],28;
+SetObjPos 0,2,8,7;
+End;

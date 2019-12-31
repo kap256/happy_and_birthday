@@ -1,0 +1,20 @@
+’n‰º…“¹FÅI‹xŒeŠ
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+
+:start
+SetSavePoint 10,3,3,2;
+End;
+
+:walk
+IfBox 0,3,10,4,10,0,Current+2 ;
+ChangeMap 296,ObjSX[0]+4,2,23,3;
+IfBox 0,15,5,15,5,0,Current+3 ;
+Store Flag[41],16;
+ChangeMap 298,2,4,9,1;
+End;

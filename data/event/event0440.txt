@@ -1,0 +1,46 @@
+ê}èëäŸ
+82,83
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :terminal_talk ;
+
+_END_HEAD_
+#lib_terminal.txt
+:start
+SetAniObj 10,9,10,2,10,32,0,334,1,GravJump,NoShadow+ShowTurn;
+
+SetEne 30,4,3,2,1,48,0,
+       0,0,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 31,6,3,2,1,48,0,
+       0,0,
+       46,0,6,
+       19,POWx15+LPx3;
+SetEne 32,8,3,2,1,48,0,
+       0,0,
+       46,0,6,
+       19,POWx15+LPx3;
+SetEne 33,10,3,2,1,48,0,
+       0,0,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 34,12,3,2,1,48,0,
+       0,0,
+       46,0,6,
+       19,POWx15+LPx3;
+
+Store MFlag[8],72;
+Goto :terminal_init ;
+End;
+
+:walk
+IfBox 0,11,1,11,1,0,Current+2 ;
+ChangeMap 438,11,13,2,1;
+
+IfBox 0,1,11,1,11,0,Current+2 ;
+ChangeMap 439,13,11,2,0;
+
+
+End;

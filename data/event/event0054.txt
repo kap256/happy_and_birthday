@@ -1,0 +1,182 @@
+トライアック商店
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:church
+ChangeMap 424,4,5,2,1;
+End;
+
+:start
+Stop 1;
+
+If CurrentMonth,14,=,:church ;
+If CurrentMonth,15,=,:church ;
+If Month,12,=,:church ;
+
+Store MFlag[18],Rand%8;
+
+
+SetAniObj 10,5,7,2,1,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 11,5,6,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 12,5,5,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 13,5,4,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 14,5,3,2,0,32,0,115,1,GravJump,BlockShadow;
+SetAniObj 15,5,2,2,1,32,0,114,1,GravJump,BlockShadow;
+SetObj    20,4,4,2,2,32,0,4,1,GravJump,0;
+If MFlag[18],0,!=,Current+2 ;
+SetObj    20,4,4,2,2,32,0,3,1,GravJump,0;
+
+If CurrentMonth,8,<,Current+3 ;
+If CurrentMonth,9,>,Current+2 ;
+SetObj    20,4,4,2,2,32,0,8,1,GravJump,0;
+If CurrentMonth,13,!=,Current+2 ;
+SetObj    20,4,4,2,2,32,0,51,1,GravJump,0;
+SetCamera 0-80,0-40,1;
+
+Wait 1;
+SetMes 身内だからといって、$n値下げはせんよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+If HardMode,0,=,Current+2 ;
+SetMes よく来たな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+If MFlag[18],0,!=,Current+2 ;
+SetMes 何が御入用でしょう。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+If CurrentMonth,8,<,Current+3 ;
+If CurrentMonth,9,>,Current+2 ;
+SetMes いらっしゃいませ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+If CurrentMonth,13,!=,Current+2 ;
+SetMes こんにちは！,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes 他に用は？,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+If MFlag[18],0,!=,Current+2 ;
+SetMes 他に御用は？,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+If CurrentMonth,8,<,Current+3 ;
+If CurrentMonth,9,>,Current+2 ;
+SetMes 他に用は$nありますか？,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+Shop 5+Business,1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+
+If CurrentMonth,8,=,:rithys ;
+If CurrentMonth,9,=,:rithys2 ;
+If CurrentMonth,13,=,:boy ;
+If MFlag[18],0,=,:tolgan ;
+If Month,4,=,:april ;
+If Month,5,=,:may ;
+If Month,7,=,:july ;
+If Month,9,=,:sep ;
+If Month,10,=,:sep ;
+If Month,11,=,:nov ;
+
+SetMes いい加減、$n耳にタコが出来たかもしれないが、$n商品の詳しい説明は、$nメニューボタンで見られるぞ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:tolgan
+SetMes 旦那様は$n商品の仕入れで居りませんぞ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 老体には$n店番もつらいですの。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+:rithys2
+SetMes 皆さん用事で出払っていて、$n留守番なんです。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+:rithys
+SetMes 店番には慣れてないですけど、$nがんばります。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+:boy
+SetMes みんな用事で$n出払っちゃってるよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:april
+SetMes もうすっかり$n春だな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 今度花見にでも行くか？$nちょうどそろそろ$n満開のはずだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:may
+SetMes 新商品が$n入ったぞ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes クリティカルに強い$nアイアンヘルムや、$n足止めに強い鉄のすね当て等、$n特殊効果も良くなってきたな。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:july
+SetMes ちょっと大取引が入ってな。$nトルガンと城下町まで$n行かねばならん。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 店番は頼んだぞ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:aug
+SetMes 新商品が$n入ったぞ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes まあ、見てからのお楽しみだ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:sep
+SetMes 商人仲間に、$n聖石の話をしているのだが、$nなかなか情報が集まらないな・・・。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+:nov
+SetMes なにか嫌な予感がするな・・・。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+SetMes 今のうちに、$n必要な物資を買いだめしておけよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],RightBottom,0;
+Wait 0;
+Goto :oncemore ;
+
+
+
+End;

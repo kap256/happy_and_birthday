@@ -1,0 +1,24 @@
+盗賊のアジト：入り口
+13,14
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 11;
+IfBox 0,3,8,5,10,1,:end ;
+SetEne 2,4,9,3,1,32,0,
+       0,0,
+       13,20,4,
+       1,0;
+:end
+End;
+
+:walk
+IfBox 0,4,10,4,10,0,Current+2 ;
+ChangeMap 395,16,2,2,3;
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 59,ObjSX[0]-1,14,3,1;
+End;

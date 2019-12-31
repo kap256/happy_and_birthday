@@ -1,0 +1,185 @@
+フィーレス村：農場前
+22,23,52,53,54
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+If Flag[50],0,=,:event1 ;
+If Flag[50],1,=,:event2 ;
+EndEventSkip ;
+
+SetBox 5,4,8,2,2,180;
+SetBox 6,4,10,2,2,181;
+
+PlayBGM 29;
+
+::終了イベント関連::::::::::::::::::::::::::::::::
+Store MFlag[24],:ret_novevent;
+
+::::カメラ
+Store MFlag[25],60;
+Store MFlag[26],20;
+
+::::キャラ座標
+SetObj 90,5,9,2,2,32,0,0,1,GravJump,1;
+SetObj 91,8,8,2,0,32,0,8,1,GravJump,1;
+
+Goto :check_novevent;
+#nov_event.txt
+:ret_novevent
+::ここまで::::::::::::::::::::::::::::::::::::::::
+
+SetEne 1,1,9,9,Rand,24,30,
+       0,10,
+       22,2,4,
+       13,0;
+SetEne 2,10,4,2,Rand,24,30,
+       0,10,
+       22,2,4,
+       13,0;
+
+End;
+:walk
+IfBox 0,15,3,15,4,0,Current+2 ;
+ChangeMap 325,2,ObjSY[0],2,2;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event1
+StartEventSkip;
+Store ShopOK[5],1;
+Store Flag[50],1;
+Stop 1;
+
+SetCamera 80,100,1;
+SetObj 4,3,11,9,2,16,0,211,0,GravJump,0;
+SetAniObj 1,6,10,2,0,16,0,325,1,GravJump,ShowTurn;
+SetObj 2,8,10,2,0,32,0,211,0,GravJump,0;
+SetObj 3,6,7,2,3,32,0,211,0,GravJump,0;
+SetAniObj 0,4,9,2,5,16,0,325,1,GravJump,ShowTurn;
+If IsMember[10],0,>,:no_clot_1 ;
+SetAniObj 6,6,9,2,12,16,0,325,1,GravJump,ShowTurn;
+:no_clot_1
+Wait 20;
+SetMes ・・・くっ、$n手ごわい・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetMes ふふん、どうだっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 2;
+SetCameraSpeed 10;
+SetCamera 80,0-40,0;
+SetMes オレらの農業パワーの前には、$nお前らなんか、ひとひねりだぜ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 120;
+SetObjGoal 4,4,11,2;
+SetObjDir 4,1;
+Wait 0;
+DelMes 1;
+Wait 20;
+SetAniObj 4,4,11,2,4,16,0,316,0,GravJump,0;
+SetAniObj 0,4,9,2,6,16,0,325,1,GravJump,0;
+SetMes ・・・きゃあっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 20;
+SetObjDir 1,8;
+SetMes なっ！$nいつの間に・・・っ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+ChangeMap 326,0,0,0,3;
+:::::::::::::::::::::::::::::::::::::
+:event2
+Store Flag[50],2;
+Stop 1;
+SetObjPos 0,4,10,2;
+SetObjView 0,0;
+SetAniObj 1,4,10,2,1,16,0,325,0,GravJump,0;
+SetAniObj 2,4,11,2,7,32,0,316,0,GravJump,0;
+SetObj 3,6,7,2,3,32,0,211,0,GravJump,0;
+SetObj 4,8,10,2,0,32,0,211,0,GravJump,0;
+SetAniObj 5,4,9,2,6,16,0,325,1,GravJump,0;
+If IsMember[10],0,>,:no_clot_2 ;
+SetAniObj 6,6,9,2,12,16,0,325,1,GravJump,0;
+:no_clot_2
+SetObj 10,12,5,2,0,10,0,0,0,GravJump,0;
+SetObj 11,13,4,2,0,16,0,8,0,GravJump,0;
+SetObjGoal 10,5,5,2;
+SetObjGoal 11,4,4,2;
+SetObjDir 10,3;
+SetObjDir 11,3;
+SetCameraSpeed 30;
+SetCamera 600,0-60,1;
+SetCamera 100,0-60,0;
+Wait 70;
+PlayWave 16;
+SetMes 大丈夫・・・！？,
+       0,ObjX[10],ObjY[10],ObjZ[10],RightTop,0;
+Wait 74;
+SetMes ！？,
+       2,ObjX[11],ObjY[11],ObjZ[11],RightBottom,0;
+Wait 10;
+SetMes ぐ、・・・あ、,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,LeftBottom,0;
+SetObjDir 1,2;
+SetObjDir 2,6;
+Wait 60;
+SetObjDir 1,3;
+Wait 0;
+DelMes 2;
+DelMes 1;
+SetAniObj 10,5,5,2,0,10,0,301,0,GravJump,0;
+SetMes ・・・くそぉっ！,
+       0,ObjX[10],ObjY[10],ObjZ[10],RightTop,0;
+SetObj 2,4,11,2,1,32,0,211,0,GravJump,0;
+SetObjDir 3,1;
+SetObjDir 4,1;
+Wait 0;
+DelMes 0;
+Wait 20;
+Battle Rand%2*3+8;
+StartEventSkip ;
+SetCamera 0,0,1;
+DelObj 2;
+DelObj 3;
+DelObj 4;
+DelObj 11;
+SetObjPos 0,5,9,2;
+SetAniObj 1,5,9,2,4,16,0,325,0,GravJump,0;
+SetAniObj 5,4,9,2,7,16,0,325,1,GravJump,ShowTurn;
+SetAniObj 6,5,8,2,9,16,0,325,1,GravJump,0;
+SetAniObj 10,6,9,2,11,16,0,325,1,GravJump,0;
+Wait 20;
+SetMes あなた！$n大丈夫！あなた！,
+       1,ObjX[5],ObjY[5],ObjZ[5]-8,RightBottom,0;
+Wait 8;
+SetMes ああう・・・。$nと、父ちゃん・・・。,
+       2,ObjX[6],ObjY[6],ObjZ[6]-8,LeftBottom,0;
+Wait 30;
+SetMes くそっ！$nかなり深いぞ！,
+       0,ObjX[10],ObjY[10],ObjZ[10]-8,LeftTop,0;
+Wait 0;
+DelMes 1;
+SetObjDir 10,13;
+SetMes クロット！$nここじゃ無理だ！$n急いで教会に運んでくれ！,
+       0,ObjX[10],ObjY[10],ObjZ[10]-8,LeftTop,0;
+Wait 50;
+Wait 0;
+SetMes クロット！$n一刻を争うんだ！$nしっかりしろ！,
+       0,ObjX[10],ObjY[10],ObjZ[10]-8,LeftTop,0;
+Wait 30;
+SetMes あ、あ・・・。$nう、うん、分かった・・・！,
+       2,ObjX[6],ObjY[6],ObjZ[6]-8,LeftBottom,0;
+SetObjDir 6,10;
+Wait 0;
+DelMes 0;
+DelMes 2;
+Wait 20;
+LeaveParty 10;
+ChangeMap 326,ObjSX[1],ObjSY[1],ObjSZ[1],3;
+
+
+End;

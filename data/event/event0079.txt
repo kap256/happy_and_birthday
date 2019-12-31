@@ -1,0 +1,26 @@
+•ó‚Ì“´ŒAF¬•”‰®‚»‚Ì‚P
+1,2,8
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+#hamari.txt
+:start
+SetEne 1,5,5,2,2,48,10,
+       0,3,
+       1,2,8,
+       2,0;
+
+SetBox 5,7,2,2,3,41;
+SetPutObj 10,3,4,2,24,310,1;
+SetPutObj 11,6,6,2,24,310,1;
+SetPutObj 12,6,2,2,24,310,1;
+SetPutObj 13,7,3,2,24,310,1;
+SetPutObj 14,8,3,2,24,310,1;
+End;
+
+:walk
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 78,6,10,2,0;
+End;

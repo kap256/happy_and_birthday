@@ -1,0 +1,59 @@
+‹ó’†’ë‰€FI’[
+10,19,63
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+#skygarden.txt
+#forest.txt
+
+:start
+SetEne 1,5,11,11,3,20,0,
+       0,0,
+       48,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+SetEne 2,5,16,11,3,20,0,
+       0,0,
+       48,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+SetEne 3,5,21,11,3,20,0,
+       0,0,
+       48,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+SetEne 4,5,26,11,3,20,0,
+       0,0,
+       48,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+
+Store MFlag[8],489 ;
+Store MFlag[9],12 ;
+Store MFlag[15],:return_forest ;
+
+Goto :forest_init ;
+:return_forest
+Goto :skygarden_init ;
+
+:walk
+IfBox 0,5,5,5,5,0,Current+7 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+If Flag[99],1,>,Current+2;
+Store Flag[99],1;
+ChangeMap 535,5,7,2,3;
+IfBox 0,5,31,5,31,0,Current+2 ;
+ChangeMap 638,10,2,18,3;
+
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;

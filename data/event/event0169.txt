@@ -1,0 +1,46 @@
+ÉsÉâÉ~ÉbÉhÅFÇQÅ|ÇT
+26,27
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+
+SetEne 2,6,7,2,Rand,48,10,
+       0,8,
+       36,0,4,
+       9,0;
+
+SetEne 3,6,5,2,Rand,48,10,
+       0,8,
+       36,0,4,
+       9,0;
+SetNormalTrap  10,3,3,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  11,4,4,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  12,5,5,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  13,6,6,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  14,7,7,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  15,8,8,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  16,9,9,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  17,10,10,2,176,60,0,10,27,NoShadow;
+
+SetNormalTrap  18,3,10,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  19,4,9,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  20,5,8,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  21,6,7,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  22,7,6,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  23,8,5,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  24,9,4,2,176,60,0,10,27,NoShadow;
+SetNormalTrap  25,10,3,2,176,60,0,10,27,NoShadow;
+End;
+
+:walk
+IfBox 0,6,1,7,1,0,Current+2 ;
+ChangeMap 173,ObjSX[0],11,2,1;
+IfBox 0,12,6,12,7,0,Current+2 ;
+ChangeMap 166,2,ObjSY[0]+4,2,2;
+IfBox 0,1,6,1,7,0,Current+2 ;
+ChangeMap 170,11,ObjSY[0],2,0;
+End;

@@ -1,0 +1,68 @@
+フィーレス地下迷宮：正面の出口
+63
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :switch ;
+
+_END_HEAD_
+:start
+SetEne 1,3,12,2,2,24,10,
+       0,5,
+       16,0,3,
+       5,0;
+
+SetBox 5,5,9,2,0,45;
+
+SetLiftObj 20,3,4,6,0,24,0,173,BlockShadow;
+SetLiftObj 21,4,4,6,0,24,0,173,BlockShadow;
+SetLiftObj 22,3,5,6,0,24,0,173,BlockShadow;
+SetLiftObj 23,4,5,6,0,24,0,173,BlockShadow;
+
+SetAniObj 10,2,9,2,0,32,0,174,1,GravJump,NoShadow;
+If Flag[11],1,<,Current+2;
+SetAniObj 10,2,9,2,4,32,0,174,1,GravJump,NoShadow;
+End;
+
+:walk
+IfBox 0,3,16,4,16,0,Current+2 ;
+ChangeMap 89,ObjSX[0]+3,2,9,3;
+End;
+
+
+:switch
+Stop 3;
+If Flag[11],1,<,:switchon ;
+
+SetMes 今はもう$n動かない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;
+:switchon
+Store Flag[11],1;
+PlayWave 9;
+SetObjDir 10,1;
+Wait 4;
+SetObjDir 10,4;
+Wait 30;
+
+:shake
+PlayWave 12;
+SetCamera 2,0,1;
+Wait 3;
+SetCamera 0,0,1;
+Wait 3;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],8,<,:shake ;
+Wait 30;
+SetMes どこかで何かが$n崩れる音がした。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;

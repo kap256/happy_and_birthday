@@ -1,0 +1,15 @@
+¼‚Ì“´ŒAF‚«”²‚¯
+0,1
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+End;
+:walk
+IfBox3D 0,8,4,2,8,4,2,0,Current+2 ;
+ChangeMap 36,2,6,7,2;
+IfBox3D 0,8,4,15,8,4,15,0,Current+2 ;
+ChangeMap 40,2,5,2,2;
+End;

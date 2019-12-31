@@ -1,0 +1,36 @@
+è…éqçzéR
+44,45,46,47
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,5,3,2,Rand,48,10,
+       0,5,
+       45,0,6,
+       2,0;
+SetEne 3,2,14,2,Rand,48,10,
+       0,5,
+       46,2,5,
+       2,0;
+SetEne 4,5,11,2,Rand,32,10,
+       0,5,
+       44,0,6,
+       2,0;
+
+SetBox 10,3,6,2,2,131;
+
+SetPutObj 20,5,5,2,24,311,1+Heavy1;
+SetPutObj 21,5,4,2,24,311,1+Heavy1;
+SetPutObj 22,4,5,2,24,311,1+Heavy1;
+SetPutObj 23,4,6,2,24,311,1+Heavy1;
+End;
+
+:walk
+IfBox 0,10,4,10,14,0,Current+2 ;
+ChangeMap 259,2,ObjSY[0],2,2;
+IfBox 0,3,20,4,20,0,Current+2 ;
+ChangeMap 260,ObjSX[0]+1,2,2,3;
+End;

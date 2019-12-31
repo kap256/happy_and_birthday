@@ -1,0 +1,28 @@
+}‘ŠÙ
+82,83
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 30,8,10,2,Rand,48,10,
+       0,4,
+       1,0,6,
+       19,POWx15+LPx3;
+SetEne 34,4,4,2,3,48,0,
+       0,0,
+       46,4,6,
+       19,POWx15+LPx3;
+
+End;
+
+:walk
+IfBox 0,14,11,14,11,0,Current+2 ;
+ChangeMap 434,2,11,2,2;
+
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 431,4,13,2,1;
+
+
+End;

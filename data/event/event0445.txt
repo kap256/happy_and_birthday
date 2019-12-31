@@ -1,0 +1,63 @@
+南の森：入り口
+2,5,8,10
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest.txt
+:start
+Store MFlag[8],22;
+Store MFlag[9],3;
+If Flag[73],4,<,:event ;
+EndEventSkip ;
+PlayBGM 6;
+
+SetBox 1,3,10,2,2,249;
+SetBox 2,3,11,2,2,250;
+SetEne 3,7,9,3,Rand,24,20,
+       0,8,
+       10,0,2,
+       6,0;
+Goto :forest_init ;
+
+:walk
+IfBox 0,6,1,7,1,0,Current+2 ;
+ReturnVillage 0;
+IfBox 0,6,15,7,15,0,Current+2 ;
+ChangeMap 446,ObjSX[0]+15,2,2,3;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+PlayBGM 6;
+
+StartEventSkip;
+Stop 1;
+SetObjView 0,0;
+SetObj 1,6,4,2,15,24,0,69,1,GravJump,1;
+SetObjGoal 1,6,15,2;
+SetCameraSpeed 14;
+SetCamera 0-240,152,1;
+SetCamera 0,32,0;
+NewLine 0,0,:event2 ;
+Goto :forest_init ;
+
+:event2
+Wait 20;
+MapTitle ;
+Wait 180;
+SetObj 2,7,1,2,15,24,0,2,1,GravJump,1;
+SetObjGoal 2,7,3,2;
+Wait 50;
+SetMes 追いかけてみたら、$nこんな森に来ちゃった。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes クマさんにでも$nあげるのかな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 20;
+Store Flag[73],4;
+ChangeMap 445,7,3,2,3;
+End;

@@ -1,0 +1,108 @@
+フィーレス地下迷宮：飛天回廊
+9,29,63
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+TimeFlame -1 -1 :timer ;
+
+_END_HEAD_
+:start
+SetEne 1,5,6,2,Rand,16,10,
+       0,10,
+       16,2,4,
+       5,0;
+SetEne 2,6,16,2,Rand,16,10,
+       0,10,
+       16,2,4,
+       5,0;
+SetEne 3,6,23,2,Rand,16,10,
+       0,6,
+       16,2,4,
+       5,0;
+SetEne 4,8,12,2,Rand,16,10,
+       0,10,
+       16,2,4,
+       5,0;
+
+SetBox 21,13,28,10,0,52;
+
+SetLiftObj 29,5,5,8,0,24,0,175,BlockShadow;
+SetLiftObj 30,4,8,8,0,24,0,173,BlockShadow+1;
+SetLiftObj 31,6,6,8,0,24,0,173,BlockShadow+1;
+
+SetLiftObj 32,9,11,8,0,24,0,173,BlockShadow+1;
+SetLiftObj 33,8,15,8,0,24,0,173,BlockShadow;
+
+SetLiftObj 34,9,18,8,0,24,0,175,BlockShadow;
+SetLiftObj 35,7,19,8,0,48,0,173,BlockShadow+1;
+SetLiftObj 37,9,20,8,0,20,0,175,BlockShadow+2;
+SetLiftObj 36,10,21,8,0,32,0,173,BlockShadow+3;
+
+SetLiftObj 38,9,24,8,0,22,0,175,BlockShadow;
+SetLiftObj 39,9,25,8,0,22,0,173,BlockShadow+1;
+SetLiftObj 40,9,26,8,0,22,0,173,BlockShadow+2;
+SetLiftObj 41,9,27,8,0,22,0,173,BlockShadow+3;
+
+NewLine 0,0,:lift1 ;
+NewLine 0,0,:lift2 ;
+Wait 10;
+End;
+
+:walk
+IfBox 0,16,4,16,5,0,Current+2 ;
+ChangeMap 97,16,ObjSY[0]+3,8,2;
+IfBox 0,1,27,1,28,0,Current+2 ;
+ChangeMap 100,7,ObjSY[0]-15,2,0;
+End;
+
+
+:lift1
+SetObjGoal 30,6,8,8;
+SetObjGoal 31,4,6,8;
+Wait 48;
+SetObjGoal 30,6,6,8;
+SetObjGoal 31,4,8,8;
+Wait 48;
+SetObjGoal 30,4,6,8;
+SetObjGoal 31,6,8,8;
+Wait 48;
+SetObjGoal 30,4,8,8;
+SetObjGoal 31,6,6,8;
+Wait 48;
+Goto :lift1 ;
+End;
+
+:lift2
+SetObjGoal 32,9,14,8;
+SetObjGoal 33,8,12,8;
+Wait 120;
+SetObjGoal 32,9,11,8;
+SetObjGoal 33,8,15,8;
+Wait 120;
+Goto :lift2 ;
+End;
+
+:timer
+Store MFlag[0],35;
+:loop1
+IfBox MFlag[0],10,18,20,21,0,Current+2 ;
+SetObjGoal MFlag[0],7,ObjSY[MFlag[0]],8;
+IfBox MFlag[0],7,18,0,21,0,Current+2 ;
+SetObjGoal MFlag[0],10,ObjSY[MFlag[0]],8;
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],37,<,:loop1;
+
+
+Store MFlag[0],39;
+:loop2
+IfBox 0,9,ObjSY[MFlag[0]],9,ObjSY[MFlag[0]],0,:else ;
+SetObjGoal MFlag[0],10,ObjSY[MFlag[0]],8;
+Goto :after ;
+:else
+SetObjGoal MFlag[0],9,ObjSY[MFlag[0]],8;
+:after
+Store MFlag[0],MFlag[0]+1;
+If MFlag[0],42,<,:loop2;
+End;
+

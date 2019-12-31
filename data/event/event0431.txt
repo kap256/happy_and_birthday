@@ -1,0 +1,26 @@
+ê}èëäŸ
+82,83
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    10 -1 :terminal_talk ;
+
+_END_HEAD_
+#lib_terminal.txt
+:start
+SetAniObj 10,7,4,2,10,32,0,334,1,GravJump,NoShadow+ShowTurn;
+
+Store MFlag[8],67;
+Goto :terminal_init ;
+End;
+
+:walk
+IfBox 0,4,14,4,14,0,Current+2 ;
+ChangeMap 433,4,2,2,3;
+
+IfBox 0,14,2,14,2,0,Current+2 ;
+ChangeMap 432,2,2,5,2;
+
+
+
+End;

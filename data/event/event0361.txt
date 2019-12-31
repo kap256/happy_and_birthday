@@ -1,0 +1,87 @@
+フィーレス地下迷宮：第一層・終点
+56,57
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    15 -1 :switch ;
+Hit     0 1 :boss ;
+
+_END_HEAD_
+:boss
+Store Flag[56],8;
+End;
+
+:start
+If Flag[56],4,>,:no_boss ;
+SetEneL 1,6,4,2,2,32,0,
+        0,0,17;
+:no_boss
+
+SetSavePoint 5,8,2,2;
+
+SetBox 10,2,5,2,2,202;
+
+SetAniObj 15,2,3,2,0,32,0,174,1,GravJump,1;
+If Flag[57],1,<,Current+2;
+SetAniObj 15,2,3,2,4,32,0,174,1,GravJump,1;
+End;
+
+:walk
+IfBox 0,8,10,9,10,0,Current+2 ;
+ChangeMap 355,ObjSX[0]-5,2,2,3;
+IfBox 0,14,4,14,4,0,:end ;
+Store Flag[3],1;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 341,12,5,7,0;
+:end
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:switch
+Stop 3;
+If Flag[57],1,<,:switchon ;
+
+SetMes 今はもう$n動かない。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;
+:switchon
+Store Flag[57],1;
+PlayWave 9;
+SetObjDir 15,1;
+Wait 4;
+SetObjDir 15,4;
+Wait 30;
+PlayWave 22;
+SetCamera 2,0,1;
+Wait 1;
+SetCamera 0,0,1;
+Wait 20;
+SetMes エレベーター　ヲ$nキドウ　シマシタ。,
+       0,ObjX[15],ObjY[15],ObjZ[15]-16,RightBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+
+End;
+
+End;

@@ -1,0 +1,19 @@
+フィーレス地下迷宮：星屑の杖
+27,28,29,30,46
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetEneL 1,6,4,2,2,32,0,
+        0,0,44;
+SetBox 5,3,4,2,2,299;
+End;
+
+:walk
+IfBox 0,13,4,13,4,0,Current+2 ;
+ChangeMap 523,2,6,11,2;
+
+End;

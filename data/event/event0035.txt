@@ -1,0 +1,26 @@
+閉じ込めの塔：エントランス
+0,1
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 13;
+SetEne 1,4,9,5,0,48,10,
+       0,5,
+       5,3,3,
+       3,0;
+
+SetEne 2,7,9,5,0,48,10,
+       0,5,
+       5,3,3,
+       3,0;
+
+End;
+:walk
+IfBox 0,5,2,6,3,0,Current+2 ;
+ChangeMap 36,ObjSX[0]+5,19,3,1;
+IfBox 0,5,15,6,15,0,Current+2 ;
+ChangeMap 34,ObjSX[0]-1,4,2,3;
+End;

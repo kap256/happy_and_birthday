@@ -1,0 +1,19 @@
+フィーレス地下迷宮：黄金の斧
+27,28,29,30,46
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+
+_END_HEAD_
+:start
+SetEneL 1,7,4,4,0,32,0,
+        0,0,45;
+SetBox 5,10,4,4,0,300;
+End;
+
+:walk
+IfBox 0,1,4,1,4,0,Current+2 ;
+ChangeMap 523,9,18,11,0;
+
+End;

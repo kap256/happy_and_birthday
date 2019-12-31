@@ -1,0 +1,101 @@
+オーリウェン屋敷
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+PlayBGM 0;
+
+SetObj 0,6,5,2,3,32,0,5,1,GravJump,1;
+SetObj 1,11,6,2,0,32,0,0,1,GravJump,1;
+SetObj 2,6,6,2,1,24,0,56,1,GravJump,1;
+
+SetCamera 240,180,1;
+SetObjGoal 1,10,6,2;
+Wait 1;
+SetMes 本日は$nありがとうございます。$nトライアック商店です。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes ・・・ん？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+SetCameraSpeed 15;
+SetCamera 0,60,0;
+Wait 30;
+PlayBGM 32;
+Wait 10;
+SetMes 今月だけでもう６回！$n警備は一体$n何をなさっているの！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetMes すいません、$nミゼリアお嬢様。$nしかし、我々も全力で･･･。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 30;
+SetMes 言い訳など$n聞きたくありませんわ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes もう一度$nこのようなことがあったら、$n解雇もありえますわよ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 50;
+SetMes はっ！$n細心の注意を払い$n警備に当たります！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetObjGoal 2,9,6,2;
+Wait 72;
+SetMes 失礼。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 20;
+SetObjGoal 1,10,7,2;
+SetObjDir 1,1;
+Wait 24;
+SetObjGoal 2,11,6,2;
+Wait 24;
+DelMes 2;
+Wait 24;
+DelObj 2;
+Wait 30;
+SetMes あの、$n何かあったんです？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+SetObjDir 1,0;
+Wait 50;
+SetObjDir 0,2;
+SetMes あら。$n頼んでいたお店の方ですの？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes ええ。$nカリスといいます。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetObjDir 0,3;
+SetMes このところ、$n夜に物音がしたり、$n窓を割られたり、$n不審なことが続いていますの。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes 警備員を$n増やしたりしてみたものの、$nまるで賊の足取りもつかめず$nほとほと困り果てて･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetMes 物騒ですね･･･。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 16;
+SetFadeOut 40;
+Wait 40;
+PlayBGM 2;
+Wait 16;
+SetObjDir 0,2;
+SetMes まあ、$nあなたには関係ないですわね。$n見積もりのほうをお願いしますわ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 60;
+SetMes ええ。$nどこからかかりましょう？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+
+ChangeMap 219,2,5,2,0;
+End;

@@ -1,0 +1,43 @@
+からくり屋敷：ピンボール
+32
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,14,6,2,0,24,0,
+       9,3,
+       32,2,2,
+       4,0;
+SetEne 2,11,6,2,3,24,0,
+       9,3,
+       32,2,2,
+       4,0;
+SetEne 3,11,9,2,2,24,0,
+       9,3,
+       32,2,2,
+       4,0;
+SetEne 4,14,9,2,1,24,0,
+       9,3,
+       32,2,2,
+       4,0;
+SetEne 5,7,7,2,0,24,0,
+       11,1,
+       32,2,3,
+       4,0;
+
+SetBox 10,10,9,2,1,111;
+SetBox 11,6,9,2,1,112;
+SetBox 12,7,9,2,1,113;
+
+SetNormalTrap  20,8,6,2,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap  21,9,6,2,176,40,0,50,27,NoShadow+ShowTurn;
+End;
+:walk
+IfBox 0,20,2,20,3,0,Current+2 ;
+ChangeMap 228,2,ObjSY[0]+3,2,2;
+IfBox 0,1,7,1,8,0,Current+2 ;
+ChangeMap 231,6,ObjSY[0]-2,2,0;
+End;

@@ -1,0 +1,22 @@
+地下墓所：終点
+36,56,57
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#coffin.txt
+:start
+Store MFlag[8],6;
+
+SetSavePoint 5,2,4,2;
+SetBox 10,6,4,2,0,282;
+Goto :coffin_init ;
+
+:walk
+IfBox 0,4,8,4,8,0,Current+2 ;
+ChangeMap 488,6,2,2,3;
+
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 491,2,6,5,1;
+End;

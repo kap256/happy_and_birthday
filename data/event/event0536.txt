@@ -1,0 +1,232 @@
+フィーレス地下迷宮
+22,23,52,53,54
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+
+Stop 1;
+If Flag[83],20,=,:event2 ;
+
+::::::::::::::::::::::::::::::::::::::::::::::
+:event1
+PlayBGM 5;
+SetAniObj 0,3,6,2,5,16,0,305,1,GravJump,1;
+SetObj 1,5,6,2,0,32,0,60,1,GravJump,1;
+SetCamera 0-320,0-160,1;
+SetCamera 80,40,0;
+SetCameraSpeed 14;
+Wait 240;
+
+SetMes ・・・・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 50;
+SetMes 怖い思いをさせてしまって、$nすまない。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetMes ・・・謝って済むことじゃないと$n分かっているが、$nほんの少しだけ$n君の力が必要なんだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes 事が済んだら、$nどうしてくれても構わない。$nだから・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetObjDir 1,1;
+PlayBGM 0;
+SetMes ！$n・・・来たか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+PlayBGM 57;
+DelMes 1;
+SetObj 2,6,1,2,2,48,0,63,1,GravJump,1;
+SetObjGoal 2,6,3,2;
+SetObjGoal 1,6,5,2;
+SetObjDir 1,1;
+SetCamera 260,40,0;
+Wait 48;
+SetMes 状況はどうだ？$nディアノ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetObjDir 1,0;
+SetMes 娘は確保しましたが、$nジュラがやられました。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetObjDir 1,1;
+SetMes ジュラもか・・・。$n伝令によれば、$nガルドスもやられたそうだ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 50;
+SetMes ガルドスも、$nですか？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes ふん。$nこれでは、まともに頼りになるのは$n貴様しか残っておらんな、$nディアノ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes ・・・そうですね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 60;
+
+SetAniObj 1,6,4,2,0,32,0,351,1,GravJump,1;
+SetCamera 320,10,1;
+PlayWave 31;
+PlayBGM 0;
+Store MFlag[0],255;
+:black
+MapColor MFlag[0],255,255,255;
+Wait 1;
+Store MFlag[0],MFlag[0]-8;
+If MFlag[0],0,>,:black ;
+MapColor 0,0,0,0;
+Wait 30;
+SetAniObj 2,6,3,2,14,48,0,63,1,GravJump,1;
+SetMes ぐはっ・・・！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,LeftBottom,0;
+Wait 10;
+SetObjDir 2,15;
+Wait 30;
+SetMes これで貴様を守る人間が$n一人もいなくなったわけだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetObjDir 1,1;
+SetMes ぐ・・・、$n・・・キサマッ！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,LeftBottom,0;
+Wait 40;
+SetMes あれから五年・・・。$n地獄のような毎日だった。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 2;
+SetMes 貴様に近づくために、$n下卑た組織に入り、$n手足のように働き・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+SetMes だがしかし、$nようやくチャンスが巡って来た。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes ・・・おのれ・・・っ！,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 30;
+SetMes 安心しろ。$n苦しまないように$nすぐにトドメを差してやる。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes ぐ・・・ぐ、$n・・・・・・くっ・・・くっく。$nコッコッコッコッコ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,LeftBottom,0;
+Wait 0;
+SetMes ・・・何がおかしい。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes ・・・聖石とは何なのか、$n知っておるだろう？,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,LeftBottom,0;
+Wait 0;
+DelMes 1;
+SetMes そう、$n夢の卵を起動する動力源であり、$n・・・・・・強大な力を持った$n誕生石でもある。,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,LeftBottom,0;
+Wait 0;
+SetMes ・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 40;
+SetMes 並の誕生石で$nあれだけの力を引き出せるのだ。$n・・・それが聖石ならどうかな？,
+       2,ObjX[2],ObjY[2],ObjZ[2]-16,LeftBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+
+
+Wait 20;
+ChangeMap 533,4,5,2,1;
+
+End ;
+
+::::::::::::::::::::::::::::::::::::::::::::::
+:event2
+SetAniObj 0,5,5,2,4,32,0,351,1,GravJump,1;
+SetAniObj 1,6,4,2,0,64,0,330,1,GravJump,Wall1;
+SetObj 2,6,3,2,1,64,0,63,1,GravJump,1;
+SetObj 3,1,5,5,2,24,0,1,1,GravLock,1;
+SetAniObj 10,6,5,2,0,32,0,329,1,GravJump,NoShadow;
+SetObjGoal 1,6,3,2;
+SetObjGoal 2,6,2,2;
+SetCamera 100,0-50,1;
+Wait 10;
+
+SetMes ・・・くっ・・・,
+       0,ObjX[0],ObjY[0],ObjZ[0]-16,LeftBottom,0;
+Wait 20;
+SetMes いやぁ！$n離して・・・！,
+       1,ObjX[1],ObjY[1]-16,ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 2,3;
+Wait 30;
+SetMes フン。バカめ。$n従順でいれば$nいい思いを出来たものを。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes 王と呼ばれたこのワシが、$n貴様のことに気づかないとでも$n思ったか。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+SetCamera 0,0-50,0;
+SetObjGoal 3,2,5,5;
+Wait 30;
+SetMes ！$nディアノ！？$n・・・何！？　どうなってるの！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+SetObjDir 2,0;
+Wait 0 ;
+SetMes おやおや。$n御婦人の到着か。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 30;
+SetAniObj 3,2,5,5,1,24,0,130,1,GravLock,1;
+SetMes ！！$nあんたは！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes コッコッコ・・・。$n殺気立つのも構わんが、$n他にすることがあるのではないかね？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetMes ！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetObjDir 2,3;
+SetMes 見えるだろう？$n君の大切な旦那さんが$n息も絶え絶えだ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 40;
+SetObj 3,2,5,5,2,24,0,1,1,GravLock,1;
+SetMes ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetMes 今ならまだ$n助かるかもしれんぞ？$n・・・そういう傷にした。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 50;
+SetMes う・・・っ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+DelMes 3;
+SetMes まあ、ワシは$n君が手当てしている間に$nゆっくり卵を使わせてもらうとしよう。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetObjGoal 1,6,1,2;
+SetObjGoal 2,6,1,2;
+SetMes コッコッコ・・・。$nカッカッカッカッカッカ！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 64;
+SetObjView 2,0;
+SetObjDir 3,1;
+SetMes ・・・・・・～～～～っ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 64;
+DelObj 1;
+DelMes 2;
+Wait 0;
+DelMes 3;
+
+Wait 20;
+ChangeMap 532,4,5,2,1;
+
+End ;
+
+

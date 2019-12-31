@@ -1,0 +1,197 @@
+南の島：遺跡前
+0
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 14;
+If Flag[27],15,<,:event ;
+SetSavePoint 10,5,3,3;
+
+End;
+:walk
+IfBox 0,15,4,15,5,0,Current+2 ;
+ChangeMap 193,2,ObjSY[0]+3,4,2;
+IfBox 0,3,4,3,5,0,Current+2 ;
+ChangeMap 195,9,ObjSY[0],7,0;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+Store Flag[27],15;
+Stop 1;
+
+If HardMode,1,=,:event_hard ;
+SetObj 0,9,5,3,1,32,0,1,1,GravJump,1;
+SetObj 1,15,4,3,0,32,0,0,1,GravJump,1;
+SetObj 2,9,3,3,3,32,0,53,1,GravJump,1;
+
+SetCamera 420,160,1;
+SetObjGoal 1,14,4,3;
+Wait 32;
+SetMes ん？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+SetCameraSpeed 20;
+SetCamera 100,0,0;
+Wait 160;
+
+::ここでノーマルとハードが合流::
+:event_hard2
+SetObjGoal 1,11,4,3;
+DelMes 1;
+Wait 100;
+SetMes ねえ、知り合い？$nレーナ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 30;
+SetObjDir 0,2;
+SetObjDir 2,2;
+Wait 40;
+SetMes いいえ。$n知らない人。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetMes これは失礼。$n旦那さんがいらっしゃるとは$n夢にも思いませんでした。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+SetObjDir 0,1;
+Wait 80;
+SetMes そ、そう見えます？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 5;
+SetMes ただの友達です。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+SetAniObj 1,11,4,3,5,32,0,126,1,GravJump,1+ShowTurn;
+SetMes ･･････。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+DelMes 0;
+Wait 10;
+SetObjDir 2,3;
+SetMes 自己紹介が遅れましたね。$n私はラルド。$n古代テクノロジーの研究を$nしているものです。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes 研究者さん？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 2,0;
+SetMes ええ。$n今日もこちらの遺跡の調査に来たのです。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetObjDir 2,3;
+SetMes すごいのですよ。$n古代テクノロジーは。,
+       3,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes そうなんですか。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+DelMes 3;
+SetObj 1,11,4,3,0,32,0,0,1,GravJump,1;
+SetMes 古代テクノロジーっていっても、$nずっと昔の話なんでしょう？$n今の方が発展してるんじゃ$n無いんですか？,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 20;
+SetObjDir 2,2;
+Wait 60;
+SetMes そんなことはありません。$nむしろ、今でも再現できないものの方が$n多いぐらいです。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetAniObj 2,9,3,3,14,32,0,53,1,GravJump,ShowTurn;
+SetMes たとえば・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetObjDir 2,15;
+DelMes 2;
+Wait 10;
+PlayWave 0;
+SetMes 「おとーさん、$n　きょーも、おしごと$n　がんばってね！」,
+       3,ObjX[2]+4,ObjY[2]-4,ObjZ[2]-8,LeftBottom,0;
+Wait 80;
+SetMes 声を記録する装置です。$n　　　　$nちなみにこれは、$n娘のアリサの声。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 60;
+SetMes へえぇ！$nすごいなぁ～。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 3;
+SetObj 2,9,3,3,2,32,0,53,1,GravJump,1;
+SetMes 興味をもたれましたかな。$nよければ、一緒に探索しませんか。$n私はにぎやかな方が好きでしてね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightTop,0;
+Wait 60;
+SetMes それじゃ、$nせっかくですし。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+SetParty 0;
+SetParty 1;
+If HardMode,0,=,:cmap ;
+SetParty Flag[77] ;
+SetParty Flag[78] ;
+
+:cmap
+ChangeMap 195,9,4,7,0;
+End;
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event_hard
+SetObjPos 0,7,5,3;
+SetObjView 0,0;
+SetObjSpeed 0,32;
+SetObj 3,14,5,3,1,64,0,1,0,GravJump,1;
+SetObj 2,14,3,3,3,32,0,53,1,GravJump,1;
+SetCamera 0,0-300,1;
+SetCamera 0,0,0;
+SetObjGoal 3,9,5,3;
+Wait 320;
+SetMes ・・・？$nなんだろ、この建物・・・。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+SetMes 古代文明の作り上げた$n遺跡の一つですよ。　,
+       2,ObjX[3]+110,ObjY[3]+32,ObjZ[3],RightBottom,0;
+Wait 30;
+SetObjDir 3,2;
+SetMes ！？,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 0;
+DelMes 2;
+DelMes 3;
+SetObjGoal 2,9,3,3;
+SetObjGoal 0,9,5,3;
+Wait 96;
+DelObj 3;
+SetObj 0,9,5,3,1,32,0,1,1,GravJump,1;
+
+SetMes はるか昔、$大きな権勢と素晴らしい技術を持ち、$nこの世の春を謳歌した古代文明。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes しかし、それほどの文明でありながら、$nある時を境にぱったりと$n痕跡を残すこともなく消えてしまった。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+SetMes 過去に何があったのか？$n古代文明は何処に行ってしまったのか？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 0;
+DelMes 2;
+Wait 60;
+SetObjDir 2,3;
+SetMes いかがですか？$n私は、そこにロマンを$n感じずにはいられない。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes ・・・・・・？,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 2;
+SetCamera 100,0,0;
+
+
+SetObj 1,14,4,3,0,32,0,0,1,GravJump,1;
+Goto :event_hard2;
+End;

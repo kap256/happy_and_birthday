@@ -1,0 +1,113 @@
+フィーレス地下迷宮：休憩所
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :sleep ;
+
+_END_HEAD_
+:start
+If Flag[83],12,<,:event ;
+EndEventSkip ;
+PlayBGM 5;
+SetAniObj  1,2,4,2,0,32,0,161,1,GravJump,1;
+SetBox 4,5,4,2,0,283;
+SetBox 5,5,5,2,0,284;
+SetBox 6,5,6,2,0,285;
+SetSavePoint 10,2,6,2;
+End ;
+
+:walk
+IfBox 0,3,9,4,9,0,Current+2 ;
+ChangeMap 495,ObjSX[0],2,11,3;
+IfBox 0,3,1,4,1,0,Current+2 ;
+ChangeMap 498,ObjSX[0]+2,6,20,1;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::
+
+:sleep
+Stop 1;
+SetMes ここなら、$n少しは休憩出来そうだけど･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightTop,0;
+Wait 30;
+Select2 休んでいく$nまだまだ,
+        1,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:break,:end;
+:break
+DelMes 0;
+NewLine 16,255,:blackout ;
+Wait 60;
+HealAll ;
+PlayWave 21;
+Wait 60;
+NewLine 0-16,0,:blackout ;
+Wait 32;
+:end
+DelMes 0;
+Stop 0;
+End;
+
+
+:blackout
+Store MFlag[2],0;
+
+:blackup
+MapColor 255+k[MFlag[2]*ParamA]-ParamB,0,0,0;
+Wait 1;
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],16,<,:blackup;
+MapColor ParamB,0,0,0;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+PlayBGM 0;
+SetObj 0,3,4,2,1,32,0,1,1,GravJump,1;
+Stop 1;
+Wait 10;
+SetObj 1,4,9,2,1,24,0,11,1,GravJump,1;
+SetObjGoal 1,4,7,2;
+SetCamera 0-80,40,0;
+Wait 48;
+SetMes ・・・レーナ！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes ！,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetObjDir 0,3;
+SetMes フィルミナ！？$nな、何でこんなところに！？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 40;
+SetMes それはこっちのセリフよ。$nこんなところで何してるの？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes い、いいじゃないの、$nそんな事。$n関係ないでしょ？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 60;
+SetMes ・・・・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes こっちは今$n立て込んでるの。$n理由も言えないなら$n手伝ってもらうわ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes え・・・、$n・・・えっと。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes ・・・いいわね？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes あ・・・、$n・・・うん。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+
+DelMes 1;
+DelMes 0;
+Wait 20;
+Store Flag[83],12;
+SetParty 1;
+ChangeMap 497,4,5,2,1;
+
+End ;
+

@@ -1,0 +1,16 @@
+フィーレス村：民家
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+End;
+:walk
+IfBox 0,9,5,9,5,0,Current+2 ;
+ChangeMap 319,11,23,2,2;
+IfBox3D 0,4,3,6,4,3,6,0,Current+2 ;
+ChangeMap 319,7,22,8,3;
+End;

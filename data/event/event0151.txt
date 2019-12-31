@@ -1,0 +1,120 @@
+フィーレス村：初心者通り
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk1 ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+SetObj 1,7,5,2,3,32,0,23,1,GravJump,1; 
+SetObj 2,10,5,2,1,32,0,22,1,GravJump,1; 
+SetObj 3,11,5,2,1,32,0,24,1,GravJump,1; 
+SetObj 4,10,3,2,3,32,0,31,1,GravJump,1; 
+SetHighObj 10,10,4,2,3,32,0,121,1,GravJump,2+BlockShadow;
+SetHighObj 11,11,4,2,0,32,0,121,1,GravJump,2+BlockShadow;
+SetAAObj 20,3,5,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 21,9,5,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 22,12,5,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 23,3,8,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 24,6,8,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 25,9,8,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+SetAAObj 26,12,8,2,0,32,0,122,4,15,1,GravJump,LightShadow;
+If HardMode,1,<,:loop;
+ChangeMapTitle フィーレス村：上級者通り;
+
+:loop
+Wait 60;
+SetMes あ、$nこの指輪もきれい～。, 
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,NoSound;
+Wait 60;
+Goto Rand%4*2+Current+1 ;
+SetMes でも、君の瞳のほうが$n綺麗だよ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,NoSound;
+Goto :talkend ;
+SetMes でも、君の首筋のほうが$n綺麗だよ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,NoSound;
+Goto :talkend ;
+SetMes でも、君の指のほうが$n綺麗だよ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,NoSound;
+Goto :talkend ;
+SetMes でも、君の唇のほうが$n綺麗だよ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,NoSound;
+:talkend
+Wait 180;
+DelMes 2;
+DelMes 3;
+Wait 20;
+SetMes うふふ。, 
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,NoSound;
+Wait 20;
+SetMes ハハハ。, 
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,NoSound;
+Wait 180;
+DelMes 2;
+DelMes 3;
+Goto :loop ;
+End;
+:walk
+IfBox 0,15,6,15,7,0,Current+2;
+ChangeMap 19,2,ObjSY[0],5,2;
+IfBox 0,6,4,6,4,0,:after_house;
+If HardMode,0,>,:house_hard;
+ChangeMap 29,7,11,2,1;
+:house_hard
+ChangeMap 31,4,9,2,1;
+:after_house
+IfBox 0,4,5,8,7,0,:notalk ;
+If MFlag[0],0,>,:after_yobikomi;
+SetMes いらっしゃ～い。, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Store MFlag[0],1;
+:after_yobikomi
+End;
+
+:notalk
+Store MFlag[0],0;
+DelMes 0;
+End;
+
+
+:talk1
+Stop 1;
+SetObjDir 1,ObjDir[0]+2;
+If HardMode,0,>,:talk1_hard;
+SetMes こんばんは！$nところで、お二人さん、$n初心者ですか？, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+Select2 初心者です。$n違います。,
+       1,ObjX[0],ObjY[0],ObjZ[0],RightTop,:yes,:no ;
+:yes
+SetMes それなら、ここの中の人に$n話を聞いてみるといいですよ！, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+:no
+SetMes あ、そうですか･･･。$n邪魔しましたね･･･。, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+:talk1_hard
+SetMes おっ、その雰囲気、$nきっと上級者の方ですね？, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+Select2 もちろん！$n違います。,
+       1,ObjX[0],ObjY[0],ObjZ[0],RightTop,:yes_hard,:no ;
+:yes_hard
+SetMes それなら、ここの中に$nレッツチャレンジ！, 
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Stop 0;
+End;
+
+        

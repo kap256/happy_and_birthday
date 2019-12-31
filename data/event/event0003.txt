@@ -1,0 +1,30 @@
+ÉâÉNÉäÅ[äXìπÅFó†ìπ
+0,2
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip ;
+PlayBGM 11;
+SetEne 1,7,8,3,0,48,10,
+       0,5,
+       0,2,2,
+       0,0;
+SetEne 2,14,4,5,0,40,0,
+       0,3,
+       2,2,2,
+       0,0;
+
+SetWoodObj 10,7,3,6,3,48,0,105,1,1,0;
+SetWoodObj 11,5,10,3,3,48,0,105,1,1,0;
+SetWoodObj 13,12,10,3,3,48,0,105,1,1,0;
+End;
+:walk
+IfBox 0,1,5,1,6,0,Current+2 ;
+ChangeMap 1,7,ObjSY[0]-3,4,0;
+IfBox 0,16,6,16,7,0,Current+2 ;
+ChangeMap 5,2,ObjSY[0]-3,2,2;
+End;

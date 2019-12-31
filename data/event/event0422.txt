@@ -1,0 +1,54 @@
+ジョーイ工房
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+
+SetAniObj 20,3,4,2,5,32,0,320,1,GravJump,1;
+SetAniObj 21,5,5,2,12,32,0,322,1,GravJump,1;
+SetAniObj 22,3,2,2,10,32,0,322,1,GravJump,1;
+SetCamera 0-80,0,1;
+
+Wait 1;
+SetMes ・・・よう。$n何か用か・・・？,
+       0,ObjX[20],ObjY[20],ObjZ[20]-16,LeftBottom,0;
+Wait 30;
+:select
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:buy,:sell,:talk,:return;
+
+:oncemore
+Wait 1;
+SetMes ・・・他にはなんか？,
+       0,ObjX[20],ObjY[20],ObjZ[20]-16,LeftBottom,0;
+Wait 20;
+Select4 買いにきた$n売りにきた$n雑談$n帰る,
+        3,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,:buy,:sell,:talk,:return;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 3;
+End;
+
+:buy
+Shop 3,1;
+Goto :oncemore ;
+
+:sell
+Sell 1;
+Goto :oncemore ;
+
+:talk
+
+SetMes ・・・久しぶりに動いたから、$n全身筋肉痛で一歩も歩けねぇ・・・。,
+       0,ObjX[20],ObjY[20],ObjZ[20]-16,LeftBottom,0;
+Wait 0;
+SetMes ・・・あとはお前らに$n任せたぜ・・・っ！,
+       0,ObjX[20],ObjY[20],ObjZ[20]-16,LeftBottom,0;
+Wait 0;
+Goto :oncemore ;
+End;

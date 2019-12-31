@@ -1,0 +1,42 @@
+îpö–
+36,56,57,65
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,9,6,3,Rand,16,16,
+       0,5,
+       67,0,6,
+       18,POWx15+LPx2+PUpWOutBig+PUpWOutLeader;
+SetEne 2,15,8,3,Rand,16,16,
+       0,5,
+       67,0,6,
+       18,POWx15+LPx2+PUpWOutBig+PUpWOutLeader;
+
+SetWoodObj 10,4,4,3,3,48,0,105,1,1,0;
+SetWoodObj 11,6,4,3,3,48,0,105,1,1,0;
+SetWoodObj 12,4,4,3,3,48,0,105,1,1,0;
+SetWoodObj 13,8,4,3,3,48,0,105,1,1,0;
+SetWoodObj 14,10,5,3,3,48,0,105,1,1,0;
+SetWoodObj 15,12,5,3,3,48,0,105,1,1,0;
+SetWoodObj 16,14,5,3,3,48,0,105,1,1,0;
+SetWoodObj 17,15,7,3,3,48,0,105,1,1,0;
+SetWoodObj 18,17,7,3,3,48,0,105,1,1,0;
+SetWoodObj 19,19,7,3,3,48,0,105,1,1,0;
+SetWoodObj 20,3,7,3,3,48,0,105,1,1,0;
+SetWoodObj 21,5,7,3,3,48,0,105,1,1,0;
+SetWoodObj 22,7,7,3,3,48,0,105,1,1,0;
+SetWoodObj 23,9,8,3,3,48,0,105,1,1,0;
+SetWoodObj 24,11,8,3,3,48,0,105,1,1,0;
+SetWoodObj 25,12,9,3,3,48,0,105,1,1,0;
+SetWoodObj 26,14,10,3,3,48,0,105,1,1,0;
+SetWoodObj 27,16,10,3,3,48,0,105,1,1,0;
+End;
+:walk
+IfBox 0,2,1,3,1,0,Current+2 ;
+ChangeMap 629,ObjSX[0]+8,19,3,1;
+IfBox 0,18,12,19,12,0,Current+2 ;
+ChangeMap 631,ObjSX[0]-6,2,2,3;
+End;

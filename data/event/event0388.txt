@@ -1,0 +1,18 @@
+フィーレス地下迷宮：第四層
+0,1,2
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetPutObj 12,5,8,3,24,156,1+Heavy1 ;
+End;
+
+:walk
+IfBox 0,5,15,5,15,0,Current+2 ;
+ChangeMap 386,13,2,2,3;
+IfBox 0,5,1,5,1,0,Current+2 ;
+ChangeMap 389,13,14,2,1;
+End;

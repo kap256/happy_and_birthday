@@ -1,0 +1,144 @@
+妖精の森
+0
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+
+:::::::::::::::::::植林
+Store MFlag[0],10;
+Store MFlag[1],1;
+:woodx
+Store MFlag[2],1;
+:woody
+GetMapChip MFlag[3],MFlag[1],MFlag[2],3;
+If MFlag[3],21,=,:wood ;
+:nowood
+Store MFlag[2],MFlag[2]+1;
+If MFlag[2],MapY,<,:woody ;
+Store MFlag[1],MFlag[1]+1;
+If MFlag[1],MapX,<,:woodx ;
+Goto :endwood ;
+
+:wood
+SetMapChip 22,MFlag[1],MFlag[2],3;
+SetWoodObj MFlag[0],MFlag[1],MFlag[2],4,1,48,0,105,1,1,0;
+Store MFlag[0],MFlag[0]+1;
+Goto :nowood ;
+:endwood
+:::::::::::::::::::植林終わり
+
+If Flag[14],36,<,:event ;
+End;
+
+:walk
+IfBox 0,5,10,6,10,0,Current+2 ;
+ChangeMap 134,ObjSX[0]-1,2,2,3;
+IfBox 0,5,1,6,1,0,Current+2 ;
+ChangeMap 139,ObjSX[0],14,2,1;
+End;
+
+
+::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip;
+Stop 1;
+PlayBGM 38;
+
+SetObjPos 0,5,5,2;
+SetObjView 0,0;
+SetCameraSpeed 20;
+SetCamera 0-200,140,1;
+SetCamera 0,40,0;
+
+SetObj 1,6,10,3,1,16,0,42,0,GravLock,0;
+SetObjGoal 1,6,4,2;
+Wait 8;
+SetMes うう、$nもう疲れたぁ～。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 24;
+SetObj 2,6,10,2,1,14,0,0,0,GravJump,0;
+SetObj 3,5,10,2,1,16,0,8,0,GravJump,0;
+SetObjGoal 2,6,6,2;
+SetObjGoal 3,5,7,2;
+Wait 64;
+DelMes 1;
+SetMes 追いついたぞ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetObjDir 1,3;
+Wait 24;
+SetMes うぐぅ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 2;
+SetMes か、かくなる上は～！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObjSpeed 0,16;
+SetObjGoal 1,6,5,2;
+Wait 16;
+EndEventSkip ;
+Battle 33;
+StartEventSkip ;
+SetAniObj 1,6,4,2,0,16,0,183,0,GravLock,0;
+Wait 20;
+SetMes あううぅぅ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 30;
+SetMes やれやれ・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes さよなら、マイライフ。$nお姉さま、僕は一足先に$n天国で待ってます。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 50;
+SetMes なに言ってるんだ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+DelMes 2;
+SetObjDir 1,4;
+SetMes えっ？$nひょっとして何もしないの？,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 50;
+SetMes なんで$nそう思うのさ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetObjDir 1,0;
+SetMes ・・・だって、前来た人間は、$nみんなをいじめるわ、$n宝物の宝石も奪っていくわで・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 80;
+SetMes ひどい奴も$nいたもんだな・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetObjDir 1,4;
+DelMes 1;
+SetMes ただ僕らは$n早く外に出たいだけだよ。$nさっきからずっと道に迷ってて。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes え～。$nこんな森で迷うなんて、$n方向感覚無いの？,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+SetAniObj 2,6,6,2,5,16,0,183,0,GravLock,0;
+SetMes こ、こいつ・・・っ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 50;
+SetMes 仕方ないなぁ。$n外まで案内してあげるよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+
+
+Store Flag[14],36;
+ChangeMap 139,5,14,2,1;
+
+
+End;

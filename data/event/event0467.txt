@@ -1,0 +1,187 @@
+セントティル大聖堂：最寄のカフェ
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+
+:start
+Stop 1;
+PlayBGM 2;
+SetAniObj 0,7,6,3,14,32,0,71,1,GravJump,0;
+SetAniObj 1,4,5,3,10,32,0,71,1,GravJump,0;
+SetAniObj 2,11,7,3,5,32,0,190,1,GravJump,0;
+SetAniObj 3,10,4,3,5,32,0,190,1,GravJump,0;
+
+SetAniObj 11,5,5,3,4,32,0,124,1,GravJump,BlockShadow+2;
+SetAniObj 12,5,6,3,4,32,0,114,1,GravJump,BlockShadow+2;
+SetAniObj 13,6,5,3,1,32,0,114,1,GravJump,BlockShadow+2;
+SetAniObj 14,6,6,3,0,32,0,114,1,GravJump,BlockShadow+2;
+
+SetAniObj 15,10,5,3,0,32,0,115,1,GravJump,BlockShadow+2;
+SetAniObj 16,10,6,3,4,32,0,114,1,GravJump,BlockShadow+2;
+SetAniObj 17,11,5,3,1,32,0,114,1,GravJump,BlockShadow+2;
+SetAniObj 18,11,6,3,0,32,0,114,1,GravJump,BlockShadow+2;
+
+SetCamera 0-64,0-48,1;
+NewLine 0,0,:talk ;
+MapTitle ;
+Wait 120;
+SetMes ここのエスプレッソが$n最高なんだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes ・・・・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 30;
+SetMes ・・・なんでこんなところに？,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ハハハ。$nまあいいじゃないか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes そんなことより、$n興味あるんだろ？$nあの浮遊石に。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes え・・・っと、$n・・・まあ、一応。,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes 実はあれ、$nニセモノなんだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes ！,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetMes お偉い人ってのは臆病者でね。$n本物は地下深くに$n厳重に隠してあるのさ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes へぇ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 30;
+SetMes で、さ。$n良かったら$n本物見せてあげようかなって。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・え？,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 今日はオレが$n見張り番だからさ。$nこっそり見せてあげるよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・本当！？,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ・・・何で？$n見ず知らずの人なのに。,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes え？$nああっと・・・。うん・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 90;
+SetMes キミに一目ぼれしたから。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 90;
+SetMes ・・・は？,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes じゃ、ダメかな。$nハハハ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・悪いけど$n先約がいるの。,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes ハハ、まあいいや！$n夜の九時に、$n大聖堂の裏で待ってるよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes ・・・はぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetAniObj 4,4,5,3,0,32,0,136,1,GravJump,0;
+SetObj 1,4,5,3,2,24,0,71,1,GravJump,1;
+Wait 10;
+SetObjGoal 1,4,6,3;
+Wait 48;
+SetObjDir 1,2;
+SetMes そういえば、$n名前を聞いてなかった。$nオレはロイドって言うんだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+SetMes ・・・レーナです。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+SetMes レーナか・・・。$nいい名前だな。$nそれじゃ、待ってるよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 50;
+SetMes ああ、まあ、一応・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjGoal 1,4,7,3;
+Wait 24;
+SetObjGoal 1,8,7,3;
+Wait 96;
+SetObjGoal 1,8,9,2;
+Wait 48;
+SetObjGoal 1,12,9,2;
+SetMes ・・・ずいぶんと$n軽い男ね・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],RightBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+
+
+
+ChangeMap 468,6,5,3,0;
+End;
+::::::::::::::::::::::::::::::::::::::::::::::::::
+:talk
+Wait 20;
+SetMes アハハ。何それ？$nサイコー！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 60;
+SetMes だろ～？$nそう思うよな～。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 300;
+SetMes だからオレは言ってやったんだ。$n「それ、間違ってますよ。」ってな。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 120;
+SetMes それで？$nそれで？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 200;
+SetMes そしたらそいつ、$n顔真っ赤にして全力ダッシュしてさ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 120;
+SetMes で？　で？,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 200;
+SetMes よっぽど動揺したのか、$n花壇に突っ込んで泥だらけさ！,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 120;
+SetMes アハハハハ。$n最後まで間抜けね！,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 200;
+SetMes だよな～。間抜けだよな～。$nハハハハハ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],RightBottom,0;
+Wait 120;
+SetMes アハハハハ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],RightBottom,0;
+Wait 240;
+DelMes 2;
+DelMes 3;
+End ;

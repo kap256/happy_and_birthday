@@ -1,0 +1,37 @@
+フィーレス地下迷宮：第二層
+38,63,64,40,77
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,13,4,2,Rand,32,10,
+       0,2,
+       40,4,3,
+       11,0;
+SetEne 2,13,8,2,Rand,32,10,
+       0,2,
+       40,4,3,
+       11,0;
+SetEne 3,6,4,2,Rand,32,10,
+       0,2,
+       40,4,3,
+       11,0;
+SetEne 4,6,8,2,Rand,32,10,
+       0,2,
+       40,4,3,
+       11,0;
+
+SetBox 5,4,6,4,2,204;
+End;
+
+:walk
+
+IfBox 0,1,6,1,6,0,Current+2 ;
+ChangeMap 364,20,31,2,0;
+IfBox 0,21,6,21,6,0,Current+2 ;
+ChangeMap 362,2,17,7,2;
+
+End;

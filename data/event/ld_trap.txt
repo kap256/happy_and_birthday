@@ -1,0 +1,31 @@
+#included
+:ld_trap_init
+
+Store MFlag[9],MFlag[9]+60;
+
+Store MFlag[21],11;
+
+Store MFlag[16],1;
+:ld_trap_loop_x
+Store MFlag[17],1;
+:ld_trap_loop_y
+Store MFlag[18],2;
+:ld_trap_loop_z
+GetMapChip MFlag[20],MFlag[16],MFlag[17],MFlag[18];
+If 4,MFlag[20],>,:ld_trap_loop_after ;
+If 7,MFlag[20],<,:ld_trap_loop_after ;
+SetNormalTrap MFlag[21],MFlag[16],MFlag[17],MFlag[18],176,MFlag[9],MFlag[9]*MFlag[20]/4,200,27,NoShadow;
+Store MFlag[21],MFlag[21]+1;
+If MFlag[21],79,>,:ld_trap_exit ;
+
+:ld_trap_loop_after
+Store MFlag[18],MFlag[18]+1;
+If MFlag[18],MFlag[8]+4,<,:ld_trap_loop_z ;
+Store MFlag[17],MFlag[17]+1;
+If MFlag[17],MapY,<,:ld_trap_loop_y ;
+Store MFlag[16],MFlag[16]+1;
+If MFlag[16],MapX,<,:ld_trap_loop_x ;
+
+:ld_trap_exit
+Store MFlag[24],80 ;
+End ;

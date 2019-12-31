@@ -1,0 +1,54 @@
+ƒ}ƒ‹ƒS‰ÎRF‘æ“ñ‘wE–k•”
+26,35,58,98
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+SetEne 2,11,19,7,Rand,32,500,
+       0,6,
+       48,0,5,
+       12,0;
+SetEne 3,8,4,12,Rand,32,500,
+       0,6,
+       48,0,5,
+       12,0;
+SetEne 4,13,11,4,Rand,32,5,
+       0,2,
+       49,0,6,
+       12,0;
+SetEne 5,10,10,7,Rand,32,5,
+       0,2,
+       49,0,6,
+       12,0;
+SetEne 6,7,18,6,Rand,32,5,
+       0,4,
+       49,0,6,
+       12,0;
+SetEne 7,10,14,5,Rand,32,5,
+       0,4,
+       58,0,8,
+       12,0;
+
+SetBox 10,11,20,3,1,347;
+
+SetNormalTrap  20,9,9,8,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  21,14,8,5,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  22,10,16,5,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  23,6,4,10,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  24,3,3,10,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  25,7,13,8,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  26,7,19,6,315,Rand%40+40,Rand%40,50,41,NoShadow;
+Goto :fire_start ;
+
+:walk
+IfBox 0,7,25,7,25,0,Current+2 ;
+ChangeMap 657,7,2,6,3;
+IfBox 0,3,7,3,7,0,Current+2 ;
+ChangeMap 659,4,3,3,3;
+IfBox 0,20,11,20,11,0,Current+2 ;
+ChangeMap 654,6,3,13,2;
+
+End;

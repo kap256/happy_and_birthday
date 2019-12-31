@@ -1,0 +1,400 @@
+アーゲリオ農場
+0
+
+LoadMap 0 -1 :start ;
+
+_END_HEAD_
+:start
+If Flag[18],1,<,:event ;
+If Flag[18],8,=,:eventbomb ;
+If Flag[18],20,=,:eventshield ;
+If Flag[18],28,=,:eventlife ;
+
+SetParty 10;
+OpenMenu 0;
+Goto :farm ;
+End ;
+
+::::::::開幕イベント:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+Stop 1;
+Store Flag[18],1;
+StartEventSkip ;
+PlayBGM 2;
+
+SetAniObj 0,5,3,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 10,6,3,2,0,32,0,124,1,GravJump,2+BlockShadow;
+
+MonthTitle ;
+SetCamera 60,300,1;
+SetCamera 60,0,0;
+
+SetObj 1,11,2,2,0,32,0,1,0,GravJump,1;
+SetObj 2,12,1,2,0,40,0,0,0,GravJump,1;
+Wait 100;
+SetObjGoal 1,5,2,2;
+SetObjGoal 2,6,1,2;
+SetObjDir 1,3;
+SetObjDir 2,3;
+Wait 212;
+SetMes おじさーん。$n野菜もらいに来たわよ～。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes なあ、レーナ。,
+       0,ObjX[2],ObjY[2],ObjZ[2],LeftBottom,0;
+Wait 40;
+SetObjDir 1,1;
+SetMes ん？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 20;
+SetMes なんで野菜をもらうだけで$n僕まで着いて来ないと$nいけないんだ？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetMes あら、あなた。$nか弱い乙女に$n箱いっぱいのキャベツを$n運ばせるつもり？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 70;
+SetAniObj 2,6,1,2,5,32,0,126,1,GravJump,1;
+SetMes 誰が$nか弱いって･･･。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetObjDir 2,1;
+DelMes 1;
+DelMes 2;
+SetObjDir 1,3;
+Wait 120;
+SetMes ･･･出てこないわね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetMes 　$n　　おじさ～ん。　　$n　,
+       0,ObjX[1],ObjY[1],ObjZ[1],RightTop,0;
+Wait 0;
+DelMes 1;
+DelMes 0;
+Wait 120;
+SetMes どうかしたのかな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 2;
+Wait 20;
+ChangeMap 146,7,5,2,0;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:farm
+EndEventSkip;
+PlayBGM 2;
+HealAll ;
+Stop 1;
+SetAniObj 20,5,4,2,0,32,0,128,1,GravJump,1; 
+SetAniObj 4,5,3,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 5,6,3,2,0,32,0,124,1,GravJump,2+BlockShadow;
+SetObjDir 0,3;
+SetCamera 0-80,40,1;
+Wait 1;
+If ItemNo[386],0,>,:getseed ;
+If ItemNo[396],0,>,:getseed ;
+If ItemNo[404],0,>,:getseed ;
+
+SetMes 頼んだぜ！,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 30;
+Goto :select ;
+
+:getseed
+SetMes お、もう持ってきたのか。$n早く見せてくれよ。,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 30;
+Goto :select ;
+
+:select
+Select4 作物をもらう$nタネを渡す$n洞窟に出かける$n村に戻る,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:buy,:seed,:cave,:return;
+
+:oncemore
+Wait 1;
+SetMes どうするんだ？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 20;
+Goto :select ;
+
+:return
+DelMes 0;
+Wait 20;
+ReturnVillage 1;
+End;
+
+:buy
+Farm 1;
+Goto :oncemore ;
+
+::::::タネを渡す:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:seed
+If Flag[18],6,>,Current+2;
+If ItemNo[396],0,>,:bomb ;
+If ItemNo[404],0,>,:shield ;
+If ItemNo[386],0,>,:life ;
+Seed 1;
+Goto :oncemore ;
+
+:bomb
+DelMes 0;
+Wait 20;
+Store Flag[18],8;
+Seed 1;
+ChangeMap 145,6,2,2,3;
+
+:shield
+DelMes 0;
+Wait 20;
+Store Flag[18],20;
+Seed 1;
+ChangeMap 145,6,2,2,3;
+
+:life
+DelMes 0;
+Wait 20;
+Store Flag[18],28;
+Seed 1;
+ChangeMap 145,6,2,2,3;
+
+
+::::::洞窟に行く:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:cave
+If Flag[19],0,>,:selectcave ;
+:west
+DelMes 0;
+Wait 20;
+ChangeMap 148,9,7,2,0;
+End;
+
+:east
+DelMes 0;
+Wait 20;
+ChangeMap 41,5,11,2,1;
+End;
+
+:north
+DelMes 0;
+Wait 20;
+ChangeMap 46,12,16,2,1;
+End;
+
+:selectcave
+SetMes どこに行くんだ？,
+       0,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 30;
+If Flag[19],2,>,:allcave ;
+If Flag[19],1,>,:cave4 ;
+Select3 東の洞窟　(new!)$n西の洞窟$nやめる,
+        2,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:east,:west,:oncemore ;
+End;
+:cave4
+Select4 北の洞窟　(new!)$n東の洞窟$n西の洞窟$nやめる,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:north,:east,:west,:oncemore ;
+End;
+:allcave
+Select4 北の洞窟$n東の洞窟$n西の洞窟$nやめる,
+        3,ObjX[0],ObjY[0],ObjZ[0],RightBottom,:north,:east,:west,:oncemore ;
+End;
+
+::::::火薬草のイベント:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:eventbomb
+Stop 1;
+Store Flag[18],10;
+StartEventSkip ;
+PlayBGM 34;
+
+SetAniObj 0,6,2,2,1,32,0,126,1,GravJump,1;
+SetObj    1,5,2,2,3,32,0,1,0,GravJump,1;
+SetAniObj 20,5,4,2,0,32,0,128,1,GravJump,1; 
+SetAniObj 4,5,3,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 5,6,3,2,0,32,0,124,1,GravJump,2+BlockShadow;
+SetCamera 0-80,40,1;
+Wait 16;
+SetMes ありゃ？,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 40;
+SetMes 火薬草？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 投げつけると爆発する草だ。$nこれはこれで便利なんだが･･･。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 50;
+SetObjDir 0,5;
+SetMes 全然関係ないじゃ$nないですか･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetObjDir 20,1;
+DelMes 0;
+SetMes おっかしいなぁ･･･。$n西の洞窟じゃなかったっけか･･･。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 50;
+SetAniObj 1,5,2,2,4,32,0,159,0,GravJump,1;
+SetMes やれやれね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 16;
+SetObjDir 1,1;
+Wait 16;
+SetObjDir 1,4;
+Wait 0;
+SetObj    1,5,2,2,3,32,0,1,0,GravJump,1;
+SetObjDir 0,1;
+DelMes 1;
+DelMes 2;
+Wait 60;
+SetObjDir 20,0;
+SetMes ああ、そうだそうだ。$n東の洞窟の間違いだった。$nすまねえが、$nもう一回頼めるか？,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 60;
+SetMes げ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetMes ･･･ホントでしょうね。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes ああ、$n今度は大丈夫だ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 30;
+SetMes そうそう、$nせっかくだから、$nこの火薬草もよかったらもってけよ。$nけっこう便利だぜ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 60;
+SetMes はぁ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetMes 薬草もあるから、$n必要なやつを選んで$n持ってってくれ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+DelMes 2;
+Wait 20;
+Tutorial 9;
+Wait 20;
+If Flag[19],1,>,Current+2;
+Store Flag[19],1;
+ChangeMap 145,6,2,2,3;
+End;
+
+::::::オオダテハスのイベント:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:eventshield
+Stop 1;
+Store Flag[18],21;
+StartEventSkip ;
+PlayBGM 34;
+
+SetAniObj 0,6,2,2,1,32,0,126,1,GravJump,1;
+SetObj    1,5,2,2,3,32,0,1,0,GravJump,1;
+SetAniObj 20,5,4,2,0,32,0,128,1,GravJump,1; 
+SetAniObj 4,5,3,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 5,6,3,2,0,32,0,124,1,GravJump,2+BlockShadow;
+SetCamera 0-80,40,1;
+Wait 16;
+SetMes ありゃりゃ？,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 40;
+SetMes オオダテハス？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 攻撃を受け止められるぐらい$n大きくて丈夫なハスだ。$nこれもこれで便利なんだが･･･。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 60;
+SetObjDir 0,5;
+SetMes やっぱり関係ないじゃ$nないですか･･･。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetObjDir 20,1;
+DelMes 0;
+SetMes おっかしいなぁ･･･。$n東の洞窟でもなかったか･･･。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 50;
+SetAniObj 1,5,2,2,4,32,0,159,0,GravJump,1;
+SetMes しっかりなさいよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 16;
+SetObjDir 1,1;
+Wait 16;
+SetObjDir 1,4;
+Wait 0;
+SetObj    1,5,2,2,3,32,0,1,0,GravJump,1;
+SetObjDir 0,1;
+DelMes 1;
+DelMes 2;
+Wait 60;
+SetObjDir 20,0;
+SetMes ああ～、思い出した。$n北の洞窟だ。北の。$nすまねえが、$nあと一回だけ頼めるか？,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 60;
+SetMes うぐ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+SetMes ･･･また間違いなんでしょ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes 三度目の正直って言うだろ。$n今度こそマジだ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+Wait 30;
+SetMes そうそう、$nさっき持っていった分の草、$nまた作っておいたから$nよかったら持ってけよ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 60;
+SetMes え。$nまた出来たんですか？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+SetMes タネさえありゃ$nすぐに作れるんだよ。$n気にせずバンバン使いな。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 60;
+SetMes はあ。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+If Flag[19],1,>,Current+2;
+Store Flag[19],2;
+ChangeMap 145,6,2,2,3;
+End;
+
+::::::命の草のイベント:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:eventlife
+Stop 1;
+StartEventSkip ;
+PlayBGM 35;
+
+SetAniObj 0,6,2,2,1,32,0,126,1,GravJump,1;
+SetObj    1,5,2,2,3,32,0,1,0,GravJump,1;
+SetAniObj 20,5,4,2,0,32,0,128,1,GravJump,1; 
+SetAniObj 4,5,3,2,4,32,0,114,1,GravJump,2+BlockShadow;
+SetAniObj 5,6,3,2,0,32,0,124,1,GravJump,2+BlockShadow;
+SetCamera 0-80,40,1;
+Wait 16;
+SetMes そうそう、$nこれだよ、これ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 40;
+SetMes 命の草？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes ああ、$n薬草なんか目じゃないぜ。,
+       2,ObjX[20],ObjY[20],ObjZ[20],LeftTop,0;
+Wait 40;
+SetMes これでもう$n大丈夫ですね。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 20;
+Store Flag[19],3;
+ChangeMap 147,4,5,2,1;
+End;

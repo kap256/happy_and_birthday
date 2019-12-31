@@ -1,0 +1,317 @@
+フィーレス村：レーナの寝室
+48
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+
+:start
+
+PlayBGM 55;
+Stop 1;
+SetAniObj 0,5,6,3,0,32,0,353,0,GravJump,0;
+SetAniObj 10,5,7,3,1,32,0,167,0,GravJump,0;
+SetAniObj 11,2,4,3,4,32,0,114,0,GravJump,ShowTurn + BlockShadow;
+SetAniObj 12,2,5,3,0,32,0,354,0,GravJump,BlockShadow;
+SetObj 1,2,6,3,0,32,0,72,0,GravJump,0;
+SetCamera 0-160,0-80,1;
+Store MFlag[0],255;
+:black
+MapColor MFlag[0],0,0,0;
+Wait 1;
+Store MFlag[0],MFlag[0]-4;
+If MFlag[0],0,>,:black ;
+MapColor 0,0,0,0;
+
+
+Wait 30;
+SetMes ・・・外が$n急に静かになった。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 何があったのかしら・・・？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 30;
+SetObjDir 0,1;
+Wait 10;
+SetObjDir 0,0;
+Wait 30;
+SetObjDir 0,1;
+SetMes ・・・う・・・ん。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 10;
+SetObjDir 1,2;
+SetMes ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetObjGoal 1,4,6,3;
+SetObjDir 0,4;
+SetCamera 0-40,0-20,0;
+DelMes 0;
+SetMes 気がついた・・・？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes ここは・・・？,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetObjDir 0,5;
+SetMes 私の家。$nもう大丈夫よ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・そうか、$n僕は奴にやられて・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 0,4;
+Wait 60;
+SetMes この前は・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetObjDir 0,5;
+SetMes ・・・ん？,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes この前は、ごめんなさい。$n酷い事言っちゃって・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・ああ、$n気にしてないよ。$n僕も、急に押しかけてすまなかった。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjDir 0,4;
+Wait 90;
+SetMes ・・・くだもの、$n食べる？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetObjDir 0,5;
+SetMes ・・・ああ、$nすまない。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObjGoal 1,3,5,3;
+SetObjDir 1,0;
+Wait 70;
+SetAniObj 1,3,5,3,8,32,0,72,0,GravJump ,1;
+Wait 10;
+SetObjDir 12,1;
+SetObjDir 1,11;
+Wait 40;
+NewLine 0,0,:apple ;
+Store MFlag[1],Ret;
+Wait 80;
+SetMes ・・・聞いていい？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes ・・・え？,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes どうしてあんな事したの？$nあんな、怖いこと・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes ・・・それは、$nあいつらに復讐するために・・・,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 30;
+SetMes 嘘でしょ？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetMes ・・・・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetObjDir 0,4;
+Wait 60;
+SetMes ・・・森の中のお墓、$n見させてもらったよ。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 君は無事だったけど、$n・・・あの子には、$nもう、会えないんだ・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 60;
+SetMes ・・・・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes ・・・夢の卵。$n君も知っているだろう。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes どんな望みもかなえるという、$n古代文明が生んだ$n最後の遺物。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes それならば、$n死んでしまった人間も$n生き返らせることができるかもしれない。$n・・・そう、思ってしまった。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 30;
+Kill MFlag[1];
+Wait 0;
+SetMes だから・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 30;
+SetMes 子供なんて、$nいなかったのよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 0;
+SetObjDir 0,5;
+Wait 30;
+SetMes 生き返らせる？$n生まれてもいない人間が、$n生き返るわけないじゃない。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 50;
+SetMes ・・・レーナ？,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+SetObj 1,3,5,3,2,32,0,1,0,GravJump ,0;
+Wait 8;
+SetAniObj 1,3,5,3,0,32,0,347,0,GravJump ,ShowTurn;
+SetMes 私はここにいるのよ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes 嫌なこと、怖いこと、$n全部忘れて、$n二人でやり直せばいいのよ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes どこか遠くで、$n静かなところで、$nずっと二人で・・・っ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObj 1,3,5,3,2,32,0,72,0,GravJump ,0;
+Wait 30;
+SetMes ・・・子供だって、$nまた作ればいいじゃない・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetAniObj 1,3,5,3,14,32,0,72,0,GravJump ,ShowTurn;
+Wait 16;
+SetObjDir 1,13;
+Wait 60;
+SetMes ・・・私を見て。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 30;
+SetMes ・・・私を助けて。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 30;
+SetMes ・・・これ以上、$n私をいじめないでよぉ！,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetAniObj 0,5,6,3,4,32,0,354,0,GravJump,0;
+Wait 30;
+SetMes ・・・そんな悲しいことを$n言わないでくれ、$nレーナ・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes 僕らが忘れてしまったら、$n誰があの子の事を$n覚えていてあげられるんだ・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 120;
+SetMes ・・・あんな卵、$n無くなっちゃえばいいんだ。,
+       1,ObjX[1],ObjY[1],ObjZ[1]-8,RightBottom,0;
+Wait 40;
+SetAniObj 0,5,6,3,5,32,0,353,0,GravJump,0;
+SetMes ・・・え？,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetAniObj 1,3,5,3,0,32,0,72,0,GravJump ,ShowTurn;
+Wait 8;
+SetObjDir 1,12;
+Wait 12;
+SetMes アハハ！$nどうしてこんな簡単なことに$n気づかなかったんだろう！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes あんな卵さえなければ、$nあいつらがこの村に来ることも$n無かったのに・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetMes あんな卵さえなければ、$nあんな怖い思い$nしなくて済んだのに・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+Wait 60;
+SetMes あんな卵さえなければ・・・！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObj 1,3,5,3,2,8,0,1,0,GravJump ,1;
+Wait 30;
+SetObjGoal 1,3,2,3;
+Wait 24;
+SetObjGoal 1,5,2,1;
+SetAniObj 0,5,6,3,5,32,0,354,0,GravJump,0;
+SetMes ・・・レーナ、$n待つんだ！　レーナ・・・！,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 24;
+DelObj 1;
+Wait 0;
+DelMes 0;
+Wait 40;
+SetMes ・・・あ・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 30;
+SetAniObj 0,5,6,3,5,32,0,353,0,GravJump,0;
+Wait 30;
+SetAniObj 0,5,6,3,4,32,0,354,0,GravJump,0;
+Wait 60;
+SetMes ・・・何故だ？,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes ・・・何故、$nこんなことになってしまったんだ？,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetMes ・・・どうして、こうなる前に$n彼女のそばで$n支えてあげられなかった？,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 60;
+SetMes ・・・レーナ・・・。,
+       0,ObjX[0]-4,ObjY[0],ObjZ[0],LeftTop,0;
+
+
+SetCamera 0-40,0-10240,0;
+
+:cameraroop
+SetCameraSpeed MFlag[4];
+Store MFlag[4],MFlag[4]+1;
+Wait 2;
+If MFlag[4],60,<,:cameraroop ;
+SetFadeOut 60;
+Wait 60;
+
+
+Store Flag[83],0;
+LeaveParty 11;
+LeaveParty 1;
+SetParty 1;
+NextMonth ;
+ReturnVillage 1;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::
+:apple
+
+SetObjDir 1,9;
+Wait 20;
+SetObjDir 1,10;
+Wait 20;
+SetObjDir 1,9;
+Wait 20;
+SetObjDir 1,11;
+Wait 20;
+Goto :apple ;
+End;

@@ -1,0 +1,30 @@
+è…éqçzéRÅFà‚ê’ÇÃó†å˚
+32,45,46
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,6,5,4,2,48,0,
+       0,0,
+       17,12,6,
+       11,0;
+SetEne 2,6,6,4,2,48,0,
+       0,0,
+       17,12,6,
+       11,0;
+
+SetBox 5,3,5,5,2,136;
+SetBox 6,3,6,5,2,137;
+
+SetSavePoint 10,8,3,2;
+End;
+
+:walk
+IfBox 0,4,1,4,1,0,Current+2 ;
+ChangeMap 267,18,6,2,1;
+IfBox 0,20,5,20,6,0,Current+2 ;
+ChangeMap 265,2,ObjSY[0]+18,2,2;
+End;

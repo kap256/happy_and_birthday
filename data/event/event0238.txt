@@ -1,0 +1,16 @@
+‚©‚ç‚­‚è‰®•~F‘æ“ñ‹xŒeŠ
+0
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetSavePoint 1,3,3,2;
+End;
+:walk
+IfBox 0,3,8,4,8,0,Current+2 ;
+ChangeMap 239,ObjSX[0],2,2,3;
+IfBox 0,7,4,7,5,0,Current+2 ;
+ChangeMap 236,2,ObjSY[0],2,2;
+End;

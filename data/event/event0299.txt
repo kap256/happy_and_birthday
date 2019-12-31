@@ -1,0 +1,202 @@
+宿屋
+0
+
+
+LoadMap 0 0 :start ;
+
+_END_HEAD_
+:start
+Stop 1;
+Store Flag[41],0;
+If Flag[42],0,>,Current+2;
+Store Flag[42],4;
+If Flag[43],0,>,Current+2;
+Store Flag[43],3;
+
+SetCamera 0-80,40,1;
+MapColor 255,0,0,0;
+SetAniObj 0,5,2,2,0,32,0,168,1,GravJump,1;
+SetAniObj 10,5,3,2,1,32,0,167,1,GravJump,1;
+SetObj 1,4,2,2,2,24,0,Flag[42],1,GravJump,1;
+SetObj 2,5,5,2,1,32,0,Flag[43],1,GravJump,1;
+
+Wait 40;
+SetMes カリス・・・,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+:::::::::::::::仲間の呼びかけ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+If Flag[42],2,=,:holy_call ;
+If Flag[42],3,=,:tolgan_call ;
+If Flag[42],7,=,:rany_call ;
+SetMes カリス！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after_call ;
+:holy_call
+SetMes カリスくん！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after_call ;
+:tolgan_call
+SetMes カリスぼっちゃん！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after_call ;
+:rany_call
+SetMes カリスさん！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after_call ;
+:::::::::::::呼びかけ終わり::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:after_call
+Wait 20;
+
+:black
+MapColor 255-MFlag[0],0,0,0;
+Store MFlag[0],MFlag[0]+4;
+Wait 1;
+If MFlag[0],255,<,:black ;
+
+MapColor 0,0,0,0;
+
+SetMes う・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+SetObjDir 0,4;
+:::::::::::::::仲間の第一声::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+If Flag[42],2,=,:holy1 ;
+If Flag[42],3,=,:tolgan1 ;
+If Flag[42],4,=,:bolte1 ;
+If Flag[42],5,=,:misely1 ;
+If Flag[42],7,=,:rany1 ;
+If Flag[42],10,=,:clo1 ;
+Goto :after1 ;
+:holy1
+SetMes わあ！$nよかったぁ～。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after1 ;
+:tolgan1
+SetMes おお！$n気づきもうしたか！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after1 ;
+:bolte1
+SetMes 大丈夫か！？$nどこも痛く無いか！？$n何があったんだ！？,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after1 ;
+:misely1
+SetMes まあ！$n目が覚めましたわ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after1 ;
+:rany1
+SetMes 心配したんですよ！$nも～。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after1 ;
+:clo1
+SetMes 目が覚めた！$nよかったぁ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after1 ;
+
+:after1
+:::::::::::::第一声終わり::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Wait 20;
+
+SetObjDir 0,1;
+Wait 20;
+SetObjDir 0,1;
+SetMes ・・・ここは？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+
+:::::::::::::::仲間の第２声::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+If Flag[43],2,=,:holy2 ;
+If Flag[43],3,=,:tolgan2 ;
+If Flag[43],4,=,:bolte2 ;
+If Flag[43],5,=,:misely2 ;
+If Flag[43],7,=,:rany2 ;
+If Flag[43],10,=,:clo2 ;
+
+Goto :after2 ;
+:holy2
+SetMes いつもの教会だよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Goto :after2 ;
+:tolgan2
+SetMes 教会の一室ですぞ。$nフィルミアどのに借りもうした。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Goto :after2 ;
+:bolte2
+SetMes 村の教会だ。$n心配するな。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Goto :after2 ;
+:misely2
+SetMes あなたの村の$n教会ですわよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Goto :after2 ;
+:rany2
+SetMes 教会ですよ。$n帰って来れたんです。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Goto :after2 ;
+:clo2
+SetMes 教会だよ。$n心配したんだから・・・。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Goto :after2 ;
+
+:after2
+:::::::::::::第2声終わり::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Wait 20;
+
+:::::::::::::::仲間の第３声::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+If Flag[42],2,=,:holy3 ;
+If Flag[42],3,=,:tolgan3 ;
+If Flag[42],4,=,:bolte3 ;
+If Flag[42],5,=,:misely3 ;
+If Flag[42],7,=,:rany3 ;
+If Flag[42],10,=,:clo3 ;
+
+Goto :after3 ;
+:holy3
+SetMes 火山の近くで$n倒れてたんだよ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after3 ;
+:tolgan3
+SetMes どういうわけか、$n火山の外で倒れておったのじゃ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after3 ;
+:bolte3
+SetMes お前は傷だらけで$n倒れていたんだぞ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after3 ;
+:misely3
+SetMes 妙に目立つところに$n倒れていたんですわよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after3 ;
+:rany3
+SetMes あたりを探してるとき、$nお宝かと思ったら、$nカリスさんが倒れてたの。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after3 ;
+:clo3
+SetMes カリスは$n火山の近くで$n倒れてたんだよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Goto :after3 ;
+
+:after3
+:::::::::::::第３声終わり::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+Wait 40;
+
+SetMes ・・・教会？,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+DelMes 2;
+Wait 60;
+SetMes またあいつに$n助けられた・・・？$nなぜ・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+DelMes 0;
+EndEventSkip ;
+NextMonth ;
+ReturnVillage 1;
+End;

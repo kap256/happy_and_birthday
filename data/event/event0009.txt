@@ -1,0 +1,87 @@
+ラクリー街道：小石
+0,1,2
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+EndEventSkip;
+PlayBGM 11;
+SetWoodObj 11,2,1,2,3,40,0,105,1,1,0;
+
+If Flag[0],5,<,:event;
+End;
+:walk
+IfBox 0,1,2,1,3,0,Current+2 ;
+ChangeMap 6,14,ObjSY[0]+8,2,0;
+IfBox 0,4,6,5,6,0,Current+2 ;
+ChangeMap 14,ObjSX[0]+8,2,2,3;
+End;
+
+:event
+
+PlayBGM 1;
+StartEventSkip ;
+Store Flag[0],5;
+Stop 1;
+
+SetObj 1,1,2,2,2,24,0,3,1,GravJump,1;
+SetObj 0,1,3,2,2,24,0,2,1,GravJump,1;
+SetAniObj 2,3,3,2,5,32,0,181,0,GravJump,NoShadow;
+SetObjGoal 1,3,2,2;
+SetObjGoal 0,3,3,2;
+Wait 48;
+SetAniObj 0,3,3,2,2,24,0,181,1,GravJump,0;
+SetObjGoal 0,4,3,2;
+PlayWave 11;
+SetMes わっ！,
+       0,ObjX[0],ObjY[0],ObjZ[0]-10,RightTop,0;
+Wait 24;
+SetObjDir 0,4;
+PlayWave 17;
+DelMes 0;
+Wait 30;
+SetObjDir 0,1;
+SetMes いたた・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-10,RightTop,0;
+Wait 0;
+DelMes 0;
+SetMes どれどれ。$n見せてみるんじゃ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+SetObjGoal 1,5,2,2;
+Wait 48;
+SetObjGoal 1,5,3,2;
+SetObjDir 1,0;
+Wait 0;
+DelMes 1;
+SetAniObj 1,5,3,2,15,32,0,145,1,GravJump,1;
+Wait 60;
+PlayWave 21;
+Wait 30;
+SetMes ほれ。$nどうじゃ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 40;
+SetMes まだちょっと$n痛いよぉ。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-10,RightTop,0;
+Wait 0;
+SetObj 1,5,3,2,0,32,0,3,1,GravJump,1;
+SetMes そりゃ、完全な手当ては$nこんなところじゃ無理じゃ。$n少し痛みが残るのは仕方ないのう。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 70;
+SetMes う～ん。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-10,RightTop,0;
+Wait 0;
+SetMes 調子に乗っとると、$nひどいことになるぞい。$n気をつけるんじゃぞ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 60;
+SetMes はーい。,
+       0,ObjX[0],ObjY[0],ObjZ[0]-10,RightTop,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 20;
+Tutorial 1;
+Wait 10;
+ChangeMap 9,3,3,2,2;

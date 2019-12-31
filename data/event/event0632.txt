@@ -1,0 +1,38 @@
+–²‚Ì—‘F‹ó’†’ë‰€
+10,19,63
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+#skygarden.txt
+
+:start
+PlayBGM 15;
+SetEne 1,17,5,11,Rand,16,0,
+       15,5,
+       48,0,6,
+       24,POWx15+LPx2+PUpWOutBig;
+Goto :skygarden_init ;
+
+:walk
+IfBox 0,5,5,5,5,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 535,5,7,2,3;
+IfBox 0,20,5,20,5,0,Current+2 ;
+ChangeMap 633,2,7,11,2;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+

@@ -1,0 +1,59 @@
+上級者の館：Ｌｖ１５
+0
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Talk    1 -1 :talk1 ;
+Hit     0 5  :battle ;
+Talk    5 -1 :battle ;
+
+_END_HEAD_
+:start
+SetObj 1,3,6,2,3,32,0,25,1,GravJump,1;
+SetBox 2,4,3,2,3,362;
+SetSavePoint 10,5,6,2;
+If Flag[124],0,>,Current+2;
+SetObj 5,4,5,2,3,32,0,202,1,GravJump,1;
+End;
+
+:walk
+IfBox 0,4,10,4,10,0,Current+2 ;
+ChangeMap 151,6,5,2,3;
+IfBox 0,2,2,4,2,0,Current+2 ;
+ChangeMap 32,2,2,4,0;
+End;
+
+:talk1
+Stop 1;
+SetObjDir 1,ObjDir[0]+2;
+SetMes フォッフォッフォ。$nようこそ、上級者の館へ。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes こんなところに$nチャレンジしに来るとは、$nおぬしらも物好きじゃのう。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+SetMes まあ、何はともあれ、$nチャレンジ前に回復じゃ。,
+       0,ObjX[1],ObjY[1],ObjZ[1],LeftBottom,0;
+Wait 0;
+PlayWave 21;
+HealAll ;
+Wait 20;
+DelMes 0;
+Stop 0;
+End;
+
+:battle
+Stop 1;
+SetMes ガルルルル・・・。,
+       0,ObjX[5],ObjY[5],ObjZ[5],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 16;
+Battle 69;
+If Escape,0,>,:end ;
+DelObj 5;
+Store Flag[124],1;
+:end
+Stop 0;
+End;

@@ -1,0 +1,41 @@
+b‚ÌXFƒ{ƒX
+19
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+Hit     0 1  :battle ;
+Talk    1 -1 :battle ;
+
+_END_HEAD_
+#forest.txt
+:start
+Store MFlag[8],22;
+Store MFlag[9],10;
+
+SetBox 2,3,5,2,2,268;
+If Flag[73],12,>,:end ;
+SetBigObj 1,2,12,2,3,32,0,339,1,GravJump,NoShadow;
+:end
+
+Goto :forest_init ;
+End ;
+
+:walk
+IfBox 0,1,11,1,12,0,Current+2 ;
+ChangeMap 464,17,5,3,3;
+IfBox 0,7,1,8,1,0,Current+2 ;
+ChangeMap 458,ObjSX[0]+16,15,6,1;
+End;
+
+:battle
+Stop 3;
+Wait 1;
+Battle 34;
+If Escape,0,>,:escape ;
+Store Flag[73],16;
+DelObj 1;
+
+:escape
+Wait 1;
+Stop 0;
+End;

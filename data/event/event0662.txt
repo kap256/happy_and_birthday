@@ -1,0 +1,70 @@
+マルゴ火山：第三層・西部
+7,26,35,58,98
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#fire.txt
+:start
+SetEne 1,15,12,10,Rand,32,500,
+       0,6,
+       48,0,5,
+       12,0;
+SetEne 2,6,8,10,Rand,32,500,
+       0,6,
+       48,0,5,
+       12,0;
+SetEne 3,17,15,3,Rand,32,10,
+       0,3,
+       49,0,5,
+       12,0;
+SetEne 4,6,13,3,Rand,32,10,
+       0,3,
+       58,0,6,
+       12,0;
+SetEne 5,9,8,9,Rand,32,10,
+       0,3,
+       49,0,5,
+       12,0;
+SetEne 6,3,6,4,Rand,32,10,
+       0,3,
+       58,0,6,
+       12,0;
+SetEne 7,16,5,3,Rand,32,10,
+       0,3,
+       49,0,5,
+       12,0;
+SetEne 8,14,7,8,Rand,32,10,
+       0,3,
+       58,0,6,
+       12,0;
+
+SetBox 10,4,15,8,1,352;
+SetBox 11,10,2,10,3,353;
+
+
+SetNormalTrap  20,20,15,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  21,15,18,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  22,5,15,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  23,4,6,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  24,12,2,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  25,20,9,3,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  26,15,9,7,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  27,10,4,10,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  28,9,9,9,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  29,10,13,5,315,Rand%40+40,Rand%40,50,41,NoShadow;
+SetNormalTrap  30,3,12,7,315,Rand%40+40,Rand%40,50,41,NoShadow;
+
+Goto :fire_start ;
+
+:walk
+IfBox 0,14,20,14,20,0,Current+2 ;
+ChangeMap 661,3,2,2,3;
+IfBox 0,25,12,25,12,0,Current+2 ;
+ChangeMap 660,2,10,3,2;
+IfBox 0,25,15,25,15,0,Current+2 ;
+ChangeMap 660,3,13,3,2;
+
+
+End;

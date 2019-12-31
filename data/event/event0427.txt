@@ -1,0 +1,89 @@
+古代人の集落
+2,9,47
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+PlayBGM 11;
+EndEventSkip ;
+
+SetWoodObj 10,6,11,2,3,48,0,105,1,1,0;
+SetWoodObj 11,13,14,2,3,48,0,105,1,1,0;
+SetWoodObj 12,8,6,2,3,48,0,105,1,1,0;
+SetWoodObj 13,2,9,2,3,48,0,105,1,1,0;
+
+If Flag[65],1,<,:event ;
+
+SetEne 5,11,11,2,0,32,10,
+       0,3,
+       2,2,4,
+       18,0;
+SetEne 6,6,7,2,0,32,10,
+       0,3,
+       2,2,4,
+       18,0;
+SetEne 7,1,12,3,0,32,10,
+       0,3,
+       11,2,4,
+       18,0;
+SetEne 8,9,2,2,0,32,10,
+       0,3,
+       11,2,4,
+       18,0;
+
+SetBox 9,8,3,2,2,236;
+End;
+
+:walk
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 428,ObjSX[0]+2,24,2,1;
+IfBox 0,11,17,12,17,0,Current+2 ;
+ReturnVillage  0;
+End;
+
+::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+:event
+StartEventSkip ;
+Stop 1;
+Store Flag[65],1;
+SetCameraSpeed 14;
+SetCamera 680,0-300,1;
+SetCamera 80,0,0;
+MapTitle ;
+
+SetObj 0,10,15,2,1,32,0,0,0,GravJump,0;
+SetObj 1,11,13,2,1,32,0,8,0,GravJump,0;
+
+Wait 500;
+SetMes ・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 60;
+SetMes ・・・ひどいな。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftTop,0;
+Wait 0;
+SetCameraSpeed 10;
+SetCamera 80,0-96,0;
+DelMes 0;
+DelMes 1;
+SetObjGoal 1,10,11,2;
+SetObjDir 1,0;
+Wait 120;
+SetMes ・・・私の・・・家も・・・。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 90;
+SetMes ・・・早く手がかりを見つけて$n帰ろう。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+DelMes 1;
+Wait 60;
+SetMes あいつら、$nこんな酷いことを・・・。,
+       0,ObjX[0],ObjY[0],ObjZ[0],LeftBottom,0;
+Wait 0;
+DelMes 0;
+Wait 20;
+ChangeMap 427,11,16,2,1;
+
+End;

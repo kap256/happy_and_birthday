@@ -1,0 +1,115 @@
+水上遺跡：最深部
+19
+
+LoadMap 0 -1 :start ;t ;
+
+_END_HEAD_
+:start
+StartEventSkip ;
+Store Flag[27],50;
+Stop 1;
+SetObj 1,10,5,2,0,32,0,0,1,GravJump,1;
+SetObj 2,10,6,2,0,24,0,1,1,GravJump,1;
+SetObj 3,11,6,2,0,48,0,53,1,GravJump,1;
+SetAniObj 0,3,5,4,1,32,0,198,1,GravJump,1;
+SetAniObj 11,3,6,4,0,32,0,198,1,GravJump,1;
+SetCamera 160,160,1;
+NewLine 0,0,:stone ;
+SetObjGoal 1,7,5,2;
+SetObjGoal 2,6,6,2;
+SetObjGoal 3,8,6,2;
+Wait 90;
+SetMes ここが終点かな。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetObjGoal 2,4,6,2;
+Wait 20;
+SetMes なにやら$nぷかぷかしてるわね。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 40;
+SetMes 気軽に触るなよ。$n危ないぞ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+SetObjDir 2,2;
+DelMes 1;
+SetMes ビクビクしすぎよ。$nただの宝石みたいよ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 60;
+SetMes ･･････宝石？,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 0;
+SetFadeOut 60;
+SetObjSpeed 3,16;
+SetObjGoal 3,4,6,4;
+SetMes ちょっと失礼。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 40;
+SetObjGoal 2,4,7,4;
+SetObjDir 2,1;
+SetMes ん？何？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+PlayBGM 46;
+DelMes 2;
+DelMes 3;
+SetAniObj 3,4,6,4,10,48,0,53,1,GravJump,1;
+Wait 20;
+SetObjDir 3,11;
+Wait 20;
+SetMes むむ･･･。$nこれは･･･。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+SetObjDir 3,10;
+Wait 20;
+SetObjDir 3,11;
+Wait 20;
+SetObjDir 3,10;
+Wait 20;
+SetMes どうしたんです？$n急に。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+SetObjDir 3,11;
+Wait 0;
+DelMes 1;
+DelMes 3;
+Wait 60;
+SetMes 間違いない。$nこれは聖石と呼ばれるものだ。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+Wait 60;
+SetMes 何それ。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetMes 簡単に言うと、$nものすごい誕生石のようなものらしい。$n文献でしか見たことはなかったが･･･。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetObjDir 3,10;
+Wait 20;
+SetObjDir 3,11;
+Wait 20;
+SetObjDir 3,10;
+Wait 20;
+DelMes 2;
+SetMes すごいんですか。,
+       1,ObjX[1],ObjY[1],ObjZ[1],LeftTop,0;
+Wait 0;
+DelMes 1;
+SetMes これは大変だ。$n早く持ち帰って$n詳しく調べなければ･･･。,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftBottom,0;
+SetObjDir 3,11;
+Wait 0;
+DelMes 3;
+Wait 20;
+ChangeMap 192,6,6,2,3;
+End;
+
+:::::::::::::::::::::::::::::::::::
+
+:stone
+Wait 16;
+SetObjDir 0,4;
+Wait 16;
+SetObjDir 0,1;
+Wait 16;
+SetObjDir 0,5;
+Wait 16;
+SetObjDir 0,1;
+Goto :stone ;
+End;

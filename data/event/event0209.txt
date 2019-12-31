@@ -1,0 +1,109 @@
+水上遺跡：レーザー
+38,39,40
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+If Flag[27],30,<,:event ;
+EndEventSkip ;
+PlayBGM 12;
+End ;
+:walk
+IfBox 0,4,1,5,1,0,Current+2 ;
+ChangeMap 210,ObjSX[0],18,7,1;
+IfBox 0,9,5,9,6,0,Current+2 ;
+ChangeMap 211,2,ObjSY[0]+1,4,2;
+End;
+
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:event
+StartEventSkip ;
+PlayBGM 45;
+Stop 1;
+Store Flag[27],30;
+SetAniObj 0,4,5,2,4,32,0,152,0,GravJump,0;
+SetObj 1,4,2,2,3,32,0,0,0,GravJump,1; 
+SetObj 2,5,2,2,3,24,0,1,0,GravJump,1;
+SetObj 3,5,1,2,3,48,0,53,0,GravJump,1;
+SetObjGoal 1,4,3,2;
+SetObjGoal 2,5,4,2;
+SetObjGoal 3,5,3,2;
+SetCamera 80,0,1;
+Wait 32;
+SetMes あ、また何か$n落ちてる。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+DelMes 1;
+SetObjGoal 1,4,4,2;
+SetObjGoal 2,5,5,2;
+SetObjDir 2,0;
+Wait 24;
+SetAniObj 2,5,5,2,0,24,0,155,0,GravJump,1;
+Wait 8;
+SetObjDir 2,4;
+Wait 8;
+SetObjView 0,0;
+SetAniObj 2,5,5,2,0,24,0,159,0,GravJump,1;
+Wait 40;
+SetMes 変な形。$n何かしら。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetObjGoal 1,4,5,2;
+SetObjDir 1,2;
+SetMes ちょっと見せてよ。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 30;
+SetMes ここを･･･？$nこうして･･･？,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+SetObjDir 2,5;
+SetAniObj 10,4,5,2,1,32,0,152,0,GravJump,NoShadow;
+SetAniObj 11,3,5,2,1,32,0,152,0,GravJump,NoShadow;
+SetAniObj 12,2,5,2,1,32,0,152,0,GravJump,NoShadow;
+PlayWave 30;
+SetObjSpeed 1,4;
+SetObjGoal 1,4,4,2;
+DelMes 2;
+SetMes のわっ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 2;
+DelObj 10;
+DelObj 11;
+DelObj 12;
+Wait 40;
+SetMes あっ！$nなんか出た！,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+SetObjDir 1,2;
+Wait 20;
+SetMes なんか出たじゃない！$n焦げてるぞ！,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 0;
+SetAniObj 2,5,5,2,5,24,0,159,0,GravJump,1+ShowTurn;
+SetObjDir 1,0;
+DelMes 1;
+DelMes 2;
+SetMes どうやら古代文明の$n光学兵器のようですね！,
+       3,ObjX[3],ObjY[3],ObjZ[3],LeftTop,0;
+Wait 10;
+SetMes あ～あ･･･。$n夏に向けて薄いのにしたのに･･･。,
+       1,ObjX[1],ObjY[1],ObjZ[1],RightBottom,0;
+Wait 40;
+SetMes へぇ～。,
+       2,ObjX[2],ObjY[2],ObjZ[2],LeftTop,0;
+Wait 0;
+DelMes 1;
+DelMes 2;
+DelMes 3;
+Wait 20;
+
+If Flag[31],0,>,:end;
+GetItem 91;
+Store Flag[31],1;
+Wait 1;
+:end
+ChangeMap 209,5,5,2,2;
+End;

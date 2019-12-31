@@ -1,0 +1,30 @@
+ínâ∫êÖìπÅFó≥ÇÃïÛï®å…
+92
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+Fall    0 -1 :underfloor ;
+
+_END_HEAD_
+
+:start
+
+SetEne 1,15,5,8,0,64,0,
+       0,0,
+       92,2,8,
+       5,0;
+SetBox 5,17,4,8,3,155;
+SetBox 6,19,4,8,3,156;
+SetBox 7,17,6,8,1,157;
+SetBox 8,19,6,8,1,158;
+End;
+
+:walk
+IfBox 0,2,5,2,5,0,Current+2 ;
+ChangeMap 292,14,6,14,0;
+End;
+
+:underfloor
+ChangeMap 293,ObjSX[0]+22,ObjSY[0]+17,24,ObjDir[0];
+End;

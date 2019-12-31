@@ -1,0 +1,86 @@
+フィーレス地下迷宮：連鎖部屋
+5,30,47
+
+
+LoadMap 0 0 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+:start
+SetEne 1,10,16,5,3,24,0,
+       0,3,
+       17,2,4,
+       5,0;
+SetEne 2,13,16,5,3,24,0,
+       0,3,
+       17,2,4,
+       5,0;
+SetEne 3,4,17,15,1,24,0,
+       0,3,
+       17,2,4,
+       5,0;
+SetEne 4,5,17,15,1,24,0,
+       0,3,
+       17,2,4,
+       5,0;
+
+SetBox 8,11,6,8,3,55;
+SetBox 9,12,6,8,3,56;
+
+SetNormalTrap 10,11,24,2,176,80,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 11,12,24,2,176,80,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 12,11,23,2,176,80,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 13,12,23,2,176,80,40,50,27,NoShadow+ShowTurn;
+
+SetNormalTrap 16,9 ,19,5,176,60,0 ,50,27,NoShadow+ShowTurn;
+SetNormalTrap 17,10,18,5,176,60,20,50,27,NoShadow+ShowTurn;
+SetNormalTrap 18,11,17,5,176,60,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 19,12,17,5,176,60,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 20,13,18,5,176,60,20,50,27,NoShadow+ShowTurn;
+SetNormalTrap 21,14,19,5,176,60,0 ,50,27,NoShadow+ShowTurn;
+SetNormalTrap 22,9 ,14,5,176,60,0 ,50,27,NoShadow+ShowTurn;
+SetNormalTrap 23,10,15,5,176,60,20,50,27,NoShadow+ShowTurn;
+SetNormalTrap 24,11,16,5,176,60,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 25,12,16,5,176,60,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 26,13,15,5,176,60,20,50,27,NoShadow+ShowTurn;
+SetNormalTrap 27,14,14,5,176,60,0 ,50,27,NoShadow+ShowTurn;
+
+SetNormalTrap 34,10,5,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 35,10,6,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 36,10,7,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 37,11,5,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 38,12,5,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 39,11,7,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 40,12,7,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 41,13,5,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 42,13,6,8,176,40,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 43,13,7,8,176,40,0,50,27,NoShadow+ShowTurn;
+
+SetNormalTrap 44,6,7,15,176,80,60,50,27,NoShadow+ShowTurn;
+SetNormalTrap 45,7,7,15,176,80,60,50,27,NoShadow+ShowTurn;
+SetNormalTrap 46,6,8,15,176,80,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 47,7,8,15,176,80,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 48,7,9,15,176,80,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 49,5,8,15,176,80,20,50,27,NoShadow+ShowTurn;
+SetNormalTrap 50,6,9,15,176,80,20,50,27,NoShadow+ShowTurn;
+SetNormalTrap 51,4,8,15,176,80,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 52,4,9,15,176,80,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 53,5,9,15,176,80,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 54,4,10,15,176,80,60,50,27,NoShadow+ShowTurn;
+SetNormalTrap 55,5,10,15,176,80,60,50,27,NoShadow+ShowTurn;
+SetNormalTrap 56,4,11,15,176,80,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 57,5,11,15,176,80,40,50,27,NoShadow+ShowTurn;
+SetNormalTrap 58,4,12,15,176,80,20,50,27,NoShadow+ShowTurn;
+SetNormalTrap 59,5,12,15,176,80,20,50,27,NoShadow+ShowTurn;
+SetNormalTrap 60,4,13,15,176,80,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 61,5,13,15,176,80,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 62,6,6,15,176,80,0,50,27,NoShadow+ShowTurn;
+SetNormalTrap 63,7,6,15,176,80,0,50,27,NoShadow+ShowTurn;
+End;
+
+:walk
+IfBox 0,16,26,16,27,0,Current+2 ;
+ChangeMap 103,2,ObjSY[0]-23,2,2;
+IfBox 0,4,31,5,31,0,Current+2 ;
+ChangeMap 108,ObjSX[0]-1,26,2,3;
+End;

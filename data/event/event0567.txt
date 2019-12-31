@@ -1,0 +1,50 @@
+X—ÑF‚V
+20,12,15,8,92,26
+
+LoadMap 0 -1 :start ;
+Walk    0 -1 :walk ;
+
+_END_HEAD_
+#forest.txt
+:start
+SetEne 1,5,15,2,Rand,24,2,
+       0,3,
+       20,0,8,
+       6,LPx2+PUpWOutBig;
+SetEne 2,5,16,2,Rand,24,2,
+       0,3,
+       20,0,8,
+       6,LPx2+PUpWOutBig;
+SetEne 3,4,16,2,Rand,24,2,
+       0,3,
+       20,0,8,
+       6,LPx2+PUpWOutBig;
+Store MFlag[8],22;
+Store MFlag[9],3;
+Goto :forest_init;
+End ;
+
+:walk
+IfBox 0,4,5,4,5,0,Current+5 ;
+Stop 3;
+NewLine 0,0,:flash ;
+Wait 30;
+ChangeMap 560,5,5,2,2;
+IfBox 0,3,22,4,22,0,Current+2 ;
+ChangeMap 568,ObjSX[0]+3,2,2,3;
+IfBox 0,7,1,8,1,0,Current+2 ;
+ChangeMap 566,ObjSX[0]-1,20,9,1;
+
+End;
+:::::::::::::::::::::::::::::::::::::::::::::::::
+:flash
+PlayWave 8;
+SetObjView 0,0;
+Store MFlag[8],255;
+:flash_loop
+MapColor MFlag[8],255,255,255;
+Wait 1;
+Store MFlag[8],MFlag[8]-16;
+If MFlag[8],0,>,:flash_loop ;
+End ;
+
